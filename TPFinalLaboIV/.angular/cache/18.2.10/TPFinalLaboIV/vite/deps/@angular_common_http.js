@@ -37,7 +37,8 @@ import {
   withNoXsrfProtection,
   withRequestsMadeViaParent,
   withXsrfConfiguration
-} from "./chunk-G23SFVHC.js";
+} from "./chunk-UGGGDJPZ.js";
+import "./chunk-TQR3GDWE.js";
 import "./chunk-HCNZ5MW6.js";
 export {
   FetchBackend,

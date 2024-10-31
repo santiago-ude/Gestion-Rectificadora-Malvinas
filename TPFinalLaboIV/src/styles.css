@@ -1,23 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(253, 249, 243);
-    color: #333;
-  }
-  
-  h2 {
-    color: #0073e6;
-  }
-  
-  button {
-    color: #333;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5em 1em;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #3d97f1;
-  }
-  
+body, app-root{
+    padding: 0;
+    margin: 0;
+    background-color: #cee9fa;
+    font-family: 'Nunito';
+    background-image: linear-gradient(to bottom, #3c8ad8, #83dce2, #b9e1fa);
+    background-attachment:local;
+    background-size: cover;
+}
+html{
+    box-sizing: border-box;
+}

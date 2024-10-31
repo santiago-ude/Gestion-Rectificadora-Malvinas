@@ -1,0 +1,22 @@
+<section class="contenedorBackColor">
+    <nav class="contenedorMenu">
+        <h1 class="h1Dinamic" [ngClass]="{h1Dinamic:!dentroH1, h1Dinamic2:dentroH1}" (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">Rectificadora <br>
+            Malvinas</h1>
+
+        <ul>
+            @for (item of listaMenu; track $index) {
+              <li>
+                <a class="aDinamico"  [ngClass]="{aDinamico:!dentroA[$index], aDinamico2:dentroA[$index] }" (mouseover)= "onMouseOverA($index)"  (mouseleave)="onMouseLeaveA($index)" href="">
+                       {{item}}
+                </a>
+              </li>   
+              
+            }  
+        </ul>
+        <div>
+            <button [ngClass]="{iniciarSesionA:!dentroButton, iniciarSesionB:dentroButton }" (mouseover)= "onMouseOver()"  (mouseleave)="onMouseLeave()" class="iniciarSesionA" >Iniciar Sesión</button>
+        </div>
+    
+    </nav>
+    
+</section>
