@@ -1,1 +1,2 @@
 # Gestion-Rectificadora-Malvinas
+Este proyecto es una aplicación web para la gestión de registros de clientes, diseñada para facilitar la administración de presupuestos y el seguimiento detallado de cada registro. La plataforma permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre los registros y los presupuestos, brindando herramientas de filtrado y cambio de estado para optimizar el proceso de gestión.
