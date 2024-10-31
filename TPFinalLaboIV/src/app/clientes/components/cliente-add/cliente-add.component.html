@@ -1,1 +1,29 @@
-<p>cliente-add works!</p>
+<section>
+    <form (ngSubmit)="eventSubmit()" [formGroup]="formulario">
+
+        <label for="dni">DNI: </label>
+        <input type="text" formControlName="dni" id="dni">
+
+        <label for="nombre">Nombre: </label>
+        <input type="text"  id="nombre" formControlName="nombre">
+        
+        <label for="apellido">Apellido: </label>
+        <input type="text"  id="apellido" formControlName="apellido">
+        
+        <label for="numero">Numero: </label>
+        <input type="text"  id="apellido" formControlName="apellido">
+        
+        <label for="domicilio">Domicilio: </label>
+        <input type="text"  id="domicilio" formControlName="domicilio">
+
+        <label for="altura">Altura: </label>
+        <input type="text" id="altura" formControlName="altura">
+        
+        <label for="metodoPago">Metodo de Pago: </label>
+        <select id="metodoPago">
+            <option value="Efectivo"></option>
+            <option value="Tarjeta de Credito"></option>
+            <option value="Tarjeta de Debito"></option>
+        </select>
+    </form>    
+</section>

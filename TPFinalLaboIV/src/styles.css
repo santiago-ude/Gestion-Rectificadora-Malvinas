@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-body, app-root{
+body, app-root, html{
     padding: 0;
     margin: 0;
     background-color: #cee9fa;
     font-family: 'Nunito';
     background-image: linear-gradient(to bottom, #3c8ad8, #83dce2, #b9e1fa);
-    background-attachment:local;
+    background-attachment:fixed;
     background-size: cover;
 }
-html{
+*{
     box-sizing: border-box;
 }
+
