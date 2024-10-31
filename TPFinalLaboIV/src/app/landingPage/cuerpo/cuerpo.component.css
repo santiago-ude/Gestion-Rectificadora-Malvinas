@@ -19,11 +19,11 @@ h2{
     font-size: 4rem;
     margin:0 0 0 2rem;
     padding: 0;
-    background: linear-gradient(to right, #c973e8, #77b5f3, #7bf2e8);
+    background: white;
     background-clip: text; 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
-    text-shadow: -2px -2px black;
+    -webkit-text-stroke: 1px black;
     
 }
 p{
