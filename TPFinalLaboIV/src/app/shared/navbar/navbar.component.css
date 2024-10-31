@@ -1,0 +1,16 @@
+.navBar {
+  background-color: #0073e6; 
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: space-around;
+}
+.navbar-titulo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(253, 249, 243)
+}
+.espacio {
+  flex: 1;
+}
+
