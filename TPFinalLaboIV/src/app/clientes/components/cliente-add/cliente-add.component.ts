@@ -12,6 +12,9 @@ export class ClienteAddComponent {
 eventSubmit() {
 throw new Error('Method not implemented.');
 }
+  tipos: string[] = ["nombre","apellido","dni","numero","domicilio","altura"];
+  tiposPlace: string[] = ["Nombre","Apellido","DNI","Número","Domicilio","Altura"];
+  
 
   fr = inject(FormBuilder);
   formulario = this.fr.nonNullable.group(
