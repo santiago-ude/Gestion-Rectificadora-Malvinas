@@ -87,3 +87,6 @@ ul{
     transition: .5s;
     box-shadow: 0 5px 5px black ;
 }
+.menu-personalizado{
+    background-image: linear-gradient(to bottom,#eac7ff ,#deadff);
+}

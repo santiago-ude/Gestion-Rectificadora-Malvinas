@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -40,5 +40,11 @@ export class MenuComponent {
     return this.dentroButton = false;
   }
   //
+
+  //Importo
+  @Input()
+  estilosClass: string="";
+
+
 
 }

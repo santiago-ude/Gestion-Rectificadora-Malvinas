@@ -12,14 +12,25 @@ section{
     height:100%;
     width: 100%;
 }
-h2{
+.h2{
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
     padding-bottom: 3rem;
     text-shadow: 2px 2px #009dff;
+    transition: .5s;
     color: aliceblue;
+}
+.h2c{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 3.7rem;
+    padding-bottom: 3rem;
+    text-shadow: 2px 2px #006eff;
+    color: rgb(217, 235, 252);
+    transition: .5s;
 }
 form{
     display: grid;
@@ -33,17 +44,30 @@ input{
 }
 .div1{
     margin: 10rem 10rem 2rem;
+    
 }
 .img1{
     background-image: url("../../img/mecanic.png");
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size:cover;
     margin: 10rem;
+    transition: .5s;
+}
+.img1c{
+    background-image: url("../../img/mecanic.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin: 9.5rem;
+    box-shadow: 3px 3px black;
+    transition: .5s;
 }
 .NAdiv{
     display: grid;
     grid-template-columns: 2rem 49% 49%;
+    justify-content: center;
     gap: 0.6rem;
+    margin: 0;
+    
 }
 input{
     margin-bottom: .5rem;
@@ -51,12 +75,7 @@ input{
 }
 .nombreIMG{
     background-image: url("../../img/agregar-usuario.png");
-    background-repeat: no-repeat;
-    background-size: 2rem;
-    padding: 0;
-    margin: 0;
-    width: 2rem;
-    height: 2rem;
+    
 }
 
 .numeroIMG{
@@ -72,11 +91,11 @@ input{
     background-image: url("../../img/altura-del-texto.png");
 }
 .imgSel{
-    background-image: url("../../img/gastos.png");
+    background-image: url("../../img/tarjeta-de-credito.png");
 }
 div div{
     background-repeat: no-repeat;
-    background-size: 2rem;
+    background-size:contain;
     padding: 0;
     margin-bottom: 2rem;
     height: 2rem;
@@ -85,7 +104,8 @@ div div{
     display: grid;
     grid-template-columns: 2rem 100% ;
     gap: 0.6rem;
+    justify-content: center;
 }
 select{
-    height: 1.2rem;
+    height: 2rem;
 }

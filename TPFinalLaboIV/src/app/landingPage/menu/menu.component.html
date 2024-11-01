@@ -1,5 +1,5 @@
-<section class="contenedorBackColor">
-    <nav class="contenedorMenu">
+<section class="contenedorBackColor" [ngClass]="estilosClass">
+    <nav class="contenedorMenu"  >
         <h1 class="h1Dinamic" [ngClass]="{h1Dinamic:!dentroH1, h1Dinamic2:dentroH1}" (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">Rectificadora <br>
             Malvinas</h1>
 

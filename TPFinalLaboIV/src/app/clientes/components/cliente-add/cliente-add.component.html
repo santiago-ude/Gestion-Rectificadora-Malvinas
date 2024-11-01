@@ -1,12 +1,13 @@
 <section>
     <div class="div1">
-        <h2>Cargar de Clientes</h2>
-     <form (ngSubmit)="eventSubmit()" [formGroup]="formulario">
+     <h2 class="h2" (mouseover)="h2Mouseover()" (mouseleave)="h2Mouseleave()" [ngClass]="{h2:!dentroH2,h2c:dentroH2}">Cargar de Clientes</h2>
+      <form (ngSubmit)="eventSubmit()" [formGroup]="formulario">
 
         @for (tipo of tipos; track $index) {
             @if ($index == 0) {
                 <div class="NAdiv">
-                    <div class="{{tipos[$index]}}IMG"></div>
+                    <div class="{{tipos[$index]}}IMG">
+                    </div>
                     <input type="text" formControlName={{tipo}} id={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
                     <input type="text" formControlName={{tipos[$index+1]}} id={{tipos[$index+1]}} class="{{tipos[$index+1]}}" placeholder="{{tiposPlace[$index+1]}}">
                 </div>
@@ -17,17 +18,18 @@
                 </div>
             }
         }
-        <div class="selectdiv">
-            <img class="imgSel">
-            <select id="metodoPago">
+        <div class="selectdiv" >
+            <div class="imgSel"></div>
+            <select id="metodoPago" formControlName="metodoPago">
                 <option value="Efectivo">Efectivo</option>
                 <option value="Tarjeta de Credito">Tarjeta de Crédito</option>
                 <option value="Tarjeta de Debito">Tarjeta de Débito</option>
             </select>
         </div>
-        
-     </form> 
+        <button type="submit">Aceptar</button>
+      </form> 
+      
     </div>
-    <div class="img1"></div>
+    <div class="img1" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [ngClass] = "{img1:!dentroImg , img1c:dentroImg}"></div>
        
 </section>
