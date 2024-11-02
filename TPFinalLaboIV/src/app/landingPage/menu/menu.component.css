@@ -1,0 +1,92 @@
+.h1Dinamic{
+    color: #FFFF ;
+    margin: 0;
+    align-items: center;
+    font-size: 1.5rem;
+    background-image: url("../img/Malvinas1.png");
+    background-size: 8rem;
+    background-repeat: no-repeat; 
+    background-position: left center; 
+    padding-left: 8rem;
+    transition: .5s;
+}
+.h1Dinamic2{
+    color: #FFFF ;
+    margin: 0;
+    align-items: center;
+    font-size: 1.6rem;
+    background-image: url("../img/Malvinas1.png");
+    background-size: 8.5rem;
+    background-repeat: no-repeat; 
+    background-position: left center; 
+    padding-left: 8.4rem;
+    transition: .5s;
+}
+.contenedorBackColor{
+  
+    width: 100%;
+    height: 8rem; 
+    position: relative;
+}
+.contenedorMenu{
+    position: absolute;
+    top: 50%; /* 50% desde la parte superior del padre */
+    left: 50%; /* 50% desde la izquierda del padre */
+    transform: translate(-50%, -50%); /* Centra el hijo */
+    display: grid;
+    grid-template-columns: 220px 60% 40%;
+    width: 80%;
+    align-items: center;
+    justify-items: center;
+}
+li{
+   list-style-type: none;
+   text-align: center;
+   
+}
+ul{
+    grid-column: 2;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    align-items: center;
+    justify-items: center;
+    padding: 0;
+    margin-left:  4rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.aDinamico{
+    text-decoration: none;
+    color: #FFFF ;
+    transition: .5s;
+}
+.aDinamico2{
+    text-decoration: none;
+    color: #4A4A4A ;
+    font-size: 1rem;
+    transition: .5s;
+    text-shadow: 0 0px 4px #807e7e ;
+}
+.iniciarSesionA{
+    grid-column: 3;
+    width: 100%;
+    color: #FFFF;
+    background-color:#485b64 ;
+    height: 2rem;
+    transition: .5s;
+    border-radius: 1rem;
+}
+.iniciarSesionB{
+    grid-column: 3;
+    width: 100%;
+    color: #FFFF;
+    background-color: #4A4A4A;
+    height: 2rem;
+    border-radius: 1rem;
+    transition: .5s;
+    box-shadow: 0 5px 5px black ;
+}
+.menu-personalizado{
+    background-image: linear-gradient(to bottom,#eac7ff ,#deadff);
+}

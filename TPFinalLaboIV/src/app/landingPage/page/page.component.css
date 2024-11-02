@@ -1,0 +1,6 @@
+:host{
+    display: block;
+    background-image: linear-gradient(to bottom, #3c8ad8, #83dce2, #b9e1fa);
+    background-attachment:fixed;
+    background-size: cover;
+}

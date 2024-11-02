@@ -1,0 +1,38 @@
+.contenidoIMG1 {
+    background-image: url("../img/Malvinas1.png");
+    margin: 2rem;
+    height: 30rem;
+    background-size: cover; /* Mantiene la imagen cubriendo el área completa */
+    background-position: center; /* Centra la imagen */
+    grid-column: 2;
+}
+
+.espacio{
+    margin-top: 6rem;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+h2{
+    display: grid;
+    font-size: 4rem;
+    margin:0 0 0 2rem;
+    padding: 0;
+    background: white;
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px black;
+    
+}
+p{
+    margin: 7rem 0 0rem 2rem;
+    font-size: 1.4rem;
+}
+.contenedor2{
+    display: grid;
+    grid-template-rows: 10rem 15rem;
+    align-items: center;
+
+}

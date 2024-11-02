@@ -1,5 +1,14 @@
 {
-
-
-
+  "clientes": [
+    {
+      "id": "a5b7",
+      "dni": "44265003",
+      "nombre": "Lautaro",
+      "apellido": "Arias",
+      "numero": "2236697212",
+      "domicilio": "Padre Dutto",
+      "altura": "321",
+      "metodoPago": "Efectivo"
+    }
+  ]
 }
