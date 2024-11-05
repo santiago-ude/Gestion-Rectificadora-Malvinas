@@ -1,11 +1,11 @@
-
-import { PresupuestoItem } from "./PresupuestoItem";
+import { Item } from "./item";
 
 export interface Presupuesto {
 
-   id: number;
-   fecha: Date;
-   descuento: number;
-   items : PresupuestoItem[];
+    id: string | null;
+    fecha: Date;
+    descuento: number;
+    items: Item[];
+
 
 }

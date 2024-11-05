@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output, output } from '@angular/core';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  listaMenu:Array<string> = ["Menu","Clientes","Servicios","Productos","Pedidos"]
+  listaMenu:Array<string> = ["Menu","Clientes","Presupuestos","Productos","Pedidos"]
 
   //Para hacer dinamico el nav
   dentroA:boolean [] = [false,false,false,false,false];

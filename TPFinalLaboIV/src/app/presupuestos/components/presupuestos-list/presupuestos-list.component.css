@@ -1,0 +1,49 @@
+/* Extiende el estilo de Water.css */
+
+.presupuesto-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.presupuesto-item {
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+    background-color: #2e2e2e;
+}
+
+.presupuesto-header {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #eaeaea;
+}
+
+.items-list h4 {
+    font-size: 1em;
+    color: #ddd;
+    margin: 8px 0;
+}
+
+.items-list ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.item {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #3a3a3a;
+    color: #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item span {
+    flex: 1 1 200px;
+    font-size: 0.9em;
+}

@@ -1,0 +1,40 @@
+
+<section>
+    <fieldset>
+        <legend>Alta Presupuesto</legend>
+
+        <form [formGroup]="formulario" >
+            
+            <label for="">Fecha</label>
+            <input type="date" formControlName="fecha">
+
+            @if (formulario.controls['fecha'].getError('required') && formulario.controls['fecha'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+
+            <label for="">Descuento</label>
+            <input type="number" formControlName="descuento">
+
+            @if (formulario.controls['descuento'].getError('required') && formulario.controls['descuento'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+            <label for="">Items</label>
+            <button (click)="cargarItem = true">Cargar Item</button>
+
+            @if (cargarItem) {
+                
+                <app-item-add (emitirEvento)="addItem($event)"></app-item-add>
+                
+            }
+            
+
+            <button (click)="addPresupuesto()">Add</button>
+        </form>
+    </fieldset> 
+</section>
