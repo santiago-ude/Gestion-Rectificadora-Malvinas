@@ -1,0 +1,59 @@
+
+<section>
+    <fieldset>
+        <legend>Alta Presupuesto</legend>
+
+        <form [formGroup]="formulario" (ngSubmit)="addItem()">
+
+            <label for="">nombre</label>
+            <input type="text" formControlName="nombre">
+
+            @if (formulario.controls['nombre'].getError('required') && formulario.controls['nombre'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+            
+            <label for="">descripcion</label>
+            <input type="text" formControlName="descripcion">
+
+            @if (formulario.controls['descripcion'].getError('required') && formulario.controls['descripcion'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+
+            <label for="">precio Unitario</label>
+            <input type="number" formControlName="precioUnitario">
+
+            @if (formulario.controls['precioUnitario'].getError('required') && formulario.controls['precioUnitario'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+            <label for="">precio Mano de Obra</label>
+            <input type="number" formControlName="precioManoObra">
+
+            @if (formulario.controls['precioManoObra'].getError('required') && formulario.controls['precioManoObra'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+            <label for="">precio Final</label>
+            <input type="number" formControlName="precioFinal">
+
+            @if (formulario.controls['precioFinal'].getError('required') && formulario.controls['precioFinal'].touched) {
+                <div class="error">
+                    Campo Requerido
+                </div>
+            }
+
+
+            <button>Add</button>
+        </form>
+    </fieldset> 
+</section>

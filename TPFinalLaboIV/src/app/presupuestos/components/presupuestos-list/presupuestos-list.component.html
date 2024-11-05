@@ -1,0 +1,29 @@
+<app-presupuestos-add (emitirEvento)="addList($event)"></app-presupuestos-add>
+
+<ul class="presupuesto-list">
+    @for (pres of listaPresupuestos; track $index) {
+    <li class="presupuesto-item">
+        <div class="presupuesto-header">
+            <strong>ID:</strong> {{pres.id}} -
+            <strong>Fecha:</strong> {{pres.fecha}} -
+            <strong>Descuento:</strong> {{pres.descuento}}%
+        </div>
+        <div class="items-list">
+            <h4>Items:</h4>
+            <ul>
+                @for (pre of pres.items; track $index) {
+                <li class="item">
+                    <span><strong>Nombre:</strong> {{pre.nombre}}</span>
+                    <span><strong>Descripción:</strong> {{pre.descripcion}}</span>
+                    <span><strong>Precio Unitario:</strong> {{pre.precioUnitario}}</span>
+                    <span><strong>Precio Mano Obra:</strong> {{pre.precioManoObra}}</span>
+                    <span><strong>Precio Final:</strong> {{pre.precioFinal}}</span>
+                </li>
+                }
+            </ul>
+
+            <button (click)="deletePresupuestoDB(pres.id)">Eliminar</button>
+        </div>
+    </li>
+    }
+</ul>
