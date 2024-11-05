@@ -18,8 +18,6 @@ export class PresupuestosAddComponent {
   cargarItem = false;
   itemAux : Item[] = [];
 
-  @Output()
-  emitirEvento : EventEmitter<Presupuesto> = new EventEmitter() 
 
   //---------------ULTIMA CLASE---------------------------
 
@@ -55,8 +53,6 @@ export class PresupuestosAddComponent {
       id: (Math.random() * 10).toString()
     }
 
-
-    this.emitirEvento.emit(pres);
     this.formulario.reset()
 
     this.addPresupuestoDB(pres);
