@@ -1,4 +1,3 @@
-<app-presupuestos-add (emitirEvento)="addList($event)"></app-presupuestos-add>
 
 <ul class="presupuesto-list">
     @for (pres of listaPresupuestos; track $index) {
@@ -21,7 +20,6 @@
                 </li>
                 }
             </ul>
-
             <button (click)="deletePresupuestoDB(pres.id)">Eliminar</button>
         </div>
     </li>

@@ -26,13 +26,6 @@ export class PresupuestosListComponent implements OnInit{
   PS = inject(PresupuestoService);
 
 
-  addList(pres: Presupuesto) {
-
-    this.listaPresupuestos.push(pres);
-
-  }
-
-
   traerPresupuestos() {
 
 
@@ -66,9 +59,6 @@ export class PresupuestosListComponent implements OnInit{
     )
 
   }
-
-
-
 
 
 }
