@@ -9,9 +9,28 @@
       "domicilio": "Padre Dutto",
       "altura": "321",
       "metodoPago": "Efectivo"
+    },
+    {
+      "id": "0694",
+      "dni": "44578006",
+      "nombre": "Matias",
+      "apellido": "Bellonio",
+      "numero": "2236687894",
+      "domicilio": "Perez Bulnes",
+      "altura": "123",
+      "metodoPago": "Tarjeta de Credito"
+    },
+    {
+      "id": "4adc",
+      "dni": "44135008",
+      "nombre": "Leonardo",
+      "apellido": "Intrieri",
+      "numero": "2239987515",
+      "domicilio": "Perez Bulnes",
+      "altura": "111",
+      "metodoPago": "Tarjeta de Credito"
     }
   ],
-
   "presupuestos": [
     {
       "id": "6.686939354929049",

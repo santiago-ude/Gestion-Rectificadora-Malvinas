@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  p{
+    padding-left: 0.6rem;
+  }
+
+section{
+    display: grid;
+    grid-template-rows: 3rem 1fr;
+    
+}
+div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+input{
+    height: 1.5rem;
+}

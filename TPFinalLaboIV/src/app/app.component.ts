@@ -11,7 +11,7 @@ import { MenuComponent } from "./landingPage/menu/menu.component";
   standalone: true,
   imports: [RouterOutlet, PageComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']  // Cambiado a styleUrls (en plural)
 })
 export class AppComponent {
   title = 'TPFinalLaboIV';
