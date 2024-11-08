@@ -3,7 +3,7 @@
     <fieldset>
         <legend>Alta Presupuesto</legend>
 
-        <form [formGroup]="formulario" (ngSubmit)="addPresupuesto()">
+        <form [formGroup]="formulario" >
             
             <label for="">Fecha</label>
             <input type="date" formControlName="fecha">
@@ -34,7 +34,7 @@
             }
             
 
-            <button type="submit">Agregar</button>
+            <button (click)="addPresupuesto()">Add</button>
         </form>
     </fieldset> 
 </section>
