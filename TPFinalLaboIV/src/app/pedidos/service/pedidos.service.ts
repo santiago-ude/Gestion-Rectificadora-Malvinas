@@ -21,13 +21,29 @@ export class PedidoService {
     return this.http.post<Pedidos>(this.apiUrl, pedido).pipe(catchError(this.handleError));
   }
 
-  updatePedido(id: string, pedido: Pedidos): Observable<Pedidos> {
+  updatePedido(id: string | undefined, pedido: Pedidos): Observable<Pedidos> {
     return this.http.put<Pedidos>(`${this.apiUrl}/${id}`, pedido).pipe(catchError(this.handleError));
   }
 
   deletePedido(id: string | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
+  
+  getPedidoById(id: string | null | undefined): Observable<Pedidos>{
+    return this.http.get<Pedidos>(`${this.apiUrl}/${id}`);
+  }
+
+  filtrarPorEstado(pedidos: Pedidos[], estado: 'activo' | 'entregado' | 'atrasado'): Pedidos[] {
+    return pedidos.filter(pedido => pedido.estado === estado);
+  }
+
+  filtrarPorFecha(pedidos: Pedidos[], fechaInicio: Date, fechaFin: Date): Pedidos[] {
+    return pedidos.filter(pedido => 
+      pedido.fechaEntrada >= fechaInicio && pedido.fechaEntrada <= fechaFin
+    );
+  }
+
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('Error en el servicio de Pedido:', error);
