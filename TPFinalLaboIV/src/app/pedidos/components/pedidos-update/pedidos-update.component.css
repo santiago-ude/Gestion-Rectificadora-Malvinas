@@ -1,0 +1,94 @@
+
+form{
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+  
+fieldset{
+    border: none;
+    padding: 0;
+}
+  
+legend{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #005b96;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #005b96;
+}
+  
+  
+label{
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+    color: #333;
+}
+  
+input[type="text"], input[type="date"], select, textarea{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+  
+textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+  
+ 
+.error {
+    color: #d9534f;
+    font-size: 0.875rem;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+  
+.botones{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button{
+    background-color: #005b96;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #003f6b;
+}
+
+button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.volver{
+    background-color: #005b96;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.volver:hover{
+    background-color: #003f6b;
+}

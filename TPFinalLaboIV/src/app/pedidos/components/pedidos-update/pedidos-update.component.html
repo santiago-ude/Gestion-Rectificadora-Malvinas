@@ -64,8 +64,9 @@
           Presupuesto es obligatorio
         </div> -->
     
+    <div class="botones">
         <button type="submit" [disabled]="!formulario.valid">Actualizar Pedido</button>
-      </fieldset>
-  
-    <a [routerLink]="['/pedidos']" [replaceUrl]="true" class="volver">Volver</a>
+        <a [routerLink]="['/pedidos']" [replaceUrl]="true" class="volver">Volver</a>
+     </div>
+    </fieldset>
   </form>

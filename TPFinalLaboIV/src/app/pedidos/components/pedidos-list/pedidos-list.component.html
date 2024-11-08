@@ -1,13 +1,17 @@
-
+<div class="pedido-lista">
+  <div class="pedido-datos">
 @for (pedido of listaPedidos; track $index) {
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'yyyy-MM-dd' }}</p>   
     <p>Estado: {{ pedido.estado }}</p>
     <p>Descripcion {{pedido.descripcion}}</p>
-    <button (click)="eliminarPedidos(pedido.id)">Eliminar</button>
-    <button (click)="exportarPedidoPDF(pedido)">Exportar PDF</button>
-
-     <a [routerLink]="['update', pedido.id]">Actualizar</a>
+    <div class="botones">
+      <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>
+      <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
+      <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Actualizar</a>
+    </div>
+    
   }
-  
+  </div>
+</div>
