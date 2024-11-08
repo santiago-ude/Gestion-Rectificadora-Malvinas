@@ -14,7 +14,9 @@ import { ItemAddComponent } from "../item-add/item-add.component";
 })
 export class PresupuestosAddComponent {
 
-
+  @Output()
+  emitirPresupuesto: EventEmitter<Presupuesto> = new EventEmitter();
+  
   cargarItem = false;
   itemAux : Item[] = [];
 
@@ -56,6 +58,10 @@ export class PresupuestosAddComponent {
     this.formulario.reset()
 
     this.addPresupuestoDB(pres);
+      
+    // Emitir el presupuesto al componente de pedidos
+    this.emitirPresupuesto.emit(pres);
+
 
     this.cargarItem = false;
 
