@@ -68,25 +68,7 @@ ul{
     transition: .5s;
     text-shadow: 0 0px 4px #807e7e ;
 }
-.iniciarSesionA{
-    grid-column: 3;
-    width: 100%;
-    color: #FFFF;
-    background-color:#485b64 ;
-    height: 2rem;
-    transition: .5s;
-    border-radius: 1rem;
-}
-.iniciarSesionB{
-    grid-column: 3;
-    width: 100%;
-    color: #FFFF;
-    background-color: #4A4A4A;
-    height: 2rem;
-    border-radius: 1rem;
-    transition: .5s;
-    box-shadow: 0 5px 5px black ;
-}
 .menu-personalizado{
     background-image: linear-gradient(to bottom,#eac7ff ,#deadff);
 }
+
