@@ -49,32 +49,69 @@
 }
 
 
+/* Separación entre el navbar y los botones */
 .ordenar-botones {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    margin-top: 20px; /* Agrega espacio entre el navbar y los botones */
 }
 
+/* Estilo para los botones */
 .ordenar-botones button {
     padding: 10px 15px;
     font-size: 1em;
     font-weight: bold;
     color: #ffffff;
     background-color: #4CAF50; /* Verde claro */
-    border: none;
+    border: 2px solid #3e8e41; /* Borde con color verde oscuro */
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Efecto de hover para los botones */
 .ordenar-botones button:hover {
     background-color: #45a049; /* Verde más oscuro */
+    border-color: #2e7031; /* Cambia el color del borde en hover */
     transform: scale(1.05); /* Levemente más grande al pasar el mouse */
 }
 
+/* Efecto de clic (active) para los botones */
 .ordenar-botones button:active {
     background-color: #388e3c;
+    border-color: #265d2c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reducir la sombra al hacer clic */
+    transform: scale(0.98); /* Levemente más pequeño al hacer clic */
+}
+
+
+/* Estilo para el botón de eliminar */
+button.eliminar-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #e53935; /* Rojo */
+    border: 2px solid #b71c1c; /* Borde rojo oscuro */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de hover para el botón de eliminar */
+button.eliminar-btn:hover {
+    background-color: #d32f2f; /* Rojo más oscuro */
+    border-color: #8e0000; /* Cambia el color del borde en hover */
+    transform: scale(1.05); /* Levemente más grande al pasar el mouse */
+}
+
+/* Efecto de clic (active) para el botón de eliminar */
+button.eliminar-btn:active {
+    background-color: #c62828;
+    border-color: #7f0000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reducir la sombra al hacer clic */
     transform: scale(0.98); /* Levemente más pequeño al hacer clic */
 }
