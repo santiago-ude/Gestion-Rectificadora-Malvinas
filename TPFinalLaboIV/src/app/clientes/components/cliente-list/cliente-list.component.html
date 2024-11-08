@@ -1,0 +1,44 @@
+<section>
+  <div>
+    <p>Buscar: </p>
+    <input type="text" placeholder="DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni,$event)">  
+    @if(n>=0){
+      <p>Nombre: {{clienteEncontrado?.nombre}}, Apellido: {{clienteEncontrado?.apellido}}, Numero: {{clienteEncontrado?.numero}}
+        Domicilio: {{clienteEncontrado?.domicilio}}, Altura: {{clienteEncontrado?.altura}}</p>
+    }@else if(n==-1){
+      <p>Error vuelva a ingresar otro DNI</p>
+    }
+    
+</div>
+  
+
+ <table>
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Numero</th>
+        <th>Domicilio</th>
+        <th>Altura</th>
+        <th>Metodo de Pago</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      @for (cliente of clientes; track $index) {
+        <tr>
+          <td>{{ cliente.dni }}</td>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>{{ cliente.numero }}</td>
+          <td>{{ cliente.domicilio }}</td>
+          <td>{{ cliente.altura }}</td>
+          <td>{{ cliente.metodoPago }}</td>
+        </tr>
+      }
+      
+
+    </tbody>
+  </table>
+</section>
