@@ -1,1 +1,66 @@
-<p>pedidos-add works!</p>
+<form [formGroup]="formulario" (ngSubmit)="agregarPedido()">
+  <fieldset>
+    <legend>Agregar Pedido</legend>
+
+    <label for="cliente">Cliente:</label>
+    <select id="cliente" formControlName="cliente">
+      <option *ngFor="let cliente of clientes" [ngValue]="cliente">
+        {{ cliente.nombre }} {{ cliente.apellido }} (DNI: {{ cliente.dni }})
+      </option>
+    </select>
+    <div *ngIf="formulario.controls['cliente'].touched && formulario.controls['cliente'].invalid" class="error">
+      Cliente es obligatorio
+    </div>
+
+    <label for="fechaEntrada">Fecha de Entrada:</label>
+    <input type="date" id="fechaEntrada" formControlName="fechaEntrada">
+    <div *ngIf="formulario.controls['fechaEntrada'].touched && formulario.controls['fechaEntrada'].invalid" class="error">
+      Fecha de Entrada es obligatoria
+    </div>
+
+    <label for="fechaSalidaEstimada">Fecha de Salida Estimada:</label>
+    <input type="date" id="fechaSalidaEstimada" formControlName="fechaSalidaEstimada">
+    <div *ngIf="formulario.controls['fechaSalidaEstimada'].touched && formulario.controls['fechaSalidaEstimada'].invalid" class="error">
+      Fecha de Salida Estimada es obligatoria
+    </div>
+
+    <label for="estado">Estado:</label>
+    <select id="estado" formControlName="estado">
+      <option value="activo">Activo</option>
+      <option value="entregado">Entregado</option>
+      <option value="atrasado">Atrasado</option>
+    </select>
+
+    <label for="marcaAuto">Marca del Auto:</label>
+    <input type="text" id="marcaAuto" formControlName="marcaAuto">
+    <div *ngIf="formulario.controls['marcaAuto'].touched && formulario.controls['marcaAuto'].invalid" class="error">
+      Marca del Auto es obligatoria
+    </div>
+
+    <label for="modeloAuto">Modelo del Auto:</label>
+    <input type="text" id="modeloAuto" formControlName="modeloAuto">
+    <div *ngIf="formulario.controls['modeloAuto'].touched && formulario.controls['modeloAuto'].invalid" class="error">
+      Modelo del Auto es obligatorio
+    </div>
+
+    <label for="numeroSerie">Número de Serie:</label>
+    <input type="text" id="numeroSerie" formControlName="numeroSerie">
+    <div *ngIf="formulario.controls['numeroSerie'].touched && formulario.controls['numeroSerie'].invalid" class="error">
+      Número de Serie es obligatorio
+    </div>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion"></textarea>
+
+    <label for="presupuesto">Presupuesto:</label>
+    <!-- <select id="presupuesto" formControlName="presupuesto" (change)="asignarPresupuesto($event.target.value)">
+      <option *ngFor="let presupuesto of presupuestos" [ngValue]="presupuesto">
+        Presupuesto ID: {{ presupuesto.id }} - Total: {{ calcularTotalPresupuesto(presupuesto) }}
+      </option>
+    </select>
+    <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
+      Presupuesto es obligatorio
+    </div> -->
+
+    <button type="submit" [disabled]="!formulario.valid">Agregar Pedido</button>
+  </fieldset>

@@ -1,1 +1,12 @@
-<p>pedidos-list works!</p>
+@for (pedido of listaPedidos; track $index) {
+    <p>{{ pedido.id }}</p>
+    <p>{{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+    <p>{{ pedido.fechaEntrada}}</p>
+    <p>{{ pedido.fechaSalidaEstimada}}</p>
+    <p>{{ pedido.estado }}</p>
+    <button (click)="eliminarPedidos(pedido.id)">Eliminar</button>
+    <button (click)="exportarPedidoPDF(pedido)">Exportar PDF</button>
+
+    <!-- <a [routerLink]="['update', pedido.id]">Actualizar</a> -->
+  }
+  
