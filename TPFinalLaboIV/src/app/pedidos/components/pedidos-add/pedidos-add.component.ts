@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { PedidoService } from '../../service/pedidos.service';
@@ -14,7 +14,7 @@ import { ClientesService } from '../../../clientes/service/clientes.service';
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './pedidos-add.component.html',
-  styleUrl: './pedidos-add.component.css'
+  styleUrls: ['./pedidos-add.component.css']
 })
 export class PedidosAddComponent {
   pedidoService = inject(PedidoService);
@@ -57,8 +57,12 @@ export class PedidosAddComponent {
     });
   }
 
-  asignarPresupuesto(presupuesto: Presupuesto){
-    this.formulario.controls['presupuesto'].setValue(presupuesto);
+  presupuestoSeleccionado: Presupuesto | null = null;
+
+  asignarPresupuesto(presupuesto: Presupuesto | null) {
+    if (presupuesto) {
+      this.formulario.controls['presupuesto'].setValue(presupuesto);
+    }
   }
 
   agregarPedido(){
@@ -93,4 +97,11 @@ export class PedidosAddComponent {
       presupuesto: null
     });
   }
+
+  calcularTotalPresupuesto(presupuesto: Presupuesto): number {
+    const subtotal = presupuesto.items.reduce((acc, item) => acc + item.precioFinal, 0);
+    const totalConDescuento = subtotal - (subtotal * (presupuesto.descuento / 100));
+    return totalConDescuento;
+  }
+ 
 }
