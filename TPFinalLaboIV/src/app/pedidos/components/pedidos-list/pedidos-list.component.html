@@ -1,13 +1,13 @@
 
 @for (pedido of listaPedidos; track $index) {
-    <p>{{ pedido.id }}</p>
-    <p>{{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
-    <p>{{ pedido.fechaEntrada}}</p>
-    <p>{{ pedido.fechaSalidaEstimada}}</p>
-    <p>{{ pedido.estado }}</p>
+    <p>ID: {{ pedido.id }}</p>
+    <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
+    <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'yyyy-MM-dd' }}</p>   
+    <p>Estado: {{ pedido.estado }}</p>
+    <p>Descripcion {{pedido.descripcion}}</p>
     <button (click)="eliminarPedidos(pedido.id)">Eliminar</button>
     <button (click)="exportarPedidoPDF(pedido)">Exportar PDF</button>
 
-    <!-- <a [routerLink]="['update', pedido.id]">Actualizar</a> -->
+     <a [routerLink]="['update', pedido.id]">Actualizar</a>
   }
   

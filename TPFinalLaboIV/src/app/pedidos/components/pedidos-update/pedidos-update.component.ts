@@ -2,16 +2,17 @@ import { Component, inject } from '@angular/core';
 import { PedidoService } from '../../service/pedidos.service';
 import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestoService } from '../../../presupuestos/service/presupuesto.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { Clientes } from '../../../clientes/interface/clientes';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { Pedidos } from '../../interface/pedidos';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pedidos-update',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './pedidos-update.component.html',
   styleUrl: './pedidos-update.component.css'
 })
@@ -67,8 +68,8 @@ export class PedidosUpdateComponent {
       next: (pedido: Pedidos) => {
         this.formulario.patchValue({
           cliente: pedido.cliente,
-          fechaEntrada: pedido.fechaEntrada.toISOString().split('T')[0],
-          fechaSalidaEstimada: pedido.fechaSalidaEstimada.toISOString().split('T')[0],
+          fechaEntrada: new Date(pedido.fechaEntrada).toISOString().split("T")[0],
+          fechaSalidaEstimada: new Date(pedido.fechaSalidaEstimada).toISOString().split("T")[0],
           estado: pedido.estado,
           marcaAuto: pedido.marcaAuto,
           modeloAuto: pedido.modeloAuto,
