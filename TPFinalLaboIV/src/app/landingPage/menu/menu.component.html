@@ -1,22 +1,35 @@
 <section class="contenedorBackColor" [ngClass]="estilosClass">
-    <nav class="contenedorMenu"  >
-        <h1 class="h1Dinamic" [ngClass]="{h1Dinamic:!dentroH1, h1Dinamic2:dentroH1}" (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">Rectificadora <br>
+    <nav class="contenedorMenu">
+        <h1 class="h1Dinamic" [ngClass]="{h1Dinamic: !dentroH1, h1Dinamic2: dentroH1}" (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">Rectificadora <br>
             Malvinas</h1>
-
         <ul>
-            @for (item of listaMenu; track $index) {
-              <li>
-                <a class="aDinamico"  [ngClass]="{aDinamico:!dentroA[$index], aDinamico2:dentroA[$index] }" (mouseover)= "onMouseOverA($index)"  (mouseleave)="onMouseLeaveA($index)" href="">
-                       {{item}}
+            <li *ngFor="let item of listaMenu; let i = index">
+                <a *ngIf="item === 'Presupuestos'; else normalLink"
+                   class="aDinamico"
+                   [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                   (mouseover)="onMouseOverA(i)"
+                   (mouseleave)="onMouseLeaveA(i)"
+                   [routerLink]="'presupuestos'">
+                   {{item}}
                 </a>
-              </li>   
-              
-            }  
+                <ng-template #normalLink>
+                    <a class="aDinamico"
+                       [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                       (mouseover)="onMouseOverA(i)"
+                       (mouseleave)="onMouseLeaveA(i)"
+                       href="#">
+                       {{item}}
+                    </a>
+                </ng-template>
+            </li>
         </ul>
         <div>
-            <button [ngClass]="{iniciarSesionA:!dentroButton, iniciarSesionB:dentroButton }" (mouseover)= "onMouseOver()"  (mouseleave)="onMouseLeave()" class="iniciarSesionA" >Iniciar Sesión</button>
+            <button [ngClass]="{iniciarSesionA: !dentroButton, iniciarSesionB: dentroButton}"
+                    (mouseover)="onMouseOver()"
+                    (mouseleave)="onMouseLeave()"
+                    class="iniciarSesionA">
+                Iniciar Sesión
+            </button>
         </div>
-    
     </nav>
-    
 </section>

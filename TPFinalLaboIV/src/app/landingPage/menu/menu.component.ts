@@ -1,10 +1,11 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output, output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, CommonModule, RouterModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })

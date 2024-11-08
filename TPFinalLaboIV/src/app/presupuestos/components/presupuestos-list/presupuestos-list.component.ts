@@ -6,7 +6,7 @@ import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.c
 @Component({
   selector: 'app-presupuestos-list',
   standalone: true,
-  imports: [PresupuestosAddComponent],
+  imports: [],
   templateUrl: './presupuestos-list.component.html',
   styleUrl: './presupuestos-list.component.css'
 })
@@ -39,8 +39,6 @@ export class PresupuestosListComponent implements OnInit{
         }
       }
     )
-
-
   }
 
 
