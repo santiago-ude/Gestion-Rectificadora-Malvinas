@@ -33,6 +33,35 @@
           "precioFinal": 123123123123
         }
       ]
+    },
+    {
+      "id": "6.686939354921055",
+      "fecha": "2024-12-08",
+      "descuento": 5,
+      "items": [
+        {
+          "nombre": "pruebita1",
+          "descripcion": "sdafasdfasdfadsf",
+          "precioUnitario": 33,
+          "precioManoObra": 33,
+          "precioFinal": 33
+        }
+      ]
+    },
+    {
+      "id": "6.686939405521055",
+      "fecha": "2024-10-10",
+      "descuento": 90,
+      "items": [
+        {
+          "nombre": "pruebita55",
+          "descripcion": "dsdsfg",
+          "precioUnitario": 55,
+          "precioManoObra": 55,
+          "precioFinal": 55
+        }
+      ]
     }
+    
   ]
 }

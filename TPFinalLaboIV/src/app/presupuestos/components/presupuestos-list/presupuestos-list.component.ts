@@ -58,5 +58,13 @@ export class PresupuestosListComponent implements OnInit{
 
   }
 
+  ordenarPresupuestos(criterio: 'asc' | 'desc') {
+    this.listaPresupuestos.sort((a, b) => {
+      const fechaA = new Date(a.fecha).getTime();
+      const fechaB = new Date(b.fecha).getTime();
+      return criterio === 'asc' ? fechaA - fechaB : fechaB - fechaA;
+    });
+  }
+
 
 }
