@@ -3,12 +3,12 @@ import { PedidoService } from '../../service/pedidos.service';
 import { Pedidos } from '../../interface/pedidos';
 import jsPDF from 'jspdf';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pedidos-list',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, DatePipe],
   templateUrl: './pedidos-list.component.html',
   styleUrls: ['./pedidos-list.component.css']
 })
@@ -70,19 +70,20 @@ export class PedidosListComponent {
 
   exportarPedidoPDF(pedido: Pedidos): void {
     const doc = new jsPDF();
-    doc.text(`Pedido de Cliente: ${pedido.cliente.nombre} ${pedido.cliente.apellido}`, 10, 10);
-    doc.text(`DNI: ${pedido.cliente.dni}`, 10, 20);
-    doc.text(`Fecha de Entrada: ${pedido.fechaEntrada}`, 10, 30);
-    doc.text(`Fecha de Salida Estimada: ${pedido.fechaSalidaEstimada}`, 10, 40);
-    doc.text(`Estado: ${pedido.estado}`, 10, 50);
-    doc.text(`Marca Auto: ${pedido.marcaAuto}`, 10, 60);
-    doc.text(`Modelo Auto: ${pedido.modeloAuto}`, 10, 70);
-    doc.text(`Número de Serie: ${pedido.numeroSerie}`, 10, 80);
-    doc.text(`Descripción: ${pedido.descripcion}`, 10, 90);
+    doc.text(`RETIFICADORA MALVINAS`, 10, 10);
+    doc.text(`Pedido de Cliente: ${pedido.cliente.nombre} ${pedido.cliente.apellido}`, 10, 20);
+    doc.text(`DNI: ${pedido.cliente.dni}`, 10, 30);
+    doc.text(`Fecha de Entrada: ${pedido.fechaEntrada}`, 10, 40);
+    doc.text(`Fecha de Salida Estimada: ${pedido.fechaSalidaEstimada}`, 10, 50);
+    doc.text(`Estado: ${pedido.estado}`, 10, 60);
+    doc.text(`Marca Auto: ${pedido.marcaAuto}`, 10, 70);
+    doc.text(`Modelo Auto: ${pedido.modeloAuto}`, 10, 80);
+    doc.text(`Número de Serie: ${pedido.numeroSerie}`, 10, 90);
+    doc.text(`Descripción: ${pedido.descripcion}`, 10, 100);
 
     if (pedido.presupuesto) {
       const totalPresupuesto = pedido.presupuesto.items.reduce((acc, item) => acc + item.precioFinal, 0);
-      doc.text(`Presupuesto Total: ${totalPresupuesto}`, 10, 100);
+      doc.text(`Presupuesto Total: ${totalPresupuesto}`, 10, 110);
     }
 
     doc.save(`pedido_${pedido.id}.pdf`);
