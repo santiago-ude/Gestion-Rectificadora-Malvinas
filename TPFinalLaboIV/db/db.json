@@ -12,5 +12,27 @@
     }
   ],
 
-  "presupuestos": []
+  "presupuestos": [
+    {
+      "id": "6.686939354929049",
+      "fecha": "2024-11-08",
+      "descuento": 11,
+      "items": [
+        {
+          "nombre": "12345",
+          "descripcion": "123456",
+          "precioUnitario": 12,
+          "precioManoObra": 12,
+          "precioFinal": 24
+        },
+        {
+          "nombre": "123123",
+          "descripcion": "123123",
+          "precioUnitario": 123123,
+          "precioManoObra": 231231,
+          "precioFinal": 123123123123
+        }
+      ]
+    }
+  ]
 }
