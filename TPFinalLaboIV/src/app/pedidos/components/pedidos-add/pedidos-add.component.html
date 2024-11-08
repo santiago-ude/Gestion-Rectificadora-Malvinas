@@ -1,1 +1,51 @@
+<<<<<<< HEAD
 <p>pedidos-add works!</p>
+=======
+<form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+    <label>Cliente ID:
+      <input type="number" formControlName="clienteId">
+    </label>
+  
+    <label>Fecha de Entrada:
+      <input type="date" formControlName="fechaEntrada">
+    </label>
+  
+    <label>Fecha de Salida Estimada:
+      <input type="date" formControlName="fechaSalidaEstimada">
+    </label>
+  
+    <label>Estado:
+      <select formControlName="estado">
+        <option value="activo">Activo</option>
+        <option value="entregado">Entregado</option>
+        <option value="atrasado">Atrasado</option>
+      </select>
+    </label>
+  
+    <label>Marca del Auto:
+      <input type="text" formControlName="marcaAuto">
+    </label>
+  
+    <label>Modelo del Auto:
+      <input type="text" formControlName="modeloAuto">
+    </label>
+  
+    <label>Número de Serie:
+      <input type="text" formControlName="numeroSerie">
+    </label>
+  
+    <label>Descripción:
+      <textarea formControlName="descripcion"></textarea>
+    </label>
+  
+    <!-- <label>Presupuesto:
+      <select formControlName="presupuesto">
+        <option *ngFor="let presupuesto of presupuestos" [ngValue]="presupuesto">
+          Presupuesto ID: {{ presupuesto.id }} - Total: {{ presupuesto.items.reduce((acc, item) => acc + item.precioTotal, 0) }}
+        </option>
+      </select>
+    </label>
+  
+    <button type="submit">{{ pedido ? 'Actualizar' : 'Agregar' }} Pedido</button> -->
+  </form>
+>>>>>>> parent of 64eef990 (cambios en pedidos)
