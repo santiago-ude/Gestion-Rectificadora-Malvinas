@@ -3,48 +3,70 @@ import { PedidoService } from '../../service/pedidos.service';
 import { Pedidos } from '../../interface/pedidos';
 import jsPDF from 'jspdf';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pedidos-list',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './pedidos-list.component.html',
-  styleUrl: './pedidos-list.component.css'
+  styleUrls: ['./pedidos-list.component.css']
 })
 export class PedidosListComponent {
   ts = inject(PedidoService);
 
   listaPedidos: Pedidos[] = [];
+  pedidosFiltrados: Pedidos[] = [];
+
+  // Variables para los criterios de filtrado
+  estadoSeleccionado: string = '';
+  fechaSeleccionada: string = '';
 
   ngOnInit(): void {
     this.listarPedidos();
   }
 
-  listarPedidos(){
+  listarPedidos() {
     this.ts.getPedidos().subscribe({
-      next: (pedidos: Pedidos[])=>{
+      next: (pedidos: Pedidos[]) => {
         this.listaPedidos = pedidos;
+        this.pedidosFiltrados = pedidos; // Inicia mostrando todos los pedidos
       },
-      error: (e: Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
       }
     });
   }
 
+  filtrarPedidos() {
+    // Filtramos la lista de pedidos sin modificar `listaPedidos`
+    this.pedidosFiltrados = this.listaPedidos.filter(pedido => {
+      const cumpleEstado = this.estadoSeleccionado ? pedido.estado === this.estadoSeleccionado : true;
+      const cumpleFecha = this.fechaSeleccionada
+        ? new Date(pedido.fechaEntrada).toISOString().split('T')[0] === this.fechaSeleccionada
+        : true;
 
-  eliminarPedidos(id: string | null | undefined){
+      return cumpleEstado && cumpleFecha;
+    });
+  }
+
+  resetearFiltros() {
+    this.estadoSeleccionado = '';
+    this.fechaSeleccionada = '';
+    this.pedidosFiltrados = [...this.listaPedidos];
+  }
+
+  eliminarPedidos(id: string | null | undefined) {
     this.ts.deletePedido(id).subscribe({
-      next: ()=>{
-        alert("Tarea Eliminada..");
+      next: () => {
+        alert("Pedido Eliminado.");
         this.listarPedidos();
       },
-      error: (e: Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
       }
-
     });
   }
-
 
   exportarPedidoPDF(pedido: Pedidos): void {
     const doc = new jsPDF();
@@ -58,7 +80,6 @@ export class PedidosListComponent {
     doc.text(`Número de Serie: ${pedido.numeroSerie}`, 10, 80);
     doc.text(`Descripción: ${pedido.descripcion}`, 10, 90);
 
-    // Calcula y muestra el total del presupuesto usando precioFinal 
     if (pedido.presupuesto) {
       const totalPresupuesto = pedido.presupuesto.items.reduce((acc, item) => acc + item.precioFinal, 0);
       doc.text(`Presupuesto Total: ${totalPresupuesto}`, 10, 100);
@@ -66,6 +87,4 @@ export class PedidosListComponent {
 
     doc.save(`pedido_${pedido.id}.pdf`);
   }
-
-
 }
