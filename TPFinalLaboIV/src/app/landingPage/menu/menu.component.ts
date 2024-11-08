@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  listaMenu:Array<string> = ["Menu","Clientes","Presupuestos","Productos","Pedidos"]
+  listaMenu:Array<string> = ["Menu","Clientes","Agregar Cliente","Presupuestos","Pedidos"]
 
   //Para hacer dinamico el nav
   dentroA:boolean [] = [false,false,false,false,false];

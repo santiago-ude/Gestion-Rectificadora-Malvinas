@@ -1,26 +1,52 @@
 <section class="contenedorBackColor" [ngClass]="estilosClass">
     <nav class="contenedorMenu">
-        <h1 class="h1Dinamic" [ngClass]="{h1Dinamic: !dentroH1, h1Dinamic2: dentroH1}" (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">Rectificadora <br>
-            Malvinas</h1>
+        <h1 class="h1Dinamic" [ngClass]="{h1Dinamic: !dentroH1, h1Dinamic2: dentroH1}" 
+            (mouseover)="onMouseOverH1()" (mouseleave)="onMouseLeaverH1()">
+            Rectificadora <br> Malvinas
+        </h1>
         <ul>
             <li *ngFor="let item of listaMenu; let i = index">
-                <a *ngIf="item === 'Presupuestos'; else normalLink"
-                   class="aDinamico"
-                   [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
-                   (mouseover)="onMouseOverA(i)"
-                   (mouseleave)="onMouseLeaveA(i)"
-                   [routerLink]="'presupuestos'">
-                   {{item}}
-                </a>
-                <ng-template #normalLink>
-                    <a class="aDinamico"
+                <ng-container [ngSwitch]="item">
+                    <!-- Ruta para Presupuestos -->
+                    <a *ngSwitchCase="'Presupuestos'" class="aDinamico"
                        [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
-                       (mouseover)="onMouseOverA(i)"
-                       (mouseleave)="onMouseLeaveA(i)"
-                       href="#">
+                       (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                       [routerLink]="['presupuestos']">
                        {{item}}
                     </a>
-                </ng-template>
+
+                    <!-- Ruta para Cuerpo -->
+                    <a *ngSwitchCase="'Menu'" class="aDinamico"
+                       [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                       (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                       [routerLink]="['']">
+                       {{item}}
+                    </a>
+
+                     <!-- Ruta para List Cliente -->
+                     <a *ngSwitchCase="'Clientes'" class="aDinamico"
+                     [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                     (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                     [routerLink]="['clientes']">
+                     {{item}}
+                  </a>
+
+                   <!-- Ruta para Add cliente -->
+                   <a *ngSwitchCase="'Agregar Cliente'" class="aDinamico"
+                   [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                   (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                   [routerLink]="['crearCliente']">
+                   {{item}}
+                </a>
+
+                    <!-- Ruta por defecto o para otros ítems -->
+                    <a *ngSwitchDefault class="aDinamico"
+                       [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                       (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                       [routerLink]="['']">
+                       {{item}}
+                    </a>
+                </ng-container>
             </li>
         </ul>
         <div>
