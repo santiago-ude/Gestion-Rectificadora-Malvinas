@@ -61,6 +61,20 @@
           "precioFinal": 55
         }
       ]
+    },
+    {
+      "id": "6.798839405521055",
+      "fecha": "2024-11-10",
+      "descuento": 40,
+      "items": [
+        {
+          "nombre": "asdfasdfasdf",
+          "descripcion": "dsasdfasdfasdfasdfasdfasdfasdfasdfasfasfasdfasdfddsfg",
+          "precioUnitario": 44,
+          "precioManoObra": 545,
+          "precioFinal": 5544
+        }
+      ]
     }
     
   ]

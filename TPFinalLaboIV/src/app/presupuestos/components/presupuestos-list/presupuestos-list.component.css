@@ -47,3 +47,34 @@
     flex: 1 1 200px;
     font-size: 0.9em;
 }
+
+
+.ordenar-botones {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ordenar-botones button {
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4CAF50; /* Verde claro */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ordenar-botones button:hover {
+    background-color: #45a049; /* Verde más oscuro */
+    transform: scale(1.05); /* Levemente más grande al pasar el mouse */
+}
+
+.ordenar-botones button:active {
+    background-color: #388e3c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reducir la sombra al hacer clic */
+    transform: scale(0.98); /* Levemente más pequeño al hacer clic */
+}
