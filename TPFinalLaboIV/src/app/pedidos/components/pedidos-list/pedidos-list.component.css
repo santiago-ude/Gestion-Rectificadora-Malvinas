@@ -1,0 +1,83 @@
+/* Contenedor general de la lista */
+.pedido-lista {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /*Estilo de cada pedido*/
+  .pedido-datos {
+    padding: 15px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pedido-datos p {
+    margin: 8px 0;
+    color: #333;
+  }
+  
+  /*estilo de los botones*/
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+  
+button,a{
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+ }
+  
+button.eliminar-btn{
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+  
+button.eliminar-btn:hover{
+    background-color: #c9302c;
+}
+  
+button.pdf-btn{
+    background-color: #0275d8;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+  
+button.pdf-btn:hover{
+    background-color: #025aa5;
+}
+  
+a.actualizar-btn{
+    background-color: #5bc0de;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+  
+a.actualizar-btn:hover{
+    background-color: #31b0d5;
+}
+  
+button:disabled, a:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+  
+  
+  

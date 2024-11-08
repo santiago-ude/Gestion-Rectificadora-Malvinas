@@ -70,6 +70,7 @@ export class PedidosListComponent {
 
   exportarPedidoPDF(pedido: Pedidos): void {
     const doc = new jsPDF();
+    doc.setFont("helvetica", "italic");
     doc.text(`RETIFICADORA MALVINAS`, 10, 10);
     doc.text(`Pedido de Cliente: ${pedido.cliente.nombre} ${pedido.cliente.apellido}`, 10, 20);
     doc.text(`DNI: ${pedido.cliente.dni}`, 10, 30);
