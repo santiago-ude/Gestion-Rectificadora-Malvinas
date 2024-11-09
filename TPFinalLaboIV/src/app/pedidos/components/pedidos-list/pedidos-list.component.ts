@@ -88,9 +88,8 @@ export class PedidosListComponent {
     this.pedidosCercanos = this.listaPedidos.filter(pedido => {
       const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
       const diferenciaDias = (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
-      return diferenciaDias > 0 && diferenciaDias <= this.diasParaFinalizar; 
+      return pedido.estado !== 'entregado' && diferenciaDias > 0 && diferenciaDias <= this.diasParaFinalizar;
     });
-
   }
 
   actualizarEstadoPedidosAtrasados() {

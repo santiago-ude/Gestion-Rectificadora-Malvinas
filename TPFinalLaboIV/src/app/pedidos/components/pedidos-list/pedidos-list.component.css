@@ -259,7 +259,7 @@ hr{
     background-color: #003f6b;
 }
 
-.alerta-pedidos-cercanos {
+.alerta-pedidos-cercanos{
     padding: 10px;
     background-color: #ffdd57;
     color: #805b00;
@@ -267,4 +267,8 @@ hr{
     margin-bottom: 15px;
     border-radius: 5px;
     font-weight: bold;
-  }
+}
+.fecha-cercana{
+    color: #ffb100 !important; 
+    font-weight: bold;
+}

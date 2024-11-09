@@ -39,7 +39,9 @@
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy'}}</p>
-    <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}</p>   
+    <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
+      Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}
+    </p>    
     <p class="estado" [ngClass]="{
       'estado-activo': pedido.estado === 'activo',
       'estado-entregado': pedido.estado === 'entregado',
