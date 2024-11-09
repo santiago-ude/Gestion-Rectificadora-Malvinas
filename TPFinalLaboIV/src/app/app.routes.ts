@@ -6,8 +6,6 @@ import { MenuComponent } from './landingPage/menu/menu.component';
 import { CuerpoComponent } from './landingPage/cuerpo/cuerpo.component';
 import { PedidosPageComponent } from './pedidos/pages/pedidos-page/pedidos-page.component';
 import { UpdatePageComponent } from './pedidos/pages/update-page/update-page.component';
-import { PresupuestoPageComponent } from './presupuestos/pages/presupuesto-page/presupuesto-page.component';
-import { ListPedidosPageComponent } from './pedidos/pages/list-pedidos-page/list-pedidos-page.component';
 
 export const routes: Routes = [
 
@@ -17,10 +15,7 @@ export const routes: Routes = [
     //Clientes
     {path: 'crearCliente', component: ClienteAddComponent},
     {path: 'clientes', component: ClienteListComponent},
-
-    //Pedidos
-    {path: 'addPedido', component: PedidosPageComponent},
-    {path: 'pedidos', component: ListPedidosPageComponent},
+    {path: 'pedidos', component: PedidosPageComponent},
     {path: "pedidos/update/:id", component: UpdatePageComponent},
     
     //Por Defecto

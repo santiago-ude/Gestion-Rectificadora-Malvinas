@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output, OutputEmitterRef } from '@angular/core';
 import { Clientes } from '../../interface/clientes';
 import { ClientesService } from '../../service/clientes.service';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-list',
@@ -11,6 +12,8 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrl: './cliente-list.component.css'
 })
 export class ClienteListComponent implements OnInit{
+
+
   ngOnInit(): void {
     this.getClientesList();
   }
@@ -18,6 +21,7 @@ export class ClienteListComponent implements OnInit{
   clienteEncontrado?:Clientes;
   n:number=-2;
 
+  //Buscar Por ID
   buscarClienteXDNI(dni:string, event:KeyboardEvent){
     if(event.key === "Enter"){
       this.n= this.clientes.findIndex((c)=>c.dni==dni);
@@ -31,7 +35,9 @@ export class ClienteListComponent implements OnInit{
   }
   dni:string ="";
   
+  //Injecciones
   sr = inject(ClientesService)
+  rt = inject(Router)
 
   getClientesList(){
     this.sr.obtenerClientes().subscribe(
@@ -43,5 +49,12 @@ export class ClienteListComponent implements OnInit{
       }
     )
   }
+
+  enviarModificacion() {
+    if(this.n>=0){
+      this.rt.navigate([`clientes/update/${this.clientes[this.n].id}`])
+    }
+  }
+  
 
 }

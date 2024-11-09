@@ -17,8 +17,8 @@ export class ClientesService {
     );
   }
 
-  obtenerClienteXDni(dni: string | undefined): Observable<Clientes>{
-    return this.http.get<Clientes>(`${this.baseUrl}/${dni}`).pipe(
+  obtenerClienteXDni(id: string | null | undefined): Observable<Clientes>{
+    return this.http.get<Clientes>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
@@ -29,7 +29,7 @@ export class ClientesService {
     );
   }
 
-  editarCliente(id: string | undefined, cliente: Clientes): Observable<Clientes>{
+  editarCliente(id: string | null | undefined , cliente: Clientes): Observable<Clientes>{
     return this.http.put<Clientes>(`${this.baseUrl}/${id}`, cliente).pipe(
       catchError(this.handleError)
     );
@@ -40,10 +40,6 @@ export class ClientesService {
       catchError(this.handleError)
     );
   }
-
-
-
-
 
 
 

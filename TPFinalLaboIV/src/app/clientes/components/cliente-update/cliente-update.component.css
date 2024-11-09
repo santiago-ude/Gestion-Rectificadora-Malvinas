@@ -1,0 +1,126 @@
+:host{
+    display: block;
+    background-image: linear-gradient(to bottom, #d9a2fd, #eed8ff, #009dff);
+    background-attachment:fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+section{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    height:100%;
+    width: 100%;
+}
+.h2{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    padding-bottom: 3rem;
+    text-shadow: 2px 2px #009dff;
+    transition: .5s;
+    color: aliceblue;
+}
+.h2c{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 3.7rem;
+    padding-bottom: 3rem;
+    text-shadow: 2px 2px #006eff;
+    color: rgb(217, 235, 252);
+    transition: .5s;
+}
+form{
+    display: grid;
+    grid-template-rows: repeat(7,1fr);
+
+}
+input{
+    border-color: none;
+    border-style: none;
+    
+}
+.div1{
+    margin: 10rem 10rem 2rem;
+    
+}
+.img1{
+    background-image: url("../../img/mecanic.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin: 10rem;
+    transition: .5s;
+}
+.img1c{
+    background-image: url("../../img/mecanic.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin: 9.5rem;
+    box-shadow: 3px 3px black;
+    transition: .5s;
+}
+.NAdiv{
+    display: grid;
+    grid-template-columns: 2rem 49% 49%;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0;
+    
+}
+input{
+    margin-bottom: .5rem;
+    height: 2rem; 
+}
+.nombreIMG{
+    background-image: url("../../img/agregar-usuario.png");
+    
+}
+
+.numeroIMG{
+    background-image: url("../../img/numero.png");
+}
+.dniIMG{
+    background-image: url("../../img/id-insignia.png");
+}
+.domicilioIMG{
+    background-image: url("../../img/chimenea-de-la-casa.png");
+}
+.alturaIMG{
+    background-image: url("../../img/altura-del-texto.png");
+}
+.imgSel{
+    background-image: url("../../img/tarjeta-de-credito.png");
+}
+div div{
+    background-repeat: no-repeat;
+    background-size:contain;
+    padding: 0;
+    margin-bottom: 2rem;
+    height: 2rem;
+}
+.numerodiv,.dnidiv,.domiciliodiv,.alturadiv, .selectdiv{
+    display: grid;
+    grid-template-columns: 2rem 100% ;
+    gap: 0.6rem;
+    justify-content: center;
+}
+select{
+    height: 2rem;
+}
+button{
+    background-color: rgba(26, 250, 168, 0.482);
+    border-radius: 1rem;
+    border-color: #83cfff66;
+    width:100%;
+    text-shadow: .5px .5px #000000;
+    color: rgb(255, 255, 255);
+    height: 2rem;
+}
+.botondiv{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+}
