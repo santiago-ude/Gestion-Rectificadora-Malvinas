@@ -27,7 +27,8 @@
       "numero": "2239987515",
       "domicilio": "Perez Bulnes",
       "altura": "111",
-      "metodoPago": "Tarjeta de Credito"
+      "metodoPago": "Tarjeta de Credito",
+      "id": "c911"
     }
   ],
   "presupuestos": [
@@ -184,8 +185,8 @@
         "altura": "123",
         "metodoPago": "Tarjeta de Credito"
       },
-      "fechaEntrada": "2024-11-05T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-13T00:00:00.000Z",
+      "fechaEntrada": "2024-11-04T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-12T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "Ford",
       "modeloAuto": "Falcon",
@@ -249,54 +250,19 @@
       "id": "2901"
     },
     {
-      "id": "d5e3",
       "cliente": {
-        "id": "a5b7",
         "dni": "44265003",
-        "nombre": "Lautaro",
+        "nombre": "Ernesto",
         "apellido": "Arias",
         "numero": "2236697212",
         "domicilio": "Padre Dutto",
         "altura": "321",
-        "metodoPago": "Efectivo"
+        "metodoPago": "Efectivo",
+        "id": "a5b7"
       },
-      "fechaEntrada": "2024-11-30T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-12-08T00:00:00.000Z",
-      "estado": "activo",
-      "marcaAuto": "Ford",
-      "modeloAuto": "F-150 R",
-      "numeroSerie": "123456789",
-      "descripcion": "Mantenimiento de ruedas, suspension y aceite.",
-      "presupuesto": {
-        "fecha": "2024-11-09",
-        "descuento": 12,
-        "items": [
-          {
-            "nombre": "Mantenimiento Valvula",
-            "descripcion": "KFJASDFKJ",
-            "precioUnitario": 250,
-            "precioManoObra": 300,
-            "precioFinal": 2000
-          }
-        ],
-        "id": "3.6822684868130695"
-      }
-    },
-    {
-      "id": "40f5",
-      "cliente": {
-        "id": "a5b7",
-        "dni": "44265003",
-        "nombre": "Lautaro",
-        "apellido": "Arias",
-        "numero": "2236697212",
-        "domicilio": "Padre Dutto",
-        "altura": "321",
-        "metodoPago": "Efectivo"
-      },
-      "fechaEntrada": "2024-11-06T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-24T00:00:00.000Z",
-      "estado": "activo",
+      "fechaEntrada": "2024-11-04T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-13T00:00:00.000Z",
+      "estado": "entregado",
       "marcaAuto": "ASD",
       "modeloAuto": "asdfasdf",
       "numeroSerie": "342234",
@@ -314,7 +280,8 @@
           }
         ],
         "id": "5.478542631851246"
-      }
+      },
+      "id": "40f5"
     }
   ]
 }
