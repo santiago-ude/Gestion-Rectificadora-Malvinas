@@ -95,6 +95,41 @@
         }
       ]
     }
-    
+  ],
+  "pedidos": [
+    {
+      "cliente": {
+        "id": "0694",
+        "dni": "44578006",
+        "nombre": "Matias",
+        "apellido": "Bellonio",
+        "numero": "2236687894",
+        "domicilio": "Perez Bulnes",
+        "altura": "123",
+        "metodoPago": "Tarjeta de Credito"
+      },
+      "fechaEntrada": "2024-11-23T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-12-24T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "Ford",
+      "modeloAuto": "Falcon",
+      "numeroSerie": "efh23t423423",
+      "descripcion": "Rectificar Cigueñal",
+      "presupuesto": {
+        "id": "6.798839405521055",
+        "fecha": "2024-11-10",
+        "descuento": 40,
+        "items": [
+          {
+            "nombre": "asdfasdfasdf",
+            "descripcion": "dsasdfasdfasdfasdfasdfasdfasdfasdfasfasfasdfasdfddsfg",
+            "precioUnitario": 44,
+            "precioManoObra": 545,
+            "precioFinal": 5544
+          }
+        ]
+      },
+      "id": "84ed"
+    }
   ]
 }

@@ -38,7 +38,7 @@ export class PedidosUpdateComponent {
     presupuesto: [null as Presupuesto | null]
   });
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.router.paramMap.subscribe((params) => {
       this.id = params.get("id");
       if (this.id) {
@@ -49,21 +49,22 @@ export class PedidosUpdateComponent {
     this.cargarPresupuestos();
   }
 
-  cargarClientes(): void {
+  cargarClientes(){
     this.clienteService.obtenerClientes().subscribe({
       next: (clientes) => this.clientes = clientes,
       error: (error) => console.error('Error al cargar clientes:', error)
     });
   }
 
-  cargarPresupuestos(): void {
+  cargarPresupuestos(){
     this.presupuestoService.getPresupuestos().subscribe({
       next: (presupuestos) => this.presupuestos = presupuestos,
       error: (error) => console.error('Error al cargar presupuestos:', error)
     });
   }
 
-  buscarPorId(id: string): void {
+  buscarPorId(id: string){
+    console.log(id);
     this.pedidoService.getPedidoById(id).subscribe({
       next: (pedido: Pedidos) => {
         this.formulario.patchValue({
@@ -83,7 +84,7 @@ export class PedidosUpdateComponent {
   }
 
 
-actualizarPedido(): void {
+actualizarPedido(){
     if (this.formulario.invalid) return;
 
     const pedido: Pedidos = {
@@ -94,8 +95,8 @@ actualizarPedido(): void {
       estado: this.formulario.value.estado as 'activo' | 'entregado' | 'atrasado',
       presupuesto: this.formulario.value.presupuesto as Presupuesto  
     };
-
-    this.pedidoService.updatePedido (pedido.id, pedido).subscribe({
+    console.log(pedido.id);
+    this.pedidoService.updatePedido (this.id, pedido).subscribe({
       next: () => alert("Pedido actualizado con éxito"),
       error: (error) => console.error('Error al actualizar pedido:', error)
     });

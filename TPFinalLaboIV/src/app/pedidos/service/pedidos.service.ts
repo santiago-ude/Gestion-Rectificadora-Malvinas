@@ -21,7 +21,7 @@ export class PedidoService {
     return this.http.post<Pedidos>(this.apiUrl, pedido).pipe(catchError(this.handleError));
   }
 
-  updatePedido(id: string | undefined, pedido: Pedidos): Observable<Pedidos> {
+  updatePedido(id: string | undefined | null, pedido: Pedidos): Observable<Pedidos> {
     return this.http.put<Pedidos>(`${this.apiUrl}/${id}`, pedido).pipe(catchError(this.handleError));
   }
 
