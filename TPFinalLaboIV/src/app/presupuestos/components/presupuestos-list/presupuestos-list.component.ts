@@ -13,21 +13,22 @@ import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.c
 export class PresupuestosListComponent implements OnInit{
 
 
-
+//Inicializacion
   ngOnInit(): void {
 
     this.traerPresupuestos();
   }
 
-
+  //Lista auxiliar de presupuestos
   listaPresupuestos: Presupuesto[] = [];
 
   
   PS = inject(PresupuestoService);
 
 
+  //Trae los presupuestos del json-server
+  //Los almacena en la lista auxiliar
   traerPresupuestos() {
-
 
     this.PS.getPresupuestos().subscribe(
       {
@@ -42,6 +43,7 @@ export class PresupuestosListComponent implements OnInit{
   }
 
 
+  //Elimina un presupuesto de la lista
   deletePresupuestoDB(id : string | null){
 
     this.PS.deletePresupuesto(id).subscribe(
@@ -58,6 +60,8 @@ export class PresupuestosListComponent implements OnInit{
 
   }
 
+
+  //Filtra los presupuestos por fecha
   ordenarPresupuestos(criterio: 'asc' | 'desc') {
     this.listaPresupuestos.sort((a, b) => {
       const fechaA = new Date(a.fecha).getTime();

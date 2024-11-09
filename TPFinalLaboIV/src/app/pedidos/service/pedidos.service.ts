@@ -13,22 +13,28 @@ export class PedidoService {
 
   constructor(private http: HttpClient) {}
 
+
+  //GET
   getPedidos(): Observable<Pedidos[]> {
     return this.http.get<Pedidos[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
 
+  //POST
   addPedido(pedido: Pedidos): Observable<Pedidos> {
     return this.http.post<Pedidos>(this.apiUrl, pedido).pipe(catchError(this.handleError));
   }
 
+  //PUT
   updatePedido(id: string | undefined | null, pedido: Pedidos): Observable<Pedidos> {
     return this.http.put<Pedidos>(`${this.apiUrl}/${id}`, pedido).pipe(catchError(this.handleError));
   }
 
+  //DELETE
   deletePedido(id: string | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
   
+  //GETById
   getPedidoById(id: string | null | undefined): Observable<Pedidos>{
     return this.http.get<Pedidos>(`${this.apiUrl}/${id}`);
   }
