@@ -16,7 +16,7 @@
     <label for="fechaFin">hasta:</label>
     <input type="date" id="fechaFin" [(ngModel)]="fechaFin">
     
-    <button (click)="filtrarPorFechaEntrada(fechaInicio, fechaFin)">Filtrar por Fecha de Entrada</button>
+    <button (click)="filtrarPorFechaEntrada(fechaInicio, fechaFin)">Filtrar por Fecha</button>
   </div>
   <div class="filtro-cliente-contenedor">
     <input type="text" [(ngModel)]="clienteFiltro" placeholder="Buscar por apellido o nombre de cliente" class="filtro-cliente-input">
@@ -27,6 +27,10 @@
   <button class="reset-button" (click)="resetearFiltros()">Restablecer Filtros</button>
 </div>
 
+<div *ngIf="pedidosCercanos.length > 0" class="alerta-pedidos-cercanos">
+  <p>⚠️ Hay {{ pedidosCercanos.length }} pedido(s) que están a punto de finalizar.</p>
+</div>
+
 
 <div class="pedido-lista">
   <h2 class="subtitulo-1">Lista de Pedidos</h2>
@@ -34,6 +38,7 @@
 @for (pedido of pedidosFiltrados; track $index) {
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
+    <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy'}}</p>
     <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}</p>   
     <p class="estado" [ngClass]="{
       'estado-activo': pedido.estado === 'activo',
@@ -42,7 +47,7 @@
     }">
       Estado: {{ pedido.estado }}
     </p>
-    <p>Descripcion {{pedido.descripcion}}</p>
+    <p>Descripcion: {{pedido.descripcion}}</p>
     <div *ngIf="pedido.presupuesto">
       <h3>Presupuesto</h3>
       <p>ID del Presupuesto: {{pedido.presupuesto.id}}</p>
@@ -64,6 +69,7 @@
     <div class="botones">
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>
       <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
+      <button (click)="confirmarEntrega(pedido)" class="entregar-btn">Entregar Pedido</button>
       <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Actualizar</a>
     </div>
     <hr>
