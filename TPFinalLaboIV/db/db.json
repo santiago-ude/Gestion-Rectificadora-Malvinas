@@ -143,6 +143,20 @@
           "precioFinal": 1212
         }
       ]
+    },
+    {
+      "id": "3.6822684868130695",
+      "fecha": "2024-11-09",
+      "descuento": 12,
+      "items": [
+        {
+          "nombre": "Mantenimiento Valvula",
+          "descripcion": "KFJASDFKJ",
+          "precioUnitario": 250,
+          "precioManoObra": 300,
+          "precioFinal": 2000
+        }
+      ]
     }
   ],
   "pedidos": [
@@ -220,6 +234,40 @@
         "id": "8.844854462548021"
       },
       "id": "2901"
+    },
+    {
+      "id": "d5e3",
+      "cliente": {
+        "id": "a5b7",
+        "dni": "44265003",
+        "nombre": "Lautaro",
+        "apellido": "Arias",
+        "numero": "2236697212",
+        "domicilio": "Padre Dutto",
+        "altura": "321",
+        "metodoPago": "Efectivo"
+      },
+      "fechaEntrada": "2024-11-30T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-12-08T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "Ford",
+      "modeloAuto": "F-150 R",
+      "numeroSerie": "123456789",
+      "descripcion": "Mantenimiento de ruedas, suspension y aceite.",
+      "presupuesto": {
+        "fecha": "2024-11-09",
+        "descuento": 12,
+        "items": [
+          {
+            "nombre": "Mantenimiento Valvula",
+            "descripcion": "KFJASDFKJ",
+            "precioUnitario": 250,
+            "precioManoObra": 300,
+            "precioFinal": 2000
+          }
+        ],
+        "id": "3.6822684868130695"
+      }
     }
   ]
 }
