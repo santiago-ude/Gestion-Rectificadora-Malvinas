@@ -1,14 +1,14 @@
 {
   "clientes": [
     {
-      "id": "a5b7",
       "dni": "44265003",
-      "nombre": "Lautaro",
+      "nombre": "Ernesto",
       "apellido": "Arias",
       "numero": "2236697212",
       "domicilio": "Padre Dutto",
       "altura": "321",
-      "metodoPago": "Efectivo"
+      "metodoPago": "Efectivo",
+      "id": "a5b7"
     },
     {
       "id": "0694",
@@ -27,8 +27,7 @@
       "numero": "2239987515",
       "domicilio": "Perez Bulnes",
       "altura": "111",
-      "metodoPago": "Tarjeta de Credito",
-      "id": "4adc"
+      "metodoPago": "Tarjeta de Credito"
     }
   ],
   "presupuestos": [

@@ -23,6 +23,7 @@ export const routes: Routes = [
     //Pedidos
     {path: 'addPedido', component: PedidosPageComponent},
     {path: 'pedidos', component: ListPedidosPageComponent},
+    {path: 'addPedidos', component: PedidosPageComponent},
     {path: "pedidos/update/:id", component: UpdatePageComponent},
     
     //Por Defecto
