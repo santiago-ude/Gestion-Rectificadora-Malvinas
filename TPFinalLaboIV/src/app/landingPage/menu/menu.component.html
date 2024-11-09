@@ -38,21 +38,31 @@
                    [routerLink]="['crearCliente']">
                    {{item}}
                 </a>
-                 <!-- Ruta para Pedidos -->
-                 <a *ngSwitchCase="'Pedidos'" class="aDinamico"
+
+                
+                <!-- Ruta para listar Pedidos -->
+                <a *ngSwitchCase="'Pedidos'" class="aDinamico"
+                [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                [routerLink]="['pedidos']">
+                {{item}}
+                 </a>
+
+                 <!-- Ruta para Agregar Pedidos -->
+                 <a *ngSwitchCase="'Agregar Pedido'" class="aDinamico"
                  [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
                  (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
-                 [routerLink]="['pedidos']">
+                 [routerLink]="['addPedido']">
                  {{item}}
-              </a>
+                </a>
 
                     <!-- Ruta por defecto o para otros ítems -->
-                    <a *ngSwitchDefault class="aDinamico"
+                <a *ngSwitchDefault class="aDinamico"
                        [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
                        (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
                        [routerLink]="['']">
                        {{item}}
-                    </a>
+                </a>
                 </ng-container>
             </li>
         </ul>
