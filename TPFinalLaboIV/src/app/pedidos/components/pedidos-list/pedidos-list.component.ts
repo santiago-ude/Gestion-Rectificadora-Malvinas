@@ -21,6 +21,7 @@ export class PedidosListComponent {
   estadoSeleccionado: string = '';
   fechaInicio: string = ''; 
   fechaFin: string = ''; 
+  clienteFiltro: string = '';
 
   ngOnInit(): void {
     this.listarPedidos();
@@ -52,8 +53,18 @@ export class PedidosListComponent {
     });
   }
 
+  filtrarPorCliente() {
+    const filtro = this.clienteFiltro.toLowerCase();
+    this.pedidosFiltrados = this.listaPedidos.filter(pedido =>
+      pedido.cliente.nombre.toLowerCase().includes(filtro) ||
+      pedido.cliente.apellido.toLowerCase().includes(filtro)
+    );
+  }
+
+
   resetearFiltros() {
     this.pedidosFiltrados = [...this.listaPedidos]; // Restaura la lista original
+    this.clienteFiltro = ''; 
   }
 
   eliminarPedidos(id: string | null | undefined) {
@@ -67,6 +78,8 @@ export class PedidosListComponent {
       }
     });
   }
+
+  
 
 
   exportarPedidoPDF(pedido: Pedidos): void {

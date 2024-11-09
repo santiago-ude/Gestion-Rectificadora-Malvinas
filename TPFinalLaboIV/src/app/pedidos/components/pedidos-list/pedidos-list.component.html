@@ -18,6 +18,10 @@
     
     <button (click)="filtrarPorFechaEntrada(fechaInicio, fechaFin)">Filtrar por Fecha de Entrada</button>
   </div>
+  <div class="filtro-cliente-contenedor">
+    <input type="text" [(ngModel)]="clienteFiltro" placeholder="Buscar por apellido o nombre de cliente" class="filtro-cliente-input">
+    <button (click)="filtrarPorCliente()" class="filtro-cliente-boton">Filtrar por Cliente</button>
+  </div>
 
   <!-- Restablecer filtros -->
   <button class="reset-button" (click)="resetearFiltros()">Restablecer Filtros</button>
@@ -62,7 +66,7 @@
       <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
       <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Actualizar</a>
     </div>
-    
+    <hr>
   }
   </div>
 </div>
