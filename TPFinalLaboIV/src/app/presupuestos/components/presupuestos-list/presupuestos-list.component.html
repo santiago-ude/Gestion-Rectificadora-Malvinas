@@ -9,7 +9,7 @@
     </div>
 
     <ul class="presupuesto-list">
-        <li *ngFor="let pres of listaPresupuestos; track $index" class="presupuesto-item">
+        <li *ngFor="let pres of listaPresupuestos; trackBy: trackByIndex" class="presupuesto-item">
             <div class="presupuesto-header">
                 <strong>Fecha:</strong> {{ pres.fecha }} <br>
                 <strong>Descuento:</strong> {{ pres.descuento }}%
@@ -17,7 +17,7 @@
             <div class="items-list">
                 <h4>Items del Presupuesto:</h4>
                 <ul>
-                    <li *ngFor="let pre of pres.items; track $index" class="item">
+                    <li *ngFor="let pre of pres.items; trackBy: trackByIndex" class="item">
                         <span><strong>Nombre:</strong> {{ pre.nombre }}</span><br>
                         <span><strong>Descripción:</strong> {{ pre.descripcion }}</span><br>
                         <span><strong>Precio Unitario:</strong> ${{ pre.precioUnitario }}</span><br>
