@@ -10,25 +10,27 @@
   }
   
   /*Estilo de cada pedido*/
-  .pedido-datos {
+.pedido-datos {
     padding: 15px;
     background-color: white;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  }
+    
+}
   
-  .pedido-datos p {
+.pedido-datos p{
     margin: 8px 0;
     color: #333;
-  }
+}
   
   /*estilo de los botones*/
 .botones {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 3rem;
 }
   
 button,a{
@@ -80,22 +82,22 @@ button:disabled, a:disabled{
 }
   
   
-.estado-activo {
+.estado-activo{
    color: green !important;  /* El important te fuerza a que ocurra esta linea */
     font-weight: bold;
   }
   
-  .estado-entregado {
+  .estado-entregado{
     color: orange !important; 
     font-weight: bold;
   }
   
-  .estado-atrasado {
+  .estado-atrasado{
     color: red !important;
     font-weight: bold;
   }
 
-.filtros {
+  .filtros{
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
@@ -103,9 +105,16 @@ button:disabled, a:disabled{
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.filtros h3 {
+.filtro-estado, .filtro-fecha-contenedor, .filtro-cliente-contenedor{
+    margin-bottom: 15px;
+}
+
+.filtros h3{
     font-size: 1.5rem;
     color: #005b96;
     border-bottom: 2px solid #005b96;
@@ -113,11 +122,11 @@ button:disabled, a:disabled{
     margin-bottom: 15px;
 }
 
-.filtro-estado, .filtro-fecha {
+.filtro-estado, .filtro-fecha{
     margin-bottom: 15px;
 }
 
-.filtro-estado button, .filtro-fecha button {
+.filtro-estado button, .filtro-fecha button{
     background-color: #005b96;
     color: white;
     padding: 8px 15px;
@@ -128,11 +137,11 @@ button:disabled, a:disabled{
     cursor: pointer;
 }
 
-.filtro-estado button:hover, .filtro-fecha button:hover, .reset-button:hover {
+.filtro-estado button:hover, .filtro-fecha button:hover, .reset-button:hover{
     background-color: #003f6b;
 }
 
-.reset-button {
+.reset-button{
     display: block;
     margin: 15px auto 0;
     background-color: #d9534f;
@@ -144,7 +153,7 @@ button:disabled, a:disabled{
     cursor: pointer;
 }
 
-input[type="date"] {
+input[type="date"]{
     padding: 8px;
     margin: 0 10px 15px 0;
     border: 1px solid #ccc;
@@ -152,7 +161,7 @@ input[type="date"] {
     font-size: 1rem;
     width: calc(50% - 10px);
 }
-.filtro-fecha-contenedor {
+.filtro-fecha-contenedor{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,11 +169,11 @@ input[type="date"] {
     flex-wrap: wrap; 
 }
 
-.filtro-fecha-contenedor label {
+.filtro-fecha-contenedor label{
     font-size: 1rem;
 }
 
-.filtro-fecha-contenedor input[type="date"] {
+.filtro-fecha-contenedor input[type="date"]{
     padding: 8px;
     margin: 0;
     border: 1px solid #ccc;
@@ -173,7 +182,7 @@ input[type="date"] {
     width: auto;
 }
 
-.filtro-fecha-contenedor button {
+.filtro-fecha-contenedor button{
     background-color: #005b96;
     color: white;
     padding: 8px 15px;
@@ -183,7 +192,7 @@ input[type="date"] {
     cursor: pointer;
 }
 
-.filtro-fecha-contenedor button:hover {
+.filtro-fecha-contenedor button:hover{
     background-color: #003f6b;
 }
 .subtitulo-1{
@@ -196,4 +205,46 @@ input[type="date"] {
     padding-bottom: 10px;
     max-width: 600px;
     margin: 20px auto; 
+}
+hr{
+    border: none;
+    border-top: 3px solid #005b96; 
+    margin: 10px 0; 
+}
+.filtro-cliente-contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.filtro-cliente-input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 20rem; 
+    margin-right: 10px; 
+}
+.filtro-fecha-contenedor, .filtro-cliente-contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    flex-wrap: wrap; 
+}
+.filtro-cliente-boton {
+    background-color: #005b96;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.filtro-cliente-boton:hover{
+    background-color: #003f6b;
 }
