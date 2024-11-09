@@ -39,6 +39,24 @@
       Estado: {{ pedido.estado }}
     </p>
     <p>Descripcion {{pedido.descripcion}}</p>
+    <div *ngIf="pedido.presupuesto">
+      <h3>Presupuesto</h3>
+      <p>ID del Presupuesto: {{pedido.presupuesto.id}}</p>
+      <p>Fecha del Presupuesto: {{pedido.presupuesto.fecha | date}}</p>
+      <p>Descuento: {{pedido.presupuesto.descuento}}%</p>
+      
+      <!-- Listado de Items del Presupuesto -->
+      <h4>Items del Presupuesto:</h4>
+      <ul>
+        <li *ngFor="let item of pedido.presupuesto.items">
+          <p>Nombre: {{item.nombre}}</p>
+          <p>Descripción: {{item.descripcion}}</p>
+          <p>Precio Unitario: {{item.precioUnitario | currency}}</p>
+          <p>Precio Mano de Obra: {{item.precioManoObra | currency}}</p>
+          <p>Precio Final: {{item.precioFinal | currency}}</p>
+        </li>
+      </ul>
+    </div>
     <div class="botones">
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>
       <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
