@@ -33,12 +33,14 @@
     top: 50%; /* 50% desde la parte superior del padre */
     left: 50%; /* 50% desde la izquierda del padre */
     transform: translate(-50%, -50%); /* Centra el hijo */
-    display: grid;
-    grid-template-columns: 220px 60% 40%;
-    width: 80%;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
+    width: 98%;
 }
+
+
+
 li{
    list-style-type: none;
    text-align: center;
