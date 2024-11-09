@@ -94,6 +94,55 @@
           "precioFinal": 5544
         }
       ]
+    },
+    {
+      "id": "0.899102478027638",
+      "fecha": "2024-11-06",
+      "descuento": 12,
+      "items": [
+        {
+          "nombre": "asdfsadf",
+          "descripcion": "asdfsadf",
+          "precioUnitario": 43,
+          "precioManoObra": 455,
+          "precioFinal": 34
+        }
+      ]
+    },
+    {
+      "id": "8.541733259893157",
+      "fecha": "2024-11-15",
+      "descuento": 2,
+      "items": [
+        {
+          "nombre": "sadfasd",
+          "descripcion": "asdfasdf",
+          "precioUnitario": 23,
+          "precioManoObra": 123,
+          "precioFinal": 232
+        }
+      ]
+    },
+    {
+      "id": "8.844854462548021",
+      "fecha": "2024-11-22",
+      "descuento": 1212,
+      "items": [
+        {
+          "nombre": "asdfasdf",
+          "descripcion": "sadfsadf",
+          "precioUnitario": 12,
+          "precioManoObra": 12,
+          "precioFinal": 12
+        },
+        {
+          "nombre": "dsfasdf",
+          "descripcion": "asdfadsf",
+          "precioUnitario": 12,
+          "precioManoObra": 1212,
+          "precioFinal": 1212
+        }
+      ]
     }
   ],
   "pedidos": [
@@ -130,6 +179,47 @@
         ]
       },
       "id": "84ed"
+    },
+    {
+      "id": "2901",
+      "cliente": {
+        "id": "a5b7",
+        "dni": "44265003",
+        "nombre": "Lautaro",
+        "apellido": "Arias",
+        "numero": "2236697212",
+        "domicilio": "Padre Dutto",
+        "altura": "321",
+        "metodoPago": "Efectivo"
+      },
+      "fechaEntrada": "2024-11-16T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-14T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "asdf",
+      "modeloAuto": "asdf",
+      "numeroSerie": "asdf",
+      "descripcion": "sadfsadfasdfsadfdsafdsfsadf",
+      "presupuesto": {
+        "fecha": "2024-11-22",
+        "descuento": 1212,
+        "items": [
+          {
+            "nombre": "asdfasdf",
+            "descripcion": "sadfsadf",
+            "precioUnitario": 12,
+            "precioManoObra": 12,
+            "precioFinal": 12
+          },
+          {
+            "nombre": "dsfasdf",
+            "descripcion": "asdfadsf",
+            "precioUnitario": 12,
+            "precioManoObra": 1212,
+            "precioFinal": 1212
+          }
+        ],
+        "id": "8.844854462548021"
+      }
     }
   ]
 }

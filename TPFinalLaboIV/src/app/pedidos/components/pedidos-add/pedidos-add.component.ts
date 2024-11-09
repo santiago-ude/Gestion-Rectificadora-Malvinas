@@ -8,11 +8,12 @@ import { Pedidos } from '../../interface/pedidos';
 import { Clientes } from '../../../clientes/interface/clientes';
 import { CommonModule } from '@angular/common';
 import { ClientesService } from '../../../clientes/service/clientes.service';
+import { PresupuestosAddComponent } from '../../../presupuestos/components/presupuestos-add/presupuestos-add.component';
 
 @Component({
   selector: 'app-pedidos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, PresupuestosAddComponent],
   templateUrl: './pedidos-add.component.html',
   styleUrls: ['./pedidos-add.component.css']
 })
@@ -24,7 +25,9 @@ export class PedidosAddComponent {
   route = inject(ActivatedRoute);
 
   clientes: Clientes[] = [];
-  presupuestos: Presupuesto[] = [];
+
+  auxiliarPresupuesto : Presupuesto = {id: '0',fecha: new Date(),descuento: 0, items: []};
+  cargarPresupuesto : boolean = false
 
   formulario = this.fb.nonNullable.group({
     cliente: [null as Clientes | null, Validators.required],
@@ -40,7 +43,6 @@ export class PedidosAddComponent {
 
   ngOnInit(){
     this.cargarClientes();
-    this.cargarPresupuestos();
   }
 
   cargarClientes(){
@@ -50,23 +52,21 @@ export class PedidosAddComponent {
     });
   }
 
-  cargarPresupuestos(){
-    this.presupuestoService.getPresupuestos().subscribe({
-      next: (presupuestos) => this.presupuestos = presupuestos,
-      error: (error) => console.error('Error al cargar presupuestos:', error)
-    });
+
+  addPresupuesto(pres: Presupuesto) {
+    this.auxiliarPresupuesto = pres;
+    
+
+    // Actualizar el control del formulario para reflejar el cambio
+    this.formulario.patchValue({ presupuesto: this.auxiliarPresupuesto });
+    this.formulario.controls['presupuesto'].markAsTouched();
+    this.formulario.controls['presupuesto'].updateValueAndValidity();
   }
+  
 
-  presupuestoSeleccionado: Presupuesto | null = null;
 
-  asignarPresupuesto(presupuesto: Presupuesto | null) {
-    if (presupuesto) {
-      this.formulario.controls['presupuesto'].setValue(presupuesto);
-    }
-  }
-
-  agregarPedido(){
-    if (this.formulario.invalid || !this.formulario.value.presupuesto) {
+  agregarPedido() {
+    if (this.formulario.invalid || !this.auxiliarPresupuesto) {
       alert('El formulario no es válido o el presupuesto no está asignado.');
       return;
     }
@@ -77,8 +77,10 @@ export class PedidosAddComponent {
       fechaEntrada: new Date(this.formulario.value.fechaEntrada as string),
       fechaSalidaEstimada: new Date(this.formulario.value.fechaSalidaEstimada as string),
       estado: this.formulario.value.estado as 'activo' | 'entregado' | 'atrasado',
-      presupuesto: this.formulario.value.presupuesto as Presupuesto  
+      presupuesto: this.auxiliarPresupuesto
     };
+
+    this.cargarPresupuesto = false;
 
     this.pedidoService.addPedido(pedido).subscribe({
       next: () => alert('Pedido agregado exitosamente'),
