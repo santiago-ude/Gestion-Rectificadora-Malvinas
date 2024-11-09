@@ -1,18 +1,48 @@
 <section>
-  <div>
-    <p>Buscar: </p>
-    <input type="text" placeholder="DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni,$event)">  
-    @if(n>=0){
-      <p>Nombre: {{clienteEncontrado?.nombre}}, Apellido: {{clienteEncontrado?.apellido}}, Numero: {{clienteEncontrado?.numero}}
-        Domicilio: {{clienteEncontrado?.domicilio}}, Altura: {{clienteEncontrado?.altura}}</p>
-    }@else if(n==-1){
-      <p>Error vuelva a ingresar otro DNI</p>
-    }
-    
+  <div class="div1">
+    <div class="divInput">
+      <p>Buscar:</p>
+      <input type="text" placeholder="DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni,$event)">  
+    </div>
+    <div class="divModificar">
+      
+      @if(dni.length == 8 && n>=0){
+        <div class="divTable">
+          @if(n>=0){
+            <table>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Numero</th>
+                <th>Domicilio</th>
+                <th>Altura</th>
+                <th>Metodo de Pago</th>
+              </tr>
+                <tr>
+                  <td>{{clienteEncontrado?.nombre }}</td>
+                  <td>{{clienteEncontrado?.apellido }}</td>
+                  <td>{{ clienteEncontrado?.numero }}</td>
+                  <td>{{ clienteEncontrado?.domicilio }}</td>
+                  <td>{{ clienteEncontrado?.altura }}</td>
+                  <td>{{ clienteEncontrado?.metodoPago }}</td>
+              </tr>
+            </table>
+            
+          }@else if(n==-1){
+            <p>Error vuelva a ingresar otro DNI</p>
+          }
+         </div>
+         <div class="buttonDiv">
+          <button (click)="enviarModificacion()">Modificar</button>
+         </div>
+      }@else {
+        <p>Para modificar un cliente primero ingresar el DNI</p>
+      }
+    </div>
 </div>
   
-
- <table>
+<div class="divTablePrincipal">
+  <table>
     <thead>
       <tr>
         <th>DNI</th>
@@ -41,4 +71,7 @@
 
     </tbody>
   </table>
+
+</div>
+ 
 </section>

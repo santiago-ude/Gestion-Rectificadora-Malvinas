@@ -1,4 +1,5 @@
 export interface Clientes {
+    id?: string,
     dni:string,
     nombre:string,
     apellido:string,
