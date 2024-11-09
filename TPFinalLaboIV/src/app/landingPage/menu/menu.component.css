@@ -56,18 +56,25 @@ ul{
     margin-block-start: 0;
     margin-block-end: 0;
 }
-.aDinamico{
+.aDinamico {
     text-decoration: none;
-    color: #FFFF ;
+    color: #FFFF;
     transition: .5s;
+    font-size: 1.1rem; /* Ajusta el tamaño según prefieras */
+    font-weight: bold; /* Aplica negrita */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
-.aDinamico2{
+
+.aDinamico2 {
     text-decoration: none;
-    color: #4A4A4A ;
-    font-size: 1rem;
+    color: #4A4A4A;
+    font-size: 1.1rem; /* Ajusta el tamaño según prefieras */
+    font-weight: bold; /* Aplica negrita */
+    text-shadow: 0 0px 4px #807e7e;
     transition: .5s;
-    text-shadow: 0 0px 4px #807e7e ;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
+
 .menu-personalizado{
     background-image: linear-gradient(to bottom,#eac7ff ,#deadff);
 }
