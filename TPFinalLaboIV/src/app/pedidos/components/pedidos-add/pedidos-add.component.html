@@ -53,16 +53,19 @@
     <textarea id="descripcion" formControlName="descripcion"></textarea>
 
     <label for="presupuesto">Presupuesto:</label>
-    <select id="presupuesto" [(ngModel)]="presupuestoSeleccionado" (change)="asignarPresupuesto(presupuestoSeleccionado)" formControlName="presupuesto">
-      <option [ngValue]="null" disabled selected>Seleccione un presupuesto</option>
-      <option *ngFor="let presupuesto of presupuestos" [ngValue]="presupuesto">
-        Presupuesto ID: {{ presupuesto.id }} - Total: {{ calcularTotalPresupuesto(presupuesto) }}
-      </option>
-    </select>
+    <button (click)="cargarPresupuesto= true" type="button">Agregar Presupuesto</button>
+    @if (cargarPresupuesto) {
+
+      <app-presupuestos-add (emitirPresupuesto)="addPresupuesto($event)"></app-presupuestos-add>
+
+    }
+    
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio
     </div>
 
+
+<br>
     <button type="submit" [disabled]="!formulario.valid">Agregar Pedido</button>
   </fieldset>
 </form>

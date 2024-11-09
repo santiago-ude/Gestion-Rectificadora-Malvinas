@@ -4,11 +4,12 @@ import { Item } from '../../interface/item';
 import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-presupuestos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, ItemAddComponent],
+  imports: [ReactiveFormsModule, ItemAddComponent, CommonModule],
   templateUrl: './presupuestos-add.component.html',
   styleUrl: './presupuestos-add.component.css'
 })
@@ -28,7 +29,7 @@ export class PresupuestosAddComponent {
 
   formulario = this.fb.nonNullable.group(
     {
-      fecha: [new Date(),[Validators.required, Validators.minLength(3)]],
+      fecha: [new Date(),[Validators.required]],
       descuento: [0,[Validators.required]],
       items: this.fb.array([], [Validators.required])
 

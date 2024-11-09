@@ -1,40 +1,28 @@
-
 <section>
     <fieldset>
-        <legend>Alta Presupuesto</legend>
-
-        <form [formGroup]="formulario" (ngSubmit)="addPresupuesto()">
-            
-            <label for="">Fecha</label>
-            <input type="date" formControlName="fecha">
-
-            @if (formulario.controls['fecha'].getError('required') && formulario.controls['fecha'].touched) {
-                <div class="error">
-                    Campo Requerido
-                </div>
-            }
-
-
-            <label for="">Descuento</label>
-            <input type="number" formControlName="descuento">
-
-            @if (formulario.controls['descuento'].getError('required') && formulario.controls['descuento'].touched) {
-                <div class="error">
-                    Campo Requerido
-                </div>
-            }
-
-            <label for="">Items</label>
-            <button (click)="cargarItem = true">Cargar Item</button>
-
-            @if (cargarItem) {
-                
-                <app-item-add (emitirEvento)="addItem($event)"></app-item-add>
-                
-            }
-            
-
-            <button type="submit">Agregar</button>
-        </form>
+      <legend>Alta Presupuesto</legend>
+  
+      <form [formGroup]="formulario" (ngSubmit)="addPresupuesto()">
+        <label for="fecha">Fecha</label>
+        <input type="date" formControlName="fecha">
+        <div *ngIf="formulario.controls['fecha'].touched && formulario.controls['fecha'].hasError('required')" class="error">
+          Campo Requerido
+        </div>
+  
+        <label for="descuento">Descuento</label>
+        <input type="number" formControlName="descuento">
+        <div *ngIf="formulario.controls['descuento'].touched && formulario.controls['descuento'].hasError('required')" class="error">
+          Campo Requerido
+        </div>
+  
+        <label for="items">Items</label>
+        <button (click)="cargarItem = true" type="button">Cargar Item</button>
+        <div *ngIf="cargarItem">
+          <app-item-add (emitirEvento)="addItem($event)"></app-item-add>
+        </div>
+  
+        <button type="submit" [disabled]="!formulario.valid">Agregar</button>
+      </form>
     </fieldset> 
-</section>
+  </section>
+  

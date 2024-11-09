@@ -1,11 +1,12 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Item } from '../../interface/item';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-item-add',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './item-add.component.html',
   styleUrl: './item-add.component.css'
 })
