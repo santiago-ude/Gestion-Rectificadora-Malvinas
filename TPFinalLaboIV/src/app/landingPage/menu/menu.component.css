@@ -48,7 +48,7 @@ ul{
     grid-column: 2;
     gap: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(6,1fr);
     align-items: center;
     justify-items: center;
     padding: 0;

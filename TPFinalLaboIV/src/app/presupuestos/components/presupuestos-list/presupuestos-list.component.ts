@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Presupuesto } from '../../interface/presupuesto';
 import { PresupuestoService } from '../../service/presupuesto.service';
 import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.component";
+import { compileOpaqueAsyncClassMetadata } from '@angular/compiler';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-presupuestos-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './presupuestos-list.component.html',
   styleUrl: './presupuestos-list.component.css'
 })
