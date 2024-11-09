@@ -15,9 +15,7 @@ section{
 .h2{
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
     font-size: 3.5rem;
-    padding-bottom: 3rem;
     text-shadow: 2px 2px #009dff;
     transition: .5s;
     color: aliceblue;
@@ -25,9 +23,7 @@ section{
 .h2c{
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
     font-size: 3.7rem;
-    padding-bottom: 3rem;
     text-shadow: 2px 2px #006eff;
     color: rgb(217, 235, 252);
     transition: .5s;
@@ -43,7 +39,7 @@ input{
     
 }
 .div1{
-    margin: 10rem 10rem 2rem;
+    margin-left: 5rem;
     
 }
 .img1{
