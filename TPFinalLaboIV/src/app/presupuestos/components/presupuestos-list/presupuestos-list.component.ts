@@ -72,5 +72,12 @@ export class PresupuestosListComponent implements OnInit{
     });
   }
 
+  //Optimizar el seguimiento de los elementos dentro del ngFor
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+  
+
+
 
 }

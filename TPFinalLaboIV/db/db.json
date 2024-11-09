@@ -21,24 +21,13 @@
       "metodoPago": "Tarjeta de Credito"
     },
     {
-      "id": "4adc",
       "dni": "44135008",
       "nombre": "Leonardo",
-      "apellido": "Intrieri",
+      "apellido": "Indrieri",
       "numero": "2239987515",
       "domicilio": "Perez Bulnes",
       "altura": "111",
       "metodoPago": "Tarjeta de Credito"
-    },
-    {
-      "id": "b43e",
-      "dni": "44157556",
-      "nombre": "Franco",
-      "apellido": "Intrieri",
-      "numero": "2235587518",
-      "domicilio": "Gaboto",
-      "altura": "149",
-      "metodoPago": "Tarjeta de Debito"
     }
   ],
   "presupuestos": [
