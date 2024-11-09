@@ -1,4 +1,45 @@
-/* Contenedor general de la lista */
+/* Contenedor de título y botones de filtros */
+.presupuesto-seccion {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.presupuesto-lista h3 {
+    font-size: 2rem;
+    color: #005b96;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.filtros-botones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.filtros-botones button {
+    background-color: #005b96;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filtros-botones button:hover {
+    background-color: #003f6b;
+}
+
+/* Lista de presupuestos */
 .presupuesto-lista {
     width: 100%;
     max-width: 800px;
@@ -9,7 +50,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo de cada presupuesto */
 .presupuesto-item {
     padding: 15px;
     background-color: white;
@@ -19,14 +59,10 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.presupuesto-item .presupuesto-header {
+.presupuesto-header {
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
-}
-
-.presupuesto-item .items-list {
-    margin-top: 10px;
 }
 
 .items-list h4 {
@@ -50,7 +86,6 @@
     border-bottom: none;
 }
 
-/* Botones de acción */
 .eliminar-btn {
     background-color: #d9534f;
     color: white;
@@ -66,28 +101,3 @@
 .eliminar-btn:hover {
     background-color: #c9302c;
 }
-
-/* Botones de orden */
-.ordenar-botones {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.ordenar-botones button {
-    background-color: #005b96;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.ordenar-botones button:hover {
-    background-color: #003f6b;
-}
-
-
