@@ -3,8 +3,8 @@
 @for (pedido of listaPedidos; track $index) {
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
-    <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'yyyy-MM-dd' }}</p>   
-    <p>Estado: {{ pedido.estado }}</p>
+    <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}</p>   
+    <p class="estado">Estado: {{ pedido.estado }}</p>
     <p>Descripcion {{pedido.descripcion}}</p>
     <div class="botones">
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>

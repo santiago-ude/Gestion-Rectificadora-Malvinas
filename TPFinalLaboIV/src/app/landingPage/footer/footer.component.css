@@ -1,14 +1,31 @@
 .espacio{
-    margin: 5rem;
+    margin: 1rem;
+    
 }
 footer{
-    height: 15rem;
+    height: 10rem;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     background-color: rgba(255, 255, 255, 0.644);
     align-items: center;
     border-top:black;
 }
 p{
     margin: 0 5rem 0 5rem;
+}
+
+.p-rect{
+    margin: 0;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: .7rem;
+    background-image: url("../img/Malvinas1.png");
+    background-size: 7rem;
+    background-repeat: no-repeat; 
+    background-position: left center; 
+    padding-left: 8rem;
+}
+img{
+    width: 12rem;
+    padding-left: 2.5rem;
 }

@@ -5,21 +5,24 @@
     background-size: cover; /* Mantiene la imagen cubriendo el área completa */
     background-position: center; /* Centra la imagen */
     grid-column: 2;
+    
 }
 
 .espacio{
     margin-top: 6rem;
+    
 }
 section{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    background-color: rgba(255, 255, 255, 0.644);
 }
 h2{
     display: grid;
     font-size: 4rem;
     margin:0 0 0 2rem;
     padding: 0;
-    background: white;
+    background: rgb(255, 208, 0);
     background-clip: text; 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
