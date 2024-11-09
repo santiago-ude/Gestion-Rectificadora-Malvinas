@@ -41,10 +41,12 @@ export class PedidosAddComponent {
     presupuesto: [null as Presupuesto | null, Validators.required]  // Presupuesto es obligatorio
   });
 
+  //Inicializacion 
   ngOnInit(){
     this.cargarClientes();
   }
 
+  //Traer cliente del json-server
   cargarClientes(){
     this.clienteService.obtenerClientes().subscribe({
       next: (clientes) => this.clientes = clientes,
@@ -53,6 +55,7 @@ export class PedidosAddComponent {
   }
 
 
+  //captura el evento y almacena el presupuesto
   addPresupuesto(pres: Presupuesto) {
     this.auxiliarPresupuesto = pres;
     
@@ -64,7 +67,8 @@ export class PedidosAddComponent {
   }
   
 
-
+  //Verifica el presupuesto
+  //Verifica el pedido y almacena en el json-server
   agregarPedido() {
     if (this.formulario.invalid || !this.auxiliarPresupuesto) {
       alert('El formulario no es válido o el presupuesto no está asignado.');

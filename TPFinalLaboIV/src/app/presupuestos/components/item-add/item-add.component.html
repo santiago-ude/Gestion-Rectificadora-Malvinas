@@ -3,30 +3,36 @@
       <legend>Alta Item</legend>
   
       <form [formGroup]="formulario" (ngSubmit)="addItem()">
+
+        <!-- Nombre del item a cargar -->
         <label for="nombre">Nombre</label>
         <input type="text" formControlName="nombre">
         <div *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].hasError('required')" class="error">
           Campo Requerido
         </div>
   
+        <!-- Descripcion del item a cargar -->
         <label for="descripcion">Descripción</label>
         <input type="text" formControlName="descripcion">
         <div *ngIf="formulario.controls['descripcion'].touched && formulario.controls['descripcion'].hasError('required')" class="error">
           Campo Requerido
         </div>
   
+        <!-- Precio de autopartes o insumas a gastar -->
         <label for="precioUnitario">Precio Unitario</label>
         <input type="number" formControlName="precioUnitario">
         <div *ngIf="formulario.controls['precioUnitario'].touched && formulario.controls['precioUnitario'].hasError('required')" class="error">
           Campo Requerido
         </div>
   
+        <!-- Precio de mano de obra -->
         <label for="precioManoObra">Precio Mano de Obra</label>
         <input type="number" formControlName="precioManoObra">
         <div *ngIf="formulario.controls['precioManoObra'].touched && formulario.controls['precioManoObra'].hasError('required')" class="error">
           Campo Requerido
         </div>
   
+        <!-- Precio final  -->
         <label for="precioFinal">Precio Final</label>
         <input type="number" formControlName="precioFinal">
         <div *ngIf="formulario.controls['precioFinal'].touched && formulario.controls['precioFinal'].hasError('required')" class="error">

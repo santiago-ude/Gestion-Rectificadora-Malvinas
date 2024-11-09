@@ -18,6 +18,7 @@ export class ItemAddComponent {
 
   FB = inject(FormBuilder);
 
+  
   formulario = this.FB.nonNullable.group({
 
     nombre:['',[Validators.required]],
@@ -29,7 +30,7 @@ export class ItemAddComponent {
   });
 
 
-
+  //Emite el evento con el item cargado en el formulario
   addItem(){
 
     if(this.formulario.invalid)return;
