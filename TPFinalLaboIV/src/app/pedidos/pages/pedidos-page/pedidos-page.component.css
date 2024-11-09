@@ -1,0 +1,11 @@
+.titulo-principal {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #005b96; /* Color azul similar al de los botones */
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #005b96;
+    padding-bottom: 10px;
+    max-width: 600px;
+    margin: 20px auto; /* Centra el título y agrega espacio superior e inferior */
+}

@@ -1,10 +1,43 @@
+<div class="filtros">
+  <h3>Filtrar Pedidos</h3>
+
+  <!-- Filtrar por estado -->
+  <div class="filtro-estado">
+    <button (click)="filtrarPorEstado('activo')">Estado: Activo</button>
+    <button (click)="filtrarPorEstado('entregado')">Estado: Entregado</button>
+    <button (click)="filtrarPorEstado('atrasado')">Estado: Atrasado</button>
+  </div>
+
+  <!-- Filtrar por rango de fecha de entrada -->
+  <div class="filtro-fecha-contenedor">
+    <label for="fechaInicio">Fecha de Entrada desde:</label>
+    <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio">
+    
+    <label for="fechaFin">hasta:</label>
+    <input type="date" id="fechaFin" [(ngModel)]="fechaFin">
+    
+    <button (click)="filtrarPorFechaEntrada(fechaInicio, fechaFin)">Filtrar por Fecha de Entrada</button>
+  </div>
+
+  <!-- Restablecer filtros -->
+  <button class="reset-button" (click)="resetearFiltros()">Restablecer Filtros</button>
+</div>
+
+
 <div class="pedido-lista">
+  <h2 class="subtitulo-1">Lista de Pedidos</h2>
   <div class="pedido-datos">
-@for (pedido of listaPedidos; track $index) {
+@for (pedido of pedidosFiltrados; track $index) {
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha De Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}</p>   
-    <p class="estado">Estado: {{ pedido.estado }}</p>
+    <p class="estado" [ngClass]="{
+      'estado-activo': pedido.estado === 'activo',
+      'estado-entregado': pedido.estado === 'entregado',
+      'estado-atrasado': pedido.estado === 'atrasado'
+    }">
+      Estado: {{ pedido.estado }}
+    </p>
     <p>Descripcion {{pedido.descripcion}}</p>
     <div class="botones">
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>

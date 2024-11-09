@@ -3,12 +3,13 @@ import { PedidoService } from '../../service/pedidos.service';
 import { Pedidos } from '../../interface/pedidos';
 import jsPDF from 'jspdf';
 import { RouterModule } from '@angular/router';
-import { CommonModule, DatePipe } from '@angular/common';
+import {  CommonModule, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pedidos-list',
   standalone: true,
-  imports: [RouterModule, CommonModule, DatePipe],
+  imports: [RouterModule, DatePipe, FormsModule, CommonModule],
   templateUrl: './pedidos-list.component.html',
   styleUrls: ['./pedidos-list.component.css']
 })
@@ -17,10 +18,9 @@ export class PedidosListComponent {
 
   listaPedidos: Pedidos[] = [];
   pedidosFiltrados: Pedidos[] = [];
-
-  // Variables para los criterios de filtrado
   estadoSeleccionado: string = '';
-  fechaSeleccionada: string = '';
+  fechaInicio: string = ''; 
+  fechaFin: string = ''; 
 
   ngOnInit(): void {
     this.listarPedidos();
@@ -30,7 +30,7 @@ export class PedidosListComponent {
     this.ts.getPedidos().subscribe({
       next: (pedidos: Pedidos[]) => {
         this.listaPedidos = pedidos;
-        this.pedidosFiltrados = pedidos; // Inicia mostrando todos los pedidos
+        this.pedidosFiltrados = pedidos; // Inicializa con todos los pedidos
       },
       error: (e: Error) => {
         console.log(e.message);
@@ -38,22 +38,22 @@ export class PedidosListComponent {
     });
   }
 
-  filtrarPedidos() {
-    // Filtramos la lista de pedidos sin modificar `listaPedidos`
-    this.pedidosFiltrados = this.listaPedidos.filter(pedido => {
-      const cumpleEstado = this.estadoSeleccionado ? pedido.estado === this.estadoSeleccionado : true;
-      const cumpleFecha = this.fechaSeleccionada
-        ? new Date(pedido.fechaEntrada).toISOString().split('T')[0] === this.fechaSeleccionada
-        : true;
+  filtrarPorEstado(estado: 'activo' | 'entregado' | 'atrasado') {
+    this.pedidosFiltrados = this.listaPedidos.filter(pedido => pedido.estado === estado);
+  }
 
-      return cumpleEstado && cumpleFecha;
+  filtrarPorFechaEntrada(fechaInicio: string, fechaFin: string) {
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+
+    this.pedidosFiltrados = this.listaPedidos.filter(pedido => {
+      const fechaEntrada = new Date(pedido.fechaEntrada);
+      return fechaEntrada >= inicio && fechaEntrada <= fin;
     });
   }
 
   resetearFiltros() {
-    this.estadoSeleccionado = '';
-    this.fechaSeleccionada = '';
-    this.pedidosFiltrados = [...this.listaPedidos];
+    this.pedidosFiltrados = [...this.listaPedidos]; // Restaura la lista original
   }
 
   eliminarPedidos(id: string | null | undefined) {
@@ -67,6 +67,7 @@ export class PedidosListComponent {
       }
     });
   }
+
 
   exportarPedidoPDF(pedido: Pedidos): void {
     const doc = new jsPDF();
