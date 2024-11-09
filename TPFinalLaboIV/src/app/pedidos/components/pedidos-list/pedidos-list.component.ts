@@ -22,6 +22,8 @@ export class PedidosListComponent {
   fechaInicio: string = ''; 
   fechaFin: string = ''; 
   clienteFiltro: string = '';
+  diasParaFinalizar = 4; 
+  pedidosCercanos: Pedidos[] = [];
 
   ngOnInit(): void {
     this.listarPedidos();
@@ -32,6 +34,8 @@ export class PedidosListComponent {
       next: (pedidos: Pedidos[]) => {
         this.listaPedidos = pedidos;
         this.pedidosFiltrados = pedidos; // Inicializa con todos los pedidos
+        this.verificarPedidosCercanos(); // Verifica si hay pedidos a punto de finalizar
+        this.actualizarEstadoPedidosAtrasados();
       },
       error: (e: Error) => {
         console.log(e.message);
@@ -79,7 +83,52 @@ export class PedidosListComponent {
     });
   }
 
+  verificarPedidosCercanos() {
+    const hoy = new Date();
+    this.pedidosCercanos = this.listaPedidos.filter(pedido => {
+      const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
+      const diferenciaDias = (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
+      return diferenciaDias > 0 && diferenciaDias <= this.diasParaFinalizar; 
+    });
+
+  }
+
+  actualizarEstadoPedidosAtrasados() {
+    const hoy = new Date();
+
+    this.listaPedidos.forEach(pedido => {
+      const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
+
+      // Si la fecha de salida ya pasó y el estado no es entregado, se cambia a "atrasado"
+      if (fechaSalidaEstimada < hoy && pedido.estado !== 'entregado' && pedido.estado !== 'atrasado') {
+        pedido.estado = 'atrasado';
+        this.ts.updatePedido(pedido.id, { ...pedido, estado: 'atrasado' }).subscribe({
+          next: () => console.log(`Pedido ID: ${pedido.id} actualizado a 'atrasado'.`),
+          error: (e: Error) => console.log(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
+        });
+      }
+    });
+  }
+
+confirmarEntrega(pedido: Pedidos) {
+  const confirmar = window.confirm("¿Estás seguro de que quieres marcar este pedido como entregado?");
+  if(confirmar){
+      this.entregarPedido(pedido);
+    }
+}
   
+entregarPedido(pedido: Pedidos) {
+  pedido.estado = 'entregado';
+  this.ts.updatePedido(pedido.id,pedido).subscribe({
+      next: () => {
+        alert("El pedido ha sido marcado como entregado.");
+        this.listarPedidos();
+      },
+      error: (e: Error) => {
+        console.error("Error al actualizar el pedido:", e.message);
+      }
+    });
+ }
 
 
   exportarPedidoPDF(pedido: Pedidos): void {

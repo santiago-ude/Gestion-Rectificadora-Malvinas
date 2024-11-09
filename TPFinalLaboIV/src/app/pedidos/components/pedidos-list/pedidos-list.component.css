@@ -62,7 +62,17 @@ button.pdf-btn{
 button.pdf-btn:hover{
     background-color: #025aa5;
 }
-  
+
+.entregar-btn{
+    background-color: #ffb100;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+button.entregar-btn:hover{
+    background-color: #025aa5;
+}
 a.actualizar-btn{
     background-color: #5bc0de;
     color: white;
@@ -248,3 +258,13 @@ hr{
 .filtro-cliente-boton:hover{
     background-color: #003f6b;
 }
+
+.alerta-pedidos-cercanos {
+    padding: 10px;
+    background-color: #ffdd57;
+    color: #805b00;
+    border: 1px solid #ffb100;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
