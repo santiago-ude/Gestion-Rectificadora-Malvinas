@@ -157,6 +157,20 @@
           "precioFinal": 2000
         }
       ]
+    },
+    {
+      "id": "5.478542631851246",
+      "fecha": "2024-11-09",
+      "descuento": 23,
+      "items": [
+        {
+          "nombre": "asdf",
+          "descripcion": "fdasf",
+          "precioUnitario": 34,
+          "precioManoObra": 4,
+          "precioFinal": 34
+        }
+      ]
     }
   ],
   "pedidos": [
@@ -267,6 +281,40 @@
           }
         ],
         "id": "3.6822684868130695"
+      }
+    },
+    {
+      "id": "40f5",
+      "cliente": {
+        "id": "a5b7",
+        "dni": "44265003",
+        "nombre": "Lautaro",
+        "apellido": "Arias",
+        "numero": "2236697212",
+        "domicilio": "Padre Dutto",
+        "altura": "321",
+        "metodoPago": "Efectivo"
+      },
+      "fechaEntrada": "2024-11-06T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-24T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "ASD",
+      "modeloAuto": "asdfasdf",
+      "numeroSerie": "342234",
+      "descripcion": "dsafsadfasf",
+      "presupuesto": {
+        "fecha": "2024-11-09",
+        "descuento": 23,
+        "items": [
+          {
+            "nombre": "asdf",
+            "descripcion": "fdasf",
+            "precioUnitario": 34,
+            "precioManoObra": 4,
+            "precioFinal": 34
+          }
+        ],
+        "id": "5.478542631851246"
       }
     }
   ]

@@ -1,15 +1,13 @@
 import { Presupuesto } from './../interface/presupuesto';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PresupuestoService {
 
-  //http2 = inject(HttpClient): Es lo mismo que el anterior, la diferencia es que cuando se genere una instancia de TareaService,
-  //automaticamente se genera una instancia con el constructor, en cambio con el http2, solo cuando lo usas puntualmente.
 
   constructor(private http: HttpClient) { }
 
@@ -19,10 +17,31 @@ export class PresupuestoService {
   //GET
   getPresupuestos(): Observable<Presupuesto[]> {
 
-    return this.http.get<Presupuesto[]>(this.urlBase);
+    return this.http.get<Presupuesto[]>(this.urlBase).pipe(catchError(this.handleError));
 
   }
 
+  //POST
+  postPresupuesto(pres: Presupuesto): Observable<Presupuesto> {
+
+    return this.http.post<Presupuesto>(this.urlBase, pres).pipe(catchError(this.handleError));
+
+  }
+
+  //PUT
+  putPresupuesto(pres: Presupuesto, id: string | null): Observable<Presupuesto> {
+
+    return this.http.put<Presupuesto>(`${this.urlBase}/${id}`, pres).pipe(catchError(this.handleError));
+  }
+
+  //DELETE
+  deletePresupuesto(id: string | null): Observable<void> {
+
+    return this.http.delete<void>(`${this.urlBase}/${id}`).pipe(catchError(this.handleError));
+
+  }
+
+  
   //GETById
   getPresupuestosById(id: string | null): Observable<Presupuesto> {
 
@@ -30,25 +49,9 @@ export class PresupuestoService {
 
   }
 
-  //POST
-  postPresupuesto(pres: Presupuesto): Observable<Presupuesto> {
-
-    return this.http.post<Presupuesto>(this.urlBase, pres);
-
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.error('Error en el servicio de Presupuestos:', error);
+    return throwError(() => new Error('Error en la solicitud del servidor'));
   }
-
-  //PUT
-  putPresupuesto(pres: Presupuesto, id: string | null): Observable<Presupuesto> {
-
-    return this.http.put<Presupuesto>(`${this.urlBase}/${id}`, pres);
-  }
-
-  //DELETE
-  deletePresupuesto(id: string | null): Observable<void> {
-
-    return this.http.delete<void>(`${this.urlBase}/${id}`);
-
-  }
-
 
 }
