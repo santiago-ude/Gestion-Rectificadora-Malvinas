@@ -1,11 +1,11 @@
 .contenidoIMG1 {
     background-image: url("../img/Malvinas1.png");
-    margin: 2rem;
     height: 30rem;
-    background-size: cover; /* Mantiene la imagen cubriendo el área completa */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
+    margin: 0; 
+    padding: 1rem; 
     grid-column: 2;
-    
 }
 
 .espacio{

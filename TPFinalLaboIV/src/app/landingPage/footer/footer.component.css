@@ -2,15 +2,15 @@
     margin: 1rem;
     
 }
-footer{
+footer {
     height: 10rem;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    background-color: rgba(255, 255, 255, 0.644);
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #4d9eda;
     align-items: center;
-    border-top:black;
-    
+    border-top: 1px solid black; 
 }
+
 p{
     margin: 0 5rem 0 5rem;
 }
