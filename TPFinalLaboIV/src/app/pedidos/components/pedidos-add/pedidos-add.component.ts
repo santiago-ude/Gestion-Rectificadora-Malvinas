@@ -59,7 +59,6 @@ export class PedidosAddComponent {
   addPresupuesto(pres: Presupuesto) {
     this.auxiliarPresupuesto = pres;
     
-
     // Actualizar el control del formulario para reflejar el cambio
     this.formulario.patchValue({ presupuesto: this.auxiliarPresupuesto });
     this.formulario.controls['presupuesto'].markAsTouched();

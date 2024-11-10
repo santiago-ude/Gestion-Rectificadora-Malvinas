@@ -38,9 +38,9 @@
 @for (pedido of pedidosFiltrados; track $index) {
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
-    <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy'}}</p>
+    <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>
     <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
-      Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy' }}
+      Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy':'UTC' }}
     </p>    
     <p class="estado" [ngClass]="{
       'estado-activo': pedido.estado === 'activo',

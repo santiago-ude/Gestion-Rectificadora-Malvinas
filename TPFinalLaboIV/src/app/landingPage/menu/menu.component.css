@@ -53,18 +53,24 @@ ul {
 
 li {
     text-align: center;
+    font-size: 1.1rem;
 }
 
-.aDinamico,
+.aDinamico{
+    text-decoration: none;
+    color: #FFFF ;
+    transition: .5s;
+}
 .aDinamico2 {
     display: block;
     text-decoration: none;
-    color: #FFFF;
-    transition: .5s;
-    font-size: 1.1rem;
+    color: #b3b3b3;
+    transition: .4s;
+    font-size: 1.2rem;
     font-weight: bold;
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
     text-align: center;
+    text-shadow: 0 0px 4px #807e7e ;
 }
 
 

@@ -25,13 +25,13 @@ export class PedidosListComponent {
   diasParaFinalizar = 4; 
   pedidosCercanos: Pedidos[] = [];
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.listarPedidos();
   }
 
-  listarPedidos() {
+  listarPedidos(){
     this.ts.getPedidos().subscribe({
-      next: (pedidos: Pedidos[]) => {
+      next: (pedidos: Pedidos[]) =>{
         this.listaPedidos = pedidos;
         this.pedidosFiltrados = pedidos; // Inicializa con todos los pedidos
         this.verificarPedidosCercanos(); // Verifica si hay pedidos a punto de finalizar
@@ -43,11 +43,11 @@ export class PedidosListComponent {
     });
   }
 
-  filtrarPorEstado(estado: 'activo' | 'entregado' | 'atrasado') {
+  filtrarPorEstado(estado: 'activo' | 'entregado' | 'atrasado'){
     this.pedidosFiltrados = this.listaPedidos.filter(pedido => pedido.estado === estado);
   }
 
-  filtrarPorFechaEntrada(fechaInicio: string, fechaFin: string) {
+  filtrarPorFechaEntrada(fechaInicio: string, fechaFin: string){
     const inicio = new Date(fechaInicio);
     const fin = new Date(fechaFin);
 
