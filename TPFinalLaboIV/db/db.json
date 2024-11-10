@@ -41,14 +41,14 @@
       "id": "348a"
     },
     {
-      "id": "ec0d",
       "dni": "12345678",
       "nombre": "Facundo ",
       "apellido": "Procelli",
       "numero": "2235446754",
       "domicilio": "Jose Ingenieros",
       "altura": "1234",
-      "metodoPago": "Tarjeta de Debito"
+      "metodoPago": "Tarjeta de Debito",
+      "id": "ec0d"
     },
     {
       "id": "be0f",
@@ -226,7 +226,7 @@
         "metodoPago": "Tarjeta de Credito"
       },
       "fechaEntrada": "2024-11-05T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-11T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-12T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "Ford",
       "modeloAuto": "Falcon",

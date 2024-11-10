@@ -2,10 +2,11 @@
 <footer>
     <img src="/UTN-iso-new.png">
     <ul>
-        <li><a href="https://github.com/santiago-ude/Gestion-Rectificadora-Malvinas" target="_blank">Github</a></li>
+        <li><a href="https://github.com/santiago-ude/Gestion-Rectificadora-Malvinas">Github</a></li>
         <li>Facebook</li>
-        <li>Whatsapp</li>
+        <li><a href="https://wa.me/+5492236834480?text=Me%20interesa">Whatsapp</a></li>
     </ul>
    
-    <p class="p-rect">Rectificadora Malvinas</p>
+    <p class="prect" [ngClass]="{prect: !dentroP1, prect2: dentroP1}" 
+    (mouseover)="onMouseOverP1()" (mouseleave)="onMouseLeaverP1()">Rectificadora Malvinas</p>
 </footer>

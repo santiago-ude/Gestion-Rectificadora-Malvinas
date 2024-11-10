@@ -2,20 +2,32 @@
     margin: 1rem;
     
 }
+a{
+    text-decoration: none;
+    
+}
+
+li{
+    list-style: none;
+}
 footer {
     height: 10rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: #4d9eda;
+    background-image: linear-gradient(to bottom,#51b1fa ,#2c8cd6);
     align-items: center;
-    border-top: 1px solid black; 
+    border-top: 1px solid #4d9eda; 
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #FFFF;
 }
 
 p{
     margin: 0 5rem 0 5rem;
 }
 
-.p-rect{
+.prect{
     margin: 0;
     align-items: center;
     font-size: 1.2rem;
@@ -25,6 +37,19 @@ p{
     background-repeat: no-repeat; 
     background-position: left center; 
     padding-left: 8rem;
+    transition: .5s;
+}
+.prect2{
+    margin: 0;
+    align-items: center;
+    font-size: 1.3rem;
+    padding: .7rem;
+    background-image: url("../img/Malvinas1.png");
+    background-size: 8rem;
+    background-repeat: no-repeat; 
+    background-position: left center; 
+    padding-left: 8rem;
+    transition: .5s;
 }
 img{
     width: 12rem;
