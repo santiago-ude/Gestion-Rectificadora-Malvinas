@@ -60,6 +60,7 @@ export class ClienteAddComponent {
     console.log(this.formulario.getRawValue());
     
     this.postCliente();
+    this.formulario.reset();
   }
   
   postCliente(){
