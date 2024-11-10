@@ -29,6 +29,46 @@
       "altura": "111",
       "metodoPago": "Tarjeta de Credito",
       "id": "c911"
+    },
+    {
+      "id": "348a",
+      "dni": "34567873",
+      "nombre": "Matias ",
+      "apellido": "Antonelli",
+      "numero": "2236224455",
+      "domicilio": "Estrada",
+      "altura": "1010",
+      "metodoPago": "Efectivo"
+    },
+    {
+      "id": "ec0d",
+      "dni": "12345678",
+      "nombre": "Facundo ",
+      "apellido": "Procelli",
+      "numero": "2235446754",
+      "domicilio": "Jose Ingenieros",
+      "altura": "1234",
+      "metodoPago": "Tarjeta de Debito"
+    },
+    {
+      "id": "be0f",
+      "dni": "34654398",
+      "nombre": "Miguel Angel",
+      "apellido": "Borja",
+      "numero": "2236234571",
+      "domicilio": "Floresta",
+      "altura": "1267",
+      "metodoPago": "Efectivo"
+    },
+    {
+      "id": "71fa",
+      "dni": "40567123",
+      "nombre": "Facundo",
+      "apellido": "Colidio",
+      "numero": "2236226740",
+      "domicilio": "Santilla",
+      "altura": "9843",
+      "metodoPago": "Tarjeta de Credito"
     }
   ],
   "presupuestos": [
