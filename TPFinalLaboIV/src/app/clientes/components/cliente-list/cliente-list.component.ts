@@ -18,6 +18,8 @@ export class ClienteListComponent implements OnInit{
     this.getClientesList();
   }
   clientes: Clientes[] = [];
+  clientesFiltrados: Clientes[] = [];   
+  filtro: string = '';     
   clienteEncontrado?:Clientes;
   n:number=-2;
 
@@ -45,9 +47,19 @@ export class ClienteListComponent implements OnInit{
         next:(value)=>{
           this.clientes = value;
           this.clientes = this.clientes.sort((a, b) => parseInt(a.dni) - parseInt(b.dni));
+          this.clientesFiltrados = [...this.clientes];
         }
       }
     )
+  }
+  filtrarClientes() {
+    const filtroLowerCase = this.filtro.toLowerCase();
+    this.clientesFiltrados = this.clientes
+      .filter(cliente =>
+        cliente.nombre.toLowerCase().includes(filtroLowerCase) ||
+        cliente.apellido.toLowerCase().includes(filtroLowerCase)
+      )
+      .sort((a, b) => parseInt(a.dni) - parseInt(b.dni));
   }
 
   enviarModificacion() {
@@ -56,5 +68,9 @@ export class ClienteListComponent implements OnInit{
     }
   }
   
+  resetearFiltros() {
+    this.clientesFiltrados = [...this.clientes]; // Restaura la lista original
+    this.filtro = ''; 
+  }
 
 }
