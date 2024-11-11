@@ -1,5 +1,4 @@
 
-
 <div class="presupuesto-lista">
 
     <h3>Presupuestos</h3><br>
@@ -12,8 +11,8 @@
         <li *ngFor="let pres of listaPresupuestos; trackBy: trackByIndex" class="presupuesto-item">
             <div class="presupuesto-header">
                 <strong>Fecha:</strong> {{ pres.fecha }} <br>
-                <strong>Descuento:</strong> {{ pres.descuento }}%
-                <strong>Total: </strong> {{ pres.total }}
+                <strong>Descuento:</strong> {{ pres.descuento }}% <br>
+                <strong>Total: </strong> ${{pres.total}}
             </div>
             <div class="items-list">
                 <h4>Items del Presupuesto:</h4>

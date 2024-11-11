@@ -15,14 +15,19 @@
     <label for="fechaEntrada">Fecha de Entrada:</label>
     <input type="date" id="fechaEntrada" formControlName="fechaEntrada">
     <div *ngIf="formulario.controls['fechaEntrada'].touched && formulario.controls['fechaEntrada'].invalid" class="error">
-      Fecha de Entrada es obligatoria
+    Fecha de Entrada es obligatoria
     </div>
 
     <label for="fechaSalidaEstimada">Fecha de Salida Estimada:</label>
     <input type="date" id="fechaSalidaEstimada" formControlName="fechaSalidaEstimada">
     <div *ngIf="formulario.controls['fechaSalidaEstimada'].touched && formulario.controls['fechaSalidaEstimada'].invalid" class="error">
-      Fecha de Salida Estimada es obligatoria
+    Fecha de Salida Estimada es obligatoria
     </div>
+
+    <div *ngIf="formulario.errors?.['fechaInvalida']" class="error">
+    La fecha de entrada no puede ser posterior a la fecha estimada de salida.
+    </div>
+
 
     <label for="estado">Estado:</label>
     <select id="estado" formControlName="estado">

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { PedidoService } from '../../service/pedidos.service';
 import { PresupuestoService } from '../../../presupuestos/service/presupuesto.service';
@@ -38,13 +38,27 @@ export class PedidosAddComponent {
     modeloAuto: ['', Validators.required],
     numeroSerie: ['', Validators.required],
     descripcion: [''],
-    presupuesto: [null as Presupuesto | null, Validators.required]  // Presupuesto es obligatorio
-  });
-
+    presupuesto: [null as Presupuesto | null, Validators.required] },
+    { validators: this.fechaEntradaAntesDeSalidaValidator() }
+  );
   //Inicializacion 
   ngOnInit(){
     this.cargarClientes();
   }
+
+
+fechaEntradaAntesDeSalidaValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const fechaEntrada = control.get('fechaEntrada')?.value;
+    const fechaSalidaEstimada = control.get('fechaSalidaEstimada')?.value;
+
+    if (fechaEntrada && fechaSalidaEstimada && new Date(fechaEntrada) > new Date(fechaSalidaEstimada)) {
+      return { fechaInvalida: true };
+    }
+    return null;
+  };
+}
+
 
   //Traer cliente del json-server
   cargarClientes(){
@@ -53,7 +67,6 @@ export class PedidosAddComponent {
       error: (error) => console.error('Error al cargar clientes:', error)
     });
   }
-
 
   //captura el evento y almacena el presupuesto
   addPresupuesto(pres: Presupuesto) {
