@@ -31,8 +31,8 @@ export class PresupuestosAddComponent {
     {
       fecha: [new Date(),[Validators.required]],
       descuento: [0,[Validators.required]],
-      items: this.fb.array([], [Validators.required])
-
+      items: this.fb.array([], [Validators.required]),
+      total:[0]
     }
 )
 
@@ -59,9 +59,8 @@ export class PresupuestosAddComponent {
       ...this.formulario.getRawValue(),
       items: this.itemAux,
       id: (Math.random() * 10).toString(),
-      total: totalAux
-      
-    }
+      total: totalAux  
+    };
 
     this.formulario.reset()
 
