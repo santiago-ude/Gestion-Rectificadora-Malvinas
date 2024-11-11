@@ -1,6 +1,6 @@
 <section>
     <div class="div1">
-     <h2 class="h2" (mouseover)="h2Mouseover()" (mouseleave)="h2Mouseleave()" [ngClass]="{h2:!dentroH2,h2c:dentroH2}">Cargar de Clientes</h2>
+     <h2 class="h2" (mouseover)="h2Mouseover()" (mouseleave)="h2Mouseleave()" [ngClass]="{h2:!dentroH2,h2c:dentroH2}">Carga de Clientes</h2>
       <form (ngSubmit)="eventSubmit()" [formGroup]="formulario">
 
         @for (tipo of tipos; track $index) {
