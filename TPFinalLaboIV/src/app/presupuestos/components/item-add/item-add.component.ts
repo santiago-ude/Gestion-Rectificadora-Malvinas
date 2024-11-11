@@ -23,9 +23,9 @@ export class ItemAddComponent {
 
     nombre:['',[Validators.required]],
     descripcion:['',[Validators.required]],
-    precioUnitario:[0,[Validators.required]],
-    precioManoObra:[0,[Validators.required]],
-    precioFinal:[0,[Validators.required]],
+    precioUnitario:[0,[Validators.required, Validators.minLength(0)]],
+    precioManoObra:[0,[Validators.required, Validators.minLength(0)]],
+    precioFinal:[0,[Validators.required, Validators.minLength(0)]],
     
   });
 
