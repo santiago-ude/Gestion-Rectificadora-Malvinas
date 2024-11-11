@@ -6,6 +6,6 @@ export interface Presupuesto {
     fecha: Date;
     descuento: number;
     items: Item[];
-
+    total: Number;
 
 }

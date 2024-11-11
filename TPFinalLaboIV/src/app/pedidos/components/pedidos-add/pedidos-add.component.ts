@@ -26,7 +26,7 @@ export class PedidosAddComponent {
 
   clientes: Clientes[] = [];
 
-  auxiliarPresupuesto : Presupuesto = {id: '0',fecha: new Date(),descuento: 0, items: []};
+  auxiliarPresupuesto : Presupuesto = {id: '0',fecha: new Date(),descuento: 0, items: [], total: 0};
   cargarPresupuesto : boolean = false
 
   formulario = this.fb.nonNullable.group({
