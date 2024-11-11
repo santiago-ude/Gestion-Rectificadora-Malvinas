@@ -9,8 +9,7 @@
         <!-- Filtro por Nombre o Apellido -->
         <div class="filtro-nom-ape">
           <label>Buscar por Nombre o Apellido:</label>
-          <input type="text" placeholder="Ingrese nombre o apellido" [(ngModel)]="filtro">
-          <button (click)="filtrarClientes()">Buscar</button>
+          <input type="text" placeholder="Ingrese nombre o apellido" [(ngModel)]="filtro" (keypress)="filtrarClientes()">
         </div>
 
         <!-- Filtro por DNI -->
@@ -20,13 +19,13 @@
         </div>
 
         <!-- Botón de Restablecer Filtros -->
-        <button class="btn-reset" (click)="resetearFiltros()">Restablecer Filtros</button>
+        <button class="btn-reset" (click)="resetearFiltros()">Restablecer Filtros</button> 
       </div>
     </section>
 
-    <!-- Tabla de Resultados de Búsqueda por Nombre o Apellido -->
+    <!-- Tabla de Resultados de Búsqueda por Nombre o Apellido y DNI -->
     <div *ngIf="clientesEncontrados.length > 0" class="divTable">
-      <h3>Resultados de búsqueda por Nombre o Apellido</h3>
+      <h3>Resultados de búsqueda por Nombre, Apellido o DNI</h3>
       <table>
         <thead>
           <tr>
@@ -51,37 +50,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <!-- Tabla de Resultados de Búsqueda por DNI -->
-    <div *ngIf="dni.length == 8">
-      <div *ngIf="clientesEncontrados; else errorDNI" class="divTable">
-        <h3>Resultado de búsqueda por DNI</h3>
-        <table>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Numero</th>
-            <th>Domicilio</th>
-            <th>Altura</th>
-            <th>Metodo de Pago</th>
-          </tr>
-          <tr>
-            <td>{{ clientesEncontrados[n].nombre }}</td>
-            <td>{{ clientesEncontrados[n].apellido }}</td>
-            <td>{{ clientesEncontrados[n].numero }}</td>
-            <td>{{ clientesEncontrados[n].domicilio }}</td>
-            <td>{{ clientesEncontrados[n].altura }}</td>
-            <td>{{ clientesEncontrados[n].metodoPago }}</td>
-          </tr>
-        </table>
-      </div>
-      <ng-template #errorDNI>
-        <p>Error: El DNI ingresado no se encuentra.</p>
-      </ng-template>
-      <div class="buttonDiv">
-        <button (click)="enviarModificacion()">Modificar</button>
-      </div>
     </div>
 
   </div>
