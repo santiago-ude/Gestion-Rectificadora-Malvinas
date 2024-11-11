@@ -3,11 +3,13 @@ import { Clientes } from '../../interface/clientes';
 import { ClientesService } from '../../service/clientes.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cliente-list',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule
+  ],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.css'
 })
@@ -16,26 +18,15 @@ export class ClienteListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getClientesList();
-  }
+  } 
   clientes: Clientes[] = [];
   clientesFiltrados: Clientes[] = [];   
   filtro: string = '';     
-  clienteEncontrado?:Clientes;
+  clientesEncontrados : Clientes[] = [] ;
   n:number=-2;
-
-  //Buscar Por ID
-  buscarClienteXDNI(dni:string, event:KeyboardEvent){
-    if(event.key === "Enter"){
-      this.n= this.clientes.findIndex((c)=>c.dni==dni);
-      if(this.n==-1){
-        alert("No esta cargado dicho DNI");
-        
-      }
-      this.clienteEncontrado = this.clientes[this.n];
-    }
- 
-  }
   dni:string ="";
+
+ 
   
   //Injecciones
   sr = inject(ClientesService)
@@ -52,9 +43,21 @@ export class ClienteListComponent implements OnInit{
       }
     )
   }
+   // Buscar por DNI
+   buscarClienteXDNI(dni: string, event: KeyboardEvent) {
+    if (event.key === "Enter") {
+      this.n = this.clientes.findIndex((c) => c.dni === dni);
+      if (this.n === -1) {
+        alert("No está cargado dicho DNI");
+      }
+      this.clientesEncontrados = this.n >= 0 ? [this.clientes[this.n]] : [];
+    }
+  }
+
+  // Filtrar por Nombre o Apellido
   filtrarClientes() {
     const filtroLowerCase = this.filtro.toLowerCase();
-    this.clientesFiltrados = this.clientes
+    this.clientesEncontrados = this.clientes // Filtra la lista original de clientes
       .filter(cliente =>
         cliente.nombre.toLowerCase().includes(filtroLowerCase) ||
         cliente.apellido.toLowerCase().includes(filtroLowerCase)
@@ -68,9 +71,11 @@ export class ClienteListComponent implements OnInit{
     }
   }
   
+  // Restablecer filtros
   resetearFiltros() {
     this.clientesFiltrados = [...this.clientes]; // Restaura la lista original
-    this.filtro = ''; 
+    this.filtro = '';
+    this.clientesEncontrados = []; // Limpia los resultados encontrados
   }
 
 }

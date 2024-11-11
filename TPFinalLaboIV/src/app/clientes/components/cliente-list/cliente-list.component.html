@@ -1,74 +1,107 @@
 <section>
   <div class="div1">
-    <div class="divInput">
-      <p>Buscar por Nombre o Apellido:</p>
-      <input 
-        type="text" 
-        placeholder="Ingrese nombre o apellido" 
-        [(ngModel)]="filtro"
-      >
-      <button (click)="filtrarClientes()">Buscar</button>
-    </div>
-    <div class="divInput">
-      <p>Buscar:</p>
-      <input type="text" placeholder="DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni,$event)">  
-    </div>
-    <button (click)="resetearFiltros()">Restablecer Filtros</button>
 
-    <div class="divModificar">
-      
-      @if(dni.length == 8 && n>=0){
-        <div class="divTable">
-          @if(n>=0){
-            <table>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Numero</th>
-                <th>Domicilio</th>
-                <th>Altura</th>
-                <th>Metodo de Pago</th>
-              </tr>
-                <tr>
-                  <td>{{clienteEncontrado?.nombre }}</td>
-                  <td>{{clienteEncontrado?.apellido }}</td>
-                  <td>{{ clienteEncontrado?.numero }}</td>
-                  <td>{{ clienteEncontrado?.domicilio }}</td>
-                  <td>{{ clienteEncontrado?.altura }}</td>
-                  <td>{{ clienteEncontrado?.metodoPago }}</td>
-              </tr>
-            </table>
-            
-          }@else if(n==-1){
-            <p>Error vuelva a ingresar otro DNI</p>
-          }
-         </div>
-         <div class="buttonDiv">
-          <button (click)="enviarModificacion()">Modificar</button>
-         </div>
-      }@else {
-        <p>Para modificar un cliente primero ingresar el DNI</p>
-      }
+    <!-- Filtro de Clientes -->
+    <section class="filtro-pedidos">
+      <h2>Filtrar Clientes</h2>
+      <div class="div-filtros">
+
+        <!-- Filtro por Nombre o Apellido -->
+        <div class="filtro-nom-ape">
+          <label>Buscar por Nombre o Apellido:</label>
+          <input type="text" placeholder="Ingrese nombre o apellido" [(ngModel)]="filtro">
+          <button (click)="filtrarClientes()">Buscar</button>
+        </div>
+
+        <!-- Filtro por DNI -->
+        <div class="filtro-dni">
+          <label>Buscar por DNI:</label>
+          <input type="text" placeholder="Ingrese DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni, $event)">
+        </div>
+
+        <!-- Botón de Restablecer Filtros -->
+        <button class="btn-reset" (click)="resetearFiltros()">Restablecer Filtros</button>
+      </div>
+    </section>
+
+    <!-- Tabla de Resultados de Búsqueda por Nombre o Apellido -->
+    <div *ngIf="clientesEncontrados.length > 0" class="divTable">
+      <h3>Resultados de búsqueda por Nombre o Apellido</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Numero</th>
+            <th>Domicilio</th>
+            <th>Altura</th>
+            <th>Metodo de Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientesEncontrados">
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.dni }}</td>
+            <td>{{ cliente.numero }}</td>
+            <td>{{ cliente.domicilio }}</td>
+            <td>{{ cliente.altura }}</td>
+            <td>{{ cliente.metodoPago }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</div>
-  
-<div class="divTablePrincipal">
-  <table>
-    <thead>
-      <tr>
-        <th>DNI</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Numero</th>
-        <th>Domicilio</th>
-        <th>Altura</th>
-        <th>Metodo de Pago</th>
-      </tr>
-    </thead>
-    <tbody>
-    
-      @for (cliente of clientesFiltrados; track $index) {
+
+    <!-- Tabla de Resultados de Búsqueda por DNI -->
+    <div *ngIf="dni.length == 8">
+      <div *ngIf="clientesEncontrados; else errorDNI" class="divTable">
+        <h3>Resultado de búsqueda por DNI</h3>
+        <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Numero</th>
+            <th>Domicilio</th>
+            <th>Altura</th>
+            <th>Metodo de Pago</th>
+          </tr>
+          <tr>
+            <td>{{ clientesEncontrados[n].nombre }}</td>
+            <td>{{ clientesEncontrados[n].apellido }}</td>
+            <td>{{ clientesEncontrados[n].numero }}</td>
+            <td>{{ clientesEncontrados[n].domicilio }}</td>
+            <td>{{ clientesEncontrados[n].altura }}</td>
+            <td>{{ clientesEncontrados[n].metodoPago }}</td>
+          </tr>
+        </table>
+      </div>
+      <ng-template #errorDNI>
+        <p>Error: El DNI ingresado no se encuentra.</p>
+      </ng-template>
+      <div class="buttonDiv">
+        <button (click)="enviarModificacion()">Modificar</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tabla Principal de Clientes -->
+  <div class="divTablePrincipal">
+    <table>
+      <thead>
         <tr>
+          <th>DNI</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Numero</th>
+          <th>Domicilio</th>
+          <th>Altura</th>
+          <th>Metodo de Pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientesFiltrados; trackByIndex">
           <td>{{ cliente.dni }}</td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido }}</td>
@@ -77,12 +110,8 @@
           <td>{{ cliente.altura }}</td>
           <td>{{ cliente.metodoPago }}</td>
         </tr>
-      }
-      
+      </tbody>
+    </table>
+  </div>
 
-    </tbody>
-  </table>
-
-</div>
- 
 </section>
