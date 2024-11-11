@@ -4,12 +4,12 @@ import { ClientesService } from '../../service/clientes.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ClienteUpdateComponent } from '../cliente-update/cliente-update.component';
 
 @Component({
   selector: 'app-cliente-list',
   standalone: true,
-  imports: [FormsModule, CommonModule
-  ],
+  imports: [FormsModule, CommonModule, ClienteUpdateComponent],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.css'
 })
@@ -76,6 +76,9 @@ export class ClienteListComponent implements OnInit{
     this.clientesFiltrados = [...this.clientes]; // Restaura la lista original
     this.filtro = '';
     this.clientesEncontrados = []; // Limpia los resultados encontrados
+    this.dni = ''
   }
+
+
 
 }
