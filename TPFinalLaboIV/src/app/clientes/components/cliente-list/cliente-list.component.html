@@ -1,9 +1,20 @@
 <section>
   <div class="div1">
     <div class="divInput">
+      <p>Buscar por Nombre o Apellido:</p>
+      <input 
+        type="text" 
+        placeholder="Ingrese nombre o apellido" 
+        [(ngModel)]="filtro"
+      >
+      <button (click)="filtrarClientes()">Buscar</button>
+    </div>
+    <div class="divInput">
       <p>Buscar:</p>
       <input type="text" placeholder="DNI" [(ngModel)]="dni" (keypress)="buscarClienteXDNI(dni,$event)">  
     </div>
+    <button (click)="resetearFiltros()">Restablecer Filtros</button>
+
     <div class="divModificar">
       
       @if(dni.length == 8 && n>=0){
@@ -56,7 +67,7 @@
     </thead>
     <tbody>
     
-      @for (cliente of clientes; track $index) {
+      @for (cliente of clientesFiltrados; track $index) {
         <tr>
           <td>{{ cliente.dni }}</td>
           <td>{{ cliente.nombre }}</td>
