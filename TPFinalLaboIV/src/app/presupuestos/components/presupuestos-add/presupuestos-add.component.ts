@@ -30,7 +30,7 @@ export class PresupuestosAddComponent {
   formulario = this.fb.nonNullable.group(
     {
       fecha: [new Date(),[Validators.required]],
-      descuento: [0,[Validators.required]],
+      descuento: [0,[]],
       items: this.fb.array([], [Validators.required]),
       total:[0]
     }
@@ -50,16 +50,11 @@ export class PresupuestosAddComponent {
 
     if(this.formulario.invalid)return;
 
-    let descuento = this.formulario.controls['descuento'].value / 100;
-    let totalAux = this.calcularTotal(this.itemAux);
-    totalAux = totalAux - (totalAux * descuento);
-
 
     const pres= {
       ...this.formulario.getRawValue(),
       items: this.itemAux,
-      id: (Math.random() * 10).toString(),
-      total: totalAux  
+      id: (Math.random() * 10).toString()
     };
 
     this.formulario.reset()
@@ -73,14 +68,6 @@ export class PresupuestosAddComponent {
     this.cargarItem = false;
 
   }
-
-
-  calcularTotal(items: Item[]): number {
-    return items.reduce((suma, item) => suma + item.precioFinal, 0);
-  }
-  
-
-
 
   addPresupuestoDB= (pres: Presupuesto)=>{
 

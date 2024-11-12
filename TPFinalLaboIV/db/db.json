@@ -67,7 +67,7 @@
       "numero": "2236226805",
       "domicilio": "estoril ",
       "altura": "1045",
-      "metodoPago": "Efectivo",
+      "metodoPago": "Tarjeta de Credito",
       "id": "64cc"
     },
     {
@@ -160,10 +160,78 @@
         }
       ],
       "total": 2082500
+    },
+    {
+      "id": "7.740476137146781",
+      "fecha": "2024-11-12",
+      "descuento": 0,
+      "items": [
+        {
+          "nombre": "Rectificacion de motor",
+          "descripcion": "Desarmar, limpiar las piezas, realizar mantenimiento de rutina y volver a ensamblar.",
+          "precioUnitario": 0,
+          "precioManoObra": 350000,
+          "precioFinal": 350000
+        }
+      ],
+      "total": 0
+    },
+    {
+      "id": "4.194409230265461",
+      "fecha": "2024-11-12",
+      "descuento": 0,
+      "items": [
+        {
+          "nombre": "Rectificacion motor",
+          "descripcion": "Desarmar el motor, limpiar las piezas, mantenimiento de rutina y volver a ensamblar",
+          "precioUnitario": 0,
+          "precioManoObra": 250000,
+          "precioFinal": 250000
+        },
+        {
+          "nombre": "Cambio de juntas",
+          "descripcion": "Retirar y desechar las juntas viejas y colocarles las nuevas. RF56",
+          "precioUnitario": 80000,
+          "precioManoObra": 100000,
+          "precioFinal": 180000
+        }
+      ],
+      "total": 0
+    },
+    {
+      "id": "4.554836573254393",
+      "fecha": "2024-11-12",
+      "descuento": 0,
+      "items": [
+        {
+          "nombre": "Rectificacion motor",
+          "descripcion": "Desarmar, limpiar las piezas, mantenimiento de rutina y ensamblar de nuevo.",
+          "precioUnitario": 0,
+          "precioManoObra": 100000,
+          "precioFinal": 100000
+        }
+      ],
+      "total": 0
+    },
+    {
+      "id": "8.404510391197078",
+      "fecha": "2024-11-12",
+      "descuento": 0,
+      "items": [
+        {
+          "nombre": "Rectificacion motor",
+          "descripcion": "Desarmar, limpiar las piezas, mantenimiento de rutina y ensamblar de nuevo.",
+          "precioUnitario": 0,
+          "precioManoObra": 100000,
+          "precioFinal": 100000
+        }
+      ],
+      "total": 0
     }
   ],
   "pedidos": [
     {
+      "id": "c5f9",
       "cliente": {
         "id": "6ac8",
         "dni": "45342134",
@@ -174,112 +242,104 @@
         "altura": "1654",
         "metodoPago": "Tarjeta de Credito"
       },
-      "fechaEntrada": "2024-11-11T00:00:00.000Z",
+      "fechaEntrada": "2024-11-12T00:00:00.000Z",
       "fechaSalidaEstimada": "2024-11-15T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "Ford",
       "modeloAuto": "F-150 R",
       "numeroSerie": "ABCDE12345",
-      "descripcion": "Rectificar motor y cambio de aceite",
+      "descripcion": "Rectificacion de motor",
+      "presupuesto": {
+        "fecha": "2024-11-12",
+        "descuento": 0,
+        "items": [
+          {
+            "nombre": "Rectificacion de motor",
+            "descripcion": "Desarmar, limpiar las piezas, realizar mantenimiento de rutina y volver a ensamblar.",
+            "precioUnitario": 0,
+            "precioManoObra": 350000,
+            "precioFinal": 350000
+          }
+        ],
+        "total": 350000,
+        "id": "7.740476137146781"
+      }
+    },
+    {
+      "id": "9cc7",
+      "cliente": {
+        "id": "1de9",
+        "dni": "46874235",
+        "nombre": "matias",
+        "apellido": "antonelli",
+        "numero": "2236202587",
+        "domicilio": "Corderino",
+        "altura": "1234",
+        "metodoPago": "Efectivo"
+      },
+      "fechaEntrada": "2024-11-12T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-23T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "chevrolet",
+      "modeloAuto": "corsa 2011",
+      "numeroSerie": "JHGER47613",
+      "descripcion": "Rectificación de motor y cambio de juntas.",
       "presupuesto": {
         "fecha": "2024-11-12",
         "descuento": 10,
         "items": [
           {
             "nombre": "Rectificacion motor",
-            "descripcion": "Limpieza de piezas, arreglo del motor y rearmado.",
+            "descripcion": "Desarmar el motor, limpiar las piezas, mantenimiento de rutina y volver a ensamblar",
             "precioUnitario": 0,
-            "precioManoObra": 350000,
-            "precioFinal": 350000
-          },
-          {
-            "nombre": "Cambio de aceite",
-            "descripcion": "Limpiar filtros y cambiar el aceite por el nuevo RF450.",
-            "precioUnitario": 50000,
-            "precioManoObra": 140000,
-            "precioFinal": 190000
-          }
-        ],
-        "total": 486000,
-        "id": "7.368172548369181"
-      },
-      "id": "7503"
-    },
-    {
-      "id": "a01c",
-      "cliente": {
-        "id": "6a4d",
-        "dni": "46874334",
-        "nombre": "santiago",
-        "apellido": "ayala",
-        "numero": "2236227643",
-        "domicilio": "estrada",
-        "altura": "1498",
-        "metodoPago": "Tarjeta de Credito"
-      },
-      "fechaEntrada": "2024-11-15T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-30T00:00:00.000Z",
-      "estado": "activo",
-      "marcaAuto": "chevrolet",
-      "modeloAuto": "corsa",
-      "numeroSerie": "AHGFE34765",
-      "descripcion": "Rectifiacion del motor y cambio de juntas.",
-      "presupuesto": {
-        "fecha": "2024-11-11",
-        "descuento": 0,
-        "items": [
-          {
-            "nombre": "Rectifiacion Motor",
-            "descripcion": "Abrir, desarmar, limpiar las piezas y rearmar.",
-            "precioUnitario": 0,
-            "precioManoObra": 310000,
-            "precioFinal": 310000
+            "precioManoObra": 250000,
+            "precioFinal": 250000
           },
           {
             "nombre": "Cambio de juntas",
-            "descripcion": "Cambiar las juntas que estan viejas por las nuevas r87",
-            "precioUnitario": 100000,
-            "precioManoObra": 80000,
+            "descripcion": "Retirar y desechar las juntas viejas y colocarles las nuevas. RF56",
+            "precioUnitario": 80000,
+            "precioManoObra": 100000,
             "precioFinal": 180000
           }
         ],
-        "total": 490000,
-        "id": "3.963081486702038"
+        "total": 387000,
+        "id": "4.194409230265461"
       }
     },
     {
-      "id": "5d3d",
+      "id": "be0d",
       "cliente": {
-        "dni": "45820343",
-        "nombre": "Santiago",
-        "apellido": "Ude",
-        "numero": "2236226805",
-        "domicilio": "estoril ",
-        "altura": "1045",
-        "metodoPago": "Efectivo",
-        "id": "64cc"
+        "dni": "34786234",
+        "nombre": "Rodrigo",
+        "apellido": "Gimenez",
+        "numero": "2239874510",
+        "domicilio": "Colon",
+        "altura": "1987",
+        "metodoPago": "Tarjeta de Debito",
+        "id": "2fa9"
       },
-      "fechaEntrada": "2024-11-07T00:00:00.000Z",
+      "fechaEntrada": "2024-11-05T00:00:00.000Z",
       "fechaSalidaEstimada": "2024-11-11T00:00:00.000Z",
       "estado": "atrasado",
       "marcaAuto": "Fiat",
       "modeloAuto": "500",
-      "numeroSerie": "AAJHR87541",
-      "descripcion": "Cambiar el motor por uno nuevo.",
+      "numeroSerie": "HDFNE45812",
+      "descripcion": "Rectificacion motor.",
       "presupuesto": {
-        "fecha": "2024-11-07",
-        "descuento": 15,
+        "fecha": "2024-11-12",
+        "descuento": 5,
         "items": [
           {
-            "nombre": "Cambio de motor",
-            "descripcion": "Desarmar el motor actual y cambiarlo por uno nuevo.",
-            "precioUnitario": 2000000,
-            "precioManoObra": 450000,
-            "precioFinal": 2450000
+            "nombre": "Rectificacion motor",
+            "descripcion": "Desarmar, limpiar las piezas, mantenimiento de rutina y ensamblar de nuevo.",
+            "precioUnitario": 0,
+            "precioManoObra": 100000,
+            "precioFinal": 100000
           }
         ],
-        "total": 2082500,
-        "id": "1.997615952009073"
+        "total": 95000,
+        "id": "8.404510391197078"
       }
     }
   ]
