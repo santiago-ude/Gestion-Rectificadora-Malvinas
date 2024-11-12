@@ -3,7 +3,7 @@ import { PedidoService } from '../../service/pedidos.service';
 import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestoService } from '../../../presupuestos/service/presupuesto.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Clientes } from '../../../clientes/interface/clientes';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { Pedidos } from '../../interface/pedidos';
@@ -23,6 +23,7 @@ export class PedidosUpdateComponent {
   presupuestoService = inject(PresupuestoService);
   fb = inject(FormBuilder);
   router = inject(ActivatedRoute);
+  rt = inject(Router);
   clientes: Clientes[] = [];
   presupuestos: Presupuesto[] = [];
 
@@ -95,10 +96,14 @@ actualizarPedido(){
       estado: this.formulario.value.estado as 'activo' | 'entregado' | 'atrasado',
       presupuesto: this.formulario.value.presupuesto as Presupuesto  
     };
+
     console.log(pedido.id);
     this.pedidoService.updatePedido (this.id, pedido).subscribe({
       next: () => alert("Pedido actualizado con éxito"),
       error: (error) => console.error('Error al actualizar pedido:', error)
     });
+
+    this.rt.navigateByUrl('pedidos');
+
   }
 }
