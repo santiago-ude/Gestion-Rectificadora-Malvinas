@@ -9,7 +9,7 @@ import { ClienteUpdateComponent } from '../cliente-update/cliente-update.compone
 @Component({
   selector: 'app-cliente-list',
   standalone: true,
-  imports: [FormsModule, CommonModule, ClienteUpdateComponent],
+  imports: [FormsModule, CommonModule],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.css'
 })
@@ -65,10 +65,9 @@ export class ClienteListComponent implements OnInit{
       .sort((a, b) => parseInt(a.dni) - parseInt(b.dni));
   }
 
-  enviarModificacion() {
-    if(this.n>=0){
-      this.rt.navigate([`clientes/update/${this.clientes[this.n].id}`])
-    }
+  enviarModificacion(id : string  | undefined) {
+      this.rt.navigate([`clientes/update/${id}`])
+    
   }
   
   // Restablecer filtros

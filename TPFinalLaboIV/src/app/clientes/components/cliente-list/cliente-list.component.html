@@ -21,6 +21,7 @@
         <!-- Botón de Restablecer Filtros -->
         <button class="btn-reset" (click)="resetearFiltros()">Restablecer Filtros</button> 
       </div>
+
     </section>
 
     <!-- Tabla de Resultados de Búsqueda por Nombre o Apellido y DNI -->
@@ -36,6 +37,7 @@
             <th>Domicilio</th>
             <th>Altura</th>
             <th>Metodo de Pago</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +49,7 @@
             <td>{{ cliente.domicilio }}</td>
             <td>{{ cliente.altura }}</td>
             <td>{{ cliente.metodoPago }}</td>
+            <td> <button (click)="enviarModificacion(cliente.id)">Actualizar Datos</button></td>
           </tr>
         </tbody>
       </table>
@@ -66,6 +69,7 @@
           <th>Domicilio</th>
           <th>Altura</th>
           <th>Metodo de Pago</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -77,6 +81,7 @@
           <td>{{ cliente.domicilio }}</td>
           <td>{{ cliente.altura }}</td>
           <td>{{ cliente.metodoPago }}</td>
+          <td><button (click)="enviarModificacion(cliente.id)">Actualizar</button></td>
         </tr>
       </tbody>
     </table>

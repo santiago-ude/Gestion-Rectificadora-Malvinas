@@ -55,12 +55,31 @@ export class ClienteAddComponent {
 
   eventSubmit() {
     console.log(this.formulario.status);
-    
+
     if(this.formulario.invalid)return;
     console.log(this.formulario.getRawValue());
-    
-    this.postCliente();
-    this.formulario.reset();
+
+
+    const dni : string | undefined = this.formulario.get('dni')?.value;
+
+    this.sr.verificarDniExistente(dni).subscribe(
+    {
+
+      next: (existe)=>{
+        if(existe){
+          alert('El DNI ya Existe. Ingrese uno Diferente')
+        }else{
+          this.postCliente();
+          this.formulario.reset()
+        }
+      },
+      error: (e : Error)=>{
+        console.log(e.message);
+        alert('Error al verificar el DNI')
+      }
+    }
+
+    )
   }
   
   postCliente(){

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../service/clientes.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clientes } from '../../interface/clientes';
 
 @Component({
@@ -32,6 +32,7 @@ export class ClienteUpdateComponent implements OnInit {
 sr = inject(ClientesService);
 fr = inject(FormBuilder);
 rt = inject(ActivatedRoute);
+route = inject(Router)
 
 //Coleccion de datos para el formulario
 tipos: string[] = ["nombre","apellido","dni","numero","domicilio","altura"];
@@ -62,6 +63,7 @@ cliente : Clientes ={
 eventSubmit() {
   if(this.formulario.invalid) return;
   this.putclientes();
+  this.route.navigateByUrl('clientes');
 
 }
 

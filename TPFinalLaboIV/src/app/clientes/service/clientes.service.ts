@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError, map } from 'rxjs';
 import { Clientes } from '../interface/clientes';
 
 @Injectable({
@@ -41,6 +41,13 @@ export class ClientesService {
     );
   }
 
+  
+  verificarDniExistente(dni: string | undefined): Observable<boolean> {
+    return this.obtenerClientes().pipe(
+      map(clientes => clientes.some(cliente => cliente.dni === dni)),
+      catchError(this.handleError)
+    );
+  }
 
 
   private handleError(error: HttpErrorResponse): Observable<never> {
