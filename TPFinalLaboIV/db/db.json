@@ -101,6 +101,186 @@
       "metodoPago": "Tarjeta de Credito"
     }
   ],
-  "presupuestos": [],
-  "pedidos": []
+  "presupuestos": [
+    {
+      "id": "7.368172548369181",
+      "fecha": "2024-11-12",
+      "descuento": 10,
+      "items": [
+        {
+          "nombre": "Rectificacion motor",
+          "descripcion": "Limpieza de piezas, arreglo del motor y rearmado.",
+          "precioUnitario": 0,
+          "precioManoObra": 350000,
+          "precioFinal": 350000
+        },
+        {
+          "nombre": "Cambio de aceite",
+          "descripcion": "Limpiar filtros y cambiar el aceite por el nuevo RF450.",
+          "precioUnitario": 50000,
+          "precioManoObra": 140000,
+          "precioFinal": 190000
+        }
+      ],
+      "total": 486000
+    },
+    {
+      "id": "3.963081486702038",
+      "fecha": "2024-11-11",
+      "descuento": 0,
+      "items": [
+        {
+          "nombre": "Rectifiacion Motor",
+          "descripcion": "Abrir, desarmar, limpiar las piezas y rearmar.",
+          "precioUnitario": 0,
+          "precioManoObra": 310000,
+          "precioFinal": 310000
+        },
+        {
+          "nombre": "Cambio de juntas",
+          "descripcion": "Cambiar las juntas que estan viejas por las nuevas r87",
+          "precioUnitario": 100000,
+          "precioManoObra": 80000,
+          "precioFinal": 180000
+        }
+      ],
+      "total": 490000
+    },
+    {
+      "id": "1.997615952009073",
+      "fecha": "2024-11-07",
+      "descuento": 15,
+      "items": [
+        {
+          "nombre": "Cambio de motor",
+          "descripcion": "Desarmar el motor actual y cambiarlo por uno nuevo.",
+          "precioUnitario": 2000000,
+          "precioManoObra": 450000,
+          "precioFinal": 2450000
+        }
+      ],
+      "total": 2082500
+    }
+  ],
+  "pedidos": [
+    {
+      "cliente": {
+        "id": "6ac8",
+        "dni": "45342134",
+        "nombre": "Lautaro",
+        "apellido": "Arias",
+        "numero": "2236209845",
+        "domicilio": "constitucion",
+        "altura": "1654",
+        "metodoPago": "Tarjeta de Credito"
+      },
+      "fechaEntrada": "2024-11-11T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-15T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "Ford",
+      "modeloAuto": "F-150 R",
+      "numeroSerie": "ABCDE12345",
+      "descripcion": "Rectificar motor y cambio de aceite",
+      "presupuesto": {
+        "fecha": "2024-11-12",
+        "descuento": 10,
+        "items": [
+          {
+            "nombre": "Rectificacion motor",
+            "descripcion": "Limpieza de piezas, arreglo del motor y rearmado.",
+            "precioUnitario": 0,
+            "precioManoObra": 350000,
+            "precioFinal": 350000
+          },
+          {
+            "nombre": "Cambio de aceite",
+            "descripcion": "Limpiar filtros y cambiar el aceite por el nuevo RF450.",
+            "precioUnitario": 50000,
+            "precioManoObra": 140000,
+            "precioFinal": 190000
+          }
+        ],
+        "total": 486000,
+        "id": "7.368172548369181"
+      },
+      "id": "7503"
+    },
+    {
+      "id": "a01c",
+      "cliente": {
+        "id": "6a4d",
+        "dni": "46874334",
+        "nombre": "santiago",
+        "apellido": "ayala",
+        "numero": "2236227643",
+        "domicilio": "estrada",
+        "altura": "1498",
+        "metodoPago": "Tarjeta de Credito"
+      },
+      "fechaEntrada": "2024-11-15T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-30T00:00:00.000Z",
+      "estado": "activo",
+      "marcaAuto": "chevrolet",
+      "modeloAuto": "corsa",
+      "numeroSerie": "AHGFE34765",
+      "descripcion": "Rectifiacion del motor y cambio de juntas.",
+      "presupuesto": {
+        "fecha": "2024-11-11",
+        "descuento": 0,
+        "items": [
+          {
+            "nombre": "Rectifiacion Motor",
+            "descripcion": "Abrir, desarmar, limpiar las piezas y rearmar.",
+            "precioUnitario": 0,
+            "precioManoObra": 310000,
+            "precioFinal": 310000
+          },
+          {
+            "nombre": "Cambio de juntas",
+            "descripcion": "Cambiar las juntas que estan viejas por las nuevas r87",
+            "precioUnitario": 100000,
+            "precioManoObra": 80000,
+            "precioFinal": 180000
+          }
+        ],
+        "total": 490000,
+        "id": "3.963081486702038"
+      }
+    },
+    {
+      "id": "5d3d",
+      "cliente": {
+        "dni": "45820343",
+        "nombre": "Santiago",
+        "apellido": "Ude",
+        "numero": "2236226805",
+        "domicilio": "estoril ",
+        "altura": "1045",
+        "metodoPago": "Efectivo",
+        "id": "64cc"
+      },
+      "fechaEntrada": "2024-11-07T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-11T00:00:00.000Z",
+      "estado": "atrasado",
+      "marcaAuto": "Fiat",
+      "modeloAuto": "500",
+      "numeroSerie": "AAJHR87541",
+      "descripcion": "Cambiar el motor por uno nuevo.",
+      "presupuesto": {
+        "fecha": "2024-11-07",
+        "descuento": 15,
+        "items": [
+          {
+            "nombre": "Cambio de motor",
+            "descripcion": "Desarmar el motor actual y cambiarlo por uno nuevo.",
+            "precioUnitario": 2000000,
+            "precioManoObra": 450000,
+            "precioFinal": 2450000
+          }
+        ],
+        "total": 2082500,
+        "id": "1.997615952009073"
+      }
+    }
+  ]
 }
