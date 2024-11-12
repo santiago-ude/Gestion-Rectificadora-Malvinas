@@ -67,7 +67,7 @@
       "numero": "2236226805",
       "domicilio": "estoril ",
       "altura": "1045",
-      "metodoPago": "Tarjeta de Credito",
+      "metodoPago": "Efectivo",
       "id": "64cc"
     },
     {
@@ -99,6 +99,16 @@
       "domicilio": "estrada",
       "altura": "1498",
       "metodoPago": "Tarjeta de Credito"
+    },
+    {
+      "id": "b7ed",
+      "dni": "13704567",
+      "nombre": "Jose",
+      "apellido": "Barrionuevo",
+      "numero": "2236776545",
+      "domicilio": "Dorrego",
+      "altura": "1374",
+      "metodoPago": "Tarjeta de Debito"
     }
   ],
   "presupuestos": [
