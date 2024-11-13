@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PedidoService } from '../../service/pedidos.service';
 import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestoService } from '../../../presupuestos/service/presupuesto.service';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Clientes } from '../../../clientes/interface/clientes';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
@@ -37,7 +37,9 @@ export class PedidosUpdateComponent {
     numeroSerie: ['', Validators.required],
     descripcion: [''],
     presupuesto: [null as Presupuesto | null]
-  });
+  },
+  { validators: this.fechaEntradaAntesDeSalidaValidator() }
+);
 
   ngOnInit(){
     this.router.paramMap.subscribe((params) => {
@@ -64,6 +66,20 @@ export class PedidosUpdateComponent {
     });
   }
 
+   //Validacion para que la fecha de salida no sea antes que la fecha de entrada
+   fechaEntradaAntesDeSalidaValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const fechaEntrada = control.get('fechaEntrada')?.value;
+      const fechaSalidaEstimada = control.get('fechaSalidaEstimada')?.value;
+
+      if (fechaEntrada && fechaSalidaEstimada && new Date(fechaEntrada) > new Date(fechaSalidaEstimada)) {
+        return { fechaInvalida: true };
+      }
+      return null;
+    };
+  }
+
+
   buscarPorId(id: string){
     console.log(id);
     this.pedidoService.getPedidoById(id).subscribe({
@@ -84,8 +100,18 @@ export class PedidosUpdateComponent {
     });
   }
 
+  verificarEstadoPedido() {
+    const fechaSalidaEstimada = new Date(this.formulario.value.fechaSalidaEstimada as string);
+    const hoy = new Date();
+    
+    if (this.formulario.value.estado === 'atrasado' && fechaSalidaEstimada > hoy) {
+      this.formulario.patchValue({ estado: 'activo' });
+    }
+  }
 
 actualizarPedido(){
+  this.verificarEstadoPedido(); // Verificar el estado antes de guardar
+
     if (this.formulario.invalid) return;
 
     const pedido: Pedidos = {
@@ -103,7 +129,7 @@ actualizarPedido(){
       error: (error) => console.error('Error al actualizar pedido:', error)
     });
 
-    this.rt.navigateByUrl('pedidos');
+    
 
   }
 }
