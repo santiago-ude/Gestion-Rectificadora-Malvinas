@@ -49,7 +49,7 @@
             <td>{{ cliente.domicilio }}</td>
             <td>{{ cliente.altura }}</td>
             <td>{{ cliente.metodoPago }}</td>
-            <td> <button (click)="enviarModificacion(cliente.id)">Actualizar Datos</button></td>
+            <td> <button (click)="enviarModificacion(cliente.id)">Actualizar Datos</button> <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button></td>
           </tr>
         </tbody>
       </table>
@@ -81,7 +81,7 @@
           <td>{{ cliente.domicilio }}</td>
           <td>{{ cliente.altura }}</td>
           <td>{{ cliente.metodoPago }}</td>
-          <td><button (click)="enviarModificacion(cliente.id)">Actualizar</button></td>
+          <td> <button (click)="enviarModificacion(cliente.id)">Actualizar</button> <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button></td>
         </tr>
       </tbody>
     </table>

@@ -12,6 +12,8 @@ import { Clientes } from '../../interface/clientes';
   styleUrl: './cliente-update.component.css'
 })
 export class ClienteUpdateComponent implements OnInit {
+
+
   ngOnInit(): void {
     this.rt.paramMap.subscribe(
       {
@@ -28,6 +30,7 @@ export class ClienteUpdateComponent implements OnInit {
       }
     )
   }
+
 //Inyecciones
 sr = inject(ClientesService);
 fr = inject(FormBuilder);
@@ -46,11 +49,12 @@ cliente : Clientes ={
   altura: "",
   metodoPago:""
 };
+dniAux : string = '';
 
  //Reactive form
  formulario = this.fr.nonNullable.group(
   {
-    dni: ["",[Validators.required,Validators.minLength(7)]],
+    dni: ["",[Validators.required,Validators.minLength(8),Validators.maxLength(8)]],
     nombre: ["",[Validators.required,Validators.minLength(2)]],
     apellido: ["",[Validators.required]],
     numero: ["",[Validators.required]],
@@ -62,8 +66,40 @@ cliente : Clientes ={
 
 eventSubmit() {
   if(this.formulario.invalid) return;
-  this.putclientes();
-  this.route.navigateByUrl('clientes');
+  
+  const dni : string | undefined = this.formulario.get('dni')?.value;
+  const dniActual = this.dniAux;
+
+
+  if(dni === dniActual){
+
+    this.putclientes();
+    this.route.navigateByUrl('clientes')
+
+  }
+  else{
+
+  this.sr.verificarDniExistente(dni).subscribe(
+    {
+
+      next: (existe)=>{
+        if(existe){
+          alert('El DNI ya Existe. Ingrese uno Diferente')
+        }else{
+          this.putclientes();
+          this.route.navigateByUrl('clientes')
+        }
+      },
+      error: (e : Error)=>{
+        console.log(e.message);
+        alert('Error al verificar el DNI')
+      }
+    }
+  )
+
+  }
+
+
 
 }
 
@@ -71,8 +107,8 @@ getByidClientes(){
   this.sr.obtenerClienteXDni(this.id).subscribe(
     {
       next:(value)=>{      
-        
-        this.cliente = value;  
+        this.dniAux = value.dni
+        this.cliente = value;   
         if (this.cliente) {
           this.formulario.setValue({
             dni: this.cliente.dni,

@@ -2,14 +2,19 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, throwError, map } from 'rxjs';
 import { Clientes } from '../interface/clientes';
+import { PedidoService } from '../../pedidos/service/pedidos.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
+
+  
+
   http = inject(HttpClient);
   baseUrl = "http://localhost:3000/clientes";
+
 
   obtenerClientes(): Observable<Clientes[]>{
     return this.http.get<Clientes[]>(this.baseUrl).pipe(
@@ -35,7 +40,7 @@ export class ClientesService {
     );
   }
 
-  borrarCliente(id: number): Observable<void> {
+  borrarCliente(id: string | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
@@ -44,10 +49,34 @@ export class ClientesService {
   
   verificarDniExistente(dni: string | undefined): Observable<boolean> {
     return this.obtenerClientes().pipe(
-      map(clientes => clientes.some(cliente => cliente.dni === dni)),
+      map(clientes => clientes.some(cliente => cliente.dni === dni )),
       catchError(this.handleError)
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   private handleError(error: HttpErrorResponse): Observable<never> {
