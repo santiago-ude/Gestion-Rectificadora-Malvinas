@@ -61,14 +61,14 @@
       "id": "64cc"
     },
     {
-      "id": "1de9",
       "dni": "46874235",
       "nombre": "matias",
       "apellido": "antonelli",
-      "numero": "2236202587",
+      "numero": "2235982476",
       "domicilio": "Corderino",
       "altura": "1234",
-      "metodoPago": "Efectivo"
+      "metodoPago": "Efectivo",
+      "id": "1de9"
     },
     {
       "id": "6ac8",
@@ -197,7 +197,7 @@
         "dni": "46874235",
         "nombre": "matias",
         "apellido": "antonelli",
-        "numero": "2236202587",
+        "numero": "2235982476",
         "domicilio": "Corderino",
         "altura": "1234",
         "metodoPago": "Efectivo"
