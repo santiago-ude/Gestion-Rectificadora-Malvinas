@@ -51,16 +51,6 @@
       "metodoPago": "Efectivo"
     },
     {
-      "id": "b34c",
-      "dni": "11498765",
-      "nombre": "Mariano",
-      "apellido": "Lopez",
-      "numero": "2236225698",
-      "domicilio": "Pedraza",
-      "altura": "1874",
-      "metodoPago": "Efectivo"
-    },
-    {
       "dni": "45820343",
       "nombre": "Santiago",
       "apellido": "Ude",
@@ -91,14 +81,14 @@
       "metodoPago": "Tarjeta de Credito"
     },
     {
-      "id": "6a4d",
       "dni": "46874334",
       "nombre": "santiago",
       "apellido": "ayala",
       "numero": "2236227643",
       "domicilio": "estrada",
-      "altura": "1498",
-      "metodoPago": "Tarjeta de Credito"
+      "altura": "2004",
+      "metodoPago": "Tarjeta de Credito",
+      "id": "6a4d"
     },
     {
       "id": "b7ed",
