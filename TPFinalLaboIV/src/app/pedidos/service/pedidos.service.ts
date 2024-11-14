@@ -2,7 +2,7 @@ import { Pedidos } from './../interface/pedidos';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -49,6 +49,14 @@ export class PedidoService {
     );
   }
 
+  obtenerPedidosPorCliente(clienteId: string | null | undefined): Observable<Pedidos[]> {
+    return this.http.get<Pedidos[]>(this.apiUrl).pipe(
+      map((pedidos: Pedidos[]) => 
+        pedidos.filter(pedido => pedido.cliente.id === clienteId)
+      )
+    );
+  }
+  
 
 
   private handleError(error: HttpErrorResponse): Observable<never> {

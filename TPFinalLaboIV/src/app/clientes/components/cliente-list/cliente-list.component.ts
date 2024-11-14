@@ -5,6 +5,9 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ClienteUpdateComponent } from '../cliente-update/cliente-update.component';
+import { PedidoService } from '../../../pedidos/service/pedidos.service';
+import { UnaryFunction } from 'rxjs';
+import { Pedidos } from '../../../pedidos/interface/pedidos';
 
 @Component({
   selector: 'app-cliente-list',
@@ -31,6 +34,8 @@ export class ClienteListComponent implements OnInit{
   //Injecciones
   sr = inject(ClientesService)
   rt = inject(Router)
+  pedidosService = inject(PedidoService);
+
 
   getClientesList(){
     this.sr.obtenerClientes().subscribe(
@@ -77,6 +82,48 @@ export class ClienteListComponent implements OnInit{
     this.clientesEncontrados = []; // Limpia los resultados encontrados
     this.dni = ''
   }
+
+
+  confirmarYEliminarCliente(clienteId: string | null | undefined) {
+    // Paso 1: Verificar si el cliente tiene pedidos asociados
+    this.pedidosService.obtenerPedidosPorCliente(clienteId).subscribe({
+      next: (pedidos : Pedidos[]) => {
+      if (pedidos && pedidos.length > 0) {
+        // Paso 2: Mostrar confirmación solo si hay pedidos asociados
+        const confirmacion = window.confirm('Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?');
+        if (confirmacion) {
+          // Si el usuario confirma, eliminar el cliente
+          this.eliminarCliente(clienteId);
+        }
+      } else {
+        // Si no tiene pedidos asociados, eliminar el cliente directamente
+        this.eliminarCliente(clienteId);
+      }
+    },
+  error: (e : Error) => {console.log(e.message);}});
+  }
+
+  eliminarCliente(clienteId: string | null | undefined) {
+    this.sr.borrarCliente(clienteId).subscribe({
+      next: () => {
+        alert('Cliente eliminado correctamente.');
+        // Aquí puedes añadir lógica para actualizar la lista de clientes
+        this.clientes = this.clientes.filter(client => client.id !== clienteId);
+        this.clientesFiltrados = this.clientesFiltrados.filter(client => client.id !== clienteId);
+        this.clientesEncontrados = this.clientesEncontrados.filter(client => client.id !== clienteId);
+      },
+      error: (error) => console.error('Error al eliminar cliente:', error)
+    });
+  }
+  
+  // Esta función carga los clientes y la llamas en el ngOnInit
+  cargarClientes() {
+    this.sr.obtenerClientes().subscribe({
+      next: (clientes) => this.clientes = clientes,
+      error: (error) => console.error('Error al cargar clientes:', error)
+    });
+  }
+  
 
 
 

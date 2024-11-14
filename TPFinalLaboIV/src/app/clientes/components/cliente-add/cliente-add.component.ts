@@ -54,11 +54,7 @@ export class ClienteAddComponent {
   )
 
   eventSubmit() {
-    console.log(this.formulario.status);
-
     if(this.formulario.invalid)return;
-    console.log(this.formulario.getRawValue());
-
 
     const dni : string | undefined = this.formulario.get('dni')?.value;
 
