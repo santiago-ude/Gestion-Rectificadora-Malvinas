@@ -55,3 +55,12 @@ img{
     width: 12rem;
     padding-left: 2.5rem;
 }
+footer ul li a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    color: #ffcc00; /* Cambia el color al pasar el mouse */
+}
