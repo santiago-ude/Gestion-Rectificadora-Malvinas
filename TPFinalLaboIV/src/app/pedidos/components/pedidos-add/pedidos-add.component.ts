@@ -123,11 +123,12 @@ export class PedidosAddComponent {
     return items.reduce((suma, item) => suma + item.precioFinal, 0);
   }
 
-
+ 
 
   //Verifica el presupuesto
   //Verifica el pedido y almacena en el json-server
   agregarPedido() {
+
     if (this.formulario.invalid || !this.auxiliarPresupuesto) {
       alert('El formulario no es válido o el presupuesto no está asignado.');
       return;

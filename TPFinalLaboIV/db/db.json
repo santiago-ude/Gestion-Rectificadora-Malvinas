@@ -231,7 +231,6 @@
   ],
   "pedidos": [
     {
-      "id": "c5f9",
       "cliente": {
         "id": "6ac8",
         "dni": "45342134",
@@ -263,10 +262,10 @@
         ],
         "total": 350000,
         "id": "7.740476137146781"
-      }
+      },
+      "id": "c5f9"
     },
     {
-      "id": "9cc7",
       "cliente": {
         "id": "1de9",
         "dni": "46874235",
@@ -278,7 +277,7 @@
         "metodoPago": "Efectivo"
       },
       "fechaEntrada": "2024-11-12T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-23T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-20T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "chevrolet",
       "modeloAuto": "corsa 2011",
@@ -305,10 +304,10 @@
         ],
         "total": 387000,
         "id": "4.194409230265461"
-      }
+      },
+      "id": "9cc7"
     },
     {
-      "id": "be0d",
       "cliente": {
         "dni": "34786234",
         "nombre": "Rodrigo",
@@ -320,7 +319,7 @@
         "id": "2fa9"
       },
       "fechaEntrada": "2024-11-05T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-11T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-12T00:00:00.000Z",
       "estado": "atrasado",
       "marcaAuto": "Fiat",
       "modeloAuto": "500",
@@ -340,7 +339,8 @@
         ],
         "total": 95000,
         "id": "8.404510391197078"
-      }
+      },
+      "id": "be0d"
     }
   ]
 }
