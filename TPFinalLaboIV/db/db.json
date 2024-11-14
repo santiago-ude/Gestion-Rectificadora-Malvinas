@@ -113,66 +113,6 @@
   ],
   "presupuestos": [
     {
-      "id": "7.368172548369181",
-      "fecha": "2024-11-12",
-      "descuento": 10,
-      "items": [
-        {
-          "nombre": "Rectificacion motor",
-          "descripcion": "Limpieza de piezas, arreglo del motor y rearmado.",
-          "precioUnitario": 0,
-          "precioManoObra": 350000,
-          "precioFinal": 350000
-        },
-        {
-          "nombre": "Cambio de aceite",
-          "descripcion": "Limpiar filtros y cambiar el aceite por el nuevo RF450.",
-          "precioUnitario": 50000,
-          "precioManoObra": 140000,
-          "precioFinal": 190000
-        }
-      ],
-      "total": 486000
-    },
-    {
-      "id": "3.963081486702038",
-      "fecha": "2024-11-11",
-      "descuento": 0,
-      "items": [
-        {
-          "nombre": "Rectifiacion Motor",
-          "descripcion": "Abrir, desarmar, limpiar las piezas y rearmar.",
-          "precioUnitario": 0,
-          "precioManoObra": 310000,
-          "precioFinal": 310000
-        },
-        {
-          "nombre": "Cambio de juntas",
-          "descripcion": "Cambiar las juntas que estan viejas por las nuevas r87",
-          "precioUnitario": 100000,
-          "precioManoObra": 80000,
-          "precioFinal": 180000
-        }
-      ],
-      "total": 490000
-    },
-    {
-      "id": "1.997615952009073",
-      "fecha": "2024-11-07",
-      "descuento": 15,
-      "items": [
-        {
-          "nombre": "Cambio de motor",
-          "descripcion": "Desarmar el motor actual y cambiarlo por uno nuevo.",
-          "precioUnitario": 2000000,
-          "precioManoObra": 450000,
-          "precioFinal": 2450000
-        }
-      ],
-      "total": 2082500
-    },
-    {
-      "id": "7.740476137146781",
       "fecha": "2024-11-12",
       "descuento": 0,
       "items": [
@@ -184,12 +124,12 @@
           "precioFinal": 350000
         }
       ],
-      "total": 0
+      "total": 350000,
+      "id": "7.740476137146781"
     },
     {
-      "id": "4.194409230265461",
       "fecha": "2024-11-12",
-      "descuento": 0,
+      "descuento": 10,
       "items": [
         {
           "nombre": "Rectificacion motor",
@@ -206,12 +146,12 @@
           "precioFinal": 180000
         }
       ],
-      "total": 0
+      "total": 387000,
+      "id": "4.194409230265461"
     },
     {
-      "id": "4.554836573254393",
       "fecha": "2024-11-12",
-      "descuento": 0,
+      "descuento": 5,
       "items": [
         {
           "nombre": "Rectificacion motor",
@@ -221,22 +161,8 @@
           "precioFinal": 100000
         }
       ],
-      "total": 0
-    },
-    {
-      "id": "8.404510391197078",
-      "fecha": "2024-11-12",
-      "descuento": 0,
-      "items": [
-        {
-          "nombre": "Rectificacion motor",
-          "descripcion": "Desarmar, limpiar las piezas, mantenimiento de rutina y ensamblar de nuevo.",
-          "precioUnitario": 0,
-          "precioManoObra": 100000,
-          "precioFinal": 100000
-        }
-      ],
-      "total": 0
+      "total": 95000,
+      "id": "8.404510391197078"
     }
   ],
   "pedidos": [

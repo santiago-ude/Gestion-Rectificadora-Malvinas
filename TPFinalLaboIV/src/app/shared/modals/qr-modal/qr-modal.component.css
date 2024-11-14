@@ -1,0 +1,21 @@
+.modal-container{
+    text-align: center;
+}
+img{
+    width: 200px;
+    height: 200px;
+    margin-top: 15px;
+}
+button{
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom:1rem ;
+} 
+button:hover{
+    background-color: #005a8c;
+}
