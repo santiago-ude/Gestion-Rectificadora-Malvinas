@@ -4,7 +4,7 @@ import { CuerpoComponent } from "../cuerpo/cuerpo.component";
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-  selector: 'app-page',
+  selector: 'app-header',
   standalone: true,
   imports: [MenuComponent, CuerpoComponent, FooterComponent],
   templateUrl: './page.component.html',
