@@ -8,11 +8,12 @@ import { ClienteUpdateComponent } from '../cliente-update/cliente-update.compone
 import { PedidoService } from '../../../pedidos/service/pedidos.service';
 import { UnaryFunction } from 'rxjs';
 import { Pedidos } from '../../../pedidos/interface/pedidos';
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-cliente-list',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatButtonModule],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.css'
 })
@@ -53,7 +54,8 @@ export class ClienteListComponent implements OnInit{
     if (event.key === "Enter") {
       this.n = this.clientes.findIndex((c) => c.dni === dni);
       if (this.n === -1) {
-        alert("No está cargado dicho DNI");
+
+        //alert("No está cargado dicho DNI");
       }
       this.clientesEncontrados = this.n >= 0 ? [this.clientes[this.n]] : [];
     }
