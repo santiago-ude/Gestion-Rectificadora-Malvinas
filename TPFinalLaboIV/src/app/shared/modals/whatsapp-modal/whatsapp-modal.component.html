@@ -1,0 +1,6 @@
+<h2>Enviar Notificación a {{ data.clienteNombre }}</h2>
+<p>¿Desea enviar un mensaje a {{ data.clienteNombre }} a través de WhatsApp?</p>
+<div class="modal-actions">
+  <button (click)="openWhatsapp()" class="confirm-btn">Confirmar</button>
+  <button (click)="close()" class="cancel-btn">Cancelar</button>
+</div>

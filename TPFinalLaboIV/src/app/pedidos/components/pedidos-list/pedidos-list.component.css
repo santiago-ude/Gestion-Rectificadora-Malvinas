@@ -58,7 +58,16 @@ button.pdf-btn{
     border: none;
     transition: background-color 0.3s;
 }
-  
+.notificar-btn{
+    background-color: #25D366;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+button.notificar-btn:hover{
+    background-color: #075E54;
+}
+
 button.pdf-btn:hover{
     background-color: #025aa5;
 }
@@ -85,7 +94,20 @@ a.actualizar-btn{
 a.actualizar-btn:hover{
     background-color: #31b0d5;
 }
-  
+
+.detalles-btn {
+    background-color: #ffb100;
+    color: #4d3701;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.detalles-btn:hover {
+    background-color: #ffcf5e; 
+    transform: scale(1.05); 
+}
+
 button:disabled, a:disabled{
     background-color: #ccc;
     cursor: not-allowed;
@@ -95,19 +117,19 @@ button:disabled, a:disabled{
 .estado-activo{
    color: green !important;  /* El important te fuerza a que ocurra esta linea */
     font-weight: bold;
-  }
+}
   
-  .estado-entregado{
+.estado-entregado{
     color: orange !important; 
     font-weight: bold;
-  }
+}
   
-  .estado-atrasado{
+.estado-atrasado{
     color: red !important;
     font-weight: bold;
-  }
+}
 
-  .filtros{
+.filtros{
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
@@ -145,6 +167,8 @@ button:disabled, a:disabled{
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
 .filtro-estado button:hover, .filtro-fecha button:hover, .reset-button:hover{
@@ -161,6 +185,8 @@ button:disabled, a:disabled{
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
 input[type="date"]{
@@ -200,6 +226,8 @@ input[type="date"]{
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
 .filtro-fecha-contenedor button:hover{
@@ -253,6 +281,8 @@ hr{
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s;
+
 }
 
 .filtro-cliente-boton:hover{
