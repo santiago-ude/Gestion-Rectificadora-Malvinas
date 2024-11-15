@@ -40,7 +40,7 @@
   <h2 class="subtitulo-1">Lista de Pedidos</h2>
 
   <!-- Contenedor individual de cada pedido -->
-  <div *ngFor="let pedido of pedidosFiltrados; track: $index" class="pedido-datos">
+  <div *ngFor="let pedido of pedidosFiltrados; trackBy: trackById" class="pedido-datos">
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>

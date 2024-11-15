@@ -18,6 +18,9 @@ import { PedidosCercanosModalComponent } from '../../../shared/modals/pedidos-ce
   styleUrls: ['./pedidos-list.component.css']
 })
 export class PedidosListComponent {
+  trackById(index: number, pedido: Pedidos): string | null | undefined {
+    return pedido.id;
+  }
   ts = inject(PedidoService);
   whatsappService = inject(WhatsappService);
   dialog = inject(MatDialog);
@@ -58,13 +61,13 @@ export class PedidosListComponent {
     const inicio = new Date(fechaInicio);
     const fin = new Date(fechaFin);
 
-    this.pedidosFiltrados = this.listaPedidos.filter(pedido => {
+    this.pedidosFiltrados = this.listaPedidos.filter(pedido =>{
       const fechaEntrada = new Date(pedido.fechaEntrada);
       return fechaEntrada >= inicio && fechaEntrada <= fin;
     });
   }
 
-  filtrarPorCliente() {
+  filtrarPorCliente(){
     const filtro = this.clienteFiltro.toLowerCase();
     this.pedidosFiltrados = this.listaPedidos.filter(pedido =>
       pedido.cliente.nombre.toLowerCase().includes(filtro) ||
@@ -73,12 +76,12 @@ export class PedidosListComponent {
   }
 
 
-  resetearFiltros() {
+  resetearFiltros(){
     this.pedidosFiltrados = [...this.listaPedidos]; // Restaura la lista original
     this.clienteFiltro = ''; 
   }
 
-  eliminarPedidos(id: string | null | undefined) {
+  eliminarPedidos(id: string | null | undefined){
     this.ts.deletePedido(id).subscribe({
       next: () => {
         alert("Pedido Eliminado.");
@@ -90,27 +93,44 @@ export class PedidosListComponent {
     });
   }
 
-  verificarPedidosCercanos() {
+  verificarPedidosCercanos(){
     const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0); 
-  
+    hoy.setHours(0, 0, 0, 0); // Normalizamos la fecha 
+
     this.pedidosCercanos = this.listaPedidos.filter(pedido => {
-      const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
-      fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizar la fecha de salida estimada
-  
-      const diferenciaDias = (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
-      const estaActivo = pedido.estado === 'activo';
-      const esProntoAFinalizar = diferenciaDias >= 0 && diferenciaDias <= this.diasParaFinalizar;
-  
-      // Marca los pedidos como "pronto a finalizar" si están activos y la diferencia está en el rango
-      if (estaActivo && esProntoAFinalizar) {
-        pedido.estado = 'activo'; // Confirmamos que esté en estado "activo"
-        return true;
-      }
-  
-      return false;
+        const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
+        fechaSalidaEstimada.setDate(fechaSalidaEstimada.getDate()+1);
+        fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizamos la fecha de salida estimada 
+
+        const diferenciaDias= (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
+
+        const esActivoOProntoAFinalizar=
+            diferenciaDias>=0 && diferenciaDias <= this.diasParaFinalizar;
+
+        // Siempre devolvemos `true` si cumple los criterios de pronto a finalizar
+        return esActivoOProntoAFinalizar;
     });
-  }
+
+    //actualizamos automaticamente el estado a activo si cumple los criterios
+    this.pedidosCercanos.forEach(pedido => {
+        if (pedido.estado !== 'entregado' && pedido.estado !== 'activo') {
+            pedido.estado = 'activo';
+            this.ts.updatePedido(pedido.id, { ...pedido, estado: 'activo' }).subscribe({
+                next: () => console.log(`Pedido ID: ${pedido.id} actualizado a 'activo'.`),
+                error: (e: Error) => console.error(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
+            });
+        }
+    });
+     // Abrir el modal automáticamente si hay pedidos cercanos
+  // if (this.pedidosCercanos.length > 0) {
+  //    this.dialog.open(PedidosCercanosModalComponent, {
+  //     data: { pedidos: this.pedidosCercanos },
+  //      width: '500px',
+  //     height: 'auto', 
+  //     maxHeight: '600px' 
+  //    });
+  //  }
+}
   
 
   // Método  para abrir el modal manualmente con un botón
@@ -124,33 +144,34 @@ export class PedidosListComponent {
   }
   
   
-  actualizarEstadoPedidosAtrasados() {
+  actualizarEstadoPedidosAtrasados(){
     const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0); // Normalizar la fecha de hoy a medianoche
-  
+    hoy.setHours(0, 0, 0, 0); 
+
     this.listaPedidos.forEach(pedido => {
-      const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
-      fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizar la fecha de salida estimada
-  
-      // Si la fecha de salida estimada es antes de hoy y no está entregado, actualizar a atrasado
-      if (fechaSalidaEstimada < hoy && pedido.estado !== 'entregado' && pedido.estado !== 'atrasado') {
-        pedido.estado = 'atrasado';
-        this.ts.updatePedido(pedido.id, { ...pedido, estado: 'atrasado' }).subscribe({
-          next: () => console.log(`Pedido ID: ${pedido.id} actualizado a 'atrasado'.`),
-          error: (e: Error) => console.log(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
-        });
-      }
-      // Abrir el modal automáticamente si hay pedidos cercanos
-    // if (this.pedidosCercanos.length > 0) {
-    //   this.dialog.open(PedidosCercanosModalComponent, {
-    //     data: { pedidos: this.pedidosCercanos },
-    //     width: '500px',
-    //     height: 'auto', 
-    //     maxHeight: '600px' 
-    //   });
-    // }
+        const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
+        fechaSalidaEstimada.setDate(fechaSalidaEstimada.getDate()+1); //agregarle un dia ya que el new Date le quita 1
+        fechaSalidaEstimada.setHours(0, 0, 0, 0); 
+        // console.log(fechaSalidaEstimada)
+
+        if (fechaSalidaEstimada < hoy && pedido.estado !== 'entregado' && pedido.estado !== 'atrasado') {
+            // Marcamos como atrasado si la fecha ya pasó
+            pedido.estado = 'atrasado';
+            this.ts.updatePedido(pedido.id, { ...pedido, estado: 'atrasado' }).subscribe({
+                next: () => console.log(`Pedido ID: ${pedido.id} actualizado a 'atrasado'.`),
+                error: (e: Error) => console.error(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
+            });
+        } else if (fechaSalidaEstimada >= hoy && pedido.estado !== 'entregado' && pedido.estado !== 'activo') {
+            // Marcamos como activo si la fecha es hoy o futura
+            pedido.estado = 'activo';
+            this.ts.updatePedido(pedido.id, { ...pedido, estado: 'activo' }).subscribe({
+                next: () => console.log(`Pedido ID: ${pedido.id} actualizado a 'activo'.`),
+                error: (e: Error) => console.error(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
+            });
+        }
     });
-  }
+   
+}
 
 confirmarEntrega(pedido: Pedidos) {
   const confirmar = window.confirm("¿Estás seguro de que quieres marcar este pedido como entregado?");
