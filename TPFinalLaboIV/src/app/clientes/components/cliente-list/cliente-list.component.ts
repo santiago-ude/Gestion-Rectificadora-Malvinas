@@ -9,6 +9,7 @@ import { PedidoService } from '../../../pedidos/service/pedidos.service';
 import { UnaryFunction } from 'rxjs';
 import { Pedidos } from '../../../pedidos/interface/pedidos';
 import {MatButtonModule} from "@angular/material/button";
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-cliente-list',
@@ -36,7 +37,7 @@ export class ClienteListComponent implements OnInit{
   sr = inject(ClientesService)
   rt = inject(Router)
   pedidosService = inject(PedidoService);
-
+  dialogoGenerico = inject(DialogoGenericoComponent);
 
   getClientesList(){
     this.sr.obtenerClientes().subscribe(
@@ -54,6 +55,8 @@ export class ClienteListComponent implements OnInit{
     if (event.key === "Enter") {
       this.n = this.clientes.findIndex((c) => c.dni === dni);
       if (this.n === -1) {
+
+      this.dialogoGenerico.abrirDialogo("No está cargado dicho DNI");
 
         //alert("No está cargado dicho DNI");
       }
@@ -108,7 +111,9 @@ export class ClienteListComponent implements OnInit{
   eliminarCliente(clienteId: string | null | undefined) {
     this.sr.borrarCliente(clienteId).subscribe({
       next: () => {
-        alert('Cliente eliminado correctamente.');
+        //alert('Cliente eliminado correctamente.');
+        this.dialogoGenerico.abrirDialogo("Cliente eliminado correctamente");
+
         // Aquí puedes añadir lógica para actualizar la lista de clientes
         this.clientes = this.clientes.filter(client => client.id !== clienteId);
         this.clientesFiltrados = this.clientesFiltrados.filter(client => client.id !== clienteId);

@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestosAddComponent } from '../../../presupuestos/components/presupuestos-add/presupuestos-add.component';
 import { Item } from '../../../presupuestos/interface/item';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-pedidos-add',
@@ -30,6 +31,7 @@ export class PedidosAddComponent {
   //Servicio de peticiones para presupuestos
   presupuestoService = inject(PresupuestoService);
 
+  dialogoGenerico = inject(DialogoGenericoComponent);
   
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
@@ -130,7 +132,8 @@ export class PedidosAddComponent {
   agregarPedido() {
 
     if (this.formulario.invalid || !this.auxiliarPresupuesto) {
-      alert('El formulario no es válido o el presupuesto no está asignado.');
+      this.dialogoGenerico.abrirDialogo("El formulario no es válido o el presupuesto no está asignado");
+      //alert('El formulario no es válido o el presupuesto no está asignado.');
       return;
     }
 
@@ -158,7 +161,8 @@ export class PedidosAddComponent {
     this.cargarPresupuesto = false;
 
     this.pedidoService.addPedido(pedido).subscribe({
-      next: () => alert('Pedido agregado exitosamente'),
+      next: () => this.dialogoGenerico.abrirDialogo("Pedido agregado exitosamente"),
+      //alert('Pedido agregado exitosamente'),
       error: (error) => console.error('Error al agregar pedido:', error)
     });
 

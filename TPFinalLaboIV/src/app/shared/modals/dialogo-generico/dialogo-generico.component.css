@@ -1,0 +1,44 @@
+.modal-container{
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-title{
+    color: #1976d2;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+mat-dialog-content {
+    display: flex; /* Enables flexbox for the content area */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+.center-content {
+   text-align: center;
+   margin: 0;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button{
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: #0275d8;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+button:hover{
+    background-color: #025aa5;
+
+}
+
+h2{
+    margin-left: 20px;
+}

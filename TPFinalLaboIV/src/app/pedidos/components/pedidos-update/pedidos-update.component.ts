@@ -8,6 +8,7 @@ import { Clientes } from '../../../clientes/interface/clientes';
 import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { Pedidos } from '../../interface/pedidos';
 import { CommonModule } from '@angular/common';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-pedidos-update',
@@ -24,6 +25,7 @@ export class PedidosUpdateComponent {
   fb = inject(FormBuilder);
   router = inject(ActivatedRoute);
   rt = inject(Router);
+  dialogoGenerico = inject(DialogoGenericoComponent);
   clientes: Clientes[] = [];
   presupuestos: Presupuesto[] = [];
 
@@ -125,7 +127,8 @@ actualizarPedido(){
 
     console.log(pedido.id);
     this.pedidoService.updatePedido (this.id, pedido).subscribe({
-      next: () => alert("Pedido actualizado con éxito"),
+      next: () => this.dialogoGenerico.abrirDialogo("Pedido actulizado con éxito!"),
+          //alert("Pedido actualizado con éxito"),
       error: (error) => console.error('Error al actualizar pedido:', error)
     });
 
