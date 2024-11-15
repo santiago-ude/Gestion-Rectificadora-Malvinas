@@ -168,7 +168,7 @@
         "metodoPago": "Tarjeta de Credito"
       },
       "fechaEntrada": "2024-11-12T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-15T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-16T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "Ford",
       "modeloAuto": "F-150 R",
@@ -202,8 +202,8 @@
         "altura": "1234",
         "metodoPago": "Efectivo"
       },
-      "fechaEntrada": "2024-11-12T00:00:00.000Z",
-      "fechaSalidaEstimada": "2024-11-20T00:00:00.000Z",
+      "fechaEntrada": "2024-11-10T00:00:00.000Z",
+      "fechaSalidaEstimada": "2024-11-15T00:00:00.000Z",
       "estado": "activo",
       "marcaAuto": "chevrolet",
       "modeloAuto": "corsa 2011",
