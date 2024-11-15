@@ -35,19 +35,20 @@ export class PedidosListComponent {
     this.listarPedidos();
   }
 
-  listarPedidos(){
+  listarPedidos() {
     this.ts.getPedidos().subscribe({
-      next: (pedidos: Pedidos[]) =>{
+      next: (pedidos: Pedidos[]) => {
         this.listaPedidos = pedidos;
-        this.pedidosFiltrados = pedidos; // Inicializa con todos los pedidos
-        this.verificarPedidosCercanos(); // Verifica si hay pedidos a punto de finalizar
+        this.pedidosFiltrados = pedidos;
         this.actualizarEstadoPedidosAtrasados();
+        this.verificarPedidosCercanos();
       },
       error: (e: Error) => {
         console.log(e.message);
       }
     });
   }
+
 
   filtrarPorEstado(estado: 'activo' | 'entregado' | 'atrasado'){
     this.pedidosFiltrados = this.listaPedidos.filter(pedido => pedido.estado === estado);
@@ -91,24 +92,28 @@ export class PedidosListComponent {
 
   verificarPedidosCercanos() {
     const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0); 
+  
     this.pedidosCercanos = this.listaPedidos.filter(pedido => {
       const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
+      fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizar la fecha de salida estimada
+  
       const diferenciaDias = (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
-      return pedido.estado !== 'entregado' && diferenciaDias > 0 && diferenciaDias <= this.diasParaFinalizar;
+      const estaActivo = pedido.estado === 'activo';
+      const esProntoAFinalizar = diferenciaDias >= 0 && diferenciaDias <= this.diasParaFinalizar;
+  
+      // Marca los pedidos como "pronto a finalizar" si están activos y la diferencia está en el rango
+      if (estaActivo && esProntoAFinalizar) {
+        pedido.estado = 'activo'; // Confirmamos que esté en estado "activo"
+        return true;
+      }
+  
+      return false;
     });
-
-    // Abrir el modal automáticamente si hay pedidos cercanos
-    // if (this.pedidosCercanos.length > 0) {
-    //   this.dialog.open(PedidosCercanosModalComponent, {
-    //     data: { pedidos: this.pedidosCercanos },
-    //     width: '500px',
-    //     height: 'auto', 
-    //     maxHeight: '600px' 
-    //   });
-    // }
   }
+  
 
-  // Método opcional para abrir el modal manualmente con un botón
+  // Método  para abrir el modal manualmente con un botón
   abrirModalPedidosCercanos() {
     this.dialog.open(PedidosCercanosModalComponent, {
       data: { pedidos: this.pedidosCercanos },
@@ -121,11 +126,13 @@ export class PedidosListComponent {
   
   actualizarEstadoPedidosAtrasados() {
     const hoy = new Date();
-
+    hoy.setHours(0, 0, 0, 0); // Normalizar la fecha de hoy a medianoche
+  
     this.listaPedidos.forEach(pedido => {
       const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
-
-      // Si la fecha de salida ya pasó y el estado no es entregado, se cambia a "atrasado"
+      fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizar la fecha de salida estimada
+  
+      // Si la fecha de salida estimada es antes de hoy y no está entregado, actualizar a atrasado
       if (fechaSalidaEstimada < hoy && pedido.estado !== 'entregado' && pedido.estado !== 'atrasado') {
         pedido.estado = 'atrasado';
         this.ts.updatePedido(pedido.id, { ...pedido, estado: 'atrasado' }).subscribe({
@@ -133,6 +140,15 @@ export class PedidosListComponent {
           error: (e: Error) => console.log(`Error al actualizar pedido ID: ${pedido.id}: ${e.message}`)
         });
       }
+      // Abrir el modal automáticamente si hay pedidos cercanos
+    // if (this.pedidosCercanos.length > 0) {
+    //   this.dialog.open(PedidosCercanosModalComponent, {
+    //     data: { pedidos: this.pedidosCercanos },
+    //     width: '500px',
+    //     height: 'auto', 
+    //     maxHeight: '600px' 
+    //   });
+    // }
     });
   }
 
