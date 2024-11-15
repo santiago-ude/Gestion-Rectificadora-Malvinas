@@ -5,6 +5,10 @@ import jsPDF from 'jspdf';
 import { RouterModule } from '@angular/router';
 import {  CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { WhatsappService } from '../../service/whatsapp.service';
+import { WhatsappModalComponent } from '../../../shared/modals/whatsapp-modal/whatsapp-modal.component';
+import { MatDialog} from '@angular/material/dialog';
+import { PedidosCercanosModalComponent } from '../../../shared/modals/pedidos-cercanos-modal/pedidos-cercanos-modal.component';
 
 @Component({
   selector: 'app-pedidos-list',
@@ -15,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class PedidosListComponent {
   ts = inject(PedidoService);
+  whatsappService = inject(WhatsappService);
+  dialog = inject(MatDialog);
 
   listaPedidos: Pedidos[] = [];
   pedidosFiltrados: Pedidos[] = [];
@@ -90,8 +96,29 @@ export class PedidosListComponent {
       const diferenciaDias = (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
       return pedido.estado !== 'entregado' && diferenciaDias > 0 && diferenciaDias <= this.diasParaFinalizar;
     });
+
+    // Abrir el modal automáticamente si hay pedidos cercanos
+    // if (this.pedidosCercanos.length > 0) {
+    //   this.dialog.open(PedidosCercanosModalComponent, {
+    //     data: { pedidos: this.pedidosCercanos },
+    //     width: '500px',
+    //     height: 'auto', 
+    //     maxHeight: '600px' 
+    //   });
+    // }
   }
 
+  // Método opcional para abrir el modal manualmente con un botón
+  abrirModalPedidosCercanos() {
+    this.dialog.open(PedidosCercanosModalComponent, {
+      data: { pedidos: this.pedidosCercanos },
+      width: '500px',
+      height: 'auto', 
+      maxHeight: '600px' 
+    });
+  }
+  
+  
   actualizarEstadoPedidosAtrasados() {
     const hoy = new Date();
 
@@ -211,4 +238,18 @@ entregarPedido(pedido: Pedidos) {
     
     doc.save(`Pedido_${pedido.id}.pdf`);
   }
+
+    // Método para abrir el modal de confirmación
+    notificarCliente(pedido: Pedidos) {
+      const numeroTelefono = pedido.cliente.numero;
+      const mensaje = `Estimado ${pedido.cliente.nombre}, su pedido  está listo para ser recogido en Rectificadora Malvinas.`;
+      const enlaceWhatsApp = this.whatsappService.generarEnlace(numeroTelefono, mensaje);
+  
+      // Abre el modal y pasa los datos de enlace y nombre del cliente
+      this.dialog.open(WhatsappModalComponent, {
+        data: { enlace: enlaceWhatsApp, clienteNombre: pedido.cliente.nombre },
+        width: '450px',
+        height: '200px'
+      });
+    }
 }

@@ -1,6 +1,5 @@
 <div class="filtros">
   <h3>Filtrar Pedidos</h3>
-
   <!-- Filtrar por estado -->
   <div class="filtro-estado">
     <button (click)="filtrarPorEstado('activo')">Estado: Activo</button>
@@ -18,6 +17,8 @@
     
     <button (click)="filtrarPorFechaEntrada(fechaInicio, fechaFin)">Filtrar por Fecha</button>
   </div>
+
+  <!-- Filtro por cliente -->
   <div class="filtro-cliente-contenedor">
     <input type="text" [(ngModel)]="clienteFiltro" placeholder="Buscar por apellido o nombre de cliente" class="filtro-cliente-input">
     <button (click)="filtrarPorCliente()" class="filtro-cliente-boton">Filtrar por Cliente</button>
@@ -28,20 +29,24 @@
 </div>
 
 <div *ngIf="pedidosCercanos.length > 0" class="alerta-pedidos-cercanos">
-  <p>⚠️ Hay {{ pedidosCercanos.length }} pedido(s) que están a punto de finalizar.</p>
+  <p>
+    ⚠️ Hay {{ pedidosCercanos.length }} pedido(s) que están a punto de finalizar.
+  </p>
+  <button mat-button (click)="abrirModalPedidosCercanos()" class="detalles-btn">Ver detalles</button>
 </div>
 
-
+<!-- Lista de Pedidos -->
 <div class="pedido-lista">
   <h2 class="subtitulo-1">Lista de Pedidos</h2>
-  <div class="pedido-datos">
-@for (pedido of pedidosFiltrados; track $index) {
+
+  <!-- Contenedor individual de cada pedido -->
+  <div *ngFor="let pedido of pedidosFiltrados; track: $index" class="pedido-datos">
     <p>ID: {{ pedido.id }}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>
     <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
       Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy':'UTC' }}
-    </p>    
+    </p>
     <p class="estado" [ngClass]="{
       'estado-activo': pedido.estado === 'activo',
       'estado-entregado': pedido.estado === 'entregado',
@@ -55,7 +60,8 @@
       <p>ID del Presupuesto: {{pedido.presupuesto.id}}</p>
       <p>Fecha del Presupuesto: {{pedido.presupuesto.fecha | date}}</p>
       <p>Descuento: {{pedido.presupuesto.descuento}}%</p>
-      <p>Total: ${{pedido.presupuesto.total}} </p>
+      <p>Total: ${{pedido.presupuesto.total}}</p>
+
       <!-- Listado de Items del Presupuesto -->
       <h4>Items del Presupuesto:</h4>
       <ul>
@@ -68,13 +74,14 @@
         </li>
       </ul>
     </div>
+    
+    <!-- Contenedor de botones -->
     <div class="botones">
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>
       <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
       <button (click)="confirmarEntrega(pedido)" class="entregar-btn">Entregar Pedido</button>
       <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Actualizar</a>
+      <button (click)="notificarCliente(pedido)" class="notificar-btn">Notificar Cliente</button>
     </div>
-    <hr>
-  }
   </div>
 </div>

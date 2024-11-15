@@ -1,0 +1,16 @@
+<div class="modal-container">
+    <h2 class="modal-title">Pedidos Próximos a Finalizar⚠️</h2>
+    <div *ngIf="data.pedidos && data.pedidos.length > 0">
+      <ul class="pedido-list">
+        <li *ngFor="let pedido of data.pedidos" class="pedido-item">
+          <p><strong>ID:</strong> {{ pedido.id }}</p>
+          <p><strong>Cliente:</strong> {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+          <p><strong>Fecha de Salida Estimada:</strong> {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy':'UTC' }}</p>
+          <hr class="divider">
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button mat-button (click)="cerrar()">Cerrar</button>
+    </div>
+  </div>
