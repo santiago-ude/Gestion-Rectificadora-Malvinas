@@ -5,6 +5,7 @@ import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } 
 import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
 import { CommonModule } from '@angular/common';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-presupuestos-add',
@@ -26,6 +27,7 @@ export class PresupuestosAddComponent {
 
   fb =  inject(FormBuilder);
   PS =  inject(PresupuestoService);
+  dialogoGenerico = inject(DialogoGenericoComponent);
 
   formulario = this.fb.nonNullable.group(
     {
@@ -75,7 +77,8 @@ export class PresupuestosAddComponent {
         {
           next: (pres : Presupuesto) => {
             console.log(pres);
-            alert('presupuesto guardado...')
+            this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
+            //alert('presupuesto guardado...')
           },
           error: (e: Error)=>{
             console.log(e.message)

@@ -4,6 +4,7 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.component";
 import { compileOpaqueAsyncClassMetadata } from '@angular/compiler';
 import { CommonModule } from '@angular/common';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-presupuestos-list',
@@ -26,7 +27,7 @@ export class PresupuestosListComponent implements OnInit{
 
   
   PS = inject(PresupuestoService);
-
+  dialogoGenerico = inject(DialogoGenericoComponent);
 
   //Trae los presupuestos del json-server
   //Los almacena en la lista auxiliar
@@ -52,7 +53,8 @@ export class PresupuestosListComponent implements OnInit{
       {
         next: ()=>{
           this.listaPresupuestos = this.listaPresupuestos.filter((pres)=> pres.id !== id);
-          alert('Presupuesto Eliminado...')
+          //alert('Presupuesto Eliminado...')
+          this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
         },
         error: (e : Error)=>{
           console.log(e.message);

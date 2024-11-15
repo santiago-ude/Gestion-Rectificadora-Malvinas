@@ -9,6 +9,7 @@ import { WhatsappService } from '../../service/whatsapp.service';
 import { WhatsappModalComponent } from '../../../shared/modals/whatsapp-modal/whatsapp-modal.component';
 import { MatDialog} from '@angular/material/dialog';
 import { PedidosCercanosModalComponent } from '../../../shared/modals/pedidos-cercanos-modal/pedidos-cercanos-modal.component';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-pedidos-list',
@@ -24,6 +25,7 @@ export class PedidosListComponent {
   ts = inject(PedidoService);
   whatsappService = inject(WhatsappService);
   dialog = inject(MatDialog);
+  dialogoGenerico = inject(DialogoGenericoComponent);
 
   listaPedidos: Pedidos[] = [];
   pedidosFiltrados: Pedidos[] = [];
@@ -84,7 +86,8 @@ export class PedidosListComponent {
   eliminarPedidos(id: string | null | undefined){
     this.ts.deletePedido(id).subscribe({
       next: () => {
-        alert("Pedido Eliminado.");
+        //alert("Pedido Eliminado.");
+        this.dialogoGenerico.abrirDialogo("Pedido eliminado");
         this.listarPedidos();
       },
       error: (e: Error) => {
@@ -184,7 +187,8 @@ entregarPedido(pedido: Pedidos) {
   pedido.estado = 'entregado';
   this.ts.updatePedido(pedido.id,pedido).subscribe({
       next: () => {
-        alert("El pedido ha sido marcado como entregado.");
+        //alert("El pedido ha sido marcado como entregado.");
+        this.dialogoGenerico.abrirDialogo("El pedido fue marcado como entregado");
         this.listarPedidos();
       },
       error: (e: Error) => {

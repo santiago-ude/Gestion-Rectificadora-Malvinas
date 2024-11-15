@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../service/clientes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Clientes } from '../../interface/clientes';
+import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-cliente-update',
@@ -13,6 +14,7 @@ import { Clientes } from '../../interface/clientes';
 })
 export class ClienteUpdateComponent implements OnInit {
 
+  dialogoGenerico = inject(DialogoGenericoComponent);
 
   ngOnInit(): void {
     this.rt.paramMap.subscribe(
@@ -24,7 +26,8 @@ export class ClienteUpdateComponent implements OnInit {
             this.getByidClientes()
             
           }else{
-           alert("Error en el sistema vuelva a intertalo") 
+              this.dialogoGenerico.abrirDialogo("Error en el sistema. Intente más tarde");
+           //alert("Error en el sistema vuelva a intertalo")
           }
         }
       }
@@ -84,7 +87,8 @@ eventSubmit() {
 
       next: (existe)=>{
         if(existe){
-          alert('El DNI ya Existe. Ingrese uno Diferente')
+            this.dialogoGenerico.abrirDialogo("El DNI ya existe. Ingrese uno diferente");
+          //alert('El DNI ya Existe. Ingrese uno Diferente')
         }else{
           this.putclientes();
           this.route.navigateByUrl('clientes')
@@ -92,7 +96,8 @@ eventSubmit() {
       },
       error: (e : Error)=>{
         console.log(e.message);
-        alert('Error al verificar el DNI')
+        this.dialogoGenerico.abrirDialogo("Error al verificar el DNI");
+        //alert('Error al verificar el DNI')
       }
     }
   )
@@ -133,7 +138,8 @@ putclientes(){
   this.sr.editarCliente(this.id,this.formulario.getRawValue()).subscribe(
     {
       next:(value)=>{
-        alert("Se actualizo con exito")
+          this.dialogoGenerico.abrirDialogo("Se actualizo con exito!");
+        //alert("Se actualizo con exito")
       }
     }
   )
