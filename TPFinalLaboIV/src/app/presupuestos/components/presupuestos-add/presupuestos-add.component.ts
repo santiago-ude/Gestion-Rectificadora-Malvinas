@@ -29,14 +29,13 @@ export class PresupuestosAddComponent {
   PS =  inject(PresupuestoService);
   dialogoGenerico = inject(DialogoGenericoComponent);
 
-  formulario = this.fb.nonNullable.group(
-    {
-      fecha: [new Date(),[Validators.required]],
-      descuento: [0,[]],
-      items: this.fb.array([], [Validators.required]),
-      total:[0]
-    }
-)
+  formulario = this.fb.nonNullable.group({
+    fecha: [new Date(), [Validators.required]],
+    descuento: [0, [Validators.min(0)]],  
+    items: this.fb.array([], [Validators.required]),
+    total: [0, [Validators.min(0)]],  
+  });
+
 
 //---------------------------------------------------------
 
