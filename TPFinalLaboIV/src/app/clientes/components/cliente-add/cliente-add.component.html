@@ -8,13 +8,13 @@
                 <div class="NAdiv">
                     <div class="{{tipos[$index]}}IMG">
                     </div>
-                    <input type="text" formControlName={{tipo}} id={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
+                    <input type="text" formControlName={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
                     <input type="text" formControlName={{tipos[$index+1]}} id={{tipos[$index+1]}} class="{{tipos[$index+1]}}" placeholder="{{tiposPlace[$index+1]}}">
                 </div>
             }@else if($index>1){
                 <div class="{{tipo}}div">
                     <div class="{{tipos[$index]}}IMG"></div>
-                    <input type="text" formControlName={{tipo}} id={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
+                    <input type="text" formControlName={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
                 </div>
             }
         }
