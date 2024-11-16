@@ -40,5 +40,6 @@ button:hover{
 }
 
 h2{
-    margin-left: 20px;
+    display: flex;
+    justify-content: center;
 }
