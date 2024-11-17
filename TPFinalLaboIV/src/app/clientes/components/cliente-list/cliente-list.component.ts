@@ -108,7 +108,21 @@ export class ClienteListComponent implements OnInit{
             }
           });
         } else {
-          this.eliminarCliente(clienteId);
+
+
+          const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+            data: {
+              mensaje: 'Estas seguro que quieres eliminar el cliente?',
+            },
+          });
+          
+          dialogRef.afterClosed().subscribe((confirmacion) => {
+            if (confirmacion) {
+              this.eliminarCliente(clienteId);
+            }
+          });
+        
+        
         }
       },
       error: (e: Error) => console.error(e.message),
