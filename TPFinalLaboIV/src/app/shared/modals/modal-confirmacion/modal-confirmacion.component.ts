@@ -2,17 +2,18 @@ import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-modal-delete-cliente',
+  selector: 'app-modal-confirmacion',
   standalone: true,
   imports: [MatDialogContent, MatDialogActions],
-  templateUrl: './modal-delete-cliente.component.html',
-  styleUrls: ['./modal-delete-cliente.component.css'],
+  templateUrl: './modal-confirmacion.component.html',
+  styleUrl: './modal-confirmacion.component.css'
 })
-export class ModalDeleteClienteComponent {
+export class ModalConfirmacionComponent {
+
   @Output() confirmDelete = new EventEmitter<boolean>();
 
   constructor(
-    private dialogRef: MatDialogRef<ModalDeleteClienteComponent>,
+    private dialogRef: MatDialogRef<ModalConfirmacionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { mensaje: string }
   ) {}
 
@@ -25,4 +26,5 @@ export class ModalDeleteClienteComponent {
     this.confirmDelete.emit(false);
     this.dialogRef.close(false);
   }
+
 }

@@ -1,17 +1,15 @@
-import { Component, EventEmitter, inject, OnInit, Output, OutputEmitterRef } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Clientes } from '../../interface/clientes';
 import { ClientesService } from '../../service/clientes.service';
-import { FormsModule, NgModel } from '@angular/forms';
-import { Router, RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ClienteUpdateComponent } from '../cliente-update/cliente-update.component';
 import { PedidoService } from '../../../pedidos/service/pedidos.service';
-import { UnaryFunction } from 'rxjs';
 import { Pedidos } from '../../../pedidos/interface/pedidos';
 import {MatButtonModule} from "@angular/material/button";
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ModalDeleteClienteComponent } from '../../../shared/modals/modal-delete-cliente/modal-delete-cliente.component';
+import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirmacion/modal-confirmacion.component';
 
 @Component({
   selector: 'app-cliente-list',
@@ -97,11 +95,12 @@ export class ClienteListComponent implements OnInit{
       next: (pedidos: Pedidos[]) => {
         if (pedidos && pedidos.length > 0) {
 
-          const dialogRef = this.dialog.open(ModalDeleteClienteComponent, {
+          const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
             data: {
               mensaje: 'Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?',
             },
           });
+          
   
           dialogRef.afterClosed().subscribe((confirmacion) => {
             if (confirmacion) {
