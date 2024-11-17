@@ -57,12 +57,12 @@ dniAux : string = '';
  //Reactive form
  formulario = this.fr.nonNullable.group(
   {
-    dni: ["",[Validators.required,Validators.minLength(8),Validators.maxLength(8)]],
+    dni: ["",[Validators.required,Validators.minLength(8)]],
     nombre: ["",[Validators.required,Validators.minLength(2)]],
-    apellido: ["",[Validators.required]],
-    numero: ["",[Validators.required]],
-    domicilio:["",[Validators.required]],
-    altura: ["",[Validators.required]],
+    apellido: ["",[Validators.required, Validators.minLength(3)]],
+    numero: ["",[Validators.required, Validators.minLength(2)]],
+    domicilio:["",[Validators.required, Validators.minLength(2)]],
+    altura: ["",[Validators.required, Validators.minLength(2)]],
     metodoPago:["",[Validators.required]]
   }
 )

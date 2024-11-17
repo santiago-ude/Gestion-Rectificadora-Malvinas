@@ -20,13 +20,11 @@ export class ItemAddComponent {
 
   
   formulario = this.FB.nonNullable.group({
-
-    nombre:['',[Validators.required]],
-    descripcion:['',[Validators.required]],
-    precioUnitario:[0,[Validators.required, Validators.minLength(0)]],
-    precioManoObra:[0,[Validators.required, Validators.minLength(0)]],
-    precioFinal:[0,[Validators.required, Validators.minLength(0)]],
-    
+    nombre: ['', [Validators.required, Validators.minLength(2)]],
+    descripcion: ['', [Validators.required, Validators.minLength(2)]],
+    precioUnitario: [0, [Validators.required, Validators.min(0)]],  
+    precioManoObra: [0, [Validators.required, Validators.min(0)]],  
+    precioFinal: [0, [Validators.required, Validators.min(0)]], 
   });
 
 
