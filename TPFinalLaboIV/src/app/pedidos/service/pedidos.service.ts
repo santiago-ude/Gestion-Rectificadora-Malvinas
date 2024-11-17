@@ -12,6 +12,7 @@ export class PedidoService {
   private apiUrl = 'http://localhost:3000/pedidos';
 
   constructor(private http: HttpClient) {}
+  
 
 
   //GET
@@ -56,6 +57,8 @@ export class PedidoService {
       )
     );
   }
+
+  
   
 
 
