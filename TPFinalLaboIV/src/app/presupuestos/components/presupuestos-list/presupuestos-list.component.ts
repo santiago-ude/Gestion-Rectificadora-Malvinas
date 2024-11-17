@@ -4,7 +4,9 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.component";
 import { compileOpaqueAsyncClassMetadata } from '@angular/compiler';
 import { CommonModule } from '@angular/common';
-import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirmacion/modal-confirmacion.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-presupuestos-list',
@@ -28,6 +30,7 @@ export class PresupuestosListComponent implements OnInit{
   
   PS = inject(PresupuestoService);
   dialogoGenerico = inject(DialogoGenericoComponent);
+  dialog = inject(MatDialog);
 
   //Trae los presupuestos del json-server
   //Los almacena en la lista auxiliar
@@ -49,21 +52,30 @@ export class PresupuestosListComponent implements OnInit{
   //Elimina un presupuesto de la lista
   deletePresupuestoDB(id : string | null){
 
-    this.PS.deletePresupuesto(id).subscribe(
-      {
-        next: ()=>{
-          this.listaPresupuestos = this.listaPresupuestos.filter((pres)=> pres.id !== id);
-          //alert('Presupuesto Eliminado...')
-          this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
-        },
-        error: (e : Error)=>{
-          console.log(e.message);
-        }
+    const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+      data: {
+        mensaje: 'Estas seguro que quieres eliminar el presupuesto?',
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe((confirmacion : any) => {
+      if (confirmacion) {
+
+        this.PS.deletePresupuesto(id).subscribe(
+          {
+            next: ()=>{
+              this.listaPresupuestos = this.listaPresupuestos.filter((pres)=> pres.id !== id);
+              //alert('Presupuesto Eliminado...')
+              this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
+            },
+            error: (e : Error)=>{
+              console.log(e.message);
+            }
+          }
+        )
       }
-    )
-
+    });
   }
-
 
   //Filtra los presupuestos por fecha
   ordenarPresupuestos(criterio: 'asc' | 'desc') {
