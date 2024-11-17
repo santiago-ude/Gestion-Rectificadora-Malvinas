@@ -10,6 +10,7 @@ import { WhatsappModalComponent } from '../../../shared/modals/whatsapp-modal/wh
 import { MatDialog} from '@angular/material/dialog';
 import { PedidosCercanosModalComponent } from '../../../shared/modals/pedidos-cercanos-modal/pedidos-cercanos-modal.component';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirmacion/modal-confirmacion.component';
 
 @Component({
   selector: 'app-pedidos-list',
@@ -177,10 +178,18 @@ export class PedidosListComponent {
 }
 
 confirmarEntrega(pedido: Pedidos) {
-  const confirmar = window.confirm("¿Estás seguro de que quieres marcar este pedido como entregado?");
-  if(confirmar){
+
+  const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+    data: {
+      mensaje: 'Estas seguro que quieres entregar el pedido?',
+    },
+  });
+  
+  dialogRef.afterClosed().subscribe((confirmacion) => {
+    if (confirmacion) {
       this.entregarPedido(pedido);
     }
+  });
 }
   
 entregarPedido(pedido: Pedidos) {
