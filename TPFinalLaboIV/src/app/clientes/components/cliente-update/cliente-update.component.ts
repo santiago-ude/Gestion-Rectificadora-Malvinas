@@ -1,9 +1,12 @@
+import { Pedidos } from './../../../pedidos/interface/pedidos';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../service/clientes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Clientes } from '../../interface/clientes';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { PedidosListComponent } from '../../../pedidos/components/pedidos-list/pedidos-list.component';
+import { PedidoService } from '../../../pedidos/service/pedidos.service';
 
 @Component({
   selector: 'app-cliente-update',
@@ -39,6 +42,7 @@ sr = inject(ClientesService);
 fr = inject(FormBuilder);
 rt = inject(ActivatedRoute);
 route = inject(Router)
+ps = inject(PedidoService)
 
 //Coleccion de datos para el formulario
 tipos: string[] = ["nombre","apellido","dni","numero","domicilio","altura"];
@@ -91,7 +95,7 @@ eventSubmit() {
           //alert('El DNI ya Existe. Ingrese uno Diferente')
         }else{
           this.putclientes();
-          this.route.navigateByUrl('clientes')
+          this.route.navigateByUrl('clientes');
         }
       },
       error: (e : Error)=>{
@@ -103,9 +107,6 @@ eventSubmit() {
   )
 
   }
-
-
-
 }
 
 getByidClientes(){
@@ -134,16 +135,79 @@ getByidClientes(){
   )
 }
 
-putclientes(){
-  this.sr.editarCliente(this.id,this.formulario.getRawValue()).subscribe(
-    {
-      next:(value)=>{
-          this.dialogoGenerico.abrirDialogo("Se actualizo con exito!");
-        //alert("Se actualizo con exito")
-      }
+
+actualizarPedidosRelacionados() {
+  const clienteActualizado = this.formulario.getRawValue(); // Datos del cliente actualizado
+
+  // Obtiene los pedidos relacionados con este cliente
+  this.ps.obtenerPedidosPorCliente(this.id).subscribe({
+    next: (pedidos) => {
+      pedidos.forEach((pedido) => {
+        // Actualiza los datos del cliente dentro de cada pedido
+        pedido.cliente = clienteActualizado;
+
+        // Llama al servicio para actualizar el pedido en el backend
+        this.ps.updatePedido(pedido.id, pedido).subscribe({
+          next: () => {
+            console.log(`Pedido ${pedido.id} actualizado con éxito`);
+          },
+          error: (err: Error) => {
+            console.error(`Error al actualizar el pedido ${pedido.id}:`, err.message);
+          }
+        });
+      });
+    },
+    error: (err: Error) => {
+      console.error("Error al obtener los pedidos relacionados:", err.message);
     }
-  )
+  });
 }
+
+
+putclientes() {
+  // Actualizar el cliente
+
+  if (!this.id) {
+    console.error("ID inválido para actualizar el cliente.");
+    this.dialogoGenerico.abrirDialogo('Error al actualizar el cliente. Intente nuevamente.');
+    return;
+  }
+
+
+  this.sr.editarCliente(this.id, this.formulario.getRawValue()).subscribe({
+    next: (clienteActualizado) => {
+      this.dialogoGenerico.abrirDialogo('Se actualizó el cliente con éxito.');
+
+      // Obtener los pedidos vinculados a este cliente
+      this.ps.obtenerPedidosPorCliente(this.id).subscribe({
+        next: (pedidos) => {
+          pedidos.forEach((pedido) => {
+            // Actualizar el cliente en el pedido
+            pedido.cliente = clienteActualizado;
+
+            // Enviar el pedido actualizado al servidor
+            this.ps.updatePedido(pedido.id, pedido).subscribe({
+              next: () => {
+                console.log(`Pedido ${pedido.id} actualizado en el servidor.`);
+              },
+              error: (err : Error) => {
+                console.error(`Error al actualizar el pedido ${pedido.id}:`, err);
+              },
+            });
+          });
+        },
+        error: (err : Error) => {
+          console.error('Error al obtener los pedidos asociados:', err);
+        },
+      });
+    },
+    error: (err) => {
+      console.error('Error al actualizar el cliente:', err);
+      this.dialogoGenerico.abrirDialogo('Error al actualizar el cliente. Intente nuevamente.');
+    },
+  });
+}
+
 
 
 

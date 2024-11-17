@@ -127,7 +127,11 @@ actualizarPedido(){
 
     console.log(pedido.id);
     this.pedidoService.updatePedido (this.id, pedido).subscribe({
-      next: () => this.dialogoGenerico.abrirDialogo("Pedido actulizado con éxito!"),
+      next: () => {
+        this.dialogoGenerico.abrirDialogo("Pedido actulizado con éxito!");
+        this.rt.navigateByUrl('pedidos')
+
+      },
           //alert("Pedido actualizado con éxito"),
       error: (error) => console.error('Error al actualizar pedido:', error)
     });
