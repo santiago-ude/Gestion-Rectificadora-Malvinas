@@ -5,18 +5,13 @@ table {
   
   th, td {
     padding: 8px;
-    text-align: left;
+    text-align: center;
   }
   
   th {
     background-color: #f2f2f2;
   }
 
-section{
-    display: grid;
-    grid-template-rows: repeat(2,1fr) ;
-    
-}
 div{
     display: flex;
     flex-direction: row;
@@ -44,8 +39,8 @@ button:hover {
 
 .div1{
   display:grid;
-  grid-template-rows: repeat(2,1fr);
-  justify-items: center;
+  grid-template-rows: 0.5fr 1fr;
+
 }
 .divModificar{
   display: grid;
@@ -66,6 +61,7 @@ p{
   max-width: 400px;
   margin: auto;
   background-color: #f9f9f9;
+  margin-top: 4rem;
 }
 
 .filtro-pedidos h2 {
@@ -119,5 +115,23 @@ button.btn-reset {
 button.btn-reset:hover {
   background-color: #c82333;
 }
-
-
+.tdButton{
+  display: grid;
+  grid-template-columns: repeat(2,0.4fr);
+  justify-items: center;
+  justify-content: center;
+}
+.divTablePrincipal{
+  display: grid;
+  grid-area: 2;
+}
+h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0.5rem;
+  font-size: 3rem;
+  color: #0056b3;
+  border-radius: 0.3rem;
+  text-shadow: 1px 1px 0 rgb(80, 80, 80);
+}

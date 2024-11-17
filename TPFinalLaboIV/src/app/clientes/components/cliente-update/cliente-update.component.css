@@ -1,14 +1,7 @@
-:host{
-    display: block;
-    background-image: linear-gradient(to bottom, #d9a2fd, #eed8ff, #009dff);
-    background-attachment:fixed;
-    background-size: cover;
-    height: 100vh;
-}
 
 section{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    background-color: #ddebff;
     height:100%;
     width: 100%;
 }
@@ -39,23 +32,8 @@ input{
     
 }
 .div1{
-    margin: 2rem 2rem ;
+    margin: 2rem 10rem ;
     
-}
-.img1{
-    background-image: url("../../img/mecanic.png");
-    background-repeat: no-repeat;
-    background-size:cover;
-    margin: 10rem;
-    transition: .5s;
-}
-.img1c{
-    background-image: url("../../img/mecanic.png");
-    background-repeat: no-repeat;
-    background-size:cover;
-    margin: 9.5rem;
-    box-shadow: 3px 3px black;
-    transition: .5s;
 }
 .NAdiv{
     display: grid;

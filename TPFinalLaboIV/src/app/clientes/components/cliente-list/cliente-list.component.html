@@ -5,7 +5,6 @@
     <section class="filtro-pedidos">
       <h2>Filtrar Clientes</h2>
       <div class="div-filtros">
-
         <!-- Filtro por Nombre o Apellido -->
         <div class="filtro-nom-ape">
           <label>Buscar por Nombre o Apellido:</label>
@@ -21,18 +20,52 @@
         <!-- Botón de Restablecer Filtros -->
         <button class="btn-reset" (click)="resetearFiltros()">Restablecer Filtros</button> 
       </div>
-
     </section>
 
-    <!-- Tabla de Resultados de Búsqueda por Nombre o Apellido y DNI -->
-    <div *ngIf="clientesEncontrados.length > 0" class="divTable">
-      <h3>Resultados de búsqueda por Nombre, Apellido o DNI</h3>
+    <!-- Tabla de Resultados de Búsqueda -->
+     @if(clientesEncontrados.length > 0){
+      <section class="divTable">
+        <h3>Resultados de búsqueda por Nombre, Apellido o DNI</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>DNI</th>
+              <th>Numero</th>
+              <th>Domicilio</th>
+              <th>Altura</th>
+              <th>Metodo de Pago</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cliente of clientesEncontrados">
+              <td>{{ cliente.nombre }}</td>
+              <td>{{ cliente.apellido }}</td>
+              <td>{{ cliente.dni }}</td>
+              <td>{{ cliente.numero }}</td>
+              <td>{{ cliente.domicilio }}</td>
+              <td>{{ cliente.altura }}</td>
+              <td>{{ cliente.metodoPago }}</td>
+              <td class="tdButton"> 
+                <button (click)="enviarModificacion(cliente.id)">Actualizar</button> 
+                <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+     }@else{
+      <!-- Tabla Principal de Clientes -->
+    <div class="divTablePrincipal">
+      <h3>Lista de clientes</h3>
       <table>
         <thead>
           <tr>
+            <th>DNI</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>DNI</th>
             <th>Numero</th>
             <th>Domicilio</th>
             <th>Altura</th>
@@ -41,50 +74,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientesEncontrados">
+          <tr *ngFor="let cliente of clientesFiltrados; trackByIndex">
+            <td>{{ cliente.dni }}</td>
             <td>{{ cliente.nombre }}</td>
             <td>{{ cliente.apellido }}</td>
-            <td>{{ cliente.dni }}</td>
             <td>{{ cliente.numero }}</td>
             <td>{{ cliente.domicilio }}</td>
             <td>{{ cliente.altura }}</td>
             <td>{{ cliente.metodoPago }}</td>
-            <td> <button (click)="enviarModificacion(cliente.id)">Actualizar Datos</button> <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button></td>
+            <td class="tdButton"> 
+              <button (click)="enviarModificacion(cliente.id)">Actualizar</button> 
+              <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-
+     }
   </div>
-
-  <!-- Tabla Principal de Clientes -->
-  <div class="divTablePrincipal">
-    <table>
-      <thead>
-        <tr>
-          <th>DNI</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Numero</th>
-          <th>Domicilio</th>
-          <th>Altura</th>
-          <th>Metodo de Pago</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cliente of clientesFiltrados; trackByIndex">
-          <td>{{ cliente.dni }}</td>
-          <td>{{ cliente.nombre }}</td>
-          <td>{{ cliente.apellido }}</td>
-          <td>{{ cliente.numero }}</td>
-          <td>{{ cliente.domicilio }}</td>
-          <td>{{ cliente.altura }}</td>
-          <td>{{ cliente.metodoPago }}</td>
-          <td> <button (click)="enviarModificacion(cliente.id)">Actualizar</button> <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
 </section>

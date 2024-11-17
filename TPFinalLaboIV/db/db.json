@@ -71,14 +71,14 @@
       "id": "1de9"
     },
     {
-      "id": "6ac8",
-      "dni": "45342134",
+      "dni": "44265003",
       "nombre": "Lautaro",
       "apellido": "Arias",
       "numero": "2236209845",
       "domicilio": "constitucion",
       "altura": "1654",
-      "metodoPago": "Tarjeta de Credito"
+      "metodoPago": "Tarjeta de Credito",
+      "id": "6ac8"
     },
     {
       "dni": "46874334",
@@ -204,7 +204,7 @@
       },
       "fechaEntrada": "2024-11-10T00:00:00.000Z",
       "fechaSalidaEstimada": "2024-11-15T00:00:00.000Z",
-      "estado": "activo",
+      "estado": "atrasado",
       "marcaAuto": "chevrolet",
       "modeloAuto": "corsa 2011",
       "numeroSerie": "JHGER47613",

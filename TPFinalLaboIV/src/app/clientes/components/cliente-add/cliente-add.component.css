@@ -1,14 +1,8 @@
-:host{
-    display: block;
-    background-image: linear-gradient(to bottom, #d9a2fd, #eed8ff, #009dff);
-    background-attachment:fixed;
-    background-size: cover;
-    height: 100vh;
-}
 
 section{
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    background-color: #ddebff;
     height:100%;
     width: 100%;
 }
@@ -16,7 +10,7 @@ section{
     display: flex;
     justify-content: center;
     font-size: 3.5rem;
-    text-shadow: 2px 2px #009dff;
+    text-shadow: 2px 2px #a200ff;
     transition: .5s;
     color: aliceblue;
 }
@@ -24,8 +18,8 @@ section{
     display: flex;
     justify-content: center;
     font-size: 3.7rem;
-    text-shadow: 2px 2px #006eff;
-    color: rgb(217, 235, 252);
+    text-shadow: 2px 2px #a200ffbe;
+    color: rgb(239, 187, 255);
     transition: .5s;
 }
 form{
