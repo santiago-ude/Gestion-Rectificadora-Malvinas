@@ -92,7 +92,6 @@ eventSubmit() {
       next: (existe)=>{
         if(existe){
             this.dialogoGenerico.abrirDialogo("El DNI ya existe. Ingrese uno diferente");
-          //alert('El DNI ya Existe. Ingrese uno Diferente')
         }else{
           this.putclientes();
           this.route.navigateByUrl('clientes');
@@ -101,7 +100,6 @@ eventSubmit() {
       error: (e : Error)=>{
         console.log(e.message);
         this.dialogoGenerico.abrirDialogo("Error al verificar el DNI");
-        //alert('Error al verificar el DNI')
       }
     }
   )
@@ -136,32 +134,6 @@ getByidClientes(){
 }
 
 
-actualizarPedidosRelacionados() {
-  const clienteActualizado = this.formulario.getRawValue(); // Datos del cliente actualizado
-
-  // Obtiene los pedidos relacionados con este cliente
-  this.ps.obtenerPedidosPorCliente(this.id).subscribe({
-    next: (pedidos) => {
-      pedidos.forEach((pedido) => {
-        // Actualiza los datos del cliente dentro de cada pedido
-        pedido.cliente = clienteActualizado;
-
-        // Llama al servicio para actualizar el pedido en el backend
-        this.ps.updatePedido(pedido.id, pedido).subscribe({
-          next: () => {
-            console.log(`Pedido ${pedido.id} actualizado con éxito`);
-          },
-          error: (err: Error) => {
-            console.error(`Error al actualizar el pedido ${pedido.id}:`, err.message);
-          }
-        });
-      });
-    },
-    error: (err: Error) => {
-      console.error("Error al obtener los pedidos relacionados:", err.message);
-    }
-  });
-}
 
 
 putclientes() {
