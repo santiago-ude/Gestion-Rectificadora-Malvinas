@@ -85,16 +85,33 @@ export class PedidosListComponent {
   }
 
   eliminarPedidos(id: string | null | undefined){
-    this.ts.deletePedido(id).subscribe({
-      next: () => {
-        //alert("Pedido Eliminado.");
-        this.dialogoGenerico.abrirDialogo("Pedido eliminado");
-        this.listarPedidos();
+
+    const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+      data: {
+        mensaje: 'Estas seguro que quieres eliminar el pedido?',
       },
-      error: (e: Error) => {
-        console.log(e.message);
+    });
+    
+    dialogRef.afterClosed().subscribe((confirmacion) => {
+      if (confirmacion) {
+
+        this.ts.deletePedido(id).subscribe({
+          next: () => {
+            //alert("Pedido Eliminado.");
+            this.dialogoGenerico.abrirDialogo("Pedido eliminado");
+            this.listarPedidos();
+          },
+          error: (e: Error) => {
+            console.log(e.message);
+          }
+          
+        });
       }
     });
+
+
+
+    
   }
 
   verificarPedidosCercanos(){
@@ -179,17 +196,27 @@ export class PedidosListComponent {
 
 confirmarEntrega(pedido: Pedidos) {
 
-  const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
-    data: {
-      mensaje: 'Estas seguro que quieres entregar el pedido?',
-    },
-  });
-  
-  dialogRef.afterClosed().subscribe((confirmacion) => {
-    if (confirmacion) {
-      this.entregarPedido(pedido);
-    }
-  });
+
+  if(pedido.estado != 'entregado'){
+
+    const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+      data: {
+        mensaje: 'Estas seguro que quieres entregar el pedido?',
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe((confirmacion) => {
+      if (confirmacion) {
+        this.entregarPedido(pedido);
+      }
+    });
+
+  }
+  else{
+
+    this.dialogoGenerico.abrirDialogo("El pedido ya fue anteriormente entregado");
+
+  }
 }
   
 entregarPedido(pedido: Pedidos) {
