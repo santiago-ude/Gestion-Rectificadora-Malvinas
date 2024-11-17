@@ -3,6 +3,7 @@ Este proyecto es una aplicación web para la gestión de registros de clientes, 
 
 ## Como Correr
 Solo hace falta clonar el repo con `git clone https://github.com/santiago-ude/Gestion-Rectificadora-Malvinas.git` correr json-server con `json-server db/db.json` y finalmente `ng serve`. Puede que necesite instalar dependencias adicionales en su primera ejecución mediante el uso de `npm install`.
+Todos los comandos deben ejecutarse dentro de `./TPFinalLaboIV`
 
 ## Integrantes
 Santi Ude
