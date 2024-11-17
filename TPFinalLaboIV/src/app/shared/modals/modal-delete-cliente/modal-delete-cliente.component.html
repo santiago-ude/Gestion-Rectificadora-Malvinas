@@ -1,0 +1,8 @@
+<h2 mat-dialog-title class="modal-title">Confirmación</h2>
+<mat-dialog-content>
+    <p class="center-content">{{ data.mensaje }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="modal-footer">
+    <button mat-button (click)="cancelar()" class="cancel-button">Cancelar</button>
+    <button mat-button (click)="confirmar()" class="delete-button">Eliminar</button>
+</mat-dialog-actions>

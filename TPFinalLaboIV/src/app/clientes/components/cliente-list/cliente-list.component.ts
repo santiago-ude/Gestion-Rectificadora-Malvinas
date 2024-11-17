@@ -10,11 +10,13 @@ import { UnaryFunction } from 'rxjs';
 import { Pedidos } from '../../../pedidos/interface/pedidos';
 import {MatButtonModule} from "@angular/material/button";
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalDeleteClienteComponent } from '../../../shared/modals/modal-delete-cliente/modal-delete-cliente.component';
 
 @Component({
   selector: 'app-cliente-list',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatButtonModule],
+  imports: [FormsModule, CommonModule, MatDialogModule, MatButtonModule],
   templateUrl: './cliente-list.component.html',
   styleUrl: './cliente-list.component.css'
 })
@@ -38,6 +40,7 @@ export class ClienteListComponent implements OnInit{
   rt = inject(Router)
   pedidosService = inject(PedidoService);
   dialogoGenerico = inject(DialogoGenericoComponent);
+  dialog = inject(MatDialog)
 
   getClientesList(){
     this.sr.obtenerClientes().subscribe(
@@ -90,23 +93,29 @@ export class ClienteListComponent implements OnInit{
 
 
   confirmarYEliminarCliente(clienteId: string | null | undefined) {
-    // Paso 1: Verificar si el cliente tiene pedidos asociados
     this.pedidosService.obtenerPedidosPorCliente(clienteId).subscribe({
-      next: (pedidos : Pedidos[]) => {
-      if (pedidos && pedidos.length > 0) {
-        // Paso 2: Mostrar confirmación solo si hay pedidos asociados
-        const confirmacion = window.confirm('Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?');
-        if (confirmacion) {
-          // Si el usuario confirma, eliminar el cliente
+      next: (pedidos: Pedidos[]) => {
+        if (pedidos && pedidos.length > 0) {
+
+          const dialogRef = this.dialog.open(ModalDeleteClienteComponent, {
+            data: {
+              mensaje: 'Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?',
+            },
+          });
+  
+          dialogRef.afterClosed().subscribe((confirmacion) => {
+            if (confirmacion) {
+              this.eliminarCliente(clienteId);
+            }
+          });
+        } else {
           this.eliminarCliente(clienteId);
         }
-      } else {
-        // Si no tiene pedidos asociados, eliminar el cliente directamente
-        this.eliminarCliente(clienteId);
-      }
-    },
-  error: (e : Error) => {console.log(e.message);}});
+      },
+      error: (e: Error) => console.error(e.message),
+    });
   }
+  
 
   eliminarCliente(clienteId: string | null | undefined) {
     this.sr.borrarCliente(clienteId).subscribe({
