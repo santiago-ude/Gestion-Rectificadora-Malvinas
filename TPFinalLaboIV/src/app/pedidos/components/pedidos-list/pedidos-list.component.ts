@@ -117,16 +117,20 @@ export class PedidosListComponent {
   verificarPedidosCercanos(){
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0); // Normalizamos la fecha 
-
+    
     this.pedidosCercanos = this.listaPedidos.filter(pedido => {
+      let esActivoOProntoAFinalizar=false;
+      if(pedido.estado !== "entregado"){
+
         const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
         fechaSalidaEstimada.setDate(fechaSalidaEstimada.getDate()+1);
         fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizamos la fecha de salida estimada 
 
         const diferenciaDias= (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
 
-        const esActivoOProntoAFinalizar=
+        esActivoOProntoAFinalizar=
             diferenciaDias>=0 && diferenciaDias <= this.diasParaFinalizar;
+      }
 
         // Siempre devolvemos `true` si cumple los criterios de pronto a finalizar
         return esActivoOProntoAFinalizar;
