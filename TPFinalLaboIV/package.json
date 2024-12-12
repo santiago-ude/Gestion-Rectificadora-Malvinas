@@ -1,9 +1,10 @@
 {
   "name": "tpfinal-labo-iv",
   "version": "0.0.0",
+  "main": "electron/main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build --base-href . --output-path build/ && electron .",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
