@@ -7,8 +7,8 @@ Todos los comandos deben ejecutarse dentro de `./TPFinalLaboIV`
 
 ## Integrantes
 Matias Antonelli <br>
-Lautaro Arias
-Santiago Ayala
+Lautaro Arias <br>
+Santiago Ayala <br>
 Santiago Ude
 
 
