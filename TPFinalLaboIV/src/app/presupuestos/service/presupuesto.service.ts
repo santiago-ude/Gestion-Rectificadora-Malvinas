@@ -11,7 +11,7 @@ export class PresupuestoService {
 
   constructor(private http: HttpClient) { }
 
-  urlBase: string = 'http://localhost:3000/presupuestos';
+  urlBase: string = "http://localhost:8080/managment/api/v1/presupuestos";
 
 
   //GET

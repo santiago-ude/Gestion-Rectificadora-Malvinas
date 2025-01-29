@@ -9,11 +9,10 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PedidoService {
-  private apiUrl = 'http://localhost:3000/pedidos';
+  private apiUrl = 'http://localhost:8080/managment/api/v1/pedidos';
 
   constructor(private http: HttpClient) {}
   
-
 
   //GET
   getPedidos(): Observable<Pedidos[]> {

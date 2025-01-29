@@ -10,10 +10,8 @@ import { PedidoService } from '../../pedidos/service/pedidos.service';
 export class ClientesService {
 
 
-  
-
   http = inject(HttpClient);
-  baseUrl = "http://localhost:3000/clientes";
+  baseUrl = "http://localhost:8080/managment/api/v1/clientes";
 
 
   obtenerClientes(): Observable<Clientes[]>{
