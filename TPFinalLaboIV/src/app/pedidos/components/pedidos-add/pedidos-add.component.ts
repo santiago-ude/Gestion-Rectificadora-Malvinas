@@ -58,15 +58,13 @@ export class PedidosAddComponent {
     { validators: this.fechaEntradaAntesDeSalidaValidator() }
   );
 
-  //Obtener fecha actual
+  //Retorna fecha actual
   getFechaActual(): string {
     const hoy = new Date();
     return hoy.getFullYear() + '-' +
       String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
       String(hoy.getDate()).padStart(2, '0');
   }
-
-
 
 
   //Inicializacion 
@@ -100,7 +98,7 @@ export class PedidosAddComponent {
 
 
 
-  //captura el evento y almacena el presupuesto
+  // Captura el evento y almacena el presupuesto
   addPresupuesto(pres: Presupuesto) {
     this.auxiliarPresupuesto = pres;
 
@@ -161,8 +159,8 @@ export class PedidosAddComponent {
     const pedido: Pedidos = {
       ...this.formulario.getRawValue(),
       cliente: this.formulario.value.cliente as Clientes,
-      fechaEntrada: new Date(this.formulario.value.fechaEntrada as string),
-      fechaSalidaEstimada: new Date(this.formulario.value.fechaSalidaEstimada as string),
+      fechaEntrada: new Date(this.formulario.value.fechaEntrada as string + 'T12:00:00'),
+      fechaSalidaEstimada: new Date(this.formulario.value.fechaSalidaEstimada as string + 'T12:00:00'),
       estado: this.formulario.value.estado as 'activo' | 'entregado' | 'atrasado',
       presupuesto: {
         ...this.auxiliarPresupuesto,
