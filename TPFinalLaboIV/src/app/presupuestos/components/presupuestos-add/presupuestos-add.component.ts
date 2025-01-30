@@ -39,6 +39,7 @@ export class PresupuestosAddComponent {
   
    getFechaActual(): Date {
     const hoy = new Date();
+    return hoy.toISOString().split('T')[0]; // Convierte la fecha a formato YYYY-MM-DD
   }
 
 //---------------------------------------------------------
