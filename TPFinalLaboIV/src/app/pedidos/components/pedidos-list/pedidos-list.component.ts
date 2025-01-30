@@ -20,7 +20,7 @@ import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirm
   styleUrls: ['./pedidos-list.component.css']
 })
 export class PedidosListComponent {
-  trackById(index: number, pedido: Pedidos): string | null | undefined {
+  trackById(index: number, pedido: Pedidos): Number | null | undefined {
     return pedido.id;
   }
   ts = inject(PedidoService);
@@ -84,7 +84,7 @@ export class PedidosListComponent {
     this.clienteFiltro = ''; 
   }
 
-  eliminarPedidos(id: string | null | undefined){
+  eliminarPedidos(id: Number | null | undefined){
 
     const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
       data: {
