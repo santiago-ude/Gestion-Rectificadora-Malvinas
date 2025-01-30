@@ -20,7 +20,7 @@ export class ClientesService {
     );
   }
 
-  obtenerClienteXDni(id: string | null | undefined): Observable<Clientes>{
+  obtenerClienteXDni(id: Number | null | undefined): Observable<Clientes>{
     return this.http.get<Clientes>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
@@ -32,13 +32,13 @@ export class ClientesService {
     );
   }
 
-  editarCliente(id: string | null | undefined , cliente: Clientes): Observable<Clientes>{
+  editarCliente(id: Number | null | undefined , cliente: Clientes): Observable<Clientes>{
     return this.http.put<Clientes>(`${this.baseUrl}/${id}`, cliente).pipe(
       catchError(this.handleError)
     );
   }
 
-  borrarCliente(id: string | null | undefined): Observable<void> {
+  borrarCliente(id: Number | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
