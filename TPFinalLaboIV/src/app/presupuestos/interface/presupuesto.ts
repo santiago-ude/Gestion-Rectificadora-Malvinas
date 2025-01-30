@@ -2,7 +2,7 @@ import { Item } from "./item";
 
 export interface Presupuesto {
 
-    id: string | null;
+    id?: Number;
     fecha: Date;
     descuento: number;
     items: Item[];
