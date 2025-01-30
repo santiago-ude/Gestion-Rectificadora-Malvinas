@@ -41,7 +41,6 @@ export class PresupuestosAddComponent {
     const hoy = new Date();
     return new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDay()); // Hora en 00:00:00
   }
-  
 
 //---------------------------------------------------------
 
