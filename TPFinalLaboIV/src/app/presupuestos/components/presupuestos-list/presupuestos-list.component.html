@@ -12,7 +12,7 @@
             <div class="presupuesto-header">
                 <strong>Fecha:</strong> {{ pres.fecha }} <br>
                 <strong>Descuento:</strong> {{ pres.descuento }}% <br>
-                <strong>Total: </strong> ${{pres.total}}
+                <strong>Total: </strong> {{pres.total | currency}}
             </div>
             <div class="items-list">
                 <h4>Items del Presupuesto:</h4>
@@ -20,9 +20,9 @@
                     <li *ngFor="let pre of pres.items; trackBy: trackByIndex" class="item">
                         <span><strong>Nombre:</strong> {{ pre.nombre }}</span><br>
                         <span><strong>Descripción:</strong> {{ pre.descripcion }}</span><br>
-                        <span><strong>Precio Unitario:</strong> ${{ pre.precioUnitario }}</span><br>
-                        <span><strong>Precio Mano Obra:</strong> ${{ pre.precioManoObra }}</span><br>
-                        <span><strong>Precio Final:</strong> ${{ pre.precioFinal }}</span><br>
+                        <span><strong>Precio Unitario:</strong> {{ pre.precioUnitario | currency }}</span><br>
+                        <span><strong>Precio Mano Obra:</strong> {{ pre.precioManoObra | currency}}</span><br>
+                        <span><strong>Precio Final:</strong> {{ pre.precioFinal | currency}}</span><br>
                     </li>
                 </ul>
                 <button (click)="deletePresupuestoDB(pres.id)" class="eliminar-btn">Eliminar</button>
