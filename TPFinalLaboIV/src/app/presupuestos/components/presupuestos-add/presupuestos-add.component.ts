@@ -30,17 +30,22 @@ export class PresupuestosAddComponent {
   dialogoGenerico = inject(DialogoGenericoComponent);
 
   formulario = this.fb.nonNullable.group({
-    fecha: [new Date(), [Validators.required]],
+    fecha: [this.getFechaActual(), [Validators.required]],
     descuento: [0, [Validators.min(0)]],  
     items: this.fb.array([], [Validators.required]),
     total: [0, [Validators.min(0)]],  
   });
 
+  
+   getFechaActual(): Date {
+    const hoy = new Date();
+    return new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDay()); // Hora en 00:00:00
+  }
+  
 
 //---------------------------------------------------------
 
   addPresupuesto = ()=>{
-
 
     console.log(this.formulario.errors); // Verifica si hay errores generales
     for (const controlName in this.formulario.controls) {
@@ -48,45 +53,26 @@ export class PresupuestosAddComponent {
         console.log(`${controlName} errors:`, control?.errors); // Muestra errores de cada campo
     }
 
-
     if(this.formulario.invalid)return;
 
 
     const pres= {
       ...this.formulario.getRawValue(),
-      items: this.itemAux,
-      id: (Math.random() * 10).toString()
+      items: this.itemAux
     };
 
     this.formulario.reset()
 
-    this.addPresupuestoDB(pres);
       
     // Emitir el presupuesto al componente de pedidos
     this.emitirPresupuesto.emit(pres);
-
+    this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
 
     this.cargarItem = false;
-
-  }
-
-  addPresupuestoDB= (pres: Presupuesto)=>{
-
-      this.PS.postPresupuesto(pres).subscribe(
-        {
-          next: (pres : Presupuesto) => {
-            console.log(pres);
-            this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
-            //alert('presupuesto guardado...')
-          },
-          error: (e: Error)=>{
-            console.log(e.message)
-          }
-        }
-      )
   }
 
 
+  
   addItem(item : Item){
 
     this.itemAux.push(item);
