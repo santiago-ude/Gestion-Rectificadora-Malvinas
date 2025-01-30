@@ -58,6 +58,7 @@ export class PresupuestosAddComponent {
 
     const pres= {
       ...this.formulario.getRawValue(),
+      fecha : new Date(this.formulario.value.fecha!),
       items: this.itemAux
     };
 
