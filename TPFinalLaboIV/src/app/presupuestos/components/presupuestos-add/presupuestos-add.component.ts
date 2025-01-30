@@ -6,6 +6,7 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
 import { CommonModule } from '@angular/common';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { FetchBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-presupuestos-add',
@@ -36,11 +37,11 @@ export class PresupuestosAddComponent {
     total: [0, [Validators.min(0)]],  
   });
 
-  
   getFechaActualString(): string {
     const hoy = new Date();
     return hoy.toISOString().split('T')[0]; // Convierte la fecha a formato YYYY-MM-DD
   }
+
 
 //---------------------------------------------------------
 
@@ -57,7 +58,7 @@ export class PresupuestosAddComponent {
 
     const pres= {
       ...this.formulario.getRawValue(),
-      fecha : new Date(this.formulario.value.fecha!),
+      fecha: new Date(this.formulario.value.fecha! + 'T12:00:00'),
       items: this.itemAux
     };
 
