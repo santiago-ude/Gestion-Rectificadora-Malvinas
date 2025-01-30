@@ -31,6 +31,7 @@ export class PresupuestosAddComponent {
 
   formulario = this.fb.nonNullable.group({
     fecha: [this.getFechaActual(), [Validators.required]],
+    fecha: [this.getFechaActualString(), [Validators.required]],
     descuento: [0, [Validators.min(0)]],  
     items: this.fb.array([], [Validators.required]),
     total: [0, [Validators.min(0)]],  
