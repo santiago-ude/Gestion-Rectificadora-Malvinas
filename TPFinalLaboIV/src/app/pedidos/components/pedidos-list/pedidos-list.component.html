@@ -41,6 +41,7 @@
 
   <!-- Contenedor individual de cada pedido -->
   <div *ngFor="let pedido of pedidosFiltrados; trackBy: trackById" class="pedido-datos">
+    <p>ID: {{pedido.id}}</p>
     <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>
     <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
