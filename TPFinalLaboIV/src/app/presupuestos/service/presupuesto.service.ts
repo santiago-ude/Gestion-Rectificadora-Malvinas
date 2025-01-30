@@ -29,13 +29,13 @@ export class PresupuestoService {
   }
 
   //PUT
-  putPresupuesto(pres: Presupuesto, id: string | null): Observable<Presupuesto> {
+  putPresupuesto(pres: Presupuesto, id: Number | null): Observable<Presupuesto> {
 
     return this.http.put<Presupuesto>(`${this.urlBase}/${id}`, pres).pipe(catchError(this.handleError));
   }
 
   //DELETE
-  deletePresupuesto(id: string | null): Observable<void> {
+  deletePresupuesto(id: Number | null | undefined): Observable<void> {
 
     return this.http.delete<void>(`${this.urlBase}/${id}`).pipe(catchError(this.handleError));
 
@@ -43,7 +43,7 @@ export class PresupuestoService {
 
   
   //GETById
-  getPresupuestosById(id: string | null): Observable<Presupuesto> {
+  getPresupuestosById(id: Number | null): Observable<Presupuesto> {
 
     return this.http.get<Presupuesto>(`${this.urlBase}/${id}`);
 
