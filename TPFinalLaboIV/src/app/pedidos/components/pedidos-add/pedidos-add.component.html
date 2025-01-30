@@ -2,6 +2,9 @@
   <fieldset>
     <legend>Agregar Pedido</legend>
 
+
+
+
     <label for="cliente">Cliente:</label>
     <select id="cliente" formControlName="cliente">
       <option *ngFor="let cliente of clientes" [ngValue]="cliente">
@@ -12,11 +15,15 @@
       Cliente es obligatorio
     </div>
 
+
+
     <label for="fechaEntrada">Fecha de Entrada:</label>
     <input type="date" id="fechaEntrada" formControlName="fechaEntrada">
     <div *ngIf="formulario.controls['fechaEntrada'].touched && formulario.controls['fechaEntrada'].invalid" class="error">
     Fecha de Entrada es obligatoria
     </div>
+
+
 
     <label for="fechaSalidaEstimada">Fecha de Salida Estimada:</label>
     <input type="date" id="fechaSalidaEstimada" formControlName="fechaSalidaEstimada">
@@ -29,6 +36,8 @@
     </div>
 
 
+
+    
     <label for="estado">Estado:</label>
     <select id="estado" formControlName="estado">
       <option value="activo">Activo</option>
