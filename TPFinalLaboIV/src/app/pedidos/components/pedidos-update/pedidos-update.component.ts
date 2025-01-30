@@ -18,6 +18,7 @@ import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/
   styleUrl: './pedidos-update.component.css'
 })
 export class PedidosUpdateComponent {
+  
   id: Number | null = null;
   pedidoService = inject(PedidoService);
   clienteService = inject(ClientesService);
