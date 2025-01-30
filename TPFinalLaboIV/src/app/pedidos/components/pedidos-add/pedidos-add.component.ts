@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestosAddComponent } from '../../../presupuestos/components/presupuestos-add/presupuestos-add.component';
 import { Item } from '../../../presupuestos/interface/item';
-import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 
 @Component({
   selector: 'app-pedidos-add',
@@ -32,21 +32,21 @@ export class PedidosAddComponent {
   presupuestoService = inject(PresupuestoService);
 
   dialogoGenerico = inject(DialogoGenericoComponent);
-  
+
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
 
 
   clientes: Clientes[] = [];
 
-  auxiliarPresupuesto: Presupuesto = { id: '0', fecha: new Date(), descuento: 0, items: [], total: 0 };
+  auxiliarPresupuesto: Presupuesto = { fecha: new Date(), descuento: 0, items: [], total: 0 };
   cargarPresupuesto: boolean = false
 
 
 
   formulario = this.fb.nonNullable.group({
     cliente: [null as Clientes | null, Validators.required],
-    fechaEntrada: ['', Validators.required],
+    fechaEntrada: [this.getFechaActual(), Validators.required],
     fechaSalidaEstimada: ['', Validators.required],
     estado: ['activo' as 'activo' | 'entregado' | 'atrasado', Validators.required],
     marcaAuto: ['', Validators.required],
@@ -57,6 +57,15 @@ export class PedidosAddComponent {
   },
     { validators: this.fechaEntradaAntesDeSalidaValidator() }
   );
+
+  //Obtener fecha actual
+  getFechaActual(): string {
+    const hoy = new Date();
+    return hoy.getFullYear() + '-' +
+      String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+      String(hoy.getDate()).padStart(2, '0');
+  }
+
 
 
 
@@ -95,8 +104,6 @@ export class PedidosAddComponent {
   addPresupuesto(pres: Presupuesto) {
     this.auxiliarPresupuesto = pres;
 
-
-
     // Actualizar el control del formulario para reflejar el cambio
     this.formulario.patchValue({ presupuesto: this.auxiliarPresupuesto });
     this.formulario.controls['presupuesto'].markAsTouched();
@@ -125,7 +132,7 @@ export class PedidosAddComponent {
     return items.reduce((suma, item) => suma + item.precioFinal, 0);
   }
 
- 
+
 
   //Verifica el presupuesto
   //Verifica el pedido y almacena en el json-server
@@ -135,6 +142,12 @@ export class PedidosAddComponent {
       this.dialogoGenerico.abrirDialogo("El formulario no es válido o el presupuesto no está asignado");
       //alert('El formulario no es válido o el presupuesto no está asignado.');
       return;
+    }
+
+    // Normalizar la descripción
+    const descripcionControl = this.formulario.get('descripcion');
+    if (descripcionControl && descripcionControl.value) {
+      descripcionControl.setValue(this.capitalizeFirstLetter(descripcionControl.value), { emitEvent: false });
     }
 
 
@@ -177,6 +190,11 @@ export class PedidosAddComponent {
       descripcion: '',
       presupuesto: null
     });
+  }
+
+  // Función para capitalizar la primera letra de la descripción
+  capitalizeFirstLetter(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   }
 
 }
