@@ -84,7 +84,6 @@ export class PedidosUpdateComponent {
 
 
   buscarPorId(id: Number){
-    console.log(id);
     this.pedidoService.getPedidoById(id).subscribe({
       next: (pedido: Pedidos) => {
         this.formulario.patchValue({
