@@ -44,6 +44,7 @@ export class PedidosListComponent {
   listarPedidos() {
     this.ts.getPedidos().subscribe({
       next: (pedidos: Pedidos[]) => {
+
         this.listaPedidos = pedidos;
         this.pedidosFiltrados = pedidos;
         this.actualizarEstadoPedidosAtrasados();
@@ -123,7 +124,7 @@ export class PedidosListComponent {
       if(pedido.estado !== "entregado"){
 
         const fechaSalidaEstimada = new Date(pedido.fechaSalidaEstimada);
-        fechaSalidaEstimada.setDate(fechaSalidaEstimada.getDate()+1);
+        fechaSalidaEstimada.setDate(fechaSalidaEstimada.getDate() + 1);
         fechaSalidaEstimada.setHours(0, 0, 0, 0); // Normalizamos la fecha de salida estimada 
 
         const diferenciaDias= (fechaSalidaEstimada.getTime() - hoy.getTime()) / (1000 * 3600 * 24);
@@ -227,7 +228,6 @@ entregarPedido(pedido: Pedidos) {
   pedido.estado = 'entregado';
   this.ts.updatePedido(pedido.id,pedido).subscribe({
       next: () => {
-        //alert("El pedido ha sido marcado como entregado.");
         this.dialogoGenerico.abrirDialogo("El pedido fue marcado como entregado");
         this.listarPedidos();
       },
@@ -322,6 +322,7 @@ entregarPedido(pedido: Pedidos) {
 
     // Método para abrir el modal de confirmación
     notificarCliente(pedido: Pedidos) {
+      
       const numeroTelefono = pedido.cliente.numero;
       const mensaje = `Estimado ${pedido.cliente.nombre}, su pedido  está listo para ser recogido en Rectificadora Malvinas.`;
       const enlaceWhatsApp = this.whatsappService.generarEnlace(numeroTelefono, mensaje);
