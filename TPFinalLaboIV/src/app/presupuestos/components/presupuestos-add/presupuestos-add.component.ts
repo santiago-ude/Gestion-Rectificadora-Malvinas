@@ -31,15 +31,18 @@ export class PresupuestosAddComponent {
   dialogoGenerico = inject(DialogoGenericoComponent);
 
   formulario = this.fb.nonNullable.group({
-    fecha: [this.getFechaActualString(), [Validators.required]],
+    fecha: [this.getFechaActual(), [Validators.required]],
     descuento: [0, [Validators.min(0)]],  
     items: this.fb.array([], [Validators.required]),
     total: [0, [Validators.min(0)]],  
   });
 
-  getFechaActualString(): string {
+  //Retorna fecha actual
+  getFechaActual(): string {
     const hoy = new Date();
-    return hoy.toISOString().split('T')[0]; // Convierte la fecha a formato YYYY-MM-DD
+    return hoy.getFullYear() + '-' +
+      String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+      String(hoy.getDate()).padStart(2, '0');
   }
 
 
