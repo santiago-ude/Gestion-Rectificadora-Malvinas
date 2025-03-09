@@ -113,7 +113,7 @@ export class PedidosAddComponent {
   //Retornar un descuento especifico dependiendo el metodo de pago  
   asignarDescuento(cliente: Clientes) {
 
-    if (cliente.metodoPago === 'Efectivo') {
+    if (cliente.metodoPago === 'efectivo') {
       return 10;
     }
     else if (cliente.metodoPago === 'Tarjeta de Debito') {
