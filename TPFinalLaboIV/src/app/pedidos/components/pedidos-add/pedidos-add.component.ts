@@ -116,7 +116,7 @@ export class PedidosAddComponent {
     if (cliente.metodoPago === 'efectivo') {
       return 10;
     }
-    else if (cliente.metodoPago === 'Tarjeta de Debito') {
+    else if (cliente.metodoPago === 'tarjeta de debito') {
       return 5;
     }
     else {
