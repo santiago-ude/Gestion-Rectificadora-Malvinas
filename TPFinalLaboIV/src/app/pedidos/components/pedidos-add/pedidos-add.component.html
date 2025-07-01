@@ -70,9 +70,15 @@
 
     <label for="presupuesto">Presupuesto:</label>
 
-    <button abrirDialogPresupuesto type="button">Agregar Presupuesto</button>
+    <button (click)="cargarPresupuesto= true" type="button">Agregar Presupuesto</button>
+    
 
-    <!-- MOSTRAR PRESUPUESTO -->
+    <!-- Suplantar el "cargarPresupuesto" por un "abrirDialogPresupuesto" y suplantar el if por un for que muestre el presupuesto -->
+    @if (cargarPresupuesto) {
+
+      <app-presupuestos-add (emitirPresupuesto)="addPresupuesto($event)"></app-presupuestos-add>
+
+    }
     
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio
