@@ -73,6 +73,7 @@ export class PresupuestosAddComponent {
     this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
 
     this.cargarItem = false;
+    
   }
 
 
