@@ -101,17 +101,8 @@ export class ClienteListComponent implements OnInit{
       next: (pedidos: Pedidos[]) => {
         if (pedidos && pedidos.length > 0) {
 
-          const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
-            data: {
-              mensaje: 'Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?',
-            },
-          });
+          this.dialogoGenerico.abrirDialogo("El cliente esta asociado a un pedido, no se puede eliminar.");
   
-          dialogRef.afterClosed().subscribe((confirmacion) => {
-            if (confirmacion) {
-              this.eliminarCliente(clienteId);
-            }
-          });
         } else {
 
 
