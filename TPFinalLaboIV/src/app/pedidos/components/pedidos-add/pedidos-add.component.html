@@ -1,3 +1,5 @@
+
+
 <form [formGroup]="formulario" (ngSubmit)="agregarPedido()">
   <fieldset>
     <legend>Agregar Pedido</legend>
@@ -67,12 +69,10 @@
     <textarea id="descripcion" formControlName="descripcion"></textarea>
 
     <label for="presupuesto">Presupuesto:</label>
-    <button (click)="cargarPresupuesto= true" type="button">Agregar Presupuesto</button>
-    @if (cargarPresupuesto) {
 
-      <app-presupuestos-add (emitirPresupuesto)="addPresupuesto($event)"></app-presupuestos-add>
+    <button abrirDialogPresupuesto type="button">Agregar Presupuesto</button>
 
-    }
+    <!-- MOSTRAR PRESUPUESTO -->
     
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio
