@@ -43,6 +43,8 @@ export class ItemAddComponent {
 
     const item = this.formulario.getRawValue();
 
+    item.precioFinal = item.precioManoObra + item.precioUnitario;
+
     this.emitirEvento.emit(item);
     this.formulario.reset();
 
