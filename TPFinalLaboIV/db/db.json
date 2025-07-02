@@ -158,18 +158,18 @@
   "pedidos": [
     {
       "cliente": {
-        "id": "6ac8",
-        "dni": "45342134",
+        "dni": "44265003",
         "nombre": "Lautaro",
         "apellido": "Arias",
         "numero": "2236209845",
         "domicilio": "constitucion",
         "altura": "1654",
-        "metodoPago": "Tarjeta de Credito"
+        "metodoPago": "Tarjeta de Credito",
+        "id": "6ac8"
       },
       "fechaEntrada": "2024-11-12T00:00:00.000Z",
       "fechaSalidaEstimada": "2024-11-21T00:00:00.000Z",
-      "estado": "activo",
+      "estado": "entregado",
       "marcaAuto": "Ford",
       "modeloAuto": "F-150 R",
       "numeroSerie": "ABCDE12345",
@@ -246,7 +246,7 @@
       },
       "fechaEntrada": "2024-11-05T00:00:00.000Z",
       "fechaSalidaEstimada": "2024-11-12T00:00:00.000Z",
-      "estado": "atrasado",
+      "estado": "entregado",
       "marcaAuto": "Fiat",
       "modeloAuto": "500",
       "numeroSerie": "HDFNE45812",

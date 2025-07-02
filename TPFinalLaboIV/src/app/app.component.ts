@@ -9,7 +9,7 @@ import { MenuComponent } from "./landingPage/menu/menu.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PageComponent, FooterComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']  // Cambiado a styleUrls (en plural)
 })
