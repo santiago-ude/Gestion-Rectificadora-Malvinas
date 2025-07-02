@@ -1,6 +1,6 @@
+import { Presupuesto } from './../../../presupuestos/interface/presupuesto';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Presupuesto } from '../../../presupuestos/interface/presupuesto';
 import { PedidoService } from '../../service/pedidos.service';
 import { PresupuestoService } from '../../../presupuestos/service/presupuesto.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { ClientesService } from '../../../clientes/service/clientes.service';
 import { PresupuestosAddComponent } from '../../../presupuestos/components/presupuestos-add/presupuestos-add.component';
 import { Item } from '../../../presupuestos/interface/item';
 import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pedidos-add',
