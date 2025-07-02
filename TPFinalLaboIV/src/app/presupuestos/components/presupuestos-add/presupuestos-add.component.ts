@@ -26,6 +26,8 @@ export class PresupuestosAddComponent {
   
   cargarItem = false;
   itemAux : Item[] = [];
+  dialog = inject(MatDialog)
+  dialogRef = inject(MatDialogRef<PresupuestosAddComponent>);
 
 
   //---------------ULTIMA CLASE---------------------------
