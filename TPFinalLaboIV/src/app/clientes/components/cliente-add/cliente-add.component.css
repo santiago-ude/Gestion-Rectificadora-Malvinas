@@ -10,16 +10,7 @@ section{
     display: flex;
     justify-content: center;
     font-size: 3.5rem;
-    text-shadow: 2px 2px #a200ff;
-    transition: .5s;
-    color: aliceblue;
-}
-.h2c{
-    display: flex;
-    justify-content: center;
-    font-size: 3.7rem;
-    text-shadow: 2px 2px #a200ffbe;
-    color: rgb(239, 187, 255);
+    text-shadow: 2px 2px #5580f7;
     transition: .5s;
 }
 form{
