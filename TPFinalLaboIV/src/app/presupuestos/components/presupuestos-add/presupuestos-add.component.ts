@@ -6,7 +6,9 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
 import { CommonModule } from '@angular/common';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
-import { FetchBackend } from '@angular/common/http';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-presupuestos-add',
