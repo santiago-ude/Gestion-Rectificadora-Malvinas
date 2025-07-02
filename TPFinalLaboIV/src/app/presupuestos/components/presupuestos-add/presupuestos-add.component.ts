@@ -82,6 +82,13 @@ export class PresupuestosAddComponent {
     
   }
 
+abrirDialogItem() {
+  this.dialog.open(ItemAddComponent).afterClosed().subscribe(item => {
+    if (item) {
+      this.addItem(item);
+    }
+  });
+}
 
   
   addItem(item : Item){
