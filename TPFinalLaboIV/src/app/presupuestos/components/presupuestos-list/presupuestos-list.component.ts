@@ -50,7 +50,7 @@ export class PresupuestosListComponent implements OnInit{
 
 
   //Elimina un presupuesto de la lista
-  deletePresupuestoDB(id : string | null){
+  deletePresupuestoDB(id : Number | null | undefined){
 
     const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
       data: {

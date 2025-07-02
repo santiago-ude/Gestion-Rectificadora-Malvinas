@@ -18,7 +18,8 @@ import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/
   styleUrl: './pedidos-update.component.css'
 })
 export class PedidosUpdateComponent {
-  id: string | null = null;
+  
+  id: Number | null = null;
   pedidoService = inject(PedidoService);
   clienteService = inject(ClientesService);
   presupuestoService = inject(PresupuestoService);
@@ -82,8 +83,7 @@ export class PedidosUpdateComponent {
   }
 
 
-  buscarPorId(id: string){
-    console.log(id);
+  buscarPorId(id: Number){
     this.pedidoService.getPedidoById(id).subscribe({
       next: (pedido: Pedidos) => {
         this.formulario.patchValue({

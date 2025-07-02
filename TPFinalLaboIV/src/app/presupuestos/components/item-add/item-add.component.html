@@ -38,7 +38,7 @@
         El precio de mano de obra no puede ser negativo
       </div>
 
-      <!-- Precio final -->
+      <!-- Precio final
       <label for="precioFinal">Precio Final</label>
       <input type="number" formControlName="precioFinal">
       <div *ngIf="formulario.controls['precioFinal'].touched && formulario.controls['precioFinal'].hasError('required')" class="error">
@@ -46,9 +46,9 @@
       </div>
       <div *ngIf="formulario.controls['precioFinal'].touched && formulario.controls['precioFinal'].hasError('min')" class="error">
         El precio final no puede ser negativo
-      </div>
+      </div> -->
 
-      <button type="submit" [disabled]="!formulario.valid">Agregar</button>
+      <button type="submit" [disabled]="!formulario.valid">Agregar Item</button>
     </form>
   </fieldset> 
 </section>

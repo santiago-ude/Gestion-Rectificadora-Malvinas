@@ -8,5 +8,5 @@ import {DialogoGenericoComponent} from "./shared/modals/dialogo-generico/dialogo
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),{provide: MAT_DIALOG_DATA, useValue: {}},{ provide: MatDialogRef, useValue: {} } ,DialogoGenericoComponent]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),{provide: MAT_DIALOG_DATA, useValue: {}},{ provide: MatDialogRef, useValue: {} } ,DialogoGenericoComponent, provideAnimationsAsync()]
 };

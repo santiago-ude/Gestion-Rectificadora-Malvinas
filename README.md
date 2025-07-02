@@ -6,7 +6,9 @@ Solo hace falta clonar el repo con `git clone https://github.com/santiago-ude/Ge
 Todos los comandos deben ejecutarse dentro de `./TPFinalLaboIV`
 
 ## Integrantes
-Santi Ude
-Matias Antonelli
-Lautaro Arias
-Santiago Ayala
+Matias Antonelli <br>
+Lautaro Arias <br>
+Santiago Ayala <br>
+Santiago Ude
+
+

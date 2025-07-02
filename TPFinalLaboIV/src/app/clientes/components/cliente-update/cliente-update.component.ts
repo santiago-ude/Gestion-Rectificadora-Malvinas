@@ -23,7 +23,7 @@ export class ClienteUpdateComponent implements OnInit {
     this.rt.paramMap.subscribe(
       {
         next:(param)=>{
-          this.id =param.get("id");
+          this.id = param.get("id");
           
           if(this.id != null){  
             this.getByidClientes()
@@ -47,7 +47,7 @@ ps = inject(PedidoService)
 //Coleccion de datos para el formulario
 tipos: string[] = ["nombre","apellido","dni","numero","domicilio","altura"];
 tiposPlace: string[] = [];
-id? : string | null | undefined;
+id? : Number | null | undefined;
 cliente : Clientes ={
   dni:"",nombre: "",
   apellido: "",
