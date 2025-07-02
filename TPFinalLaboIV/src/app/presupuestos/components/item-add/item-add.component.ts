@@ -18,6 +18,8 @@ export class ItemAddComponent {
   emitirEvento: EventEmitter<Item> = new EventEmitter();
 
   FB = inject(FormBuilder);
+  dialogRef = inject(MatDialogRef);
+
 
 
   formulario = this.FB.nonNullable.group({
