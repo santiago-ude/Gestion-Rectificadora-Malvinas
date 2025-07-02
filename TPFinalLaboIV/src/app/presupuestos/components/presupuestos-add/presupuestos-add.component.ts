@@ -75,7 +75,7 @@ export class PresupuestosAddComponent {
 
       
     // Emitir el presupuesto al componente de pedidos
-    this.emitirPresupuesto.emit(pres);
+    this.dialogRef.close(pres)
     this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
 
     this.cargarItem = false;
