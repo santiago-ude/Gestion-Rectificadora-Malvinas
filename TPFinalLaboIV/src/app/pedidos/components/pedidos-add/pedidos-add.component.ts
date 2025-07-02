@@ -197,4 +197,16 @@ export class PedidosAddComponent {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   }
 
+abrirDialogPresupuesto(){
+  const dialogRef = this.dialog.open(PresupuestosAddComponent);
+
+  dialogRef.afterClosed().subscribe(presupuesto => {
+    if(presupuesto){
+      this.addPresupuesto(presupuesto);
+    }
+  });
+}
+
+
+
 }
