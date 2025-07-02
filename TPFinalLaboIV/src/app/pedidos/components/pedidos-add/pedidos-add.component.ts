@@ -42,6 +42,7 @@ export class PedidosAddComponent {
 
   auxiliarPresupuesto: Presupuesto = { fecha: new Date(), descuento: 0, items: [], total: 0 };
   cargarPresupuesto: boolean = false
+  dialog = inject(MatDialog);
 
 
 
