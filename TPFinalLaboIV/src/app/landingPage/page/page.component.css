@@ -1,6 +1,14 @@
-:host{
-    display: block;
-    background-image: linear-gradient(to bottom, #3c8ad8, #83dce2, #b9e1fa);
-    background-attachment:fixed;
-    background-size: cover;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* vh = viewport height, al 100 utiliza toda la altura de la ventana*/
+}
+
+.contenedor{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  box-sizing: border-box;
 }

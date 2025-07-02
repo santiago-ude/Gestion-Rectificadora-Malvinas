@@ -8,26 +8,30 @@ import { PresupuestoPageComponent } from './presupuestos/pages/presupuesto-page/
 import { ListPedidosPageComponent } from './pedidos/pages/list-pedidos-page/list-pedidos-page.component';
 import { UpdatePageComponent } from './clientes/pages/update-page/update-page.component';
 import {NavbarGuard} from "./navbar.guard";
+import { PageComponent } from './landingPage/page/page.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: PageComponent,
+    children: [
+      { path: '', component: CuerpoComponent },
 
-    //Presupuestos
-    {path: 'presupuestos', component: PresupuestoPageComponent, canActivate: [NavbarGuard]},
+      // Clientes
+      { path: 'clientes', component: ClienteListComponent },
+      { path: 'crearCliente', component: ClienteAddComponent },
+      { path: 'clientes/update/:id', component: UpdatePageComponent },
 
-    //Clientes
-    {path: 'crearCliente', component: ClienteAddComponent, canActivate: [NavbarGuard]},
-    {path: 'clientes', component: ClienteListComponent, canActivate: [NavbarGuard]},
-    {path: 'clientes/update/:id', component: UpdatePageComponent, canActivate: [NavbarGuard]},
+      // Pedidos
+      { path: 'pedidos', component: ListPedidosPageComponent },
+      { path: 'addPedido', component: PedidosPageComponent },
+      { path: 'pedidos/update/:id', component: UpdatePedidosPageComponent },
 
+      // Presupuestos
+      { path: 'presupuestos', component: PresupuestoPageComponent },
 
-    //Pedidos
-    {path: 'addPedido', component: PedidosPageComponent, canActivate: [NavbarGuard]},
-    {path: 'pedidos', component: ListPedidosPageComponent, canActivate: [NavbarGuard]},
-    {path: 'addPedidos', component: PedidosPageComponent, canActivate: [NavbarGuard]},
-    {path: "pedidos/update/:id", component: UpdatePedidosPageComponent, canActivate: [NavbarGuard]},
-    
-    //Por Defecto
-    {path: '', component: CuerpoComponent},
-    {path: '**', redirectTo: ''},
-    
+      // Inicio
+      { path: '**', redirectTo: '' }
+    ]
+  }
 ];
