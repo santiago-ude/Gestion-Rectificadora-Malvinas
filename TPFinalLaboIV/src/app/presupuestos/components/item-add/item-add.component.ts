@@ -48,7 +48,7 @@ export class ItemAddComponent {
 
     item.precioFinal = item.precioManoObra + item.precioUnitario;
 
-    this.emitirEvento.emit(item);
+    this.dialogRef.close(item);
     this.formulario.reset();
 
   }
