@@ -13,7 +13,7 @@ import { Inject } from '@angular/core';
 @Component({
   selector: 'app-presupuestos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, ItemAddComponent, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './presupuestos-add.component.html',
   styleUrl: './presupuestos-add.component.css'
 })

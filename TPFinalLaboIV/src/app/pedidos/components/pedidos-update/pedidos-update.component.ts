@@ -46,7 +46,7 @@ export class PedidosUpdateComponent {
 
   ngOnInit(){
     this.router.paramMap.subscribe((params) => {
-      this.id = params.get("id");
+    this.id = params.get("id") ? Number(params.get("id")) : null;
       if (this.id) {
         this.buscarPorId(this.id);
       }

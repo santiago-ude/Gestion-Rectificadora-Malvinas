@@ -11,7 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PageComponent, FooterComponent, MatDialogModule],
+  imports: [RouterOutlet, MatDialogModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']  // Cambiado a styleUrls (en plural)
 })

@@ -15,6 +15,7 @@ import { PedidoService } from '../../../pedidos/service/pedidos.service';
   templateUrl: './cliente-update.component.html',
   styleUrl: './cliente-update.component.css'
 })
+
 export class ClienteUpdateComponent implements OnInit {
 
   dialogoGenerico = inject(DialogoGenericoComponent);
@@ -23,7 +24,7 @@ export class ClienteUpdateComponent implements OnInit {
     this.rt.paramMap.subscribe(
       {
         next:(param)=>{
-          this.id = param.get("id");
+          this.id = param.get("id") ? Number(param.get("id")) : null;
           
           if(this.id != null){  
             this.getByidClientes()
