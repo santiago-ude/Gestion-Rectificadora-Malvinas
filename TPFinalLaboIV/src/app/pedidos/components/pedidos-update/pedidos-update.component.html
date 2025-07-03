@@ -3,7 +3,7 @@
     <fieldset>
         <legend>Actualizar Pedido</legend>
     
-        <label for="cliente">Cliente:</label>
+        <!-- <label for="cliente">Cliente:</label>
         <select id="cliente" formControlName="cliente">
           <option *ngFor="let cliente of clientes" [ngValue]="cliente">
             {{ cliente.nombre }} {{ cliente.apellido }} (DNI: {{ cliente.dni }})
@@ -11,7 +11,7 @@
         </select>
         <div *ngIf="formulario.controls['cliente'].touched && formulario.controls['cliente'].invalid" class="error">
           Cliente es obligatorio
-        </div>
+        </div> -->
     
         <label for="fechaEntrada">Fecha de Entrada:</label>
         <input type="date" id="fechaEntrada" formControlName="fechaEntrada">
@@ -34,7 +34,6 @@
         <select id="estado" formControlName="estado">
           <option value="activo">Activo</option>
           <option value="entregado">Entregado</option>
-          <option value="atrasado">Atrasado</option>
         </select>
     
         <label for="marcaAuto">Marca del Auto:</label>

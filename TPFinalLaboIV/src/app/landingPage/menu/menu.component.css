@@ -1,42 +1,41 @@
+
+
+.h1Dinamic, .h1Dinamic2 {
+  background-image: url("../img/Malvinas1.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 8rem;
+  color: #FFF;
+  margin: 0;
+  white-space: nowrap;
+  transition: .5s;
+
+}
 .h1Dinamic{
     color: #FFFF ;
-    margin: 0;
     align-items: center;
     font-size: 1.5rem;
-    background-image: url("../img/Malvinas1.png");
     background-size: 8rem;
-    background-repeat: no-repeat; 
-    background-position: left center; 
-    padding-left: 8rem;
-    transition: .5s;
 }
 .h1Dinamic2{
     color: #FFFF ;
-    margin: 0;
     align-items: center;
     font-size: 1.6rem;
-    background-image: url("../img/Malvinas1.png");
     background-size: 8.5rem;
-    background-repeat: no-repeat; 
-    background-position: left center; 
     padding-left: 8.4rem;
-    transition: .5s;
 }
-.contenedorBackColor{
-  
-    width: 100%;
-    height: 8rem; 
-    position: relative;
+.contenedorBackColor {
+  width: 100%;
+  background-color: #4d9eda;
+  background-image: linear-gradient(to bottom,#51b1fa ,#2c8cd6);
+  box-sizing: border-box;
 }
-.contenedorMenu{
-    position: absolute;
-    top: 50%; /* 50% desde la parte superior del padre */
-    left: 50%; /* 50% desde la izquierda del padre */
-    transform: translate(-50%, -50%); /* Centra el hijo */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 98%;
+.contenedorMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
 }
 
 ul {
@@ -64,7 +63,7 @@ li {
 .aDinamico2 {
     display: block;
     text-decoration: none;
-    color: #b3b3b3;
+    color: #ffcc00;
     transition: .4s;
     font-size: 1.2rem;
     font-weight: bold;
@@ -78,4 +77,3 @@ li {
 .menu-personalizado{
     background-image: linear-gradient(to bottom,#eac7ff ,#deadff);
 }
-

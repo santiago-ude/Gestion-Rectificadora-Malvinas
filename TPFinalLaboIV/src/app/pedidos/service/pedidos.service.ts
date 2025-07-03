@@ -9,11 +9,10 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PedidoService {
-  private apiUrl = 'http://localhost:3000/pedidos';
+  private apiUrl = 'http://localhost:8080/managment/api/v1/pedidos';
 
   constructor(private http: HttpClient) {}
   
-
 
   //GET
   getPedidos(): Observable<Pedidos[]> {
@@ -26,17 +25,17 @@ export class PedidoService {
   }
 
   //PUT
-  updatePedido(id: string | undefined | null, pedido: Pedidos): Observable<Pedidos> {
+  updatePedido(id: Number | undefined | null, pedido: Pedidos): Observable<Pedidos> {
     return this.http.put<Pedidos>(`${this.apiUrl}/${id}`, pedido).pipe(catchError(this.handleError));
   }
 
   //DELETE
-  deletePedido(id: string | null | undefined): Observable<void> {
+  deletePedido(id: Number | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
   
   //GETById
-  getPedidoById(id: string | null | undefined): Observable<Pedidos>{
+  getPedidoById(id: Number | null | undefined): Observable<Pedidos>{
     return this.http.get<Pedidos>(`${this.apiUrl}/${id}`);
   }
 
@@ -50,7 +49,7 @@ export class PedidoService {
     );
   }
 
-  obtenerPedidosPorCliente(clienteId: string | null | undefined): Observable<Pedidos[]> {
+  obtenerPedidosPorCliente(clienteId: Number | null | undefined): Observable<Pedidos[]> {
     return this.http.get<Pedidos[]>(this.apiUrl).pipe(
       map((pedidos: Pedidos[]) => 
         pedidos.filter(pedido => pedido.cliente.id === clienteId)

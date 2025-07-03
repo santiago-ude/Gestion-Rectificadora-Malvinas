@@ -24,6 +24,7 @@ export class ClienteListComponent implements OnInit{
   ngOnInit(): void {
     this.getClientesList();
   } 
+
   clientes: Clientes[] = [];
   clientesFiltrados: Clientes[] = [];   
   filtro: string = '';     
@@ -40,6 +41,8 @@ export class ClienteListComponent implements OnInit{
   dialogoGenerico = inject(DialogoGenericoComponent);
   dialog = inject(MatDialog)
 
+
+  //METODO EJECUTA LA GET REQUEST
   getClientesList(){
     this.sr.obtenerClientes().subscribe(
       {
@@ -51,6 +54,8 @@ export class ClienteListComponent implements OnInit{
       }
     )
   }
+
+
    // Buscar por DNI
    buscarClienteXDNI(dni: string, event: KeyboardEvent) {
     if (event.key === "Enter") {
@@ -76,7 +81,7 @@ export class ClienteListComponent implements OnInit{
       .sort((a, b) => parseInt(a.dni) - parseInt(b.dni));
   }
 
-  enviarModificacion(id : string  | undefined) {
+  enviarModificacion(id : Number  | undefined) {
       this.rt.navigate([`clientes/update/${id}`])
     
   }
@@ -90,23 +95,14 @@ export class ClienteListComponent implements OnInit{
   }
 
 
-  confirmarYEliminarCliente(clienteId: string | null | undefined) {
+  
+  confirmarYEliminarCliente(clienteId: Number | null | undefined) {
     this.pedidosService.obtenerPedidosPorCliente(clienteId).subscribe({
       next: (pedidos: Pedidos[]) => {
         if (pedidos && pedidos.length > 0) {
 
-          const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
-            data: {
-              mensaje: 'Este cliente tiene pedidos asociados. ¿Deseas eliminarlo de todos modos?',
-            },
-          });
-          
+          this.dialogoGenerico.abrirDialogo("El cliente esta asociado a un pedido, no se puede eliminar.");
   
-          dialogRef.afterClosed().subscribe((confirmacion) => {
-            if (confirmacion) {
-              this.eliminarCliente(clienteId);
-            }
-          });
         } else {
 
 
@@ -121,8 +117,6 @@ export class ClienteListComponent implements OnInit{
               this.eliminarCliente(clienteId);
             }
           });
-        
-        
         }
       },
       error: (e: Error) => console.error(e.message),
@@ -130,7 +124,7 @@ export class ClienteListComponent implements OnInit{
   }
   
 
-  eliminarCliente(clienteId: string | null | undefined) {
+  eliminarCliente(clienteId: Number | null | undefined) {
     this.sr.borrarCliente(clienteId).subscribe({
       next: () => {
         //alert('Cliente eliminado correctamente.');

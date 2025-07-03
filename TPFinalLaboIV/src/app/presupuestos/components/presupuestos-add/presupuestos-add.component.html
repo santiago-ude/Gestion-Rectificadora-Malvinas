@@ -8,13 +8,11 @@
         <div *ngIf="formulario.controls['fecha'].touched && formulario.controls['fecha'].invalid" class="error">
           Campo Requerido
         </div>
+
         <label for="items">Items</label>
-        <button (click)="cargarItem = true" type="button">Cargar Item</button>
-        <div *ngIf="cargarItem">
-          <app-item-add (emitirEvento)="addItem($event)"></app-item-add>
-        </div>
+        <button (click)="abrirDialogItem()" type="button">Cargar Item</button>
   
-        <button type="submit" [disabled]="!formulario.valid">Agregar</button>
+        <button type="submit" [disabled]="!formulario.valid">Agregar Presupuesto</button>
       </form>
     </fieldset> 
   </section>

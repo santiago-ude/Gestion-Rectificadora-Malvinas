@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { MenuComponent } from "../menu/menu.component";
-import { CuerpoComponent } from "../cuerpo/cuerpo.component";
+import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-page',
   standalone: true,
-  imports: [MenuComponent, CuerpoComponent, FooterComponent],
+  imports: [MenuComponent, FooterComponent, RouterOutlet],
   templateUrl: './page.component.html',
-  styleUrl: './page.component.css'
+  styleUrls: ['./page.component.css']
 })
-export class PageComponent {
-
-}
+export class PageComponent {}

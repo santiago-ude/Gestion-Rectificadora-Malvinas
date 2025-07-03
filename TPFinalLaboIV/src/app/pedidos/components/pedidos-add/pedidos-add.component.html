@@ -1,6 +1,11 @@
+
+
 <form [formGroup]="formulario" (ngSubmit)="agregarPedido()">
   <fieldset>
     <legend>Agregar Pedido</legend>
+
+
+
 
     <label for="cliente">Cliente:</label>
     <select id="cliente" formControlName="cliente">
@@ -12,11 +17,15 @@
       Cliente es obligatorio
     </div>
 
+
+
     <label for="fechaEntrada">Fecha de Entrada:</label>
     <input type="date" id="fechaEntrada" formControlName="fechaEntrada">
     <div *ngIf="formulario.controls['fechaEntrada'].touched && formulario.controls['fechaEntrada'].invalid" class="error">
     Fecha de Entrada es obligatoria
     </div>
+
+
 
     <label for="fechaSalidaEstimada">Fecha de Salida Estimada:</label>
     <input type="date" id="fechaSalidaEstimada" formControlName="fechaSalidaEstimada">
@@ -29,11 +38,12 @@
     </div>
 
 
+
+    
     <label for="estado">Estado:</label>
     <select id="estado" formControlName="estado">
       <option value="activo">Activo</option>
       <option value="entregado">Entregado</option>
-      <option value="atrasado">Atrasado</option>
     </select>
 
     <label for="marcaAuto">Marca del Auto:</label>
@@ -58,12 +68,11 @@
     <textarea id="descripcion" formControlName="descripcion"></textarea>
 
     <label for="presupuesto">Presupuesto:</label>
-    <button (click)="cargarPresupuesto= true" type="button">Agregar Presupuesto</button>
-    @if (cargarPresupuesto) {
 
-      <app-presupuestos-add (emitirPresupuesto)="addPresupuesto($event)"></app-presupuestos-add>
+    <button (click)="abrirDialogPresupuesto()" type="button">Agregar Presupuesto</button>
+    
 
-    }
+    
     
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio

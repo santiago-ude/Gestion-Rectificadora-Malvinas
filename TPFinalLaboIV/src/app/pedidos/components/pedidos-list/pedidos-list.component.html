@@ -41,8 +41,8 @@
 
   <!-- Contenedor individual de cada pedido -->
   <div *ngFor="let pedido of pedidosFiltrados; trackBy: trackById" class="pedido-datos">
-    <p>ID: {{ pedido.id }}</p>
-    <p>Nombre: {{ pedido.cliente.nombre }}, Apellido: {{ pedido.cliente.apellido }}</p>
+    <p>ID: {{pedido.id}}</p>
+    <p>Nombre: {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>
     <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
       Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy':'UTC' }}
@@ -54,13 +54,15 @@
     }">
       Estado: {{ pedido.estado }}
     </p>
+    <p>Marca: {{pedido.marcaAuto}}</p>
+    <p>Modelo: {{pedido.modeloAuto}}</p>
+    <p>Numero de serie: {{pedido.numeroSerie}}</p>
     <p>Descripcion: {{pedido.descripcion}}</p>
     <div *ngIf="pedido.presupuesto">
       <h3>Presupuesto</h3>
-      <p>ID del Presupuesto: {{pedido.presupuesto.id}}</p>
       <p>Fecha del Presupuesto: {{pedido.presupuesto.fecha | date}}</p>
       <p>Descuento: {{pedido.presupuesto.descuento}}%</p>
-      <p>Total: ${{pedido.presupuesto.total}}</p>
+      <p>Total: {{pedido.presupuesto.total | currency }}</p>
 
       <!-- Listado de Items del Presupuesto -->
       <h4>Items del Presupuesto:</h4>

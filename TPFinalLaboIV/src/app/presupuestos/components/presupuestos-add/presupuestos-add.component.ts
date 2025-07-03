@@ -6,21 +6,28 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
 import { CommonModule } from '@angular/common';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-presupuestos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, ItemAddComponent, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './presupuestos-add.component.html',
   styleUrl: './presupuestos-add.component.css'
 })
 export class PresupuestosAddComponent {
+
+
 
   @Output()
   emitirPresupuesto: EventEmitter<Presupuesto> = new EventEmitter();
   
   cargarItem = false;
   itemAux : Item[] = [];
+  dialog = inject(MatDialog)
+  dialogRef = inject(MatDialogRef<PresupuestosAddComponent>);
 
 
   //---------------ULTIMA CLASE---------------------------
@@ -30,17 +37,24 @@ export class PresupuestosAddComponent {
   dialogoGenerico = inject(DialogoGenericoComponent);
 
   formulario = this.fb.nonNullable.group({
-    fecha: [new Date(), [Validators.required]],
+    fecha: [this.getFechaActual(), [Validators.required]],
     descuento: [0, [Validators.min(0)]],  
     items: this.fb.array([], [Validators.required]),
     total: [0, [Validators.min(0)]],  
   });
 
+  //Retorna fecha actual
+  getFechaActual(): string {
+    const hoy = new Date();
+    return hoy.getFullYear() + '-' +
+      String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+      String(hoy.getDate()).padStart(2, '0');
+  }
+
 
 //---------------------------------------------------------
 
   addPresupuesto = ()=>{
-
 
     console.log(this.formulario.errors); // Verifica si hay errores generales
     for (const controlName in this.formulario.controls) {
@@ -48,45 +62,35 @@ export class PresupuestosAddComponent {
         console.log(`${controlName} errors:`, control?.errors); // Muestra errores de cada campo
     }
 
-
     if(this.formulario.invalid)return;
 
 
     const pres= {
       ...this.formulario.getRawValue(),
-      items: this.itemAux,
-      id: (Math.random() * 10).toString()
+      fecha: new Date(this.formulario.value.fecha! + 'T12:00:00'),
+      items: this.itemAux
     };
 
     this.formulario.reset()
 
-    this.addPresupuestoDB(pres);
       
     // Emitir el presupuesto al componente de pedidos
-    this.emitirPresupuesto.emit(pres);
-
+    this.dialogRef.close(pres)
+    this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
 
     this.cargarItem = false;
-
+    
   }
 
-  addPresupuestoDB= (pres: Presupuesto)=>{
+abrirDialogItem() {
+  this.dialog.open(ItemAddComponent).afterClosed().subscribe(item => {
+    if (item) {
+      this.addItem(item);
+    }
+  });
+}
 
-      this.PS.postPresupuesto(pres).subscribe(
-        {
-          next: (pres : Presupuesto) => {
-            console.log(pres);
-            this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
-            //alert('presupuesto guardado...')
-          },
-          error: (e: Error)=>{
-            console.log(e.message)
-          }
-        }
-      )
-  }
-
-
+  
   addItem(item : Item){
 
     this.itemAux.push(item);

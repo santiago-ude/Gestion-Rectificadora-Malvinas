@@ -2,7 +2,7 @@ import { Clientes } from '../../clientes/interface/clientes';
 import { Presupuesto } from '../../presupuestos/interface/presupuesto';
 
 export interface Pedidos {
-  id?: string;
+  id?: Number;
   cliente: Clientes;
   fechaEntrada: Date;
   fechaSalidaEstimada: Date;
