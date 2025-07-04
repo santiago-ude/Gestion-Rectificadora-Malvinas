@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-pedidos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, PresupuestosAddComponent],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './pedidos-add.component.html',
   styleUrls: ['./pedidos-add.component.css']
 })

@@ -47,7 +47,27 @@
     </select>
 
     <label for="marcaAuto">Marca del Auto:</label>
-    <input type="text" id="marcaAuto" formControlName="marcaAuto">
+    <select id="marcaAuto" formControlName="marcaAuto">
+      <option value="ford">Ford</option>
+      <option value="chevrolet">Chevrolet</option>
+      <option value="fiat">Fiat</option>
+      <option value="volkswagen">Volkswagen</option>
+      <option value="renault">Renault</option>
+      <option value="peugeot">Peugeot</option>
+      <option value="toyota">Toyota</option>
+      <option value="nissan">Nissan</option>
+      <option value="honda">Honda</option>
+      <option value="citroen">Ctroen</option>
+      <option value="audi">Audi</option>
+      <option value="bmw">Bmw</option>
+      <option value="hyundai">Hyundai</option>
+      <option value="mercedes-benz">Mercedes Benz</option>
+      <option value="volvo">Volvo</option>
+      <option value="kia">Kia</option>
+      <option value="subaru">Subaru</option>      
+    </select>
+
+
     <div *ngIf="formulario.controls['marcaAuto'].touched && formulario.controls['marcaAuto'].invalid" class="error">
       Marca del Auto es obligatoria
     </div>
