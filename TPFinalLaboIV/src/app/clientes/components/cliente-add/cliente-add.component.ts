@@ -34,12 +34,6 @@ export class ClienteAddComponent {
     this.dentroImg = false
   }
 
-  h2Mouseover() {
-    this.dentroH2 = true
-  }
-  h2Mouseleave() {
-    this.dentroH2 = false;
-  }
   //
 
 
