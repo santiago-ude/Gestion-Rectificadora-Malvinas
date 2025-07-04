@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../service/clientes.service';
@@ -7,7 +7,7 @@ import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generic
 @Component({
   selector: 'app-cliente-add',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, CommonModule],
   templateUrl: './cliente-add.component.html',
   styleUrl: './cliente-add.component.css'
 })
