@@ -9,7 +9,7 @@ section{
     display: flex;
     justify-content: center;
     font-size: 3.5rem;
-    text-shadow: 2px 2px #a200ff;
+    text-shadow: 2px 2px #5580f7;
     transition: .5s;
     color: aliceblue;
 }
