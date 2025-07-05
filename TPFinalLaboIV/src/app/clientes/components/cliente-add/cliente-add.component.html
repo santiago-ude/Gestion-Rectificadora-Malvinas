@@ -63,6 +63,10 @@
         <div class="error" *ngIf="formulario.get('numero')?.touched && (formulario.get('numero')?.hasError('minlength') || formulario.get('numero')?.hasError('maxlength'))">
           Debe tener 10 caracteres
         </div>
+        <div class="error" *ngIf="formulario.get('numero')?.touched && formulario.get('numero')?.hasError('pattern')">
+          Solo se permiten números
+        </div>
+
       </div>
 
       <!-- Domicilio -->
