@@ -96,6 +96,10 @@
         <div class="error" *ngIf="formulario.get('altura')?.touched && formulario.get('altura')?.hasError('minlength')">
             Mínimo 2 caracteres
         </div>
+        <div class="error" *ngIf="formulario.get('altura')?.touched && formulario.get('altura')?.hasError('pattern')">
+         Solo se permiten números
+        </div>
+
       </div>
 
        <!-- Método de pago -->
