@@ -15,6 +15,9 @@
           <div class="error" *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.hasError('minlength')">
             Mínimo 2 caracteres
           </div>
+          <div class="error" *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.hasError('pattern')">
+            Solo se permiten letras
+          </div>
         </div>
 
         <div class="field">
