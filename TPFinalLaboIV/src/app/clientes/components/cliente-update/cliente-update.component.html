@@ -1,56 +1,114 @@
-<section>
-    <div class="div1">
-        <h2 class="h2">Modificar Clientes</h2>
-         <form (ngSubmit)="eventSubmit()" [formGroup]="formulario">
-   
-            @for (tipo of tipos; track $index) {
-                @if ($index == 0) {
-                    <div class="NAdiv">
-                        <div class="{{tipos[$index]}}IMG">
-                        </div>
-                        <input type="text" formControlName={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">
-                        @if (formulario.controls['nombre'].touched && formulario.controls['nombre'].hasError('required')){
-                            <!-- <div class="error">Campo requerido</div> -->
-                        }
-                          @if (formulario.controls['nombre'].touched && formulario.controls['nombre'].hasError('minlength')) {
-                            <!-- <div class="error">Debe contener al menos 2 caracteres</div> -->
-                        }
-                        <input type="text" formControlName={{tipos[$index+1]}} id={{tipos[$index+1]}} class="{{tipos[$index+1]}}" placeholder="{{tiposPlace[$index+1]}}">
-                        @if (formulario.controls['apellido'].touched && formulario.controls['apellido'].hasError('required')) {
-                            <!-- <div class="error">Campo requerido</div> -->
-                        }
-                    </div>
-                }@else if($index>1){
-                    <div class="{{tipo}}div">
-                        <div class="{{tipos[$index]}}IMG"></div>
-                        <input type="text" formControlName={{tipo}} class="{{tipo}}" placeholder="{{tiposPlace[$index]}}">   
-                        @if (formulario.get(tipo)?.touched && formulario.get(tipo)?.hasError('required')) {
-                            <!-- <div class="error">Campo requerido</div> -->
-                          }
-                          @if (formulario.get(tipo)?.touched && formulario.get(tipo)?.hasError('minlength')) {
-                            <!-- <div class="error">Debe contener un valor válido</div> -->
-                          }
-                    </div>
-                    
-                    
-                }
-            }
-            <div class="selectdiv" >
-                <div class="imgSel"></div>
-                <select id="metodoPago" formControlName="metodoPago">
-                    <option value="Efectivo">Efectivo</option>
-                    <option value="Tarjeta de Credito">Tarjeta de Crédito</option>
-                    <option value="Tarjeta de Debito">Tarjeta de Débito</option>
-                </select>
-                @if (formulario.controls['metodoPago'].touched && formulario.controls['metodoPago'].hasError('required')) {
-                    <!-- <div class="error">Seleccione un método de pago</div> -->
-                }
-            </div>
-            <div class="botondiv">
-                <button type="submit" [disabled]="!formulario.valid">Aceptar</button>
-            </div>
-            
-          </form> 
-         
-       </div>
+<section class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">Modificar Cliente</h2>
+
+    <form (ngSubmit)="eventSubmit()" [formGroup]="formulario" class="form-fields">
+
+      <!-- Nombre y Apellido -->
+      <div class="form-row">
+        <div class="field">
+          <input type="text" formControlName="nombre" placeholder="Nombre"
+            [ngClass]="{ 'invalid': formulario.get('nombre')?.touched && formulario.get('nombre')?.invalid }" />
+          <div class="error" *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.hasError('required')">
+            Campo requerido
+          </div>
+          <div class="error" *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.hasError('minlength')">
+            Mínimo 2 caracteres
+          </div>
+          <div class="error" *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.hasError('pattern')">
+            Solo se permiten letras
+          </div>
+        </div>
+
+        <div class="field">
+          <input type="text" formControlName="apellido" placeholder="Apellido"
+            [ngClass]="{ 'invalid': formulario.get('apellido')?.touched && formulario.get('apellido')?.invalid }" />
+          <div class="error" *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.hasError('required')">
+            Campo requerido
+          </div>
+          <div class="error" *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.hasError('minlength')">
+            Mínimo 3 caracteres
+          </div>
+          <div class="error" *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.hasError('pattern')">
+            Solo se permiten letras
+          </div>
+        </div>
+      </div>
+
+      <!-- DNI -->
+      <div class="field">
+        <input type="text" formControlName="dni" placeholder="DNI"
+          [ngClass]="{ 'invalid': formulario.get('dni')?.touched && formulario.get('dni')?.invalid }" />
+        <div class="error" *ngIf="formulario.get('dni')?.touched && formulario.get('dni')?.hasError('required')">
+          Campo requerido
+        </div>
+        <div class="error" *ngIf="formulario.get('dni')?.touched && (formulario.get('dni')?.hasError('minlength') || formulario.get('dni')?.hasError('maxlength'))">
+          Debe tener 8 caracteres
+        </div>
+        <div class="error" *ngIf="formulario.get('dni')?.touched && formulario.get('dni')?.hasError('pattern')">
+          Solo se permiten números
+        </div>
+      </div>
+
+      <!-- Número -->
+      <div class="field">
+        <input type="text" formControlName="numero" placeholder="Número"
+          [ngClass]="{ 'invalid': formulario.get('numero')?.touched && formulario.get('numero')?.invalid }" />
+        <div class="error" *ngIf="formulario.get('numero')?.touched && formulario.get('numero')?.hasError('required')">
+          Campo requerido
+        </div>
+        <div class="error" *ngIf="formulario.get('numero')?.touched && (formulario.get('numero')?.hasError('minlength') || formulario.get('numero')?.hasError('maxlength'))">
+          Debe tener 10 caracteres
+        </div>
+        <div class="error" *ngIf="formulario.get('numero')?.touched && formulario.get('numero')?.hasError('pattern')">
+          Solo se permiten números
+        </div>
+      </div>
+
+      <!-- Domicilio -->
+      <div class="field">
+        <input type="text" formControlName="domicilio" placeholder="Domicilio"
+          [ngClass]="{ 'invalid': formulario.get('domicilio')?.touched && formulario.get('domicilio')?.invalid }" />
+        <div class="error" *ngIf="formulario.get('domicilio')?.touched && formulario.get('domicilio')?.hasError('required')">
+          Campo requerido
+        </div>
+        <div class="error" *ngIf="formulario.get('domicilio')?.touched && formulario.get('domicilio')?.hasError('minlength')">
+          Mínimo 2 caracteres
+        </div>
+      </div>
+
+      <!-- Altura -->
+      <div class="field">
+        <input type="text" formControlName="altura" placeholder="Altura"
+          [ngClass]="{ 'invalid': formulario.get('altura')?.touched && formulario.get('altura')?.invalid }" />
+        <div class="error" *ngIf="formulario.get('altura')?.touched && formulario.get('altura')?.hasError('required')">
+          Campo requerido
+        </div>
+        <div class="error" *ngIf="formulario.get('altura')?.touched && formulario.get('altura')?.hasError('minlength')">
+          Mínimo 2 caracteres
+        </div>
+        <div class="error" *ngIf="formulario.get('altura')?.touched && formulario.get('altura')?.hasError('pattern')">
+          Solo se permiten números
+        </div>
+      </div>
+
+      <!-- Método de pago -->
+      <div class="field">
+        <select formControlName="metodoPago"
+          [ngClass]="{ 'invalid': formulario.get('metodoPago')?.touched && formulario.get('metodoPago')?.invalid }">
+          <option value="">Seleccione método de pago</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta de Credito">Tarjeta de Crédito</option>
+          <option value="tarjeta de Debito">Tarjeta de Débito</option>
+        </select>
+        <div class="error" *ngIf="formulario.get('metodoPago')?.touched && formulario.get('metodoPago')?.hasError('required')">
+          Campo requerido
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!formulario.valid">Aceptar</button>
+    </form>
+  </div>
+
+  <div class="form-image"></div>
 </section>
