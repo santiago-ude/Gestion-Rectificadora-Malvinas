@@ -47,6 +47,10 @@
         <div class="error" *ngIf="formulario.get('dni')?.touched && (formulario.get('dni')?.hasError('minlength') || formulario.get('dni')?.hasError('maxlength'))">
           Debe tener 8 caracteres
         </div>
+        <div class="error" *ngIf="formulario.get('dni')?.touched && formulario.get('dni')?.hasError('pattern')">
+        Solo se permiten números
+        </div>
+
       </div>
 
       <!-- Número -->
