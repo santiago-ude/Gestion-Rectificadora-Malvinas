@@ -57,7 +57,14 @@ export class PedidoService {
     );
   }
 
-  
+   //Pedidos por presupuesto
+  obtenerPedidosPorPresupuesto(presupuestoId : Number | null | undefined) : Observable<Pedidos[]>{
+     return this.http.get<Pedidos[]>(this.apiUrl).pipe(
+      map((pedidos : Pedidos[]) =>
+        pedidos.filter(pedido => pedido.presupuesto.id === presupuestoId))
+    );
+  }
+
   
 
 
