@@ -26,17 +26,12 @@
   color: #0c53be;
   text-shadow: 1px 1px #aacbff;
 }
-.dniIMG{
-    background-image: url("../../img/id-insignia.png");
-}
-.domicilioIMG{
-    background-image: url("../../img/chimenea-de-la-casa.png");
-}
-.alturaIMG{
-    background-image: url("../../img/altura-del-texto.png");
-}
-.imgSel{
-    background-image: url("../../img/tarjeta-de-credito.png");
+
+/* Campos del formulario */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 div div{
     background-repeat: no-repeat;
