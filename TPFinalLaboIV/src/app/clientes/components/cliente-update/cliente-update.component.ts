@@ -7,11 +7,12 @@ import { Clientes } from '../../interface/clientes';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { PedidosListComponent } from '../../../pedidos/components/pedidos-list/pedidos-list.component';
 import { PedidoService } from '../../../pedidos/service/pedidos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cliente-update',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './cliente-update.component.html',
   styleUrl: './cliente-update.component.css'
 })
