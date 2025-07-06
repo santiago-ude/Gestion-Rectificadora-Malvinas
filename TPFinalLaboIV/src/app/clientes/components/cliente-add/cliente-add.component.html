@@ -29,7 +29,7 @@
             Campo requerido
           </div>
           <div class="error" *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.hasError('minlength')">
-            Mínimo 2 caracteres
+            Mínimo 3 caracteres
           </div>
           <div class="error" *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.hasError('pattern')">
             Solo se permiten letras
