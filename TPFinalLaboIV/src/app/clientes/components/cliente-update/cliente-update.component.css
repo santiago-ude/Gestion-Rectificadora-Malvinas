@@ -8,6 +8,14 @@
   background-color: #eaf1fc;
 }
 
+/* Tarjeta de formulario */
+.form-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem 3rem;
+  width: 100%;
+  max-width: 500px;
 }
 
 .numeroIMG{
