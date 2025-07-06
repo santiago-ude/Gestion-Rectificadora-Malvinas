@@ -18,13 +18,8 @@
   max-width: 500px;
 }
 
-/* Título */
-.form-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #0c53be;
-  text-shadow: 1px 1px #aacbff;
+.numeroIMG{
+    background-image: url("../../img/numero.png");
 }
 .dniIMG{
     background-image: url("../../img/id-insignia.png");
