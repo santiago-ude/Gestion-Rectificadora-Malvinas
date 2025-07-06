@@ -1,25 +1,3 @@
-
-section{
-    display: grid;
-    background-color: #ddebff;
-    height:100%;
-    width: 100%;
-}
-.h2{
-    display: flex;
-    justify-content: center;
-    font-size: 3.5rem;
-    text-shadow: 2px 2px #009dff;
-    transition: .5s;
-    color: aliceblue;
-}
-.h2c{
-    display: flex;
-    justify-content: center;
-    font-size: 3.7rem;
-    text-shadow: 2px 2px #006eff;
-    color: rgb(217, 235, 252);
-    transition: .5s;
 }
 form{
     display: grid;
