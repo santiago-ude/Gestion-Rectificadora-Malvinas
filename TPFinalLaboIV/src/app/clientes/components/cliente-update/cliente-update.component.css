@@ -1,11 +1,3 @@
-/* Contenedor general */
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem;
-  gap: 2rem;
-  background-color: #eaf1fc;
 }
 form{
     display: grid;
