@@ -29,7 +29,7 @@ export class ClienteUpdateComponent implements OnInit {
   formulario = this.fr.nonNullable.group({
     dni: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]+$/)] }),
     nombre: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)] }),
-    apellido: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)] }),
+    apellido: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)] }),
     numero: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)] }),
     domicilio: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2)] }),
     altura: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2), Validators.pattern(/^[0-9]+$/)] }),
