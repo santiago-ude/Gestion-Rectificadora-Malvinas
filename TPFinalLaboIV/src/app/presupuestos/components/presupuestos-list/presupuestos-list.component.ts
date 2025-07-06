@@ -4,9 +4,10 @@ import { PresupuestoService } from '../../service/presupuesto.service';
 import { PresupuestosAddComponent } from "../presupuestos-add/presupuestos-add.component";
 import { compileOpaqueAsyncClassMetadata } from '@angular/compiler';
 import { CommonModule } from '@angular/common';
-import { DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirmacion/modal-confirmacion.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PedidoService } from '../../../pedidos/service/pedidos.service';
 
 @Component({
   selector: 'app-presupuestos-list',
@@ -15,10 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './presupuestos-list.component.html',
   styleUrl: './presupuestos-list.component.css'
 })
-export class PresupuestosListComponent implements OnInit{
+export class PresupuestosListComponent implements OnInit {
 
 
-//Inicializacion
+  //Inicializacion
   ngOnInit(): void {
 
     this.traerPresupuestos();
@@ -27,8 +28,9 @@ export class PresupuestosListComponent implements OnInit{
   //Lista auxiliar de presupuestos
   listaPresupuestos: Presupuesto[] = [];
 
-  
+
   PS = inject(PresupuestoService);
+  PDS = inject(PedidoService);
   dialogoGenerico = inject(DialogoGenericoComponent);
   dialog = inject(MatDialog);
 
@@ -50,31 +52,49 @@ export class PresupuestosListComponent implements OnInit{
 
 
   //Elimina un presupuesto de la lista
-  deletePresupuestoDB(id : Number | null | undefined){
+  deletePresupuestoDB(id: Number | null | undefined) {
 
-    const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
-      data: {
-        mensaje: 'Estas seguro que quieres eliminar el presupuesto?',
-      },
-    });
-    
-    dialogRef.afterClosed().subscribe((confirmacion : any) => {
-      if (confirmacion) {
+    this.PDS.obtenerPedidosPorPresupuesto(id).subscribe({
 
-        this.PS.deletePresupuesto(id).subscribe(
-          {
-            next: ()=>{
-              this.listaPresupuestos = this.listaPresupuestos.filter((pres)=> pres.id !== id);
-              //alert('Presupuesto Eliminado...')
-              this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
+      next: (pedidos) => {
+
+        if (pedidos.length > 0) {
+          this.dialogoGenerico.abrirDialogo("Presupuesto asociado a un pedido, no se puede eliminar...")
+        }
+        else {
+
+          const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
+            data: {
+              mensaje: 'Estas seguro que quieres eliminar el presupuesto?',
             },
-            error: (e : Error)=>{
-              console.log(e.message);
+          });
+
+          dialogRef.afterClosed().subscribe((confirmacion: any) => {
+            if (confirmacion) {
+
+              this.PS.deletePresupuesto(id).subscribe(
+                {
+                  next: () => {
+                    this.listaPresupuestos = this.listaPresupuestos.filter((pres) => pres.id !== id);
+                    //alert('Presupuesto Eliminado...')
+                    this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
+                  },
+                  error: (e: Error) => {
+                    console.log(e.message);
+                  }
+                }
+              )
             }
-          }
-        )
-      }
-    });
+          });
+
+
+        }
+
+      },
+      error: (e : Error) => {console.error(e.message)}
+
+    })
+
   }
 
   //Filtra los presupuestos por fecha
@@ -90,7 +110,7 @@ export class PresupuestosListComponent implements OnInit{
   trackByIndex(index: number, item: any): number {
     return index;
   }
-  
+
 
 
 
