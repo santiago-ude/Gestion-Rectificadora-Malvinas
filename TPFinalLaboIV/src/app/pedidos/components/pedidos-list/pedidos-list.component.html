@@ -42,7 +42,7 @@
   <!-- Contenedor individual de cada pedido -->
   <div *ngFor="let pedido of pedidosFiltrados; trackBy: trackById" class="pedido-datos">
     <p>ID: {{pedido.id}}</p>
-    <p>Nombre: {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
+    <p>Cliente: {{ pedido.cliente.nombre }} {{ pedido.cliente.apellido }}</p>
     <p>Fecha de Entrada: {{pedido.fechaEntrada | date: 'dd-MM-yyyy': 'UTC'}}</p>
     <p [ngClass]="{'fecha-cercana': pedidosCercanos.includes(pedido)}">
       Fecha de Salida Estimada: {{ pedido.fechaSalidaEstimada | date: 'dd-MM-yyyy':'UTC' }}
@@ -82,7 +82,7 @@
       <button (click)="eliminarPedidos(pedido.id)" class="eliminar-btn">Eliminar</button>
       <button (click)="exportarPedidoPDF(pedido)" class="pdf-btn">Exportar PDF</button>
       <button (click)="confirmarEntrega(pedido)" class="entregar-btn">Entregar Pedido</button>
-      <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Actualizar</a>
+      <a [routerLink]="['update', pedido.id]" class="actualizar-btn">Modificar</a>
       <button (click)="notificarCliente(pedido)" class="notificar-btn">Notificar Cliente</button>
     </div>
   </div>
