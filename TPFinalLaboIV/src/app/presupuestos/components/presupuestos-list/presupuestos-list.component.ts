@@ -8,6 +8,8 @@ import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generic
 import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirmacion/modal-confirmacion.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PedidoService } from '../../../pedidos/service/pedidos.service';
+import { Router } from '@angular/router';
+import { Pedidos } from '../../../pedidos/interface/pedidos';
 
 @Component({
   selector: 'app-presupuestos-list',
@@ -18,15 +20,17 @@ import { PedidoService } from '../../../pedidos/service/pedidos.service';
 })
 export class PresupuestosListComponent implements OnInit {
 
-
+  router = inject(Router);
   //Inicializacion
   ngOnInit(): void {
 
+    this.traerPedidos();
     this.traerPresupuestos();
   }
 
   //Lista auxiliar de presupuestos
   listaPresupuestos: Presupuesto[] = [];
+  pedidos: Pedidos[] = [];
 
 
   PS = inject(PresupuestoService);
@@ -34,7 +38,7 @@ export class PresupuestosListComponent implements OnInit {
   dialogoGenerico = inject(DialogoGenericoComponent);
   dialog = inject(MatDialog);
 
-  //Trae los presupuestos del json-server
+  //Trae los presupuestos 
   //Los almacena en la lista auxiliar
   traerPresupuestos() {
 
@@ -50,6 +54,18 @@ export class PresupuestosListComponent implements OnInit {
     )
   }
 
+  //Trae los pedidos 
+  //Los almacena en la lista auxiliar
+  traerPedidos() {
+    this.PDS.getPedidos().subscribe({
+      next: (pedidos) => this.pedidos = pedidos,
+      error: (e) => console.error(e.message)
+    });
+  }
+
+   obtenerPedidoPorPresupuestoId(presupuestoId: Number | undefined | null): Pedidos | undefined {
+    return this.pedidos.find(p => p.presupuesto?.id === presupuestoId);
+  }
 
   //Elimina un presupuesto de la lista
   deletePresupuestoDB(id: Number | null | undefined) {
@@ -111,7 +127,11 @@ export class PresupuestosListComponent implements OnInit {
     return index;
   }
 
-
-
+  editarPresupuesto(id: Number | undefined | null) {
+  if (id) {
+     this.router.navigate([`/presupuestos/update/${id}`]);
+  }
+}
 
 }
+
