@@ -24,7 +24,7 @@ export class ItemAddComponent {
 
   formulario = this.FB.nonNullable.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
-    descripcion: ['', [Validators.required, Validators.minLength(2)]],
+    descripcion: ['', []],
     precioUnitario: [0, [Validators.required, Validators.min(0)]],
     precioManoObra: [0, [Validators.required, Validators.min(0)]],
     precioFinal: [0, [Validators.required, Validators.min(0)]],
