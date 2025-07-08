@@ -104,3 +104,24 @@
 .eliminar-btn:hover {
     background-color: #c9302c;
 }
+.botones-presupuesto {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.actualizar-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actualizar-btn:hover {
+  background-color: #218838;
+}

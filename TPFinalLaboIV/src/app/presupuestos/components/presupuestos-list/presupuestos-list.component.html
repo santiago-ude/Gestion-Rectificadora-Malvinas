@@ -10,10 +10,13 @@
     <ul class="presupuesto-list">
         <li *ngFor="let pres of listaPresupuestos; trackBy: trackByIndex" class="presupuesto-item">
             <div class="presupuesto-header">
-                <strong>Fecha:</strong> {{ pres.fecha }} <br>
+                <strong>Fecha:</strong> {{ pres.fecha  }} <br>
                 <strong>Descuento:</strong> {{ pres.descuento }}% <br>
-                <strong>Total: </strong> {{pres.total | currency}}
-            </div>
+                <strong>Total:</strong> {{ pres.total | currency }} <br>
+                <strong>Auto asignado:</strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.marcaAuto || 'Sin asignar' }}<br>  
+                <strong>Nro Serie:</strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.numeroSerie || 'N/A' }} <br>
+                <strong>Pedido a nombre de: </strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.cliente?.nombre }} {{ obtenerPedidoPorPresupuestoId(pres.id)?.cliente?.apellido }} 
+             </div>
             <div class="items-list">
                 <h4>Items del Presupuesto:</h4>
                 <ul>
@@ -25,7 +28,11 @@
                         <span><strong>Precio Final:</strong> {{ pre.precioFinal | currency}}</span><br>
                     </li>
                 </ul>
-                <button (click)="deletePresupuestoDB(pres.id)" class="eliminar-btn">Eliminar</button>
+                <div class="botones-presupuesto">
+                <button class="actualizar-btn" (click)="editarPresupuesto(pres.id)">Actualizar</button>
+                <button class="eliminar-btn" (click)="deletePresupuestoDB(pres.id)">Eliminar</button>
+                </div>
+
             </div>
         </li>
     </ul>

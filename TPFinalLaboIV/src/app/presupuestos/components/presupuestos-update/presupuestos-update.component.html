@@ -1,0 +1,35 @@
+<section>
+  <fieldset>
+    <legend>Actualizar Presupuesto</legend>
+
+    <form [formGroup]="formulario" (ngSubmit)="actualizarPresupuesto()">
+
+      <label for="fecha">Fecha</label>
+      <input type="date" formControlName="fecha">
+      <div *ngIf="formulario.controls['fecha'].touched && formulario.controls['fecha'].invalid" class="error">
+        Campo Requerido
+      </div>
+
+      <h3>Editar Items</h3>
+
+      <div formArrayName="items">
+        <div *ngFor="let item of itemsFormArray.controls; let i = index" [formGroupName]="i" class="item-box">
+          <label>Nombre:</label>
+          <input type="text" formControlName="nombre" />
+
+          <label>Descripción:</label>
+          <input type="text" formControlName="descripcion" />
+
+          <label>Precio Unitario:</label>
+          <input type="number" formControlName="precioUnitario" />
+
+          <label>Precio Mano de Obra:</label>
+          <input type="number" formControlName="precioManoObra" />
+          
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="formulario.invalid">Actualizar</button>
+    </form>
+  </fieldset>
+</section>
