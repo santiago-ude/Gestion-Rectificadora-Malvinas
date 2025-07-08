@@ -119,11 +119,12 @@
 
     <label for="presupuesto">Presupuesto:</label>
 
-    <button (click)="abrirDialogPresupuesto()" type="button">Agregar Presupuesto</button>
+    
+    <button (click)="abrirDialogPresupuesto()"type="button"[disabled]="formulario.value.presupuesto !== null">Agregar Presupuesto</button>
     
 
     
-    
+    <!--Si existe ya un presupuesto no habilita el boton-->
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio
     </div>
