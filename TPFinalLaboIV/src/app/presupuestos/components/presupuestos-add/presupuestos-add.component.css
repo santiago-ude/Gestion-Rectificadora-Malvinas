@@ -74,4 +74,9 @@ form {
     background-color: #ccc;
     cursor: not-allowed;
   }
-  
+
+  .eliminar-btn {
+    margin-left: 30px;
+    background-color: #d9534f;
+
+  }

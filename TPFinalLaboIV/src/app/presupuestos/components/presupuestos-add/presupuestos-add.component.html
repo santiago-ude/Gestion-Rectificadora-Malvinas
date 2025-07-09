@@ -10,10 +10,21 @@
         </div>
 
         <label for="items">Items</label>
+          <div *ngIf="itemAux && itemAux.length > 0">
+              <ul>
+                  <li *ngFor="let item of itemAux; track nombre">
+                  <span>{{item.nombre}}</span><br>
+                  <span>Precio Final: ${{item.precioFinal}}</span>
+                  <button class="eliminar-btn" type="button" (click)="eliminarItem(item.nombre)">Eliminar</button>
+                  </li>
+              </ul>
+          </div>
+
+          <div>Total presupuesto: ${{calcularTotalPresupuesto()}}</div>
+          <p></p>
+
         <button (click)="abrirDialogItem()" type="button">Cargar Item</button>
-  
         <button type="submit" [disabled]="!formulario.valid">Agregar Presupuesto</button>
       </form>
     </fieldset> 
   </section>
-  

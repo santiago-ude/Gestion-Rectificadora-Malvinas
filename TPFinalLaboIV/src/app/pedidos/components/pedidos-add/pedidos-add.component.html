@@ -117,13 +117,20 @@
     <label for="descripcion">Descripción:</label>
     <textarea id="descripcion" formControlName="descripcion"></textarea>
 
-    <label for="presupuesto">Presupuesto:</label>
+    <h3 for="presupuesto">Presupuesto:</h3>
 
-    
-    <button (click)="abrirDialogPresupuesto()"type="button"[disabled]="formulario.value.presupuesto !== null">Agregar Presupuesto</button>
-    
+    <div *ngIf="this.presupuestoCargado">
+        <span>Fecha: {{this.auxiliarPresupuesto.fecha.toLocaleDateString('es-AR')}}</span><br>
+        <ul>
+            <li *ngFor="let item of auxiliarPresupuesto.items; track nombre">
+                <span>{{item.nombre}}</span><br>
+                <span>${{item.precioFinal}}</span>
+            </li>
+        </ul>
+        <span>Precio total: ${{this.auxiliarPresupuesto.total }}</span>
+    </div>
+    <button (click)="abrirDialogPresupuesto()"type="button" [hidden]="formulario.value.presupuesto !== null">Agregar Presupuesto</button>
 
-    
     <!--Si existe ya un presupuesto no habilita el boton-->
     <div *ngIf="formulario.controls['presupuesto'].touched && formulario.controls['presupuesto'].invalid" class="error">
       Presupuesto es obligatorio

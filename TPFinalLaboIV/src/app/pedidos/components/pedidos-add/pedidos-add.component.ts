@@ -42,6 +42,7 @@ export class PedidosAddComponent {
 
   auxiliarPresupuesto: Presupuesto = { fecha: new Date(), descuento: 0, items: [], total: 0 };
   cargarPresupuesto: boolean = false
+  presupuestoCargado: boolean = false;
   dialog = inject(MatDialog);
 
 
@@ -108,6 +109,8 @@ export class PedidosAddComponent {
     this.formulario.patchValue({ presupuesto: this.auxiliarPresupuesto });
     this.formulario.controls['presupuesto'].markAsTouched();
     this.formulario.controls['presupuesto'].updateValueAndValidity();
+
+    this.presupuestoCargado = true;
   }
 
 
@@ -199,7 +202,6 @@ export class PedidosAddComponent {
 
 abrirDialogPresupuesto(){
   const dialogRef = this.dialog.open(PresupuestosAddComponent);
-
   dialogRef.afterClosed().subscribe(presupuesto => {
     if(presupuesto){
       this.addPresupuesto(presupuesto);

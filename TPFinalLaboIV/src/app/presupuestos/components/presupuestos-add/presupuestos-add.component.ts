@@ -68,7 +68,8 @@ export class PresupuestosAddComponent {
     const pres= {
       ...this.formulario.getRawValue(),
       fecha: new Date(this.formulario.value.fecha! + 'T12:00:00'),
-      items: this.itemAux
+      items: this.itemAux,
+      total: this.calcularTotalPresupuesto()
     };
 
     this.formulario.reset()
@@ -79,25 +80,39 @@ export class PresupuestosAddComponent {
     this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
 
     this.cargarItem = false;
-    
+
   }
 
-abrirDialogItem() {
-  this.dialog.open(ItemAddComponent).afterClosed().subscribe(item => {
-    if (item) {
-      this.addItem(item);
-    }
-  });
-}
+  abrirDialogItem() {
+    this.dialog.open(ItemAddComponent).afterClosed().subscribe(item => {
+      if (item) {
+        this.addItem(item);
+      }
+    });
+    console.log(this.itemAux);
+  }
 
-  
   addItem(item : Item){
-
     this.itemAux.push(item);
     (this.formulario.get('items') as FormArray).push(new FormControl(item));
-
   }
 
+  calcularTotalPresupuesto() {
+    let sum = 0.0;
+    for (let item of this.itemAux) {
+      sum += item.precioFinal;
+    }
+    return sum;
+  }
 
+  eliminarItem(nombre: string) {
+    let index = this.itemAux.findIndex(item => item.nombre === nombre);
+    if (index > -1) {
+      this.itemAux.splice(index, 1);
+    }
+  }
 
+  peppaPig() {
+    console.log("peppa pig");this.peppaPig()
+  }
 }
