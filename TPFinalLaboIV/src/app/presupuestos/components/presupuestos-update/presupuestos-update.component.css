@@ -55,7 +55,7 @@ textarea {
   margin-bottom: 15px;
 }
 
-button {
+button, .volver {
   background-color: #005b96;
   color: white;
   padding: 10px 20px;
