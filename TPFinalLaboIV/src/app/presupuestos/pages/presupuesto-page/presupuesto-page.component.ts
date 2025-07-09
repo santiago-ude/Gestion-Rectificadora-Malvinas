@@ -5,7 +5,7 @@ import { PresupuestosListComponent } from "../../components/presupuestos-list/pr
 @Component({
   selector: 'app-presupuesto-page',
   standalone: true,
-  imports: [PedidosListComponent, PresupuestosListComponent],
+  imports: [PresupuestosListComponent],
   templateUrl: './presupuesto-page.component.html',
   styleUrl: './presupuesto-page.component.css'
 })
