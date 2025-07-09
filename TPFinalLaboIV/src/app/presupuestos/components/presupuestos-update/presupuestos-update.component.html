@@ -29,7 +29,10 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="formulario.invalid">Actualizar</button>
+      <div class="botones">
+        <button type="submit" [disabled]="formulario.invalid">Actualizar</button>
+        <a [routerLink]="['/presupuestos']" [replaceUrl]="true" class="volver">Volver</a>
+      </div>
     </form>
   </fieldset>
 </section>
