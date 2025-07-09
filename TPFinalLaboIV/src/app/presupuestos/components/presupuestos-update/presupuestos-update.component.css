@@ -65,9 +65,10 @@ button, .volver {
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
-button:hover {
+button:hover, .volver:hover {
   background-color: #003f6b;
 }
 
