@@ -41,13 +41,13 @@
           </thead>
           <tbody>
             <tr *ngFor="let cliente of clientesEncontrados">
-              <td>{{ cliente.nombre }}</td>
-              <td>{{ cliente.apellido }}</td>
+               <td>{{ cliente.nombre.charAt(0).toUpperCase() + cliente.nombre.slice(1) }}</td>
+              <td>{{ cliente.apellido.charAt(0).toUpperCase() + cliente.apellido.slice(1) }}</td>
               <td>{{ cliente.dni }}</td>
               <td>{{ cliente.numero }}</td>
-              <td>{{ cliente.domicilio }}</td>
+              <td>{{ cliente.domicilio.charAt(0).toUpperCase() + cliente.domicilio.slice(1) }}</td>
               <td>{{ cliente.altura }}</td>
-              <td>{{ cliente.metodoPago }}</td>
+              <td>{{ cliente.metodoPago.charAt(0).toUpperCase() + cliente.metodoPago.slice(1) }}</td>
               <td class="tdButton"> 
                 <button (click)="enviarModificacion(cliente.id)">Actualizar</button> 
                 <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button>
@@ -76,12 +76,12 @@
         <tbody>
           <tr *ngFor="let cliente of clientesFiltrados; trackByIndex">
             <td>{{ cliente.dni }}</td>
-            <td>{{ cliente.nombre }}</td>
-            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.nombre.charAt(0).toUpperCase() + cliente.nombre.slice(1) }}</td>
+            <td>{{ cliente.apellido.charAt(0).toUpperCase() + cliente.apellido.slice(1) }}</td>
             <td>{{ cliente.numero }}</td>
-            <td>{{ cliente.domicilio }}</td>
+            <td>{{ cliente.domicilio.charAt(0).toUpperCase() + cliente.domicilio.slice(1) }}</td>
             <td>{{ cliente.altura }}</td>
-            <td>{{ cliente.metodoPago }}</td>
+            <td>{{ cliente.metodoPago.charAt(0).toUpperCase() + cliente.metodoPago.slice(1) }}</td>
             <td class="tdButton"> 
               <button (click)="enviarModificacion(cliente.id)">Actualizar</button> 
               <button (click)="confirmarYEliminarCliente(cliente.id)">Eliminar</button>
