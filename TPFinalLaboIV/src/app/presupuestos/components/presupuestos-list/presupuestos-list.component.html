@@ -13,7 +13,7 @@
                 <strong>Fecha:</strong> {{ pres.fecha  }} <br>
                 <strong>Descuento:</strong> {{ pres.descuento }}% <br>
                 <strong>Total:</strong> {{ pres.total | currency }} <br>
-                <strong>Auto asignado:</strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.marcaAuto || 'Sin asignar' }}<br>  
+                <strong>Auto asignado:</strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.marcaAuto || 'Sin asignar' }} {{obtenerPedidoPorPresupuestoId(pres.id)?.modeloAuto}}<br>
                 <strong>Nro Serie:</strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.numeroSerie || 'N/A' }} <br>
                 <strong>Pedido a nombre de: </strong> {{ obtenerPedidoPorPresupuestoId(pres.id)?.cliente?.nombre }} {{ obtenerPedidoPorPresupuestoId(pres.id)?.cliente?.apellido }} 
              </div>
