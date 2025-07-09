@@ -10,7 +10,7 @@ import { DialogoGenericoComponent } from '../../../shared/modals/dialogo-generic
 @Component({
   selector: 'app-presupuestos-update',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './presupuestos-update.component.html',
   styleUrl: './presupuestos-update.component.css',
 })
