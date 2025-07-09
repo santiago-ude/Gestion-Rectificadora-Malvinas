@@ -53,6 +53,8 @@ export class PresupuestoService {
     console.error('Error en el servicio de Presupuestos:', error);
     return throwError(() => new Error('Error en la solicitud del servidor'));
   }
+
+  
   updatePresupuesto(pres: Presupuesto, id: number): Observable<Presupuesto> {
   return this.http.put<Presupuesto>(`${this.urlBase}/${id}`, pres).pipe(catchError(this.handleError));
 }
