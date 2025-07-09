@@ -261,7 +261,7 @@ entregarPedido(pedido: Pedidos) {
     doc.text("Block Marca: " + (pedido.marcaAuto || ""), 10, 35);
     doc.text("Nro: " + (pedido.numeroSerie || ""), 150, 30);
   
-    // Datos del cliente, más abajo para que haya más espacio debajo del título
+    // Datos del cliente
     doc.text("DATOS DEL CLIENTE:", 10, 45);
     doc.text("Nombre y Apellido: " + (pedido.cliente.nombre || "") + " " + (pedido.cliente.apellido || ""), 10, 55);
     doc.text("D.N.I.: " + (pedido.cliente.dni || ""), 10, 65);
@@ -283,6 +283,7 @@ entregarPedido(pedido: Pedidos) {
     doc.setFont("helvetica", "bold");
     doc.text("TRABAJOS A REALIZAR:", 10, 155);
     doc.setFontSize(12);
+    doc.text("X trae:", 170, 155);
     doc.setFont("helvetica", "normal");
     // Lista de trabajos 
     const trabajos = [
@@ -301,21 +302,44 @@ entregarPedido(pedido: Pedidos) {
       "Comprar repuestos"
     ];
   
-    let yPos = 165;
-    const columnaIzquierdaX = 10;
-    const columnaDerechaX = 100;
+    const xCol1 = 10;
+    const xCol2 = 80;
+    const yStart = 165;
+    let yPosTrabajos = yStart;
+
+    // Columna izquierda y derecha para trabajos
     trabajos.forEach((trabajo, index) => {
-      const xPos = index < trabajos.length / 2 ? columnaIzquierdaX : columnaDerechaX;
-      if (index === Math.ceil(trabajos.length / 2)) yPos = 165; // Reiniciar la posición Y para la segunda columna
-      doc.rect(xPos, yPos, 4, 4); 
-      doc.text(trabajo, xPos + 6, yPos + 3);
-      yPos += 9; 
+      const x = index < trabajos.length / 2 ? xCol1 : xCol2;
+      if (index === Math.ceil(trabajos.length / 2)) yPosTrabajos = yStart; // reiniciar y
+      doc.rect(x, yPosTrabajos, 4, 4);
+      doc.text(trabajo, x + 6, yPosTrabajos + 3);
+      yPosTrabajos += 9;
     });
-  
-    // Otros, más separación
-    yPos += 15;
-    doc.text("Otros:", 10, yPos);
-    doc.line(10, yPos + 5, 200, yPos + 5);
+
+    // X Trae (alineado al lado derecho)
+    const xTrae = [
+      "Bielas:",
+      "Tornillos bielas:",
+      "Tornillos bcdas.:",
+      "Cigüeñal:",
+      "Tapas de bcdas.:",
+      "Tornillos tapa bcdas.:",
+      "Leva:"
+    ];
+
+    doc.setFontSize(10);
+    let yPosXTrae = yStart;
+    xTrae.forEach((linea) => {
+    doc.text(linea, 160, yPosXTrae);
+    doc.line(195, yPosXTrae, 202, yPosXTrae); // Línea para completar a mano
+    yPosXTrae += 7;
+    });
+    // Otros
+    const yOtros = Math.max(yPosTrabajos, yPosXTrae) + 10;
+    doc.setFontSize(12);
+    doc.text("Otros:", 12, yOtros + 5);
+    doc.line(10, yOtros + 13, 200, yOtros + 13);
+    doc.line(10, yOtros + 22, 200, yOtros + 22);
     
     doc.save(`Pedido_${pedido.id}.pdf`);
   }
