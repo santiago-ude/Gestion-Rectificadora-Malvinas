@@ -101,18 +101,28 @@ export class ClienteUpdateComponent implements OnInit {
     }
   }
 
+
+  //Eecuta la updateCliente Request
   putclientes() {
     if (!this.id) return;
 
+    //almacena el formulario del update
     const clienteActualizado = this.formulario.getRawValue();
 
+    //Actualiza el cliente
     this.sr.editarCliente(this.id, clienteActualizado).subscribe({
       next: (cliente) => {
         this.dialogoGenerico.abrirDialogo('Se actualizó el cliente con éxito');
+
+        //Obtiene los pedidos que esten asociados con el cliente actualizado
         this.ps.obtenerPedidosPorCliente(this.id!).subscribe({
           next: (pedidos) => {
+
+            //Recorre el aray con los pedidos asociados al cliente
             pedidos.forEach((pedido) => {
               pedido.cliente = cliente;
+
+              //Actualiza el cliente en cada pedido asociado al cliente actualizado
               this.ps.updatePedido(pedido.id, pedido).subscribe();
             });
           },
