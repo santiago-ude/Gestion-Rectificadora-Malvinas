@@ -15,6 +15,9 @@ import { CommonModule, NgClass } from '@angular/common'; // <--- AÑADIDO NgClas
   styleUrl: './cliente-update.component.css',
 })
 export class ClienteUpdateComponent implements OnInit {
+
+
+  //Inyecciones
   dialogoGenerico = inject(DialogoGenericoComponent);
   sr = inject(ClientesService);
   fr = inject(FormBuilder);
@@ -22,10 +25,12 @@ export class ClienteUpdateComponent implements OnInit {
   route = inject(Router);
   ps = inject(PedidoService);
 
+  //Variables auxiliares para el update
   id?: number | null;
   dniAux: string = '';
   cliente!: Clientes;
 
+  //Reactive Form
   formulario = this.fr.nonNullable.group({
     dni: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]+$/)] }),
     nombre: this.fr.control('', { nonNullable: true, validators: [Validators.required, Validators.minLength(2), Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)] }),
@@ -36,6 +41,8 @@ export class ClienteUpdateComponent implements OnInit {
     metodoPago: this.fr.control('', { nonNullable: true, validators: [Validators.required] })
   });
 
+
+  //Meotodo de ejecucion inicial
   ngOnInit(): void {
     this.rt.paramMap.subscribe((param) => {
       this.id = param.get('id') ? Number(param.get('id')) : null;
@@ -47,7 +54,11 @@ export class ClienteUpdateComponent implements OnInit {
     });
   }
 
+
+  //Ejecuta la request para obtener un cliente por id
   getByidClientes() {
+
+    //Obtiene un cliente por medio del id
     this.sr.obtenerClienteXDni(this.id).subscribe({
       next: (value) => {
         this.dniAux = value.dni;
