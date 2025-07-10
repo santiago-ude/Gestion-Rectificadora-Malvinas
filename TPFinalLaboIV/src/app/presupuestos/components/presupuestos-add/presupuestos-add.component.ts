@@ -75,16 +75,17 @@ export class PresupuestosAddComponent {
     if (this.formulario.invalid) return;
 
 
-    const pres= {
+    const pres = {
       ...this.formulario.getRawValue(),
       fecha: new Date(this.formulario.value.fecha! + 'T12:00:00'),
       items: this.itemAux,
       total: this.calcularTotalPresupuesto()
     };
 
+    //Resetea el formulario
     this.formulario.reset()
 
-      
+
     // Emitir el presupuesto al componente de pedidos
     this.dialogRef.close(pres)
     this.dialogoGenerico.abrirDialogo("Presupuesto guardado...");
@@ -93,6 +94,7 @@ export class PresupuestosAddComponent {
 
   }
 
+  //Abre dialogo del item
   abrirDialogItem() {
     this.dialog.open(ItemAddComponent).afterClosed().subscribe(item => {
       if (item) {
@@ -101,11 +103,13 @@ export class PresupuestosAddComponent {
     });
   }
 
-  addItem(item : Item){
+  //añade el item al presupuesto actual
+  addItem(item: Item) {
     this.itemAux.push(item);
     (this.formulario.get('items') as FormArray).push(new FormControl(item));
   }
 
+  //Calcula el total del presupuesto (suma precio unitario y de mano de obra)
   calcularTotalPresupuesto() {
     let sum = 0.0;
     for (let item of this.itemAux) {
@@ -114,6 +118,8 @@ export class PresupuestosAddComponent {
     return sum;
   }
 
+
+  //Elimina un item durante la carga
   eliminarItem(nombre: string) {
     let index = this.itemAux.findIndex(item => item.nombre === nombre);
     if (index > -1) {
@@ -121,10 +127,10 @@ export class PresupuestosAddComponent {
     }
   }
 
-
-trackByFn(index: number, item: any): any {
-  return item.id;
-}
+  //Recorre los items
+  trackByFn(index: number, item: any): any {
+    return item.id;
+  }
 
 
 }
