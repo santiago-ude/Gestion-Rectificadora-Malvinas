@@ -71,13 +71,21 @@ export class ClienteUpdateComponent implements OnInit {
     });
   }
 
+
+  //Ejecuta el evento para actualizar el cliente
   eventSubmit() {
+
+    //Si el formulario es invalido, termina
     if (this.formulario.invalid) return;
 
     const dni = this.formulario.get('dni')?.value;
+
     if (dni === this.dniAux) {
       this.putclientes();
-    } else {
+    } 
+    else {
+
+      //Verifica si el DNI existe en otro cliente
       this.sr.verificarDniExistente(dni).subscribe({
         next: (existe) => {
           if (existe) {
