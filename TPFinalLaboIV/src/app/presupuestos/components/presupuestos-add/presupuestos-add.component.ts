@@ -34,13 +34,22 @@ export class PresupuestosAddComponent {
   //Servicio del dialog de presupuesto
   dialogRef = inject(MatDialogRef<PresupuestosAddComponent>);
 
+  //Servicio para crear un formulario
+  fb = inject(FormBuilder);
 
-  //---------------ULTIMA CLASE---------------------------
+  //Servicio para las peticiones de presupuesto
+  PS = inject(PresupuestoService);
 
-  fb =  inject(FormBuilder);
-  PS =  inject(PresupuestoService);
+  //Servicio para crear dialogos genericos
   dialogoGenerico = inject(DialogoGenericoComponent);
 
+
+  //Colecciones y Variables auxiliares para la carga de un presupuesto
+  cargarItem = false;
+  itemAux: Item[] = [];
+
+
+  //Reactive Form
   formulario = this.fb.nonNullable.group({
     fecha: [this.getFechaActual(), [Validators.required]],
     descuento: [0, [Validators.min(0)]],  
