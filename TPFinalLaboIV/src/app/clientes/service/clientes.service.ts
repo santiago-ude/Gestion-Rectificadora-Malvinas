@@ -9,45 +9,77 @@ import { PedidoService } from '../../pedidos/service/pedidos.service';
 })
 export class ClientesService {
 
-
+  //Inyeccion
   http = inject(HttpClient);
+
+  //URL del back dirigido a clientes
   baseUrl = "http://localhost:8080/managment/api/v1/clientes";
 
 
-  obtenerClientes(): Observable<Clientes[]>{
+  /**
+   * 
+   * @returns Lista de clientes
+   */
+  obtenerClientes(): Observable<Clientes[]> {
     return this.http.get<Clientes[]>(this.baseUrl).pipe(
       catchError(this.handleError)
     );
   }
 
-  obtenerClienteXDni(id: Number | null | undefined): Observable<Clientes>{
+
+  /**
+   * 
+   * @param id Recibe como parametro un id.
+   * @returns Retorna el cliente asociado al id o un error
+   */
+  obtenerClienteXDni(id: Number | null | undefined): Observable<Clientes> {
     return this.http.get<Clientes>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  agregarCliente(cliente: Clientes): Observable<Clientes>{
+  /**
+   * 
+   * @param cliente Recibe un cliente completo 
+   * @returns Retorna un codigo de respuesta positivo
+   */
+  agregarCliente(cliente: Clientes): Observable<Clientes> {
     return this.http.post<Clientes>(this.baseUrl, cliente).pipe(
       catchError(this.handleError)
     );
   }
 
-  editarCliente(id: Number | null | undefined , cliente: Clientes): Observable<Clientes>{
+  /**
+   * 
+   * @param id Recibe el id de un cliente al que quiere actualizar
+   * @param cliente Datos del cliente para actualizar
+   * @returns Retorna los datos del cliente actualizado
+   */
+  editarCliente(id: Number | null | undefined, cliente: Clientes): Observable<Clientes> {
     return this.http.put<Clientes>(`${this.baseUrl}/${id}`, cliente).pipe(
       catchError(this.handleError)
     );
   }
 
+  /**
+   * 
+   * @param id recibe un id del cliente que se quiere borrar
+   * @returns Retorna un codigo noContent
+   */
   borrarCliente(id: Number | null | undefined): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  
+/**
+ * 
+ * @param dni Recibe el dni del cliente que se quiere retornar
+ * @returns Retorna el cliente asociado al dni
+ */
   verificarDniExistente(dni: string | undefined): Observable<boolean> {
     return this.obtenerClientes().pipe(
-      map(clientes => clientes.some(cliente => cliente.dni === dni )),
+      map(clientes => clientes.some(cliente => cliente.dni === dni)),
       catchError(this.handleError)
     );
   }
