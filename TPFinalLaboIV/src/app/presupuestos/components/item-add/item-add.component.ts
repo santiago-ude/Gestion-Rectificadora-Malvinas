@@ -17,11 +17,17 @@ export class ItemAddComponent {
   @Output()
   emitirEvento: EventEmitter<Item> = new EventEmitter();
 
+
+  //INYECCIONES
+
+  //Servicio para crear formularios
   FB = inject(FormBuilder);
+
+  //Servicio de dialogs
   dialogRef = inject(MatDialogRef);
 
 
-
+  //Reactive Forms
   formulario = this.FB.nonNullable.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
     descripcion: ['', []],
