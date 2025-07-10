@@ -25,6 +25,8 @@ export class ClienteListComponent implements OnInit{
     this.getClientesList();
   } 
 
+
+  //Coleccion de datos para la lista y los filtrados
   clientes: Clientes[] = [];
   clientesFiltrados: Clientes[] = [];   
   filtro: string = '';     
@@ -70,6 +72,7 @@ export class ClienteListComponent implements OnInit{
     }
   }
 
+
   // Filtrar por Nombre o Apellido
   filtrarClientes() {
     const filtroLowerCase = this.filtro.toLowerCase();
@@ -80,6 +83,7 @@ export class ClienteListComponent implements OnInit{
       )
       .sort((a, b) => parseInt(a.dni) - parseInt(b.dni));
   }
+
 
   enviarModificacion(id : Number  | undefined) {
       this.rt.navigate([`clientes/update/${id}`])
@@ -95,16 +99,20 @@ export class ClienteListComponent implements OnInit{
   }
 
 
-  
+
+  //Se encarga de eliminar un cliente
   confirmarYEliminarCliente(clienteId: Number | null | undefined) {
+
+    //Verifica si el cliente tiene un pedido asociado
     this.pedidosService.obtenerPedidosPorCliente(clienteId).subscribe({
       next: (pedidos: Pedidos[]) => {
+
+        //Si el array con los pedidos asociados tiene como minimo un elemento lo notifica y no permite eliminarlo
         if (pedidos && pedidos.length > 0) {
 
           this.dialogoGenerico.abrirDialogo("El cliente esta asociado a un pedido, no se puede eliminar.");
-  
-        } else {
 
+        } else {
 
           const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
             data: {
@@ -114,6 +122,8 @@ export class ClienteListComponent implements OnInit{
           
           dialogRef.afterClosed().subscribe((confirmacion) => {
             if (confirmacion) {
+              
+              //si no tiene pedidos asociados y confirma, se elimina el cliente
               this.eliminarCliente(clienteId);
             }
           });
@@ -124,10 +134,14 @@ export class ClienteListComponent implements OnInit{
   }
   
 
+
+  //Metodo que ejecuta le Delete Request
   eliminarCliente(clienteId: Number | null | undefined) {
+
+    //elimina un cliente
     this.sr.borrarCliente(clienteId).subscribe({
       next: () => {
-        //alert('Cliente eliminado correctamente.');
+        
         this.dialogoGenerico.abrirDialogo("Cliente eliminado correctamente");
 
         // Aquí puedes añadir lógica para actualizar la lista de clientes
