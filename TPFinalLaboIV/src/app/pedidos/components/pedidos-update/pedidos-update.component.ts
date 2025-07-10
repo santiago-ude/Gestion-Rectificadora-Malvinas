@@ -17,19 +17,41 @@ import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/
   templateUrl: './pedidos-update.component.html',
   styleUrl: './pedidos-update.component.css'
 })
+
+
 export class PedidosUpdateComponent {
   
-  id: Number | null = null;
+  //INYECCIONES
+
+  //Servicio de peticiones para pedidos
   pedidoService = inject(PedidoService);
+  
+  //Servicio de peticiones para clientes
   clienteService = inject(ClientesService);
+  
+  //Servicio de peticiones para presupuestos
   presupuestoService = inject(PresupuestoService);
+  
+  //Servicio de creacion de formularios
   fb = inject(FormBuilder);
+  
+  //Servicios de router
   router = inject(ActivatedRoute);
+  
+  //Servicios de router
   rt = inject(Router);
+  
+  //Servicios para crea dialogos genericos
   dialogoGenerico = inject(DialogoGenericoComponent);
+
+  //Colecciones y variables 
+  id: Number | null = null;
   clientes: Clientes[] = [];
   presupuestos: Presupuesto[] = [];
 
+
+
+  //Reactive Form
   formulario = this.fb.nonNullable.group({
     cliente: [null as Clientes | null, Validators.required],
     fechaEntrada: ['', Validators.required],
@@ -44,6 +66,8 @@ export class PedidosUpdateComponent {
   { validators: this.fechaEntradaAntesDeSalidaValidator() }
 );
 
+
+//Inicializacion
   ngOnInit(){
     this.router.paramMap.subscribe((params) => {
     this.id = params.get("id") ? Number(params.get("id")) : null;
@@ -55,6 +79,7 @@ export class PedidosUpdateComponent {
     this.cargarPresupuestos();
   }
 
+  //Carga el cliente asociado al pedido
   cargarClientes(){
     this.clienteService.obtenerClientes().subscribe({
       next: (clientes) => this.clientes = clientes,
@@ -62,6 +87,8 @@ export class PedidosUpdateComponent {
     });
   }
 
+
+  //Carga el presupuesto del pedido que se quiere actualizar
   cargarPresupuestos(){
     this.presupuestoService.getPresupuestos().subscribe({
       next: (presupuestos) => this.presupuestos = presupuestos,
@@ -83,6 +110,7 @@ export class PedidosUpdateComponent {
   }
 
 
+  //Busca el pedido por su ID
   buscarPorId(id: Number){
     this.pedidoService.getPedidoById(id).subscribe({
       next: (pedido: Pedidos) => {
@@ -102,6 +130,8 @@ export class PedidosUpdateComponent {
     });
   }
 
+
+  //Verifica el estado del pedido
   verificarEstadoPedido() {
     const fechaSalidaEstimada = new Date(this.formulario.value.fechaSalidaEstimada as string);
     const hoy = new Date();
@@ -111,9 +141,14 @@ export class PedidosUpdateComponent {
     }
   }
 
-actualizarPedido(){
-  this.verificarEstadoPedido(); // Verificar el estado antes de guardar
 
+  //Ejecuta la UpdateRequest de Pedidos
+actualizarPedido(){
+
+  //Actualiza el pedido
+  this.verificarEstadoPedido(); 
+
+  // Verificar el estado antes de guardar
     if (this.formulario.invalid) return;
 
     const pedido: Pedidos = {
