@@ -19,15 +19,31 @@ import { ModalConfirmacionComponent } from '../../../shared/modals/modal-confirm
   templateUrl: './pedidos-list.component.html',
   styleUrls: ['./pedidos-list.component.css']
 })
+
+
 export class PedidosListComponent {
+
+  //Recorre los pedidos
   trackById(index: number, pedido: Pedidos): Number | null | undefined {
     return pedido.id;
   }
+
+  //INYECCIONES
+
+  //Servicio de pedidos
   ts = inject(PedidoService);
+
+//Servcio de Whatsapp
   whatsappService = inject(WhatsappService);
+  
+  //Servicio para los dialogs
   dialog = inject(MatDialog);
+  
+  //Sericio para generar dialogos generics
   dialogoGenerico = inject(DialogoGenericoComponent);
 
+
+  //Colecciones y Variables auxiliares para el listado y el filtrado
   listaPedidos: Pedidos[] = [];
   pedidosFiltrados: Pedidos[] = [];
   estadoSeleccionado: string = '';
@@ -37,11 +53,17 @@ export class PedidosListComponent {
   diasParaFinalizar = 4; 
   pedidosCercanos: Pedidos[] = [];
 
+
+  //Inicializacin
   ngOnInit(){
     this.listarPedidos();
   }
 
+
+  //Ejecuta la request GET
   listarPedidos() {
+
+    //Obtien los pedidos 
     this.ts.getPedidos().subscribe({
       next: (pedidos: Pedidos[]) => {
 
@@ -57,10 +79,13 @@ export class PedidosListComponent {
   }
 
 
+  //Filtra los pedidos dependiendo el estado
   filtrarPorEstado(estado: 'activo' | 'entregado' | 'atrasado'){
     this.pedidosFiltrados = this.listaPedidos.filter(pedido => pedido.estado === estado);
   }
 
+
+  //Filtra los pedidos por la fecha en la que se creo
   filtrarPorFechaEntrada(fechaInicio: string, fechaFin: string){
     const inicio = new Date(fechaInicio);
     const fin = new Date(fechaFin);
@@ -71,6 +96,8 @@ export class PedidosListComponent {
     });
   }
 
+
+  //Filtra los pedidos por el cliente que tenga asociado
   filtrarPorCliente(){
     const filtro = this.clienteFiltro.toLowerCase();
     this.pedidosFiltrados = this.listaPedidos.filter(pedido =>
@@ -80,13 +107,16 @@ export class PedidosListComponent {
   }
 
 
+  //Borra los filtros
   resetearFiltros(){
     this.pedidosFiltrados = [...this.listaPedidos]; // Restaura la lista original
     this.clienteFiltro = ''; 
   }
 
+  //Confirma, o no, y ejecuta la Request de deletePedido
   eliminarPedidos(id: Number | null | undefined){
 
+    //Confirma que el cliente quiere eliminar el pedido
     const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
       data: {
         mensaje: 'Estas seguro que quieres eliminar el pedido?',
@@ -96,9 +126,9 @@ export class PedidosListComponent {
     dialogRef.afterClosed().subscribe((confirmacion) => {
       if (confirmacion) {
 
+        //Elimina el pedido
         this.ts.deletePedido(id).subscribe({
           next: () => {
-            //alert("Pedido Eliminado.");
             this.dialogoGenerico.abrirDialogo("Pedido eliminado");
             this.listarPedidos();
           },
@@ -109,12 +139,10 @@ export class PedidosListComponent {
         });
       }
     });
-
-
-
-    
   }
 
+
+  //Verifica los pedidos que esten a pocos dias de finalizar, comparado con la fecha actual
   verificarPedidosCercanos(){
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0); // Normalizamos la fecha 
@@ -170,6 +198,7 @@ export class PedidosListComponent {
   }
   
   
+  //Se actualiza el estado de los pedidos que haya pasado su fecha de salida estimada
   actualizarEstadoPedidosAtrasados(){
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0); 
@@ -199,11 +228,14 @@ export class PedidosListComponent {
    
 }
 
+
+//Confirma la entrega y cambia el estado
 confirmarEntrega(pedido: Pedidos) {
 
 
   if(pedido.estado != 'entregado'){
 
+    //Verifica que se entregue el pedido
     const dialogRef = this.dialog.open(ModalConfirmacionComponent, {
       data: {
         mensaje: 'Estas seguro que quieres entregar el pedido?',
@@ -212,6 +244,8 @@ confirmarEntrega(pedido: Pedidos) {
     
     dialogRef.afterClosed().subscribe((confirmacion) => {
       if (confirmacion) {
+        
+        //Se entrega el pedido
         this.entregarPedido(pedido);
       }
     });
@@ -224,8 +258,12 @@ confirmarEntrega(pedido: Pedidos) {
   }
 }
   
+
+//Ejecuta la UpdateCliente request
 entregarPedido(pedido: Pedidos) {
   pedido.estado = 'entregado';
+
+  //Actualiza el estado del pedido a entregado
   this.ts.updatePedido(pedido.id,pedido).subscribe({
       next: () => {
         this.dialogoGenerico.abrirDialogo("El pedido fue marcado como entregado");
@@ -238,6 +276,7 @@ entregarPedido(pedido: Pedidos) {
  }
 
 
+ //Exporta un PDF con los datos del pedido
   exportarPedidoPDF(pedido: Pedidos): void {
     const doc = new jsPDF();
   
