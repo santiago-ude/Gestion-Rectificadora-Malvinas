@@ -9,17 +9,27 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PedidoService {
+  
+  //URL del back asociado a los pedidos
   private apiUrl = 'http://localhost:8080/managment/api/v1/pedidos';
 
+  //INYECCION 
   constructor(private http: HttpClient) {}
   
 
-  //GET
+  /**
+   * 
+   * @returns Retorna una lista de pedidos
+   */
   getPedidos(): Observable<Pedidos[]> {
     return this.http.get<Pedidos[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
 
-  //POST
+  /**
+   * 
+   * @param pedido Recibe el pedido que se va a agregar
+   * @returns Retorna un codigo de estado correcto
+   */
   addPedido(pedido: Pedidos): Observable<Pedidos> {
     return this.http.post<Pedidos>(this.apiUrl, pedido).pipe(catchError(this.handleError));
   }
