@@ -11,6 +11,8 @@ import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generic
   templateUrl: './cliente-add.component.html',
   styleUrl: './cliente-add.component.css'
 })
+
+
 export class ClienteAddComponent {
 
 
@@ -34,7 +36,6 @@ export class ClienteAddComponent {
     this.dentroImg = false
   }
 
-  //
 
 
 
@@ -62,14 +63,18 @@ export class ClienteAddComponent {
     // Convertir todos los valores string a minúsculas
     Object.keys(this.formulario.controls).forEach((campo) => {
       const control = this.formulario.get(campo);
+
       if (control && typeof control.value === 'string') {
         control.setValue(control.value.toLowerCase(), { emitEvent: false });
       }
     });
 
     
-    const dni: string | undefined = this.formulario.get('dni')?.value; //ALMACENA EL DNI EN UN AUXILIAR PARA VERIFICAR QUE NO EXISTA
+    //ALMACENA EL DNI EN UN AUXILIAR PARA VERIFICAR QUE NO EXISTA
+    const dni: string | undefined = this.formulario.get('dni')?.value; 
 
+
+    //Verifica que el DNI del nuevo cliente, no haya sido insertado en un cliente ya registrado
     this.sr.verificarDniExistente(dni).subscribe(
       {
 
