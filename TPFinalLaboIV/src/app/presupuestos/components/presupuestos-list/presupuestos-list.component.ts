@@ -18,9 +18,12 @@ import { Pedidos } from '../../../pedidos/interface/pedidos';
   templateUrl: './presupuestos-list.component.html',
   styleUrl: './presupuestos-list.component.css'
 })
+
 export class PresupuestosListComponent implements OnInit {
 
-  router = inject(Router);
+  
+
+
   //Inicializacion
   ngOnInit(): void {
 
@@ -28,15 +31,29 @@ export class PresupuestosListComponent implements OnInit {
     this.traerPresupuestos();
   }
 
-  //Lista auxiliar de presupuestos
+  //Coleccion y variables auxiliares para el listado 
   listaPresupuestos: Presupuesto[] = [];
   pedidos: Pedidos[] = [];
 
 
+  //INYECCIONES
+
+  //Servicio para router
+  router = inject(Router);
+
+  //Servicio para las peticiones de presupuesto
   PS = inject(PresupuestoService);
+
+  //Servicio para las peticiones de pedidos
   PDS = inject(PedidoService);
+
+  //Servicios para generar dialogos genericos
   dialogoGenerico = inject(DialogoGenericoComponent);
+
+  //Servicio para dialogs
   dialog = inject(MatDialog);
+
+
 
   //Trae los presupuestos 
   //Los almacena en la lista auxiliar
@@ -54,6 +71,7 @@ export class PresupuestosListComponent implements OnInit {
     )
   }
 
+
   //Trae los pedidos 
   //Los almacena en la lista auxiliar
   traerPedidos() {
@@ -63,6 +81,8 @@ export class PresupuestosListComponent implements OnInit {
     });
   }
 
+
+  //Obtiene los pedidos que este asociados al presupuesto
    obtenerPedidoPorPresupuestoId(presupuestoId: Number | undefined | null): Pedidos | undefined {
     return this.pedidos.find(p => p.presupuesto?.id === presupuestoId);
   }
@@ -70,11 +90,14 @@ export class PresupuestosListComponent implements OnInit {
   //Elimina un presupuesto de la lista
   deletePresupuestoDB(id: Number | null | undefined) {
 
+    //Verifica que el presupuesto no este asociado a un pedido
     this.PDS.obtenerPedidosPorPresupuesto(id).subscribe({
 
       next: (pedidos) => {
 
         if (pedidos.length > 0) {
+
+          //Notifica que un presupuesto no se puede borrar porque tiene asociado un pedido
           this.dialogoGenerico.abrirDialogo("Presupuesto asociado a un pedido, no se puede eliminar...")
         }
         else {
@@ -88,11 +111,11 @@ export class PresupuestosListComponent implements OnInit {
           dialogRef.afterClosed().subscribe((confirmacion: any) => {
             if (confirmacion) {
 
+              //Elimina el presupuesto
               this.PS.deletePresupuesto(id).subscribe(
                 {
                   next: () => {
                     this.listaPresupuestos = this.listaPresupuestos.filter((pres) => pres.id !== id);
-                    //alert('Presupuesto Eliminado...')
                     this.dialogoGenerico.abrirDialogo("Presupuesto eliminado...");
                   },
                   error: (e: Error) => {
@@ -102,16 +125,12 @@ export class PresupuestosListComponent implements OnInit {
               )
             }
           });
-
-
         }
-
       },
       error: (e : Error) => {console.error(e.message)}
-
     })
-
   }
+
 
   //Filtra los presupuestos por fecha
   ordenarPresupuestos(criterio: 'asc' | 'desc') {
@@ -122,11 +141,14 @@ export class PresupuestosListComponent implements OnInit {
     });
   }
 
+
   //Optimizar el seguimiento de los elementos dentro del ngFor
   trackByIndex(index: number, item: any): number {
     return index;
   }
 
+
+  //redirige al componente de update
   editarPresupuesto(id: Number | undefined | null) {
   if (id) {
      this.router.navigate([`/presupuestos/update/${id}`]);
