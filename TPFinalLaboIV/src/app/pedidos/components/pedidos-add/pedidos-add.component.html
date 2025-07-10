@@ -122,13 +122,14 @@
     <div *ngIf="this.presupuestoCargado">
         <span>Fecha: {{this.auxiliarPresupuesto.fecha.toLocaleDateString('es-AR')}}</span><br>
         <ul>
-            <li *ngFor="let item of auxiliarPresupuesto.items; track nombre">
+            <li *ngFor="let item of auxiliarPresupuesto.items; trackBy : trackByFn">
                 <span>{{item.nombre}}</span><br>
                 <span>${{item.precioFinal}}</span>
             </li>
         </ul>
         <span>Precio total: ${{this.auxiliarPresupuesto.total }}</span>
     </div>
+
     <button (click)="abrirDialogPresupuesto()"type="button" [hidden]="formulario.value.presupuesto !== null">Agregar Presupuesto</button>
 
     <!--Si existe ya un presupuesto no habilita el boton-->
