@@ -14,16 +14,35 @@ import { DialogoGenericoComponent } from '../../../shared/modals/dialogo-generic
   templateUrl: './presupuestos-update.component.html',
   styleUrl: './presupuestos-update.component.css',
 })
+
 export class PresupuestosUpdateComponent implements OnInit {
+
+
+
+  //INYECCIONES
+
+  //Servicio para crear formularios
   fb = inject(FormBuilder);
+  
+  //Servicio de route
   route = inject(ActivatedRoute);
+  
+  //Servicio de route
   router = inject(Router);
+  
+  //Servicio para peticiones de presupuesto
   presupuestoService = inject(PresupuestoService);
+  
+  //Servicio para generar dialogos genericos
   dialogo = inject(DialogoGenericoComponent);
 
+
+  //Colecciones y variables auxiliares para el update
   id!: number;
   itemAux: Item[] = [];
 
+
+  //Reactive Forms
   formulario = this.fb.nonNullable.group({
     fecha: ['', Validators.required],
     descuento: [0, [Validators.min(0)]],
@@ -31,10 +50,13 @@ export class PresupuestosUpdateComponent implements OnInit {
     total: [0, [Validators.min(0)]],
   });
 
+
    get itemsFormArray(): FormArray<FormGroup> {
     return this.formulario.get('items') as FormArray<FormGroup>;
   }
 
+
+  //Inicializacion
   ngOnInit(): void {
   this.id = Number(this.route.snapshot.paramMap.get('id'));
   this.presupuestoService.getPresupuestosById(this.id).subscribe({
@@ -65,6 +87,8 @@ export class PresupuestosUpdateComponent implements OnInit {
   });
 }
 
+
+//Actualizar precio final 
 actualizarPrecioFinal(index: number) {
   const itemGroup = this.itemsFormArray.at(index) as FormGroup;
   const precioUnitario = itemGroup.get('precioUnitario')?.value || 0;
@@ -76,6 +100,8 @@ actualizarPrecioFinal(index: number) {
   this.recalcularTotal();
 }
 
+
+//Recalcula el monto final-total
 recalcularTotal() {
   let total = 0;
   this.itemsFormArray.controls.forEach(item => {
@@ -88,11 +114,15 @@ recalcularTotal() {
   this.formulario.get('total')?.setValue(descuentoAplicado, { emitEvent: false });
 }
 
+
+//Formatea la fecha 
   formatearFechaInput(fecha: string | Date): string {
     const f = new Date(fecha);
     return f.toISOString().split('T')[0];
   }
 
+
+  //Ejecuta la UpdatePresupuesto Request
  actualizarPresupuesto() {
   if (this.formulario.invalid) return;
 
@@ -121,7 +151,9 @@ recalcularTotal() {
     total: totalConDescuento
   };
 
-  this.presupuestoService.updatePresupuesto(actualizado, this.id).subscribe({
+
+  //Actualiza el presupuesto 
+  this.presupuestoService.putPresupuesto(actualizado, this.id).subscribe({
     next: () => {
       this.dialogo.abrirDialogo("Presupuesto actualizado correctamente");
       this.router.navigateByUrl('/presupuestos');
@@ -129,4 +161,6 @@ recalcularTotal() {
     error: () => this.dialogo.abrirDialogo("Error al actualizar el presupuesto")
   });
 }
+
+
 }
