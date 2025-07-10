@@ -52,10 +52,11 @@ export class PresupuestosAddComponent {
   //Reactive Form
   formulario = this.fb.nonNullable.group({
     fecha: [this.getFechaActual(), [Validators.required]],
-    descuento: [0, [Validators.min(0)]],  
+    descuento: [0, [Validators.min(0)]],
     items: this.fb.array([], [Validators.required]),
-    total: [0, [Validators.min(0)]],  
+    total: [0, [Validators.min(0)]],
   });
+
 
   //Retorna fecha actual
   getFechaActual(): string {
@@ -66,12 +67,12 @@ export class PresupuestosAddComponent {
   }
 
 
-//---------------------------------------------------------
 
-  addPresupuesto = ()=>{
+  //añade un presupuesto
+  addPresupuesto = () => {
 
-
-    if(this.formulario.invalid)return;
+    //verifica el estado del formulario
+    if (this.formulario.invalid) return;
 
 
     const pres= {
