@@ -1,10 +1,10 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, NgModule, Output } from '@angular/core';
 import { Presupuesto } from '../../interface/presupuesto';
 import { Item } from '../../interface/item';
-import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
@@ -13,12 +13,13 @@ import { Inject } from '@angular/core';
 @Component({
   selector: 'app-presupuestos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ],
   templateUrl: './presupuestos-add.component.html',
   styleUrl: './presupuestos-add.component.css'
 })
-export class PresupuestosAddComponent {
 
+
+export class PresupuestosAddComponent {
 
 
   @Output()
@@ -56,11 +57,6 @@ export class PresupuestosAddComponent {
 
   addPresupuesto = ()=>{
 
-    console.log(this.formulario.errors); // Verifica si hay errores generales
-    for (const controlName in this.formulario.controls) {
-        const control = this.formulario.get(controlName);
-        console.log(`${controlName} errors:`, control?.errors); // Muestra errores de cada campo
-    }
 
     if(this.formulario.invalid)return;
 
@@ -89,7 +85,6 @@ export class PresupuestosAddComponent {
         this.addItem(item);
       }
     });
-    console.log(this.itemAux);
   }
 
   addItem(item : Item){
@@ -112,7 +107,10 @@ export class PresupuestosAddComponent {
     }
   }
 
-  peppaPig() {
-    console.log("peppa pig");this.peppaPig()
-  }
+
+trackByFn(index: number, item: any): any {
+  return item.id;
+}
+
+
 }
