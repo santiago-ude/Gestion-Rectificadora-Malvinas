@@ -5,7 +5,7 @@ import { FormArray, FormBuilder, FormControl, NgModel, ReactiveFormsModule, Vali
 import { PresupuestoService } from '../../service/presupuesto.service';
 import { ItemAddComponent } from "../item-add/item-add.component";
 import { CommonModule, NgClass } from '@angular/common';
-import {DialogoGenericoComponent} from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
+import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 
@@ -13,7 +13,7 @@ import { Inject } from '@angular/core';
 @Component({
   selector: 'app-presupuestos-add',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, ],
+  imports: [ReactiveFormsModule, CommonModule,],
   templateUrl: './presupuestos-add.component.html',
   styleUrl: './presupuestos-add.component.css'
 })
@@ -24,10 +24,14 @@ export class PresupuestosAddComponent {
 
   @Output()
   emitirPresupuesto: EventEmitter<Presupuesto> = new EventEmitter();
-  
-  cargarItem = false;
-  itemAux : Item[] = [];
+
+
+  //INYECCIONES
+
+  //Servicio de Dialogs
   dialog = inject(MatDialog)
+
+  //Servicio del dialog de presupuesto
   dialogRef = inject(MatDialogRef<PresupuestosAddComponent>);
 
 
