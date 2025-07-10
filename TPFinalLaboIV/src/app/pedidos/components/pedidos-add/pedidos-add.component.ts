@@ -210,5 +210,10 @@ abrirDialogPresupuesto(){
 }
 
 
+trackByFn(index: number, item: any): any {
+  return item.id;
+}
+
+
 
 }
