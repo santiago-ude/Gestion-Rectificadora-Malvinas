@@ -23,6 +23,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class PedidosAddComponent {
 
 
+  //INYECCIONES
+
   //Servicio de peticiones para pedidos
   pedidoService = inject(PedidoService);
 
@@ -32,21 +34,25 @@ export class PedidosAddComponent {
   //Servicio de peticiones para presupuestos
   presupuestoService = inject(PresupuestoService);
 
+  //Servicio para generar dialogos genericos
   dialogoGenerico = inject(DialogoGenericoComponent);
 
+  //Servicio de construccion de formularios
   fb = inject(FormBuilder);
+
+  //Servicio de router
   route = inject(ActivatedRoute);
 
 
+  //Coleccion-Variables auxiliares para el pedido-add
   clientes: Clientes[] = [];
-
   auxiliarPresupuesto: Presupuesto = { fecha: new Date(), descuento: 0, items: [], total: 0 };
   cargarPresupuesto: boolean = false
   presupuestoCargado: boolean = false;
   dialog = inject(MatDialog);
 
 
-
+  //Reactive Form
   formulario = this.fb.nonNullable.group({
     cliente: [null as Clientes | null, Validators.required],
     fechaEntrada: [this.getFechaActual(), Validators.required],
@@ -60,6 +66,7 @@ export class PedidosAddComponent {
   },
     { validators: this.fechaEntradaAntesDeSalidaValidator() }
   );
+
 
   //Retorna fecha actual
   getFechaActual(): string {
@@ -200,19 +207,20 @@ export class PedidosAddComponent {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   }
 
-abrirDialogPresupuesto(){
-  const dialogRef = this.dialog.open(PresupuestosAddComponent);
-  dialogRef.afterClosed().subscribe(presupuesto => {
-    if(presupuesto){
-      this.addPresupuesto(presupuesto);
-    }
-  });
-}
+  //Abre el dialog donde se carga el presupuesto y luego los items
+  abrirDialogPresupuesto() {
+    const dialogRef = this.dialog.open(PresupuestosAddComponent);
+    dialogRef.afterClosed().subscribe(presupuesto => {
+      if (presupuesto) {
+        this.addPresupuesto(presupuesto);
+      }
+    });
+  }
 
-
-trackByFn(index: number, item: any): any {
-  return item.id;
-}
+  //Recorrer itemsel presupuesto asociado al pedido
+  trackByFn(index: number, item: any): any {
+    return item.id;
+  }
 
 
 
