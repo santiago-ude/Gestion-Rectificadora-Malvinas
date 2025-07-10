@@ -79,15 +79,17 @@ export class ClienteAddComponent {
       {
 
         next: (existe) => {
+
           if (existe) {
-            //alert('El DNI ya Existe. Ingrese uno Diferente')
             this.dialogoGenerico.abrirDialogo("El DNI ya existe. Ingrese uno diferente");
-          } else {
+          } 
+          else {
             this.postCliente(); //SI NO EXISTE, EJECUTA EL METODO POST
             this.formulario.reset() //RESETEA EL FORMULARIO
           }
         },
         error: (e: Error) => {
+          
           console.log(e.message);
           this.dialogoGenerico.abrirDialogo("Error al verificar el DNI");
           alert('Error al verificar el DNI')
