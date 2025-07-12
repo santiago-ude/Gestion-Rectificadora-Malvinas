@@ -1,0 +1,41 @@
+.modal-opciones-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;                
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.modal-opciones-container button:hover{
+    background-color: #013357;
+    transition: background-color 0.3s;
+}
+.titulo-h2 {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #003f6b;
+}
+
+mat-dialog-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.btn-config {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #003f6b;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btn-cerrar {
+  margin-top: auto;           
+  padding: 0.5rem;
+  background-color: #dd0b0b;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}

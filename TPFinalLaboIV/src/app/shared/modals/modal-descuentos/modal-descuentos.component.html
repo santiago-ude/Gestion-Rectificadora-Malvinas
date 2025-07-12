@@ -1,0 +1,15 @@
+<div class="modal-descuentos">
+  <h2>Configurar Descuentos</h2>
+
+  <div class="form-grupo" *ngFor="let descuento of descuentos">
+    <label>{{ descuento.metodo | titlecase }}</label>
+    <input type="number" min="0" max="100" [(ngModel)]="descuento.valor" (change)="actualizarDescuento(descuento.metodo, descuento.valor)">
+    <span>%</span>
+  </div>
+
+  <button class="btn-cerrar" (click)="cerrar()">Cerrar</button>
+</div>
+
+
+
+

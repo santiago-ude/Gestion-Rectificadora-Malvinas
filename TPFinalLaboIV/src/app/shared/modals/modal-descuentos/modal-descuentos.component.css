@@ -1,0 +1,57 @@
+.modal-descuentos {
+    text-align: center;
+    padding: 20px;
+}
+
+mat-dialog-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-descuentos h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: #003f6b;
+  text-align: center;
+}
+
+.form-grupo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.form-grupo label {
+  flex: 1;
+  font-weight: bold;
+  text-align: left;
+  color: #333;
+}
+
+.form-grupo input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 1rem;
+}
+
+.modal-descuentos .btn-cerrar {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-descuentos .btn-cerrar:hover {
+  background-color: #c9302c;
+}

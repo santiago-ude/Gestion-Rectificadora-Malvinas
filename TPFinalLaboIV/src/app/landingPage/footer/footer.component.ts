@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { QrModalComponent } from '../../shared/modals/qr-modal/qr-modal.component';
 import { CommonModule } from '@angular/common';
+import { ModalOpcionesComponent } from '../../shared/modals/modal-opciones/modal-opciones.component';
 
 @Component({
   selector: 'app-footer',
@@ -29,4 +30,12 @@ export class FooterComponent {
       height: '400px'
     });
   }
+  abrirOpciones() {
+  this.dialog.open(ModalOpcionesComponent,{
+    width: '20vw',
+    height: '70vh',
+    maxWidth: '90vw',
+    maxHeight: "75vw"
+  });
+}
 }
