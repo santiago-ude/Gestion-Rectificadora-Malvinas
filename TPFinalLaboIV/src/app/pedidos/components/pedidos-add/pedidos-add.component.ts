@@ -12,6 +12,7 @@ import { PresupuestosAddComponent } from '../../../presupuestos/components/presu
 import { Item } from '../../../presupuestos/interface/item';
 import { DialogoGenericoComponent } from "../../../shared/modals/dialogo-generico/dialogo-generico.component";
 import { MatDialog } from '@angular/material/dialog';
+import { DescuentoConfigService } from '../../../shared/services/descuentos-config.service';
 
 @Component({
   selector: 'app-pedidos-add',
@@ -42,6 +43,9 @@ export class PedidosAddComponent {
 
   //Servicio de router
   route = inject(ActivatedRoute);
+  
+  //Servicio para configurar descuentos
+  descuentoConfig = inject(DescuentoConfigService);
 
 
   //Coleccion-Variables auxiliares para el pedido-add
@@ -123,7 +127,7 @@ export class PedidosAddComponent {
 
 
   //Retornar un descuento especifico dependiendo el metodo de pago  
-  asignarDescuento(cliente: Clientes) {
+  /*asignarDescuento(cliente: Clientes) {
 
     if (cliente.metodoPago === 'efectivo') {
       return 10;
@@ -134,6 +138,9 @@ export class PedidosAddComponent {
     else {
       return 0;
     }
+  }*/
+ asignarDescuento(cliente: Clientes): number {
+  return this.descuentoConfig.getDescuento(cliente.metodoPago);
   }
 
 
@@ -145,7 +152,7 @@ export class PedidosAddComponent {
 
 
   //Verifica el presupuesto
-  //Verifica el pedido y almacena en el json-server
+  //Verifica el pedido y almacena 
   agregarPedido() {
 
     if (this.formulario.invalid || !this.auxiliarPresupuesto) {
