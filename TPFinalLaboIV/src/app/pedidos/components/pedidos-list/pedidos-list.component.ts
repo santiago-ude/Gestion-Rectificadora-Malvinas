@@ -387,7 +387,7 @@ entregarPedido(pedido: Pedidos) {
     notificarCliente(pedido: Pedidos) {
       
       const numeroTelefono = pedido.cliente.numero;
-      const mensaje = `Estimado ${pedido.cliente.nombre}, su pedido  está listo para ser recogido en Rectificadora Malvinas.`;
+      const mensaje = `Estimado/a ${pedido.cliente.nombre}, su pedido está listo para ser recogido en Rectificadora Malvinas.`;
       const enlaceWhatsApp = this.whatsappService.generarEnlace(numeroTelefono, mensaje);
   
       // Abre el modal y pasa los datos de enlace y nombre del cliente
