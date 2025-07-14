@@ -6,7 +6,7 @@ export interface Pedidos {
   cliente: Clientes;
   fechaEntrada: Date;
   fechaSalidaEstimada: Date;
-  fechaEntregaEfectiva?: Date;
+  fechaEntregaEfectiva?: Date | null;
   estado: 'activo' | 'entregado' | 'atrasado';
   presupuesto: Presupuesto;  
   marcaAuto: string;

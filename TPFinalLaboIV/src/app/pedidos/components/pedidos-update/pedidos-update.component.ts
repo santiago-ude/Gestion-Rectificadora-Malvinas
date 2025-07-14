@@ -158,8 +158,11 @@ actualizarPedido(){
       fechaSalidaEstimada: new Date(this.formulario.value.fechaSalidaEstimada as string),
       estado: this.formulario.value.estado as 'activo' | 'entregado' | 'atrasado',
       presupuesto: this.formulario.value.presupuesto as Presupuesto  
+      
     };
-
+    if (!pedido.fechaEntregaEfectiva) {
+    delete pedido.fechaEntregaEfectiva;
+    }
     console.log(pedido.id);
     this.pedidoService.updatePedido (this.id, pedido).subscribe({
       next: () => {
