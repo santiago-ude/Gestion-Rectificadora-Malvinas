@@ -262,12 +262,18 @@ confirmarEntrega(pedido: Pedidos) {
 //Ejecuta la UpdateCliente request
 entregarPedido(pedido: Pedidos) {
   pedido.estado = 'entregado';
-
+  const hoy = new Date();
+  //console.log(hoy);
+  //hoy.setHours(0, 0, 0, 0); 
+  pedido.fechaEntregaEfectiva = hoy;
+  //console.log(pedido.fechaEntregaEfectiva);
   //Actualiza el estado del pedido a entregado
   this.ts.updatePedido(pedido.id,pedido).subscribe({
       next: () => {
-        this.dialogoGenerico.abrirDialogo("El pedido fue marcado como entregado");
+        this.dialogoGenerico.abrirDialogo(`El pedido fue marcado como entregado en fecha: ${pedido.fechaEntregaEfectiva?.toLocaleDateString()}`);
         this.listarPedidos();
+          console.log(pedido.fechaEntregaEfectiva);
+
       },
       error: (e: Error) => {
         console.error("Error al actualizar el pedido:", e.message);
