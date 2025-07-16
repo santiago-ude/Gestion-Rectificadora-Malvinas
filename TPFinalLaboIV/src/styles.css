@@ -3,6 +3,7 @@ body, app-root, html{
     padding: 0;
     margin: 0;
     font-family: 'Nunito';
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 *{
     box-sizing: border-box;
@@ -11,3 +12,90 @@ body, app-root, html{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ===== MODO CLARO (por defecto) ===== */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* ===== MODO OSCURO ===== */
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #555;
+}
+
+body.dark-theme .form-card,
+body.dark-theme .form-container,
+body.dark-theme table,
+body.dark-theme .filtro-pedidos {
+  background-color: #1e1e1e !important;
+  color: #f0f0f0 !important;
+  border-color: #444 !important;
+  box-shadow: none;
+}
+body.dark-theme .presupuesto-item{
+    border: 1px solid #005b96;
+    color: #ffffff;
+    border-color: #555;
+}
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3 {
+  text-shadow: none;
+}
+body.dark-theme .cdk-overlay-container .mat-dialog-container {
+  background-color: #1e1e1e !important;
+  color: #f0f0f0 !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  border-radius: 10px;
+}
+body.dark-theme .cdk-overlay-container,
+body.dark-theme .cdk-overlay-pane,
+body.dark-theme .mat-dialog-container {
+  background-color: #1e1e1e !important;
+  color: #f0f0f0 !important;
+}
+body.dark-theme .mat-dialog-title {
+  color: #90caf9 !important;
+}
+body.dark-theme .modal-opciones-container,
+body.dark-theme .modal-descuentos{
+  background-color: #1f1e1e !important;
+}
+body.dark-theme button {
+  background-color: #1565c0;
+  color: white;
+}
+
+body.dark-theme button:hover {
+  background-color: #0d47a1;
+}
+
+body.dark-theme .error {
+  color: #ff8a80;
+}
+
+body.dark-theme input.invalid,
+body.dark-theme select.invalid {
+  background-color: #4d1c1c;
+  border: 1px solid red;
+}
+
+body.dark-theme label{
+  color: #008fe5;
+}
+
+body.dark-theme footer,
+body.dark-theme .contenedorBackColor{
+  background-color: #16364e;
+  background-image: linear-gradient(to bottom,#16364e ,#164468);
+}

@@ -4,7 +4,6 @@
     max-width: 800px;
     margin: 20px auto;
     padding: 15px;
-    background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -12,7 +11,6 @@
   /*Estilo de cada pedido*/
 .pedido-datos {
     padding: 15px;
-    background-color: white;
     margin-bottom: 30px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -22,7 +20,6 @@
   
 .pedido-datos p{
     margin: 8px 0;
-    color: #333;
 }
   
   /*estilo de los botones*/
@@ -136,7 +133,6 @@ button:disabled, a:disabled{
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -220,8 +216,8 @@ input[type="date"]{
 
 .filtro-fecha-contenedor button{
     background-color: #005b96;
-    color: white;
     padding: 8px 15px;
+    color: white;
     border: none;
     border-radius: 4px;
     font-size: 1rem;

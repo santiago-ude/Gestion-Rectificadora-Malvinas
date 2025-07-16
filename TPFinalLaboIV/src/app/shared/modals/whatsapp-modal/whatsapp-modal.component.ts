@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-whatsapp-modal',
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   imports: [],
   templateUrl: './whatsapp-modal.component.html',
   styleUrl: './whatsapp-modal.component.css'

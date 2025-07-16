@@ -6,7 +6,6 @@
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9;
     text-align: center;
 }
 
@@ -48,14 +47,12 @@
     max-width: 800px;
     margin: 20px auto;
     padding: 15px;
-    background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .presupuesto-item {
     padding: 15px;
-    background-color: white;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -65,7 +62,7 @@
 .presupuesto-header {
     margin-bottom: 10px;
     font-weight: bold;
-    color: #333;
+    
 }
 
 .items-list h4 {
@@ -82,7 +79,6 @@
 .item {
     padding: 8px;
     border-bottom: 1px solid #ddd;
-    color: #333;
 }
 
 .item:last-child {

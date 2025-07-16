@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-confirmacion',
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   imports: [MatDialogContent, MatDialogActions],
   templateUrl: './modal-confirmacion.component.html',
   styleUrl: './modal-confirmacion.component.css'

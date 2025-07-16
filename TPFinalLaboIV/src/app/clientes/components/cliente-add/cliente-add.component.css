@@ -5,12 +5,10 @@
   align-items: center;
   padding: 3rem;
   gap: 2rem;
-  background-color: #eaf1fc;
 }
 
 /* Tarjeta de formulario */
 .form-card {
-  background: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 2rem 3rem;
@@ -68,11 +66,10 @@ button {
 }
 
 button:hover {
-  background-color: #0949a5;
+  filter: brightness(0.9);
 }
 
 button:disabled {
-  background-color: #ccc;
   cursor: not-allowed;
 }
 
