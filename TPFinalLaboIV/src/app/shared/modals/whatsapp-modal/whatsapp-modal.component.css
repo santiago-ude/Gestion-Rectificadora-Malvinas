@@ -3,7 +3,14 @@
     justify-content: space-between;
     margin-top: 20px;
 }
-  
+:host {
+  display: block;
+  color: inherit; 
+  background-color: transparent; 
+}
+h2, p {
+  color: inherit;
+}
 .confirm-btn{
     background-color: #25D366;
     color: white;

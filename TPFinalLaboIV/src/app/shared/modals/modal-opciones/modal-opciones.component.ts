@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ModalDescuentosComponent } from '../modal-descuentos/modal-descuentos.component';
+import { ThemeService } from '../../services/tema.service';
 
 @Component({
   selector: 'app-modal-opciones',
@@ -28,5 +29,11 @@ export class ModalOpcionesComponent {
 
   cerrar() {
     this.dialogRef.close();
+  }
+
+  constructor(private themeService: ThemeService) {}
+
+  cambiarTema() {
+    this.themeService.cambiarTema();
   }
 }

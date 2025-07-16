@@ -27,7 +27,6 @@ mat-dialog-content {
   flex: 1;
   font-weight: bold;
   text-align: left;
-  color: #333;
 }
 
 .form-grupo input {

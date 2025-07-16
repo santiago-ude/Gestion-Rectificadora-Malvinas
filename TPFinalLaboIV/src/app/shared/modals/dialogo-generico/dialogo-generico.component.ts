@@ -1,4 +1,4 @@
-import {Component, inject, Inject} from '@angular/core';
+import {Component, inject, Inject, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
@@ -8,6 +8,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialo
     MatDialogContent,
     MatDialogActions
   ],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './dialogo-generico.component.html',
   styleUrl: './dialogo-generico.component.css'
 })
