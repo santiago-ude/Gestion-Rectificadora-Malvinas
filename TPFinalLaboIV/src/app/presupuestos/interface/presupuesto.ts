@@ -8,4 +8,8 @@ export interface Presupuesto {
     items: Item[];
     total: number
 
+    //auxiliares
+    autoAsignado?: string;
+    numeroSerie?: string;
+    pedidoANombreDe?: string;
 }

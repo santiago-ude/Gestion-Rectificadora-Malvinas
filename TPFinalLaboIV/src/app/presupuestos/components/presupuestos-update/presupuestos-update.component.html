@@ -14,7 +14,7 @@
 
       <div formArrayName="items">
         <div *ngFor="let item of itemsFormArray.controls; let i = index" [formGroupName]="i" class="item-box">
-          <label>Nombre:</label>
+          <strong><label>Nombre: </label></strong>
           <input type="text" formControlName="nombre" />
 
           <label>Descripción:</label>
