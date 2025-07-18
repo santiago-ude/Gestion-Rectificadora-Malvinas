@@ -56,6 +56,14 @@
                  {{item}}
                 </a>
 
+                <!-- Ruta para ir al Calendario -->
+                <a *ngSwitchCase="'Calendario'" class="aDinamico"
+                       [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"
+                       (mouseover)="onMouseOverA(i)" (mouseleave)="onMouseLeaveA(i)"
+                       [routerLink]="['calendario-pedidos']">
+                       {{item}}
+                </a>
+
                     <!-- Ruta por defecto o para otros ítems -->
                 <a *ngSwitchDefault class="aDinamico"
                        [ngClass]="{aDinamico: !dentroA[i], aDinamico2: dentroA[i]}"

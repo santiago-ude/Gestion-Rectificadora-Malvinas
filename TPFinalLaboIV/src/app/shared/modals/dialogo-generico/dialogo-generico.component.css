@@ -14,7 +14,11 @@ mat-dialog-content {
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
 }
-
+mat-dialog-content p.center-content {
+  white-space: pre-line;
+  line-height: 1.6;
+  font-size: 16px;
+}
 .center-content {
    text-align: center;
    margin: 0;

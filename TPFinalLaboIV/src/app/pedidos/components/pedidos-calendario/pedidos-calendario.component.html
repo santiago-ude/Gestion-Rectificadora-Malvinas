@@ -1,0 +1,19 @@
+<div class="calendario-contenedor">
+  <h2>Calendario de Pedidos</h2>
+
+  <!-- Botones de filtrado -->
+  <div class="filtros-botones">
+    <button (click)="filtrarEventos('todos')">Todos</button>
+    <button (click)="filtrarEventos('activo')">Activos</button>
+    <button (click)="filtrarEventos('entregado')">Entregados</button>
+    <button (click)="filtrarEventos('atrasado')">Atrasados</button>
+  </div>
+
+  <!-- Calendario -->
+  <full-calendar [options]="calendarOptions"></full-calendar>
+
+  <!-- Botón volver -->
+  <div class="boton-volver">
+    <a [routerLink]="['/pedidos']" [replaceUrl]="true" class="volver">Ir a pedidos</a>
+  </div>
+</div>

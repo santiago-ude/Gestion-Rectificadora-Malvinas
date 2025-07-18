@@ -99,3 +99,21 @@ body.dark-theme .contenedorBackColor{
   background-color: #16364e;
   background-image: linear-gradient(to bottom,#16364e ,#164468);
 }
+
+body.dark-theme .fc {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-theme .fc .fc-daygrid-day-number {
+  color: #90caf9;
+}
+
+body.dark-theme .fc .fc-event {
+  background-color: #0275d8;
+  border: none;
+}
+
+body.dark-theme .fc .fc-toolbar-title {
+  color: #90caf9;
+}
