@@ -60,3 +60,6 @@ footer ul li a:hover{
     padding-left: 8rem;
     transition: .5s;
 }
+li{
+  cursor: pointer;
+}
