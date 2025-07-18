@@ -12,6 +12,7 @@ import { ListPedidosPageComponent } from './pedidos/pages/list-pedidos-page/list
 import { UpdatePedidosPageComponent } from './pedidos/pages/update-pedidos-page/update-pedidos-page.component';
 import { PresupuestoPageComponent } from './presupuestos/pages/presupuesto-page/presupuesto-page.component';
 import { PresupuestosUpdateComponent } from './presupuestos/components/presupuestos-update/presupuestos-update.component';
+import { CalendarioPedidosComponent } from './pedidos/components/pedidos-calendario/pedidos-calendario.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +31,7 @@ export const routes: Routes = [
       { path: 'pedidos', component: ListPedidosPageComponent, canActivate: [NavbarGuard] },
       { path: 'addPedido', component: PedidosPageComponent, canActivate: [NavbarGuard] },
       { path: 'pedidos/update/:id', component: UpdatePedidosPageComponent, canActivate: [NavbarGuard] },
-
+      { path: 'calendario-pedidos', component: CalendarioPedidosComponent, canActivate: [NavbarGuard] },
       // Presupuestos
       { path: 'presupuestos', component: PresupuestoPageComponent, canActivate: [NavbarGuard] },
       { path: 'presupuestos/update/:id', component: PresupuestosUpdateComponent, canActivate: [NavbarGuard] },
