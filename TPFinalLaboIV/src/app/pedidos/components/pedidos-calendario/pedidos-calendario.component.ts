@@ -79,12 +79,11 @@ export class CalendarioPedidosComponent implements OnInit {
 
   onEventClick(arg: any) {
     const pedido: Pedidos = arg.event.extendedProps.pedido;
-
     const mensaje = `
       Cliente: ${pedido.cliente.nombre} ${pedido.cliente.apellido}
       \nAuto: ${pedido.marcaAuto} ${pedido.modeloAuto}
       \nEstado: ${pedido.estado}
-      \nFecha Salida Estimada: ${new Date(pedido.fechaSalidaEstimada).toLocaleDateString()}
+      \nFecha Salida Estimada: ${new Date(pedido.fechaSalidaEstimada as unknown as string + 'T12:00:00').toLocaleDateString()}
     `;
     this.dialog.open(DialogoGenericoComponent, {
       data: { message: mensaje }

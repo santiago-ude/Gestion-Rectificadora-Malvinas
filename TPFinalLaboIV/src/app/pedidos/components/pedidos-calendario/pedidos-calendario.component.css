@@ -44,7 +44,7 @@ button:hover {
   white-space: pre-line;
   font-size: 0.8rem;
   color: #fff;
-  background: rgba(0,0,0,0.75);
+  background: #003f6b;
   padding: 8px;
   border-radius: 4px;
 }
@@ -72,3 +72,6 @@ button:hover {
 .filtros-botones button:hover {
   background-color: #025aa5;
 }
+.fc-event-title .fc-sticky{
+  cursor: pointer;
+} 
